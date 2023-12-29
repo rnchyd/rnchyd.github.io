@@ -4,9 +4,15 @@
         <title></title>
         <link>undefined</link>
         <description>undefined</description>
-        <lastBuildDate>Fri, 29 Dec 2023 04:53:51 GMT</lastBuildDate>
+        <lastBuildDate>Fri, 29 Dec 2023 05:00:24 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>Joplin Pages Publisher</generator>
+        <item>
+            <title><![CDATA[Example 3]]></title>
+            <guid>3e2e24d06b5845748aece5b822282a03</guid>
+            <pubDate>Fri, 29 Dec 2023 04:59:37 GMT</pubDate>
+            <content:encoded><![CDATA[Set an example]]></content:encoded>
+        </item>
         <item>
             <title><![CDATA[Example 2]]></title>
             <guid>c78ecc637ad64e97848ffbf6a839f34e</guid>
