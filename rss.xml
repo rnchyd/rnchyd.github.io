@@ -1,0 +1,456 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+    <channel>
+        <title></title>
+        <link>undefined</link>
+        <description>undefined</description>
+        <lastBuildDate>Sat, 29 Jun 2024 19:22:30 GMT</lastBuildDate>
+        <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+        <generator>Joplin Pages Publisher</generator>
+        <item>
+            <title><![CDATA[Sorting BigDecimal in Java]]></title>
+            <guid>daddbb9df373487994e8163a577230ae</guid>
+            <pubDate>Sat, 29 Jun 2024 19:02:30 GMT</pubDate>
+            <content:encoded><![CDATA[<p>This Java code is a program that reads a set of real number strings, sorts them in descending order using BigDecimal, and then prints the sorted numbers.</p>
+<div><pre class="hljs"><code><span class="hljs-keyword">import</span> java.math.BigDecimal;
+<span class="hljs-keyword">import</span> java.util.*;
+
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">BigDecimalSort</span> {
+
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> {
+        <span class="hljs-keyword">try</span> {
+            <span class="hljs-comment">// Read input and initialize variables</span>
+            <span class="hljs-type">Scanner</span> <span class="hljs-variable">scanner</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Scanner</span>(System.in);
+            <span class="hljs-type">int</span> <span class="hljs-variable">n</span> <span class="hljs-operator">=</span> scanner.nextInt();
+            String[] s = <span class="hljs-keyword">new</span> <span class="hljs-title class_">String</span>[n + <span class="hljs-number">2</span>];
+
+            <span class="hljs-comment">// Call method to read input</span>
+            readInput(scanner, n, s);
+            <span class="hljs-comment">// Call method to sort real numbers in descending order</span>
+            sortRealNumbers(s, n);
+            <span class="hljs-comment">// Call method to print the sorted output</span>
+            printOutput(s, n);
+
+            scanner.close();
+        } <span class="hljs-keyword">catch</span> (Exception e) {
+            <span class="hljs-comment">// Handle any exceptions that occur in the main method</span>
+            System.out.println(<span class="hljs-string">"An error occurred: "</span> + e.getMessage());
+        }
+    }
+
+    <span class="hljs-comment">// Method to read input from the scanner</span>
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">readInput</span><span class="hljs-params">(Scanner scanner, <span class="hljs-type">int</span> n, String[] s)</span> {
+        <span class="hljs-keyword">try</span> {
+            <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; n; i++) {
+                s[i] = scanner.next();
+            }
+        } <span class="hljs-keyword">catch</span> (Exception e) {
+            <span class="hljs-comment">// Handle any exceptions that occur while reading input</span>
+            System.out.println(<span class="hljs-string">"Error reading input: "</span> + e.getMessage());
+        }
+    }
+
+    <span class="hljs-comment">// Method to sort real numbers in descending order using BigDecimal</span>
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">sortRealNumbers</span><span class="hljs-params">(String[] s, <span class="hljs-type">int</span> n)</span> {
+        <span class="hljs-keyword">try</span> {
+            <span class="hljs-comment">// Define a custom comparator to compare BigDecimal values in descending order</span>
+            Comparator&lt;String&gt; customComparator = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Comparator</span>&lt;String&gt;() {
+                <span class="hljs-meta">@Override</span>
+                <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">compare</span><span class="hljs-params">(String s1, String s2)</span> {
+                    <span class="hljs-type">BigDecimal</span> <span class="hljs-variable">a</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">BigDecimal</span>(s1);
+                    <span class="hljs-type">BigDecimal</span> <span class="hljs-variable">b</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">BigDecimal</span>(s2);
+                    <span class="hljs-keyword">return</span> b.compareTo(a); <span class="hljs-comment">// Sort in descending order</span>
+                }
+            };
+
+            <span class="hljs-comment">// Sort the array of real numbers using the custom comparator</span>
+            Arrays.sort(s, <span class="hljs-number">0</span>, n, customComparator);
+        } <span class="hljs-keyword">catch</span> (Exception e) {
+            <span class="hljs-comment">// Handle any exceptions that occur while sorting real numbers</span>
+            System.out.println(<span class="hljs-string">"Error sorting real numbers: "</span> + e.getMessage());
+        }
+    }
+
+    <span class="hljs-comment">// Method to print the output array</span>
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">printOutput</span><span class="hljs-params">(String[] s, <span class="hljs-type">int</span> n)</span> {
+        <span class="hljs-keyword">try</span> {
+            <span class="hljs-comment">// Print the sorted array of real numbers</span>
+            <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; n; i++) {
+                System.out.println(s[i]);
+            }
+        } <span class="hljs-keyword">catch</span> (Exception e) {
+            <span class="hljs-comment">// Handle any exceptions that occur while printing the output</span>
+            System.out.println(<span class="hljs-string">"Error printing output: "</span> + e.getMessage());
+        }
+    }
+}</code></pre></div>
+<p><strong>Sample Input</strong></p>
+<pre style="background:linear-gradient(to right, #F3F7EC, white);color:#3F4E4F;padding:5px" class="jop-noMdConv">
+9
+-100
+50
+0
+56.6
+90
+0.12
+.12
+02.34
+000.000
+</pre>
+<p><strong>Sample Output</strong></p>
+<pre style="background:linear-gradient(to right, #FFE6E6, white);color:#3F4E4F;padding:5px" class="jop-noMdConv">
+90
+56.6
+50
+02.34
+0.12
+.12
+0
+000.000
+-100
+</pre>
+<h2 id="elucidation">Elucidation</h2>
+<p>Here’s an explanation of each section of the code:</p>
+<ol>
+<li>
+<p><strong>Import Statements</strong>:</p>
+<ul>
+<li>The code imports the necessary classes <code>BigDecimal</code>, <code>Scanner</code>, and <code>Comparator</code> from the Java standard library.</li>
+</ul>
+</li>
+<li>
+<p><strong><code>BigDecimalSort</code> Class</strong>:</p>
+<ul>
+<li>It defines a class named <code>BigDecimalSort</code> that contains the main method and additional methods for reading input, sorting real numbers, and printing output.</li>
+</ul>
+</li>
+<li>
+<p><strong><code>main</code> Method</strong>:</p>
+<ul>
+<li>The <code>main</code> method is the entry point of the program.</li>
+<li>It reads the input, initializes variables, and handles exceptions that may occur during execution.</li>
+<li>Calls the <code>readInput</code>, <code>sortRealNumbers</code>, and <code>printOutput</code> methods to read, sort, and print the real number strings, respectively.</li>
+</ul>
+</li>
+<li>
+<p><strong><code>readInput</code> Method</strong>:</p>
+<ul>
+<li>Reads the real number strings from the scanner input and stores them in an array.</li>
+<li>Catches and handles any exceptions that may occur during input reading.</li>
+</ul>
+</li>
+<li>
+<p><strong><code>sortRealNumbers</code> Method</strong>:</p>
+<ul>
+<li>Defines a custom comparator to compare the <code>BigDecimal</code> values of the real number strings in descending order.</li>
+<li>Sorts the array of real number strings using the custom comparator and <code>BigDecimal</code>.</li>
+<li>Catches and handles any exceptions that may occur during sorting.</li>
+</ul>
+</li>
+<li>
+<p><strong><code>printOutput</code> Method</strong>:</p>
+<ul>
+<li>Prints the sorted array of real number strings to the console.</li>
+<li>Catches and handles any exceptions that may occur during output printing.</li>
+</ul>
+</li>
+<li>
+<p><strong>Error Handling</strong>:</p>
+<ul>
+<li>The code includes try-catch blocks to handle exceptions that may occur during input reading, sorting, and output printing.</li>
+<li>If an exception occurs, an error message is displayed indicating the specific section where the error occurred.</li>
+</ul>
+</li>
+<li>
+<p><strong>Overall Functionality</strong>:</p>
+<ul>
+<li>The code effectively reads a set of real number strings, sorts them in descending order using <code>BigDecimal</code> for precision, and prints the sorted numbers while handling any exceptions that may arise during the process.</li>
+</ul>
+</li>
+</ol>
+<p>Overall, this code effectively reads, sorts, and prints real number strings in descending order using BigDecimal, while handling exceptions that may arise during input reading, sorting, and output printing. The use of BigDecimal ensures accurate sorting of real numbers with precision.</p>
+]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Extractor for Tag Content]]></title>
+            <guid>0a6c9803eeec40399e4999cc0ecfdadf</guid>
+            <pubDate>Sat, 29 Jun 2024 17:13:45 GMT</pubDate>
+            <content:encoded><![CDATA[<p>This Java code is a program that extracts and prints the content enclosed within valid tags in a tag-based language like XML or HTML.</p>
+<div><pre class="hljs"><code><span class="hljs-keyword">import</span> java.util.Scanner;
+<span class="hljs-keyword">import</span> java.util.regex.Matcher;
+<span class="hljs-keyword">import</span> java.util.regex.Pattern;
+
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">TagContentExtractor</span> {
+
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> {
+        <span class="hljs-keyword">try</span> {
+            <span class="hljs-comment">// Read input from the console</span>
+            <span class="hljs-type">Scanner</span> <span class="hljs-variable">in</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Scanner</span>(System.in);
+            <span class="hljs-type">int</span> <span class="hljs-variable">testCases</span> <span class="hljs-operator">=</span> Integer.parseInt(in.nextLine());
+
+            <span class="hljs-comment">// Process each test case</span>
+            <span class="hljs-keyword">while</span> (testCases &gt; <span class="hljs-number">0</span>) {
+                processTestCase(in);
+                testCases--;
+            }
+        } <span class="hljs-keyword">catch</span> (Exception e) {
+            <span class="hljs-comment">// Handle any exceptions that occur during input reading or processing</span>
+            System.out.println(<span class="hljs-string">"An error occurred: "</span> + e.getMessage());
+        }
+    }
+
+    <span class="hljs-comment">// Method to process each test case</span>
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">processTestCase</span><span class="hljs-params">(Scanner in)</span> {
+        <span class="hljs-keyword">try</span> {
+            <span class="hljs-comment">// Read the line of text from the input</span>
+            <span class="hljs-type">String</span> <span class="hljs-variable">line</span> <span class="hljs-operator">=</span> in.nextLine();
+            <span class="hljs-type">boolean</span> <span class="hljs-variable">matchFound</span> <span class="hljs-operator">=</span> <span class="hljs-literal">false</span>;
+            <span class="hljs-comment">// Define the pattern to match valid tags and their content</span>
+            <span class="hljs-type">Pattern</span> <span class="hljs-variable">pattern</span> <span class="hljs-operator">=</span> Pattern.compile(<span class="hljs-string">"&lt;(.+?)&gt;([^&lt;]+)&lt;/\\1&gt;"</span>);
+            <span class="hljs-type">Matcher</span> <span class="hljs-variable">matcher</span> <span class="hljs-operator">=</span> pattern.matcher(line);
+
+            <span class="hljs-comment">// Find and print valid content within the line</span>
+            findAndPrintValidContent(matcher, matchFound);
+        } <span class="hljs-keyword">catch</span> (Exception e) {
+            <span class="hljs-comment">// Handle any exceptions that occur during test case processing</span>
+            System.out.println(<span class="hljs-string">"Error processing test case: "</span> + e.getMessage());
+        }
+    }
+
+    <span class="hljs-comment">// Method to find and print valid content within the line</span>
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">findAndPrintValidContent</span><span class="hljs-params">(Matcher matcher, <span class="hljs-type">boolean</span> matchFound)</span> {
+        <span class="hljs-keyword">try</span> {
+            <span class="hljs-comment">// Iterate over matches and print valid content</span>
+            <span class="hljs-keyword">while</span> (matcher.find()) {
+                System.out.println(matcher.group(<span class="hljs-number">2</span>));
+                matchFound = <span class="hljs-literal">true</span>;
+            }
+
+            <span class="hljs-comment">// If no valid content found, print "None"</span>
+            <span class="hljs-keyword">if</span> (!matchFound) {
+                System.out.println(<span class="hljs-string">"None"</span>);
+            }
+        } <span class="hljs-keyword">catch</span> (Exception e) {
+            <span class="hljs-comment">// Handle any exceptions that occur during finding and printing valid content</span>
+            System.out.println(<span class="hljs-string">"Error finding and printing valid content: "</span> + e.getMessage());
+        }
+    }
+}</code></pre></div>
+<p>Here’s an explanation of the code:</p>
+<ol>
+<li>
+<p>The program starts by importing necessary classes from the Java standard library:</p>
+<ul>
+<li><code>java.util.Scanner</code>: Used to read input from the standard input stream.</li>
+<li><code>java.util.regex.Matcher</code>: Used for matching text against a regular expression.</li>
+<li><code>java.util.regex.Pattern</code>: Used to define a regular expression pattern.</li>
+</ul>
+</li>
+<li>
+<p>The code defines a class named <code>TagContentExtractor</code> with a <code>main</code> method, which serves as the entry point of the program.</p>
+</li>
+<li>
+<p>Inside the <code>main</code> method:</p>
+<ul>
+<li>It reads the number of test cases from the input.</li>
+<li>It then processes each test case by calling the <code>processTestCase</code> method.</li>
+</ul>
+</li>
+<li>
+<p>The <code>processTestCase</code> method:</p>
+<ul>
+<li>Reads a line of text from the input.</li>
+<li>Initializes a boolean variable <code>matchFound</code> to keep track of whether any valid tag content is found in the line.</li>
+<li>Defines a regular expression pattern to match valid tags and their content.</li>
+<li>Creates a <code>Matcher</code> object by applying the pattern to the input line.</li>
+<li>Calls the <code>findAndPrintValidContent</code> method to find and print valid content within the line.</li>
+</ul>
+</li>
+<li>
+<p>The <code>findAndPrintValidContent</code> method:</p>
+<ul>
+<li>Iterates over the matches found by the <code>Matcher</code>.</li>
+<li>Prints the content captured by the second group in the regular expression.</li>
+<li>Sets <code>matchFound</code> to <code>true</code> if valid content is found.</li>
+<li>If no valid content is found, it prints “None”.</li>
+</ul>
+</li>
+<li>
+<p>Each method includes a try-catch block to handle any exceptions that may occur during input reading, processing, or finding and printing valid content. If an exception occurs, an error message along with the exception message is printed to the console.</p>
+</li>
+</ol>
+<p>Overall, this code efficiently extracts and prints the content enclosed within valid tags in the input text based on the specified criteria while handling exceptions that may arise during the process.</p>
+<hr />
+<p>The regular expression <code>&lt;(.+?)&gt;([^&lt;]+)&lt;/\\1&gt;</code> is used to match and capture content enclosed within valid tags in a tag-based language like XML or HTML. Here’s an explanation of each part of the regex:</p>
+<ol>
+<li>
+<p><code>&lt;(.+?)&gt;</code>:</p>
+<ul>
+<li><code>&lt;</code>: Matches the opening angle bracket <code>&lt;</code>.</li>
+<li><code>(.+?)</code>: Capturing group that matches one or more characters (any character except newline) lazily. The <code>?</code> makes the <code>+</code> quantifier lazy, meaning it will match as few characters as possible.</li>
+<li><code>&gt;</code>: Matches the closing angle bracket <code>&gt;</code>.</li>
+</ul>
+</li>
+<li>
+<p><code>([^&lt;]+)</code>:</p>
+<ul>
+<li><code>(</code>: Starts a capturing group.</li>
+<li><code>[^&lt;]+</code>: Matches one or more characters (any character except <code>&lt;</code>).</li>
+<li><code>)</code>: Ends the capturing group.</li>
+</ul>
+</li>
+<li>
+<p><code>&lt;/\\1&gt;</code>:</p>
+<ul>
+<li><code>&lt;/</code>: Matches the closing tag indicator <code>&lt;/</code>.</li>
+<li><code>\\1</code>: Backreference to the content captured by the first capturing group <code>(.+?)</code>. This ensures that the closing tag matches the same name as the opening tag.</li>
+</ul>
+</li>
+</ol>
+<p>In summary, this regular expression matches the following pattern:</p>
+<ul>
+<li>An opening tag <code>&lt;tag&gt;</code> with any content inside.</li>
+<li>Followed by content that does not contain an opening angle bracket <code>&lt;</code>.</li>
+<li>Ending with a closing tag <code>&lt;/tag&gt;</code> that matches the same name as the opening tag.</li>
+</ul>
+<p>By using this regex pattern, the code can effectively extract and print the content enclosed within valid tags that meet the specified criteria in a tag-based language.</p>
+]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Java Regular Expressions]]></title>
+            <guid>457493a8d34e41f0803fc57d423c0128</guid>
+            <pubDate>Sat, 29 Jun 2024 09:43:01 GMT</pubDate>
+            <content:encoded><![CDATA[<h2 id="understanding-regular-expressions">Understanding Regular Expressions</h2>
+<p>A regular expression, often referred to as a regex, is a sequence of characters that defines a search pattern. It serves as a powerful tool for specifying search criteria when looking for data within a text.</p>
+<p>The search pattern defined by a regular expression can range from a single character to a more complex sequence of characters.</p>
+<p>Regular expressions are versatile and can be utilized for various tasks such as <strong>text searching</strong> and <strong>text replacing</strong>.</p>
+<p>Although Java lacks a built-in Regular Expression class, we can incorporate the <code>java.util.regex</code> package to handle regular expressions effectively. Within this package, you will find essential classes including:</p>
+<ul>
+<li><code>Pattern</code> Class: Defines the pattern to search for</li>
+<li><code>Matcher</code> Class: Utilized to find occurrences of the pattern</li>
+<li><code>PatternSyntaxException</code> Class: Signals an error if there is a syntax issue in the regular expression pattern</li>
+</ul>
+<hr />
+<h2 id="modifiers">Modifiers</h2>
+<p>The <code>compile()</code> method in Java allows the use of flags to alter the search behavior. Here are some commonly used flags:</p>
+<ul>
+<li><code>Pattern.CASE_INSENSITIVE</code>: Ignores letter case sensitivity during the search process.</li>
+<li><code>Pattern.LITERAL</code>: Treats special characters in the pattern as literal characters without any special meaning during the search operation.</li>
+<li><code>Pattern.UNICODE_CASE</code>: Combined with the <code>CASE_INSENSITIVE</code> flag to disregard letter case sensitivity for characters beyond the English alphabet.</li>
+</ul>
+<hr />
+<h2 id="patterns-in-regular-expressions">Patterns in Regular Expressions</h2>
+<p>Within the <code>Pattern.compile()</code> method, the initial parameter is the pattern itself, defining the search criteria.</p>
+<p>Brackets serve as a mechanism to identify a specific range of characters:</p>
+<table>
+<thead>
+<tr>
+<th>Expression</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[abc]</td>
+<td>Select a single character from those listed within the brackets.</td>
+</tr>
+<tr>
+<td>[^abc]</td>
+<td>Discover a single character that does not fall within the specified range of characters within the brackets.</td>
+</tr>
+<tr>
+<td>[0-9]</td>
+<td>Locate a single character within the range of 0 to 9.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="metacharacters">Metacharacters</h2>
+<p>Metacharacters are characters with a special meaning:</p>
+<table>
+<thead>
+<tr>
+<th>Metacharacter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>|</td>
+<td>Identifies a match for any of the patterns separated by | for instance: cat|dog|fish</td>
+</tr>
+<tr>
+<td>.</td>
+<td>Locates a single instance of any character</td>
+</tr>
+<tr>
+<td>^</td>
+<td>Establishes a match at the beginning of a string, for example: ^Hello</td>
+</tr>
+<tr>
+<td>$</td>
+<td>Finds a match at the end of the string as in: World$</td>
+</tr>
+<tr>
+<td>\d</td>
+<td>Discovers a digit</td>
+</tr>
+<tr>
+<td>\s</td>
+<td>Locates a whitespace character</td>
+</tr>
+<tr>
+<td>\b</td>
+<td>Identifies a match at the word’s onset like this: <code>\bWORD</code>, or at the word’s conclusion like this: <code>WORD\b</code></td>
+</tr>
+<tr>
+<td>\uxxxx</td>
+<td>Discovers the Unicode character specified by the hexadecimal number xxxx</td>
+</tr>
+</tbody>
+</table>
+<h2 id="quantifiers">Quantifiers</h2>
+<p>Quantifiers define quantities:</p>
+<table>
+<thead>
+<tr>
+<th>Quantifier</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>n+</td>
+<td>Matches any string that includes at least one <em>n</em></td>
+</tr>
+<tr>
+<td>n*</td>
+<td>Matches any string that includes zero or more instances of <em>n</em></td>
+</tr>
+<tr>
+<td>n?</td>
+<td>Matches any string that includes zero or one instance of <em>n</em></td>
+</tr>
+<tr>
+<td>n{x}</td>
+<td>Matches any string that includes a sequence of <em>X</em> <em>n</em>’s</td>
+</tr>
+<tr>
+<td>n{x,y}</td>
+<td>Matches any string that includes a sequence of X to Y <em>n</em>’s</td>
+</tr>
+<tr>
+<td>n{x,}</td>
+<td>Matches any string that includes a sequence of at least X <em>n</em>’s</td>
+</tr>
+</tbody>
+</table>
+]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Hello world]]></title>
+            <guid>614a0e9209cc49028249eff7457f7bda</guid>
+            <pubDate>Fri, 29 Dec 2023 03:53:20 GMT</pubDate>
+            <content:encoded><![CDATA[Hello world!]]></content:encoded>
+        </item>
+    </channel>
+</rss>
