@@ -61,8 +61,8 @@
                 ></span
               >
               <span
-                >Updated At：<time datetime="1719681373868"
-                  >2024-06-30 00:16</time
+                >Updated At：<time datetime="1719682331490"
+                  >2024-06-30 00:32</time
                 ></span
               >
             </div>
@@ -174,6 +174,40 @@
 </li>
 </ol>
 <p>Overall, this code efficiently extracts and prints the content enclosed within valid tags in the input text based on the specified criteria while handling exceptions that may arise during the process.</p>
+<hr />
+<p>The regular expression <code>&lt;(.+?)&gt;([^&lt;]+)&lt;/\\1&gt;</code> is used to match and capture content enclosed within valid tags in a tag-based language like XML or HTML. Here’s an explanation of each part of the regex:</p>
+<ol>
+<li>
+<p><code>&lt;(.+?)&gt;</code>:</p>
+<ul>
+<li><code>&lt;</code>: Matches the opening angle bracket <code>&lt;</code>.</li>
+<li><code>(.+?)</code>: Capturing group that matches one or more characters (any character except newline) lazily. The <code>?</code> makes the <code>+</code> quantifier lazy, meaning it will match as few characters as possible.</li>
+<li><code>&gt;</code>: Matches the closing angle bracket <code>&gt;</code>.</li>
+</ul>
+</li>
+<li>
+<p><code>([^&lt;]+)</code>:</p>
+<ul>
+<li><code>(</code>: Starts a capturing group.</li>
+<li><code>[^&lt;]+</code>: Matches one or more characters (any character except <code>&lt;</code>).</li>
+<li><code>)</code>: Ends the capturing group.</li>
+</ul>
+</li>
+<li>
+<p><code>&lt;/\\1&gt;</code>:</p>
+<ul>
+<li><code>&lt;/</code>: Matches the closing tag indicator <code>&lt;/</code>.</li>
+<li><code>\\1</code>: Backreference to the content captured by the first capturing group <code>(.+?)</code>. This ensures that the closing tag matches the same name as the opening tag.</li>
+</ul>
+</li>
+</ol>
+<p>In summary, this regular expression matches the following pattern:</p>
+<ul>
+<li>An opening tag <code>&lt;tag&gt;</code> with any content inside.</li>
+<li>Followed by content that does not contain an opening angle bracket <code>&lt;</code>.</li>
+<li>Ending with a closing tag <code>&lt;/tag&gt;</code> that matches the same name as the opening tag.</li>
+</ul>
+<p>By using this regex pattern, the code can effectively extract and print the content enclosed within valid tags that meet the specified criteria in a tag-based language.</p>
 </div>
       </article>
     </div>
