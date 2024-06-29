@@ -61,8 +61,8 @@
                 ></span
               >
               <span
-                >Updated At：<time datetime="1719688759498"
-                  >2024-06-30 02:19</time
+                >Updated At：<time datetime="1719691480969"
+                  >2024-06-30 03:04</time
                 ></span
               >
             </div>
@@ -227,6 +227,70 @@
 </li>
 </ol>
 <p>Overall, this code effectively reads, sorts, and prints real number strings in descending order using BigDecimal, while handling exceptions that may arise during input reading, sorting, and output printing. The use of BigDecimal ensures accurate sorting of real numbers with precision.</p>
+<hr />
+<p>The line of Java code ‘String[] s = new String[n + 2];’ creates an array of Strings named ‘s’ with a length of ‘n + 2’. Here’s what this line of code does:</p>
+<ol>
+<li>
+<p><strong>String Array Declaration</strong>:</p>
+<ul>
+<li><code>String[] s</code>: Declares a variable ‘s’ as an array of Strings. This means ‘s’ can hold multiple String values.</li>
+</ul>
+</li>
+<li>
+<p><strong>Array Initialization</strong>:</p>
+<ul>
+<li><code>new String[n + 2]</code>: Initializes the array with a specific length. In this case, the length of the array is ‘n + 2’.</li>
+<li>The ‘n’ variable determines the number of elements in the array, and adding 2 to ‘n’ increases the length by 2.</li>
+</ul>
+</li>
+<li>
+<p><strong>Memory Allocation</strong>:</p>
+<ul>
+<li>This line allocates memory for an array of Strings with a total length of ‘n + 2’.</li>
+<li>The array ‘s’ can store ‘n + 2’ elements of type String.</li>
+</ul>
+</li>
+<li>
+<p><strong>Usage</strong>:</p>
+<ul>
+<li>This array can be used to store ‘n’ real number strings read from input, as well as additional elements if needed.</li>
+</ul>
+</li>
+</ol>
+<p>In summary, this line of code initializes an array ‘s’ of Strings with a length of ‘n + 2’, setting up the array to store a specific number of String values in Java.</p>
+<hr />
+<p>The custom comparator Java code performs the following operations:</p>
+<ol>
+<li>
+<p><strong>Custom Comparator Definition</strong>:</p>
+<ul>
+<li>A custom comparator is defined to compare <code>BigDecimal</code> values in descending order.</li>
+<li>The <code>Comparator&lt;String&gt;</code> interface is implemented with an anonymous inner class to provide custom comparison logic.</li>
+</ul>
+</li>
+<li>
+<p><strong>Compare Method Implementation</strong>:</p>
+<ul>
+<li>The <code>compare</code> method of the <code>Comparator</code> interface is overridden to compare two String objects representing real numbers.</li>
+<li>Inside the <code>compare</code> method:
+<ul>
+<li>Two <code>BigDecimal</code> objects ‘a’ and ‘b’ are created by parsing the input Strings ‘s1’ and ‘s2’ as <code>BigDecimal</code> values.</li>
+<li>The <code>compareTo</code> method is used to compare ‘b’ with ‘a’. This method returns a negative value if ‘b’ is less than ‘a’, zero if they are equal, or a positive value if ‘b’ is greater than ‘a’.</li>
+<li>By returning the result of <code>b.compareTo(a)</code>, the comparison is done in descending order.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Sorting the Array</strong>:</p>
+<ul>
+<li>The <code>Arrays.sort</code> method is used to sort the array ‘s’ of real number Strings.</li>
+<li>The <code>sort</code> method takes the array ‘s’, a starting index (0), the number of elements to be sorted (‘n’), and a custom comparator (‘customComparator’) as arguments.</li>
+<li>The custom comparator is used to sort the array ‘s’ based on the custom comparison logic defined in the <code>compare</code> method.</li>
+</ul>
+</li>
+</ol>
+<p>In summary, this code defines a custom comparator to compare <code>BigDecimal</code> values in descending order and then uses this custom comparator to sort an array of real number Strings in descending order based on the <code>BigDecimal</code> values represented by the Strings.</p>
 </div>
       </article>
     </div>
