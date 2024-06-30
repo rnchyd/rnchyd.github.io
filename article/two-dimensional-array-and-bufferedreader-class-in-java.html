@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="Free HTML5 Template by FREEHTML5.CO" />
+	<meta name="keywords" content="free html5, free template, free bootstrap, html5, css3, mobile first, responsive" />
+	<meta name="author" content="FREEHTML5.CO" />
+
+  	<!-- Facebook and Twitter integration -->
+	<meta property="og:title" content=""/>
+	<meta property="og:image" content=""/>
+	<meta property="og:url" content=""/>
+	<meta property="og:site_name" content=""/>
+	<meta property="og:description" content=""/>
+	<meta name="twitter:title" content="" />
+	<meta name="twitter:image" content="" />
+	<meta name="twitter:url" content="" />
+	<meta name="twitter:card" content="" />
+
+	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+	<!-- <link rel="shortcut icon" href="favicon.ico"> -->
+
+	<link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,300,700|Roboto:300,400' rel='stylesheet' type='text/css'>
+	
+	<!-- Animate.css -->
+	<link rel="stylesheet" href="/_assets/css/animate.css">
+	<!-- Icomoon Icon Fonts-->
+	<link rel="stylesheet" href="/_assets/css/icomoon.css">
+	<!-- Bootstrap  -->
+	<link rel="stylesheet" href="/_assets/css/bootstrap.css">
+
+	<link rel="stylesheet" href="/_assets/css/style.css">
+
+
+	<!-- Modernizr JS -->
+	<script src="/_assets/js/modernizr-2.6.2.min.js"></script>
+	<!-- FOR IE9 below -->
+	<!--[if lt IE 9]>
+	<script src="/_assets/js/respond.min.js"></script>
+	<![endif]-->
+    <link rel="stylesheet" href="/_assets/main.css" />
+
+    <title>Two-Dimensional Array and BufferedReader Class in Java - Home</title>
+  <link rel="stylesheet" href="/_markdown_plugin_assets/highlight.js/atom-one-light.css" /></head>
+  <body>
+    <div class="main">
+      <nav class="navigation">
+        <!-- <a href="/">Home</a> -->
+        <a class="fh5co-logo" href="/archives"><img src="/_assets/images/brand-nav.png" alt="Home"></a>
+      </nav>
+      <article>
+        <header>
+          <h1 class="article-title">Two-Dimensional Array and BufferedReader Class in Java</h1>
+          <div class="article-info">
+            <div>
+              <span
+                >Created At：<time datetime="1719750549342"
+                  >2024-06-30 19:29</time
+                ></span
+              >
+              <span
+                >Updated At：<time datetime="1719751707929"
+                  >2024-06-30 19:48</time
+                ></span
+              >
+            </div>
+            
+          </div>
+        </header>
+        <div class="article-content markdown-body"><p>Two-dimensional array code example :</p>
+<div><pre class="hljs"><code><span class="hljs-keyword">import</span> java.io.BufferedReader;
+<span class="hljs-keyword">import</span> java.io.IOException;
+<span class="hljs-keyword">import</span> java.io.InputStreamReader;
+<span class="hljs-keyword">import</span> java.util.ArrayList;
+<span class="hljs-keyword">import</span> java.util.List;
+<span class="hljs-keyword">import</span> java.util.stream.IntStream;
+<span class="hljs-keyword">import</span> java.util.stream.Stream;
+
+<span class="hljs-keyword">import</span> <span class="hljs-keyword">static</span> java.util.stream.Collectors.toList;
+
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> {
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> {
+        <span class="hljs-keyword">try</span> {
+            <span class="hljs-comment">// Create a BufferedReader object to read input from the console</span>
+            <span class="hljs-type">BufferedReader</span> <span class="hljs-variable">bufferedReader</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">BufferedReader</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">InputStreamReader</span>(System.in));
+
+            <span class="hljs-comment">// Read input rows into a 2D list</span>
+            List&lt;List&lt;Integer&gt;&gt; rows = readInputRows(bufferedReader);
+
+            <span class="hljs-comment">// Calculate the maximum hourglass sums for each hourglass position</span>
+            List&lt;Integer&gt; maxHourglassSums = calculateMaxHourglassSums(rows);
+
+            <span class="hljs-comment">// Print the maximum hourglass sum</span>
+            printMaxHourglassSum(maxHourglassSums);
+
+            <span class="hljs-comment">// Close the BufferedReader</span>
+            bufferedReader.close();
+        } <span class="hljs-keyword">catch</span> (IOException e) {
+            <span class="hljs-comment">// Handle any IOException that may occur during execution</span>
+            System.out.println(<span class="hljs-string">"An error occurred: "</span> + e.getMessage());
+        }
+    }
+
+    <span class="hljs-comment">// Method to read input rows into a 2D list</span>
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> List&lt;List&lt;Integer&gt;&gt; <span class="hljs-title function_">readInputRows</span><span class="hljs-params">(BufferedReader bufferedReader)</span> <span class="hljs-keyword">throws</span> IOException {
+        List&lt;List&lt;Integer&gt;&gt; rows = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;&gt;();
+        IntStream.range(<span class="hljs-number">0</span>, <span class="hljs-number">6</span>).forEach(i -&gt; {
+            <span class="hljs-keyword">try</span> {
+                <span class="hljs-comment">// Read a line, split by spaces, convert to integers, and collect into a list</span>
+                rows.add(
+                        Stream.of(bufferedReader.readLine().replaceAll(<span class="hljs-string">"\\s+$"</span>, <span class="hljs-string">""</span>).split(<span class="hljs-string">" "</span>))
+                                .map(Integer::parseInt)
+                                .collect(toList())
+                );
+            } <span class="hljs-keyword">catch</span> (IOException ex) {
+                <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">RuntimeException</span>(ex);
+            }
+        });
+        <span class="hljs-keyword">return</span> rows;
+    }
+
+    <span class="hljs-comment">// Method to calculate the maximum hourglass sums for each position</span>
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> List&lt;Integer&gt; <span class="hljs-title function_">calculateMaxHourglassSums</span><span class="hljs-params">(List&lt;List&lt;Integer&gt;&gt; rows)</span> {
+        List&lt;Integer&gt; count = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;&gt;();
+        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">column</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; column &lt; <span class="hljs-number">4</span>; column++) {
+            <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">row</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; row &lt; <span class="hljs-number">4</span>; row++) {
+                <span class="hljs-comment">// Calculate the sum of the current hourglass</span>
+                <span class="hljs-type">int</span> <span class="hljs-variable">tempcount</span> <span class="hljs-operator">=</span> calculateHourglassSum(rows, row, column);
+                <span class="hljs-comment">// Update the max sum if necessary</span>
+                <span class="hljs-keyword">if</span> (!count.isEmpty()) {
+                    count.add(Math.max(tempcount, count.get(count.size() - <span class="hljs-number">1</span>)));
+                } <span class="hljs-keyword">else</span> {
+                    count.add(tempcount);
+                }
+            }
+        }
+        <span class="hljs-keyword">return</span> count;
+    }
+
+    <span class="hljs-comment">// Method to calculate the sum of an hourglass given a specific position</span>
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-type">int</span> <span class="hljs-title function_">calculateHourglassSum</span><span class="hljs-params">(List&lt;List&lt;Integer&gt;&gt; rows, <span class="hljs-type">int</span> row, <span class="hljs-type">int</span> column)</span> {
+        <span class="hljs-type">int</span> <span class="hljs-variable">tempcount</span> <span class="hljs-operator">=</span> rows.get(row).get(column) + rows.get(row).get(column + <span class="hljs-number">1</span>) + rows.get(row).get(column + <span class="hljs-number">2</span>);
+        tempcount += rows.get(row + <span class="hljs-number">1</span>).get(column + <span class="hljs-number">1</span>);
+        tempcount += rows.get(row + <span class="hljs-number">2</span>).get(column) + rows.get(row + <span class="hljs-number">2</span>).get(column + <span class="hljs-number">1</span>) + rows.get(row + <span class="hljs-number">2</span>).get(column + <span class="hljs-number">2</span>);
+        <span class="hljs-keyword">return</span> tempcount;
+    }
+
+    <span class="hljs-comment">// Method to print the maximum hourglass sum</span>
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">printMaxHourglassSum</span><span class="hljs-params">(List&lt;Integer&gt; maxHourglassSums)</span> {
+        <span class="hljs-keyword">if</span> (!maxHourglassSums.isEmpty()) {
+            System.out.println(maxHourglassSums.get(maxHourglassSums.size() - <span class="hljs-number">1</span>));
+        }
+    }
+}</code></pre></div>
+<p><strong>Sample Input</strong></p>
+<pre style="background:linear-gradient(to right, #F3F7EC, white);color:#3F4E4F;padding:5px" class="jop-noMdConv">
+1 1 1 0 0 0
+0 1 0 0 0 0
+1 1 1 0 0 0
+0 0 2 4 4 0
+0 0 0 2 0 0
+0 0 1 2 4 0
+</pre>
+<p><strong>Sample Output</strong></p>
+<pre style="background:linear-gradient(to right, #FFE6E6, white);color:#3F4E4F;padding:5px" class="jop-noMdConv">
+19
+</pre>
+<h2 id="elucidation">Elucidation</h2>
+<p>Here is a detailed explanation of the provided Java code above:</p>
+<h4 id="main-method-main">Main Method (<code>main</code>):</h4>
+<ol>
+<li>The <code>main</code> method is the entry point of the program and is responsible for executing the logic.</li>
+<li>It creates a <code>BufferedReader</code> object to read input from the console.</li>
+<li>Calls the <code>readInputRows</code> method to read the input rows into a 2D list.</li>
+<li>Calls the <code>calculateMaxHourglassSums</code> method to calculate the maximum hourglass sums for each position.</li>
+<li>Calls the <code>printMaxHourglassSum</code> method to print the maximum hourglass sum.</li>
+<li>Catches and handles any <code>IOException</code> that may occur during execution.</li>
+</ol>
+<h4 id="readinputrows-method"><code>readInputRows</code> Method:</h4>
+<ol>
+<li>This method reads the input rows into a 2D list.</li>
+<li>It initializes an empty list of lists to store the input rows.</li>
+<li>Utilizes <code>IntStream</code> to iterate over the range <code>[0, 6)</code> and reads each row from the <code>BufferedReader</code>.</li>
+<li>Splits the input line by spaces, converts the strings to integers, and collects them into a list.</li>
+<li>Adds each row as a list of integers to the main list.</li>
+<li>Returns the 2D list of input rows.</li>
+</ol>
+<h4 id="calculatemaxhourglasssums-method"><code>calculateMaxHourglassSums</code> Method:</h4>
+<ol>
+<li>This method calculates the maximum hourglass sums for each position in the input rows.</li>
+<li>Initializes an empty list to store the maximum sums.</li>
+<li>Nested loops iterate over possible hourglass positions in the 2D list.</li>
+<li>Calls the <code>calculateHourglassSum</code> method to calculate the sum of the current hourglass.</li>
+<li>Updates the maximum sum list by adding the maximum of the current sum and the last maximum sum.</li>
+<li>Returns the list of maximum hourglass sums.</li>
+</ol>
+<h4 id="calculatehourglasssum-method"><code>calculateHourglassSum</code> Method:</h4>
+<ol>
+<li>This method calculates the sum of an hourglass given a specific position.</li>
+<li>Takes the 2D list of input rows, row index, and column index as parameters.</li>
+<li>Calculates the sum of the hourglass by adding the top, middle, and bottom values.</li>
+<li>Returns the total sum of the hourglass.</li>
+</ol>
+<h4 id="printmaxhourglasssum-method"><code>printMaxHourglassSum</code> Method:</h4>
+<ol>
+<li>This method prints the maximum hourglass sum to the console.</li>
+<li>Checks if the list of maximum sums is not empty.</li>
+<li>Prints the last element of the list, which represents the maximum hourglass sum.</li>
+</ol>
+<h4 id="overall">Overall:</h4>
+<ul>
+<li>The code efficiently reads input rows, calculates the maximum hourglass sums, and prints the result.</li>
+<li>It utilizes methods to break down the functionality into smaller, reusable parts for better organization and readability.</li>
+<li>Exception handling is implemented to manage any potential <code>IOException</code> during the execution of the program.</li>
+</ul>
+<p>This code showcases a structured approach to solving the hourglass sum problem in Java, emphasizing modularity and error handling for a robust solution.</p>
+<h2 id="what-the-regular-expression-s-do">What the regular expression “\s+$” do ?</h2>
+<p>The regular expression “\s+$” is used to match one or more whitespace characters (such as spaces or tabs) at the end of a string. Here is a breakdown of what each part of the regular expression represents:</p>
+<ul>
+<li>“\s”: Represents any whitespace character.</li>
+<li>“+”: Indicates that the preceding element (in this case, “\s”) should occur one or more times.</li>
+<li>“$”: Represents the end of the input string.</li>
+</ul>
+<p>Therefore, “\s+$” matches one or more whitespace characters at the end of a string. This is commonly used to trim trailing whitespace from a string before further processing.</p>
+<h2 id="two-dimensional-array-in-java">Two-dimensional array in Java</h2>
+<p>Detailed explanation with a code example that includes creating, initializing, accessing, and iterating over a 2D array in Java, along with the output of the example code:</p>
+<h3 id="creating-a-2d-array-in-java">Creating a 2D Array in Java:</h3>
+<p>You can create a 2D array in Java by specifying the number of rows and columns. Here’s an example of creating a 2D array with 3 rows and 3 columns:</p>
+<div><pre class="hljs"><code><span class="hljs-type">int</span>[][] twoDArray = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[<span class="hljs-number">3</span>][<span class="hljs-number">3</span>];</code></pre></div>
+<h3 id="initializing-a-2d-array">Initializing a 2D Array:</h3>
+<p>You can initialize a 2D array by assigning values to each element. Here’s an example of initializing a 2D array with some values:</p>
+<div><pre class="hljs"><code><span class="hljs-type">int</span>[][] twoDArray = {
+    {<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>},
+    {<span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>},
+    {<span class="hljs-number">7</span>, <span class="hljs-number">8</span>, <span class="hljs-number">9</span>}
+};</code></pre></div>
+<h3 id="accessing-elements-in-a-2d-array">Accessing Elements in a 2D Array:</h3>
+<p>You can access elements in a 2D array using row and column indices. Here’s an example of accessing an element in a 2D array:</p>
+<div><pre class="hljs"><code><span class="hljs-type">int</span> <span class="hljs-variable">element</span> <span class="hljs-operator">=</span> twoDArray[<span class="hljs-number">1</span>][<span class="hljs-number">1</span>]; <span class="hljs-comment">// Accessing the element in the 2nd row and 2nd column</span></code></pre></div>
+<h3 id="iterating-over-a-2d-array">Iterating Over a 2D Array:</h3>
+<p>You can iterate over a 2D array using nested loops. Here’s an example of iterating over a 2D array and printing all elements:</p>
+<div><pre class="hljs"><code><span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; twoDArray.length; i++) {
+    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">j</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; j &lt; twoDArray[i].length; j++) {
+        System.out.print(twoDArray[i][j] + <span class="hljs-string">" "</span>);
+    }
+    System.out.println(); <span class="hljs-comment">// Move to the next row</span>
+}</code></pre></div>
+<h3 id="example-code-with-output">Example Code with Output:</h3>
+<p>Here’s a complete example that demonstrates creating, initializing, accessing, and iterating over a 2D array in Java, along with the output:</p>
+<div><pre class="hljs"><code><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">TwoDArrayExample</span> {
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> {
+        <span class="hljs-type">int</span>[][] twoDArray = {
+            {<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>},
+            {<span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>},
+            {<span class="hljs-number">7</span>, <span class="hljs-number">8</span>, <span class="hljs-number">9</span>}
+        };
+
+        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; twoDArray.length; i++) {
+            <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">j</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; j &lt; twoDArray[i].length; j++) {
+                System.out.print(twoDArray[i][j] + <span class="hljs-string">" "</span>);
+            }
+            System.out.println(); <span class="hljs-comment">// Move to the next row</span>
+        }
+    }
+}</code></pre></div>
+<h3 id="output">Output:</h3>
+<div><pre class="hljs"><code><span class="hljs-symbol">1 </span><span class="hljs-number">2</span> <span class="hljs-number">3</span> 
+<span class="hljs-symbol">4 </span><span class="hljs-number">5</span> <span class="hljs-number">6</span> 
+<span class="hljs-symbol">7 </span><span class="hljs-number">8</span> <span class="hljs-number">9</span> </code></pre></div>
+<p>This example demonstrates the basic concepts of working with 2D arrays in Java and prints the elements of a 3x3 2D array.</p>
+<h2 id="the-bufferedreader-class">The BufferedReader Class</h2>
+<h3 id="explanation-of-bufferedreader-class-in-java">Explanation of BufferedReader Class in Java:</h3>
+<h4 id="overview">Overview:</h4>
+<ul>
+<li><code>BufferedReader</code> in Java is used to read text from a character-input stream with efficiency by buffering characters, arrays, or lines.</li>
+<li>It reads data from the input stream and stores it in an internal buffer, making it efficient for reading large amounts of data.</li>
+</ul>
+<h4 id="key-features">Key Features:</h4>
+<ol>
+<li><strong>Efficiency</strong>: <code>BufferedReader</code> reads data from the input stream in chunks, reducing the number of I/O operations.</li>
+<li><strong>Read Methods</strong>: Provides various read methods like <code>read()</code>, <code>readLine()</code>, <code>read(char[] cbuf)</code>, etc., for reading data.</li>
+<li><strong>Read Line by Line</strong>: Particularly useful for reading text files line by line efficiently.</li>
+<li><strong>Convenience</strong>: Offers methods to skip characters, mark positions, reset the stream, and close the stream.</li>
+</ol>
+<h4 id="code-example">Code Example:</h4>
+<p>Here is an example demonstrating the usage of <code>BufferedReader</code> to read input from the console in Java:</p>
+<div><pre class="hljs"><code><span class="hljs-keyword">import</span> java.io.BufferedReader;
+<span class="hljs-keyword">import</span> java.io.IOException;
+<span class="hljs-keyword">import</span> java.io.InputStreamReader;
+
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">BufferedReaderExample</span> {
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> {
+        <span class="hljs-keyword">try</span> {
+            <span class="hljs-comment">// Create a BufferedReader object to read input from the console</span>
+            <span class="hljs-type">BufferedReader</span> <span class="hljs-variable">bufferedReader</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">BufferedReader</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">InputStreamReader</span>(System.in));
+
+            <span class="hljs-comment">// Read input from the user</span>
+            System.out.print(<span class="hljs-string">"Enter your name: "</span>);
+            <span class="hljs-type">String</span> <span class="hljs-variable">name</span> <span class="hljs-operator">=</span> bufferedReader.readLine();
+
+            <span class="hljs-comment">// Display the input</span>
+            System.out.println(<span class="hljs-string">"Hello, "</span> + name + <span class="hljs-string">"!"</span>);
+
+            <span class="hljs-comment">// Close the BufferedReader</span>
+            bufferedReader.close();
+        } <span class="hljs-keyword">catch</span> (IOException e) {
+            System.out.println(<span class="hljs-string">"An error occurred: "</span> + e.getMessage());
+        }
+    }
+}</code></pre></div>
+<h4 id="explanation">Explanation:</h4>
+<ul>
+<li>The code creates a <code>BufferedReader</code> object to read input from the console using <code>System.in</code>.</li>
+<li>It reads the user’s name using <code>readLine()</code> method, which reads a line of text.</li>
+<li>The entered name is then displayed back to the user.</li>
+<li>The <code>BufferedReader</code> is closed in a <code>try-catch</code> block to handle any potential <code>IOException</code>.</li>
+</ul>
+<h4 id="benefits">Benefits:</h4>
+<ul>
+<li>Efficiently reads input by buffering data.</li>
+<li>Suitable for reading data from files, network connections, or standard input.</li>
+<li>Provides methods for reading data in different formats (lines, characters, etc.).</li>
+<li>Helps prevent frequent I/O operations, improving performance.</li>
+</ul>
+<h4 id="use-cases">Use Cases:</h4>
+<ul>
+<li>Reading user input from the console.</li>
+<li>Reading data from text files.</li>
+<li>Processing data from network streams.</li>
+<li>Parsing and handling formatted data efficiently.</li>
+</ul>
+<p>In summary, <code>BufferedReader</code> is a versatile class in Java for reading text efficiently from various input sources, making it essential for handling input operations in Java programs.</p>
+<h2 id="the-arraylist-class">The ArrayList Class</h2>
+<h4 id="overview-2">Overview:</h4>
+<ul>
+<li><code>ArrayList</code> in Java is a dynamic array that can grow or shrink in size as needed.</li>
+<li>It is a part of the <code>java.util</code> package and implements the <code>List</code> interface.</li>
+<li><code>ArrayList</code> provides resizable arrays that can store elements of any data type.</li>
+</ul>
+<h4 id="key-features-2">Key Features:</h4>
+<ol>
+<li><strong>Dynamic Sizing</strong>: Automatically adjusts its capacity based on the number of elements stored.</li>
+<li><strong>Random Access</strong>: Allows fast access to elements using index-based operations.</li>
+<li><strong>Insertion and Deletion</strong>: Supports adding, removing, and updating elements efficiently.</li>
+<li><strong>Iterable</strong>: Implements the <code>Iterable</code> interface, allowing iteration over elements using enhanced for loop or iterators.</li>
+<li><strong>Generics</strong>: Supports generics, ensuring type safety by specifying the type of elements it can hold.</li>
+</ol>
+<h4 id="code-example-2">Code Example:</h4>
+<p>Here is an example demonstrating the usage of <code>ArrayList</code> to store and manipulate a list of integers in Java:</p>
+<div><pre class="hljs"><code><span class="hljs-keyword">import</span> java.util.ArrayList;
+
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ArrayListExample</span> {
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> {
+        <span class="hljs-comment">// Create an ArrayList of integers</span>
+        ArrayList&lt;Integer&gt; numbers = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;&gt;();
+
+        <span class="hljs-comment">// Add elements to the ArrayList</span>
+        numbers.add(<span class="hljs-number">10</span>);
+        numbers.add(<span class="hljs-number">20</span>);
+        numbers.add(<span class="hljs-number">30</span>);
+
+        <span class="hljs-comment">// Access and modify elements in the ArrayList</span>
+        System.out.println(<span class="hljs-string">"Element at index 1: "</span> + numbers.get(<span class="hljs-number">1</span>));
+        numbers.set(<span class="hljs-number">1</span>, <span class="hljs-number">25</span>);
+
+        <span class="hljs-comment">// Iterate over the elements in the ArrayList</span>
+        System.out.println(<span class="hljs-string">"Elements in the ArrayList:"</span>);
+        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> num : numbers) {
+            System.out.println(num);
+        }
+
+        <span class="hljs-comment">// Get the size of the ArrayList</span>
+        System.out.println(<span class="hljs-string">"Size of the ArrayList: "</span> + numbers.size());
+
+        <span class="hljs-comment">// Check if the ArrayList contains a specific element</span>
+        System.out.println(<span class="hljs-string">"Contains 30: "</span> + numbers.contains(<span class="hljs-number">30</span>));
+
+        <span class="hljs-comment">// Remove an element from the ArrayList</span>
+        numbers.remove(<span class="hljs-number">0</span>);
+        System.out.println(<span class="hljs-string">"Elements in the ArrayList after removal:"</span>);
+        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> num : numbers) {
+            System.out.println(num);
+        }
+    }
+}</code></pre></div>
+<h4 id="explanation-2">Explanation:</h4>
+<ul>
+<li>The code creates an <code>ArrayList</code> named <code>numbers</code> to store integers.</li>
+<li>It adds elements (10, 20, 30) to the <code>ArrayList</code> using the <code>add</code> method.</li>
+<li>Demonstrates accessing and modifying elements using <code>get</code> and <code>set</code> methods.</li>
+<li>Iterates over the elements using an enhanced for loop.</li>
+<li>Shows how to get the size of the <code>ArrayList</code>, check for element presence, and remove elements.</li>
+</ul>
+<h4 id="benefits-2">Benefits:</h4>
+<ul>
+<li>Flexible and dynamic storage for collections of elements.</li>
+<li>Supports various operations like adding, accessing, updating, and removing elements.</li>
+<li>Provides methods for searching, sorting, and iterating over elements efficiently.</li>
+<li>Ensures type safety through generics, preventing type mismatches.</li>
+</ul>
+<h4 id="use-cases-2">Use Cases:</h4>
+<ul>
+<li>Storing and managing collections of objects in memory.</li>
+<li>Implementing data structures like lists, stacks, and queues.</li>
+<li>Handling data retrieved from databases or external sources.</li>
+<li>Facilitating data manipulation and processing in Java applications.</li>
+</ul>
+<p>In summary, <code>ArrayList</code> is a versatile and widely used class in Java for managing dynamic collections of elements efficiently. It simplifies the storage and manipulation of data structures, making it a fundamental component in Java programming.</p>
+</div>
+      </article>
+    </div>
+  </body>
+</html>
