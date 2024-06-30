@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="Free HTML5 Template by FREEHTML5.CO" />
+	<meta name="keywords" content="free html5, free template, free bootstrap, html5, css3, mobile first, responsive" />
+	<meta name="author" content="FREEHTML5.CO" />
+
+  	<!-- Facebook and Twitter integration -->
+	<meta property="og:title" content=""/>
+	<meta property="og:image" content=""/>
+	<meta property="og:url" content=""/>
+	<meta property="og:site_name" content=""/>
+	<meta property="og:description" content=""/>
+	<meta name="twitter:title" content="" />
+	<meta name="twitter:image" content="" />
+	<meta name="twitter:url" content="" />
+	<meta name="twitter:card" content="" />
+
+	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+	<!-- <link rel="shortcut icon" href="favicon.ico"> -->
+
+	<link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,300,700|Roboto:300,400' rel='stylesheet' type='text/css'>
+	
+	<!-- Animate.css -->
+	<link rel="stylesheet" href="/_assets/css/animate.css">
+	<!-- Icomoon Icon Fonts-->
+	<link rel="stylesheet" href="/_assets/css/icomoon.css">
+	<!-- Bootstrap  -->
+	<link rel="stylesheet" href="/_assets/css/bootstrap.css">
+
+	<link rel="stylesheet" href="/_assets/css/style.css">
+
+
+	<!-- Modernizr JS -->
+	<script src="/_assets/js/modernizr-2.6.2.min.js"></script>
+	<!-- FOR IE9 below -->
+	<!--[if lt IE 9]>
+	<script src="/_assets/js/respond.min.js"></script>
+	<![endif]-->
+    <link rel="stylesheet" href="/_assets/main.css" />
+
+    <title>Performing Addition and Multiplication with Java&#39;s BigInteger - Home</title>
+  <link rel="stylesheet" href="/_markdown_plugin_assets/highlight.js/atom-one-light.css" /></head>
+  <body>
+    <div class="main">
+      <nav class="navigation">
+        <!-- <a href="/">Home</a> -->
+        <a class="fh5co-logo" href="/archives"><img src="/_assets/images/brand-nav.png" alt="Home"></a>
+      </nav>
+      <article>
+        <header>
+          <h1 class="article-title">Performing Addition and Multiplication with Java&#39;s BigInteger</h1>
+          <div class="article-info">
+            <div>
+              <span
+                >Created At：<time datetime="1719725946515"
+                  >2024-06-30 12:39</time
+                ></span
+              >
+              <span
+                >Updated At：<time datetime="1719726987921"
+                  >2024-06-30 12:56</time
+                ></span
+              >
+            </div>
+            
+          </div>
+        </header>
+        <div class="article-content markdown-body"><div><pre class="hljs"><code><span class="hljs-keyword">import</span> java.math.BigInteger;
+<span class="hljs-keyword">import</span> java.util.Scanner;
+
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">AddMultiplyBigIntegers</span> {
+
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> {
+        <span class="hljs-keyword">try</span> {
+            <span class="hljs-type">Scanner</span> <span class="hljs-variable">scanner</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Scanner</span>(System.in);
+
+            <span class="hljs-type">String</span> <span class="hljs-variable">num1</span> <span class="hljs-operator">=</span> readInputNumber(scanner);
+            <span class="hljs-type">String</span> <span class="hljs-variable">num2</span> <span class="hljs-operator">=</span> readInputNumber(scanner);
+
+            <span class="hljs-type">BigInteger</span> <span class="hljs-variable">a</span> <span class="hljs-operator">=</span> createBigInteger(num1);
+            <span class="hljs-type">BigInteger</span> <span class="hljs-variable">b</span> <span class="hljs-operator">=</span> createBigInteger(num2);
+
+            <span class="hljs-type">BigInteger</span> <span class="hljs-variable">addition</span> <span class="hljs-operator">=</span> performAddition(a, b);
+            <span class="hljs-type">BigInteger</span> <span class="hljs-variable">multiplication</span> <span class="hljs-operator">=</span> performMultiplication(a, b);
+
+            outputResults(addition, multiplication);
+
+            scanner.close();
+        } <span class="hljs-keyword">catch</span> (Exception e) {
+            System.out.println(<span class="hljs-string">"An error occurred: "</span> + e.getMessage());
+        }
+    }
+
+    <span class="hljs-comment">// Method to read a large number input</span>
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> String <span class="hljs-title function_">readInputNumber</span><span class="hljs-params">(Scanner scanner)</span> {
+        <span class="hljs-comment">// System.out.print("Enter a large number: ");</span>
+        <span class="hljs-keyword">return</span> scanner.nextLine();
+    }
+
+    <span class="hljs-comment">// Method to create a BigInteger from a string</span>
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> BigInteger <span class="hljs-title function_">createBigInteger</span><span class="hljs-params">(String num)</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">BigInteger</span>(num);
+    }
+
+    <span class="hljs-comment">// Method to perform addition of two BigIntegers</span>
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> BigInteger <span class="hljs-title function_">performAddition</span><span class="hljs-params">(BigInteger a, BigInteger b)</span> {
+        <span class="hljs-keyword">return</span> a.add(b);
+    }
+
+    <span class="hljs-comment">// Method to perform multiplication of two BigIntegers</span>
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> BigInteger <span class="hljs-title function_">performMultiplication</span><span class="hljs-params">(BigInteger a, BigInteger b)</span> {
+        <span class="hljs-keyword">return</span> a.multiply(b);
+    }
+
+    <span class="hljs-comment">// Method to output results without leading zeros</span>
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">outputResults</span><span class="hljs-params">(BigInteger addition, BigInteger multiplication)</span> {
+        System.out.println(addition.toString().replaceFirst(<span class="hljs-string">"^0+(?!$)"</span>, <span class="hljs-string">""</span>));
+        System.out.println(multiplication.toString().replaceFirst(<span class="hljs-string">"^0+(?!$)"</span>, <span class="hljs-string">""</span>));
+    }
+}</code></pre></div>
+<hr />
+<h2 id="elucidation">Elucidation</h2>
+<p>Here is a detailed explanation of the provided Java code:</p>
+<ol>
+<li>
+<p><strong>Import Statements</strong>:</p>
+<ul>
+<li>The code imports the necessary classes <code>BigInteger</code> and <code>Scanner</code> from the Java standard library.</li>
+</ul>
+</li>
+<li>
+<p><strong><code>AddMultiplyBigIntegers</code> Class</strong>:</p>
+<ul>
+<li>It defines a class named <code>AddMultiplyBigIntegers</code> that contains the main method and additional methods for reading input, converting to <code>BigInteger</code>, performing addition and multiplication, and outputting the results.</li>
+</ul>
+</li>
+<li>
+<p><strong><code>main</code> Method</strong>:</p>
+<ul>
+<li>The <code>main</code> method is the entry point of the program.</li>
+<li>It reads two large numbers as strings, converts them to <code>BigInteger</code> objects, performs addition and multiplication, and outputs the results without leading zeros.</li>
+<li>Exception handling is included to catch and display any errors that occur during execution.</li>
+</ul>
+</li>
+<li>
+<p><strong><code>readInputNumber</code> Method</strong>:</p>
+<ul>
+<li>Prompts the user to enter a large number and reads the input using a <code>Scanner</code>.</li>
+<li>Returns the input as a String.</li>
+</ul>
+</li>
+<li>
+<p><strong><code>createBigInteger</code> Method</strong>:</p>
+<ul>
+<li>Takes a String input and creates a <code>BigInteger</code> object from the input.</li>
+<li>Returns the <code>BigInteger</code> object.</li>
+</ul>
+</li>
+<li>
+<p><strong><code>performAddition</code> Method</strong>:</p>
+<ul>
+<li>Takes two <code>BigInteger</code> objects as input and performs addition using the <code>add</code> method of <code>BigInteger</code>.</li>
+<li>Returns the result of the addition as a <code>BigInteger</code>.</li>
+</ul>
+</li>
+<li>
+<p><strong><code>performMultiplication</code> Method</strong>:</p>
+<ul>
+<li>Takes two <code>BigInteger</code> objects as input and performs multiplication using the <code>multiply</code> method of <code>BigInteger</code>.</li>
+<li>Returns the result of the multiplication as a <code>BigInteger</code>.</li>
+</ul>
+</li>
+<li>
+<p><strong><code>outputResults</code> Method</strong>:</p>
+<ul>
+<li>Takes the sum and product of the two <code>BigInteger</code> numbers as input.</li>
+<li>Outputs the sum and product without leading zeros using <code>replaceFirst</code> method with a regular expression to remove leading zeros.</li>
+</ul>
+</li>
+<li>
+<p><strong>Error Handling</strong>:</p>
+<ul>
+<li>The code includes try-catch blocks in the <code>main</code> method to handle and display any exceptions that may occur during input reading, conversion, arithmetic operations, or output.</li>
+</ul>
+</li>
+<li>
+<p><strong>Overall Functionality</strong>:</p>
+</li>
+</ol>
+<ul>
+<li>The code allows the user to input two large numbers, performs addition and multiplication using <code>BigInteger</code> class, and outputs the results without leading zeros. Exception handling ensures that any errors during the process are properly handled and displayed.</li>
+</ul>
+<p>This code demonstrates a structured approach to performing arithmetic operations on large numbers using <code>BigInteger</code> in Java, along with effective error handling for a robust and reliable program execution.</p>
+<hr />
+<h2 id="what-does-the-biginteger-class-in-java-entail">What does the BigInteger class in Java entail?</h2>
+<p><code>BigInteger</code> is a built-in class in Java that belongs to the <code>java.math</code> package. It is used to represent arbitrarily large integers with no theoretical limit on the size of the number it can store. Here are some key points about the <code>BigInteger</code> class:</p>
+<ol>
+<li>
+<p><strong>Arbitrary Precision</strong>: <code>BigInteger</code> allows you to work with integers of any size, limited only by the available memory of the system. This is particularly useful when dealing with very large numbers that exceed the range of primitive data types like <code>int</code> or <code>long</code>.</p>
+</li>
+<li>
+<p><strong>Immutability</strong>: Objects of the <code>BigInteger</code> class are immutable, meaning that once created, their values cannot be changed. Operations on <code>BigInteger</code> objects return new <code>BigInteger</code> objects with the result of the operation.</p>
+</li>
+<li>
+<p><strong>Operations</strong>: The <code>BigInteger</code> class provides methods for performing arithmetic operations like addition, subtraction, multiplication, division, and modular arithmetic on large integers.</p>
+</li>
+<li>
+<p><strong>Comparison</strong>: <code>BigInteger</code> objects can be compared for equality, inequality, greater than, less than, etc., using methods like <code>compareTo</code>, <code>equals</code>, and <code>compareTo</code>.</p>
+</li>
+<li>
+<p><strong>Bit Manipulation</strong>: <code>BigInteger</code> supports bitwise operations like shifting, AND, OR, XOR, and NOT operations.</p>
+</li>
+<li>
+<p><strong>Primality Testing</strong>: The <code>BigInteger</code> class provides methods to check if a <code>BigInteger</code> is probably prime (<code>isProbablePrime</code>) or to perform deterministic primality testing (<code>isProbablePrime</code> with certainty level specified).</p>
+</li>
+<li>
+<p><strong>Conversion</strong>: <code>BigInteger</code> objects can be created from <code>int</code>, <code>long</code>, <code>String</code>, byte arrays, and other numeric types, providing flexibility in handling different data sources.</p>
+</li>
+<li>
+<p><strong>Usage</strong>: <code>BigInteger</code> is commonly used in cryptography, number theory, and any scenario where precise arithmetic with large integers is required.</p>
+</li>
+</ol>
+<p>In summary, the <code>BigInteger</code> class in Java is a powerful tool for working with arbitrarily large integers, providing a wide range of operations and functionalities to handle complex numerical computations with precision and efficiency.</p>
+<hr />
+<h2 id="what-does-the-regular-expression-0-accomplish">What does the regular expression “^0+(?!$)” accomplish?</h2>
+<p>The regular expression “^0+(?!$)” accomplishes the following:</p>
+<ol>
+<li>
+<p><strong>^0+</strong>:</p>
+<ul>
+<li><code>^</code>: Asserts the start of the line.</li>
+<li><code>0+</code>: Matches one or more occurrences of the digit 0.</li>
+</ul>
+</li>
+<li>
+<p><strong>(?!$)</strong>:</p>
+<ul>
+<li><code>(?!$)</code>: Negative lookahead assertion that asserts that the position is not at the end of the line.</li>
+</ul>
+</li>
+<li>
+<p><strong>Explanation</strong>:</p>
+<ul>
+<li>The regular expression matches one or more leading zeros (<code>0+</code>) at the start of a string (<code>^</code>) but only if the position is not at the end of the string (<code>(?!$)</code>).</li>
+<li>This pattern is used to remove leading zeros from a string while ensuring that zeros within the string are not affected.</li>
+</ul>
+</li>
+<li>
+<p><strong>Example</strong>:</p>
+<ul>
+<li>If the input string is “00012345”, applying the regular expression “^0+(?!$)” would match the leading zeros “000” but not the zeros within the number.</li>
+<li>After replacing the matched pattern with an empty string, the result would be “12345”, effectively removing the leading zeros.</li>
+</ul>
+</li>
+</ol>
+<p>The regular expression “^0+(?!$)” is used to match and remove leading zeros from a string while avoiding removing zeros within the number itself.</p>
+<hr />
+<h2 id="what-does-the-regular-expression-0-accomplish-2">What does the regular expression “^0+(?!$)” accomplish?</h2>
+<p>The regular expression “^0+(?!$)” accomplishes the following:</p>
+<ol>
+<li>
+<p><strong>^0+</strong>:</p>
+<ul>
+<li><code>^</code>: Asserts the position at the beginning of the string.</li>
+<li><code>0+</code>: Matches one or more occurrences of the digit 0.</li>
+</ul>
+</li>
+<li>
+<p><strong>(?!$)</strong>:</p>
+<ul>
+<li><code>(?!$)</code>: Negative lookahead assertion that ensures the position is not at the end of the string.</li>
+</ul>
+</li>
+<li>
+<p><strong>Explanation</strong>:</p>
+<ul>
+<li>The regular expression matches one or more leading zeros at the beginning of a string but excludes any zeros that are at the end of the string.</li>
+<li>This pattern is commonly used to remove leading zeros from a numeric string representation.</li>
+</ul>
+</li>
+<li>
+<p><strong>Example</strong>:</p>
+<ul>
+<li>For the input string “000123”, the regular expression “^0+(?!$)” would match the leading zeros “000” but would not match the zero at the end of the string “123”.</li>
+<li>After replacing the matched pattern with an empty string, the result would be “123”, effectively removing the leading zeros.</li>
+</ul>
+</li>
+</ol>
+<p>The regular expression “^0+(?!$)” is used to match and remove leading zeros from a string while ensuring that zeros at the end of the string are not affected.</p>
+</div>
+      </article>
+    </div>
+  </body>
+</html>
