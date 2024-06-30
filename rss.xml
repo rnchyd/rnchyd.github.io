@@ -4,9 +4,780 @@
         <title></title>
         <link>undefined</link>
         <description>undefined</description>
-        <lastBuildDate>Sun, 30 Jun 2024 13:32:29 GMT</lastBuildDate>
+        <lastBuildDate>Sun, 30 Jun 2024 23:04:21 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>Joplin Pages Publisher</generator>
+        <item>
+            <title><![CDATA[LinkedList in Java]]></title>
+            <guid>e29c7a07b06b4968801636957f358211</guid>
+            <pubDate>Sun, 30 Jun 2024 22:36:31 GMT</pubDate>
+            <content:encoded><![CDATA[<p>LinkedList code example :</p>
+<div><pre class="hljs"><code>import java.io.*;
+import java.util.*;
+
+public <span class="hljs-keyword">class</span> Main {
+
+    public static void main(String<span class="hljs-literal">[]</span> args) {
+        <span class="hljs-comment">// Create a Scanner object to read input from the console</span>
+        final Scanner <span class="hljs-keyword">in</span> = <span class="hljs-keyword">new</span> <span class="hljs-constructor">Scanner(System.<span class="hljs-params">in</span>)</span>;
+        
+        <span class="hljs-comment">// Read the size of the list from input</span>
+        <span class="hljs-built_in">int</span> size = read<span class="hljs-constructor">Size(<span class="hljs-params">in</span>)</span>;
+        
+        <span class="hljs-comment">// Read the initial list of integers based on the size</span>
+        List&lt;Integer&gt; <span class="hljs-built_in">list</span> = read<span class="hljs-constructor">List(<span class="hljs-params">in</span>, <span class="hljs-params">size</span>)</span>;
+        
+        <span class="hljs-comment">// Read the number of commands to be processed</span>
+        <span class="hljs-built_in">int</span> commandCount = read<span class="hljs-constructor">CommandCount(<span class="hljs-params">in</span>)</span>;
+        
+        <span class="hljs-comment">// Process the commands and update the list accordingly</span>
+        process<span class="hljs-constructor">Commands(<span class="hljs-params">in</span>, <span class="hljs-params">list</span>, <span class="hljs-params">commandCount</span>)</span>;
+        
+        <span class="hljs-comment">// Print the final list of integers after processing commands</span>
+        print<span class="hljs-constructor">List(<span class="hljs-params">list</span>)</span>;
+    }
+
+    <span class="hljs-comment">// Method to read the size of the list</span>
+    <span class="hljs-keyword">private</span> static <span class="hljs-built_in">int</span> read<span class="hljs-constructor">Size(Scanner <span class="hljs-params">in</span>)</span> {
+        return <span class="hljs-keyword">in</span>.next<span class="hljs-constructor">Int()</span>;
+    }
+
+    <span class="hljs-comment">// Method to read the initial list of integers</span>
+    <span class="hljs-keyword">private</span> static List&lt;Integer&gt; read<span class="hljs-constructor">List(Scanner <span class="hljs-params">in</span>, <span class="hljs-params">int</span> <span class="hljs-params">size</span>)</span> {
+        <span class="hljs-comment">// Create a LinkedList to store the initial list of integers</span>
+        List&lt;Integer&gt; <span class="hljs-built_in">list</span> = <span class="hljs-keyword">new</span> LinkedList&lt;&gt;<span class="hljs-literal">()</span>;
+        
+        <span class="hljs-comment">// Read integers from input and add them to the list</span>
+        <span class="hljs-keyword">for</span> (<span class="hljs-built_in">int</span> i = <span class="hljs-number">0</span>; i &lt; size; i++) {
+            <span class="hljs-built_in">list</span>.add(<span class="hljs-keyword">in</span>.next<span class="hljs-constructor">Int()</span>);
+        }
+        
+        return <span class="hljs-built_in">list</span>;
+    }
+
+    <span class="hljs-comment">// Method to read the number of commands</span>
+    <span class="hljs-keyword">private</span> static <span class="hljs-built_in">int</span> read<span class="hljs-constructor">CommandCount(Scanner <span class="hljs-params">in</span>)</span> {
+        return <span class="hljs-keyword">in</span>.next<span class="hljs-constructor">Int()</span>;
+    }
+
+    <span class="hljs-comment">// Method to process the commands and update the list</span>
+    <span class="hljs-keyword">private</span> static void process<span class="hljs-constructor">Commands(Scanner <span class="hljs-params">in</span>, List&lt;Integer&gt; <span class="hljs-params">list</span>, <span class="hljs-params">int</span> <span class="hljs-params">commandCount</span>)</span> {
+        <span class="hljs-comment">// Iterate through each command and update the list accordingly</span>
+        <span class="hljs-keyword">for</span> (<span class="hljs-built_in">int</span> i = <span class="hljs-number">0</span>; i &lt; commandCount; i++) {
+            <span class="hljs-keyword">in</span>.next<span class="hljs-constructor">Line()</span>;
+            String command = <span class="hljs-keyword">in</span>.next<span class="hljs-constructor">Line()</span>;
+            <span class="hljs-keyword">try</span> {
+                <span class="hljs-keyword">if</span> (command.equals(<span class="hljs-string">"Insert"</span>)) {
+                    <span class="hljs-comment">// If the command is "Insert", add a value at a specific index in the list</span>
+                    <span class="hljs-built_in">int</span> index = <span class="hljs-keyword">in</span>.next<span class="hljs-constructor">Int()</span>;
+                    <span class="hljs-built_in">int</span> value = <span class="hljs-keyword">in</span>.next<span class="hljs-constructor">Int()</span>;
+                    <span class="hljs-built_in">list</span>.add(index, value);
+                } <span class="hljs-keyword">else</span> {
+                    <span class="hljs-comment">// If the command is not "Insert", remove the value at a specific index from the list</span>
+                    <span class="hljs-built_in">int</span> index = <span class="hljs-keyword">in</span>.next<span class="hljs-constructor">Int()</span>;
+                    <span class="hljs-built_in">list</span>.remove(index);
+                }
+            } catch (InputMismatchException e) {
+                <span class="hljs-comment">// Handle InputMismatchException if the input format is invalid</span>
+                <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">System</span>.</span></span>out.println(<span class="hljs-string">"Invalid input format."</span>);
+            }
+        }
+    }
+
+    <span class="hljs-comment">// Method to print the final list of integers</span>
+    <span class="hljs-keyword">private</span> static void print<span class="hljs-constructor">List(List&lt;Integer&gt; <span class="hljs-params">list</span>)</span> {
+        <span class="hljs-comment">// Iterate through the list and print each integer value</span>
+        <span class="hljs-built_in">int</span> count = <span class="hljs-number">0</span>;
+        <span class="hljs-keyword">for</span> (Integer number : <span class="hljs-built_in">list</span>) {
+            <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">System</span>.</span></span>out.print(number);
+            <span class="hljs-comment">// Print a space after each value except the last one</span>
+            <span class="hljs-keyword">if</span> (count != <span class="hljs-built_in">list</span>.size<span class="hljs-literal">()</span> - <span class="hljs-number">1</span>) {
+                <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">System</span>.</span></span>out.print(<span class="hljs-string">" "</span>);
+            }
+            count++;
+        }
+    }
+}</code></pre></div>
+<p><strong>Sample Input</strong></p>
+<pre style="background:linear-gradient(to right, #F3F7EC, white);color:#3F4E4F;padding:5px" class="jop-noMdConv">
+5
+12 0 1 78 12
+2
+Insert
+5 23
+Delete
+0
+</pre>
+<p><strong>Sample Output</strong></p>
+<pre style="background:linear-gradient(to right, #FFE6E6, white);color:#3F4E4F;padding:5px" class="jop-noMdConv">
+0 1 78 12 23
+</pre>
+<h2 id="elucidation">Elucidation</h2>
+<p>Here is a detailed explanation of the provided Java code above :</p>
+<h3 id="main-class-and-main-method">Main Class and <code>main</code> Method:</h3>
+<ul>
+<li>The <code>Main</code> class serves as the main class for the program.</li>
+<li>The <code>main</code> method is the entry point of the program where the execution begins.</li>
+<li>It initializes a <code>Scanner</code> object <code>in</code> to read input from the console.</li>
+<li>Reads the size of the list, the initial list of integers, the number of commands, processes the commands, and prints the final list.</li>
+</ul>
+<h3 id="readsize-method"><code>readSize</code> Method:</h3>
+<ul>
+<li>This method reads the size of the list from the input using the provided <code>Scanner</code> object.</li>
+<li>It returns the integer value representing the size of the list.</li>
+</ul>
+<h3 id="readlist-method"><code>readList</code> Method:</h3>
+<ul>
+<li>This method reads the initial list of integers based on the specified size.</li>
+<li>It creates a <code>LinkedList</code> to store the integers.</li>
+<li>Iterates through the input and adds each integer to the list.</li>
+<li>Returns the populated list of integers.</li>
+</ul>
+<h3 id="readcommandcount-method"><code>readCommandCount</code> Method:</h3>
+<ul>
+<li>This method reads the number of commands to be processed from the input using the provided <code>Scanner</code> object.</li>
+<li>It returns the integer value representing the number of commands.</li>
+</ul>
+<h3 id="processcommands-method"><code>processCommands</code> Method:</h3>
+<ul>
+<li>This method processes the commands to update the list of integers.</li>
+<li>It iterates through each command, reads the command type, index, and value (if applicable).</li>
+<li>If the command is “Insert”, it adds the value at the specified index in the list.</li>
+<li>If the command is not “Insert”, it removes the value at the specified index from the list.</li>
+<li>It catches <code>InputMismatchException</code> to handle invalid input formats.</li>
+</ul>
+<h3 id="printlist-method"><code>printList</code> Method:</h3>
+<ul>
+<li>This method prints the final list of integers after processing the commands.</li>
+<li>It iterates through the list and prints each integer value.</li>
+<li>It adds a space after each value except the last one to format the output.</li>
+</ul>
+<h3 id="overall-functionality">Overall Functionality:</h3>
+<ul>
+<li>The program allows users to input the size of a list, the initial list of integers, and a series of commands to insert or remove elements from the list.</li>
+<li>It processes the commands based on the input and prints the final list of integers after the modifications.</li>
+</ul>
+<h3 id="purpose">Purpose:</h3>
+<ul>
+<li>The code demonstrates how to read input, manipulate lists, process commands, and handle exceptions in Java.</li>
+<li>It showcases the use of methods to organize code functionality and improve readability.</li>
+<li>The program provides a simple example of list manipulation and command processing in a structured manner.</li>
+</ul>
+<hr />
+<h2 id="the-linkedlist-class">The <code>LinkedList</code> Class</h2>
+<p>In Java, <code>LinkedList</code> is a class that implements the <code>List</code> interface and represents a doubly-linked list. Here is a detailed explanation along with a code example:</p>
+<h3 id="explanation">Explanation:</h3>
+<ul>
+<li><code>LinkedList</code> in Java is a class that provides a linked list data structure.</li>
+<li>Each element in a <code>LinkedList</code> is stored as a node that contains the element value and references to the previous and next nodes.</li>
+<li>It allows for fast insertion and deletion operations compared to arrays because it does not require shifting elements.</li>
+<li><code>LinkedList</code> can contain duplicate elements and maintains the insertion order.</li>
+<li>It provides methods to add, remove, retrieve elements, and perform various operations like adding elements at specific positions, removing elements by index, etc.</li>
+<li><code>LinkedList</code> is not synchronized, so it is not thread-safe by default.</li>
+</ul>
+<h3 id="code-example">Code Example:</h3>
+<div><pre class="hljs"><code><span class="hljs-keyword">import</span> java.util.LinkedList;
+
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">LinkedListExample</span> {
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> {
+        <span class="hljs-comment">// Create a LinkedList of Strings</span>
+        LinkedList&lt;String&gt; linkedList = <span class="hljs-keyword">new</span> <span class="hljs-title class_">LinkedList</span>&lt;&gt;();
+
+        <span class="hljs-comment">// Adding elements to the LinkedList</span>
+        linkedList.add(<span class="hljs-string">"Apple"</span>);
+        linkedList.add(<span class="hljs-string">"Banana"</span>);
+        linkedList.add(<span class="hljs-string">"Orange"</span>);
+
+        <span class="hljs-comment">// Displaying the elements in the LinkedList</span>
+        System.out.println(<span class="hljs-string">"LinkedList elements: "</span> + linkedList);
+
+        <span class="hljs-comment">// Adding an element at a specific index</span>
+        linkedList.add(<span class="hljs-number">1</span>, <span class="hljs-string">"Mango"</span>);
+
+        <span class="hljs-comment">// Removing an element by index</span>
+        linkedList.remove(<span class="hljs-number">2</span>);
+
+        <span class="hljs-comment">// Displaying the modified LinkedList</span>
+        System.out.println(<span class="hljs-string">"Modified LinkedList: "</span> + linkedList);
+
+        <span class="hljs-comment">// Retrieving elements by index</span>
+        System.out.println(<span class="hljs-string">"Element at index 0: "</span> + linkedList.get(<span class="hljs-number">0</span>));
+
+        <span class="hljs-comment">// Checking if the LinkedList contains a specific element</span>
+        System.out.println(<span class="hljs-string">"Contains 'Banana': "</span> + linkedList.contains(<span class="hljs-string">"Banana"</span>));
+
+        <span class="hljs-comment">// Getting the size of the LinkedList</span>
+        System.out.println(<span class="hljs-string">"Size of the LinkedList: "</span> + linkedList.size());
+
+        <span class="hljs-comment">// Clearing the LinkedList</span>
+        linkedList.clear();
+        System.out.println(<span class="hljs-string">"LinkedList after clearing: "</span> + linkedList);
+    }
+}</code></pre></div>
+<h3 id="output-explanation">Output Explanation:</h3>
+<ul>
+<li>The code creates a <code>LinkedList</code> of strings and adds elements “Apple”, “Banana”, and “Orange” to it.</li>
+<li>It demonstrates adding an element “Mango” at index 1 and removing an element at index 2.</li>
+<li>The code displays the modified <code>LinkedList</code>, retrieves an element at index 0, checks if it contains “Banana”, and gets the size of the <code>LinkedList</code>.</li>
+<li>Finally, it clears the <code>LinkedList</code> and displays it after clearing.</li>
+</ul>
+<h3 id="summary">Summary:</h3>
+<ul>
+<li><code>LinkedList</code> in Java provides a flexible and efficient way to store and manipulate elements in a linked list data structure.</li>
+<li>It offers various methods for adding, removing, and accessing elements, making it suitable for scenarios where frequent insertions and deletions are required.</li>
+<li>Understanding and utilizing the capabilities of <code>LinkedList</code> can help in implementing data structures and algorithms efficiently in Java.</li>
+</ul>
+<hr />
+<h2 id="list-interface"><code>List</code> Interface</h2>
+<p>In Java, the <code>List</code> interface is a part of the Java Collections Framework and represents an ordered collection of elements that allows duplicate elements. Here is a detailed explanation along with a code example:</p>
+<h3 id="explanation-2">Explanation:</h3>
+<ul>
+<li>The <code>List</code> interface in Java extends the <code>Collection</code> interface and represents an ordered collection of elements.</li>
+<li>Elements in a <code>List</code> are stored based on their index position, allowing duplicate elements and maintaining the insertion order.</li>
+<li>Common implementations of the <code>List</code> interface in Java include <code>ArrayList</code>, <code>LinkedList</code>, and <code>Vector</code>.</li>
+<li>The <code>List</code> interface provides methods to add, remove, retrieve, and manipulate elements in the list.</li>
+<li>It supports operations like adding elements at specific positions, removing elements by index, checking for element existence, getting sublist, and more.</li>
+<li><code>List</code> allows for efficient random access to elements based on their index.</li>
+</ul>
+<h3 id="code-example-2">Code Example:</h3>
+<div><pre class="hljs"><code><span class="hljs-keyword">import</span> java.util.ArrayList;
+<span class="hljs-keyword">import</span> java.util.List;
+
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ListInterfaceExample</span> {
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> {
+        <span class="hljs-comment">// Create a List of Strings using ArrayList</span>
+        List&lt;String&gt; stringList = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;&gt;();
+
+        <span class="hljs-comment">// Adding elements to the List</span>
+        stringList.add(<span class="hljs-string">"Apple"</span>);
+        stringList.add(<span class="hljs-string">"Banana"</span>);
+        stringList.add(<span class="hljs-string">"Orange"</span>);
+
+        <span class="hljs-comment">// Displaying the elements in the List</span>
+        System.out.println(<span class="hljs-string">"List elements: "</span> + stringList);
+
+        <span class="hljs-comment">// Adding an element at a specific index</span>
+        stringList.add(<span class="hljs-number">1</span>, <span class="hljs-string">"Mango"</span>);
+
+        <span class="hljs-comment">// Removing an element by index</span>
+        stringList.remove(<span class="hljs-number">2</span>);
+
+        <span class="hljs-comment">// Displaying the modified List</span>
+        System.out.println(<span class="hljs-string">"Modified List: "</span> + stringList);
+
+        <span class="hljs-comment">// Retrieving elements by index</span>
+        System.out.println(<span class="hljs-string">"Element at index 0: "</span> + stringList.get(<span class="hljs-number">0</span>));
+
+        <span class="hljs-comment">// Checking if the List contains a specific element</span>
+        System.out.println(<span class="hljs-string">"Contains 'Banana': "</span> + stringList.contains(<span class="hljs-string">"Banana"</span>));
+
+        <span class="hljs-comment">// Getting the size of the List</span>
+        System.out.println(<span class="hljs-string">"Size of the List: "</span> + stringList.size());
+    }
+}</code></pre></div>
+<h3 id="output-explanation-2">Output Explanation:</h3>
+<ul>
+<li>The code creates a <code>List</code> of strings using <code>ArrayList</code> and adds elements “Apple”, “Banana”, and “Orange” to it.</li>
+<li>It demonstrates adding an element “Mango” at index 1 and removing an element at index 2.</li>
+<li>The code displays the modified <code>List</code>, retrieves an element at index 0, checks if it contains “Banana”, and gets the size of the <code>List</code>.</li>
+</ul>
+<h3 id="summary-2">Summary:</h3>
+<ul>
+<li>The <code>List</code> interface in Java provides a flexible and feature-rich way to work with ordered collections of elements.</li>
+<li>It allows for efficient access to elements by index and supports various operations for adding, removing, and manipulating elements.</li>
+<li>Understanding and utilizing the capabilities of the <code>List</code> interface can help in implementing data structures and algorithms effectively in Java applications.</li>
+</ul>
+]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[One-Dimensional Arrays Part-2]]></title>
+            <guid>af8d7dbd15f44bce880aa0061c67192b</guid>
+            <pubDate>Sun, 30 Jun 2024 18:07:12 GMT</pubDate>
+            <content:encoded><![CDATA[<p>One-dimensional array code example :</p>
+<div><pre class="hljs"><code><span class="hljs-keyword">import</span> java.io.*;
+<span class="hljs-keyword">import</span> java.util.*;
+
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Java1DArray</span> {
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> {
+        <span class="hljs-type">Scanner</span> <span class="hljs-variable">scanner</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Scanner</span>(System.in);
+        <span class="hljs-type">int</span> <span class="hljs-variable">t</span> <span class="hljs-operator">=</span> Integer.parseInt(scanner.nextLine());
+        
+        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; t; i++) {
+            <span class="hljs-type">int</span> <span class="hljs-variable">n</span> <span class="hljs-operator">=</span> scanner.nextInt();
+            <span class="hljs-type">int</span> <span class="hljs-variable">m</span> <span class="hljs-operator">=</span> scanner.nextInt();
+            <span class="hljs-type">int</span>[] arr = readArray(scanner, n);
+            solve(n, m, arr);
+        }
+        
+        scanner.close();
+    }
+    
+    <span class="hljs-comment">// Method to read an array of integers</span>
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-type">int</span>[] readArray(Scanner scanner, <span class="hljs-type">int</span> n) {
+        <span class="hljs-type">int</span>[] arr = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[n];
+        
+        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">j</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; j &lt; n; j++) {
+            arr[j] = scanner.nextInt();
+        }
+        
+        <span class="hljs-keyword">return</span> arr;
+    }
+    
+    <span class="hljs-comment">// Method to solve the problem</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">solve</span><span class="hljs-params">(<span class="hljs-type">int</span> n, <span class="hljs-type">int</span> m, <span class="hljs-type">int</span>[] arr)</span> {
+        <span class="hljs-keyword">if</span> (canWin(n, m, arr, <span class="hljs-keyword">new</span> <span class="hljs-title class_">boolean</span>[n], <span class="hljs-number">0</span>)) {
+            System.out.println(<span class="hljs-string">"YES"</span>);
+        } <span class="hljs-keyword">else</span> {
+            System.out.println(<span class="hljs-string">"NO"</span>);
+        }
+    }
+    
+    <span class="hljs-comment">// Recursive method to check if the game can be won</span>
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">canWin</span><span class="hljs-params">(<span class="hljs-type">int</span> n, <span class="hljs-type">int</span> m, <span class="hljs-type">int</span>[] arr, <span class="hljs-type">boolean</span>[] visited, <span class="hljs-type">int</span> curr)</span> {
+        <span class="hljs-keyword">if</span> (curr + m &gt;= n || curr + <span class="hljs-number">1</span> == n) {
+            <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
+        }
+        
+        <span class="hljs-type">boolean</span>[] newVisited = Arrays.copyOf(visited, n);
+        
+        <span class="hljs-type">boolean</span> <span class="hljs-variable">canMove</span> <span class="hljs-operator">=</span> <span class="hljs-literal">false</span>;
+        <span class="hljs-keyword">if</span> (isValidMove(curr + <span class="hljs-number">1</span>, n, arr, visited)) {
+            newVisited[curr + <span class="hljs-number">1</span>] = <span class="hljs-literal">true</span>;
+            canMove = canWin(n, m, arr, newVisited, curr + <span class="hljs-number">1</span>);
+        }
+        
+        <span class="hljs-keyword">if</span> (canMove) {
+            <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
+        }
+        
+        <span class="hljs-keyword">if</span> (m &gt; <span class="hljs-number">1</span> &amp;&amp; isValidMove(curr + m, n, arr, visited)) {
+            newVisited[curr + m] = <span class="hljs-literal">true</span>;
+            canMove = canWin(n, m, arr, newVisited, curr + m);
+        }
+        
+        <span class="hljs-keyword">if</span> (canMove) {
+            <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
+        }
+        
+        <span class="hljs-keyword">if</span> (curr &gt; <span class="hljs-number">0</span> &amp;&amp; isValidMove(curr - <span class="hljs-number">1</span>, n, arr, visited)) {
+            newVisited[curr - <span class="hljs-number">1</span>] = <span class="hljs-literal">true</span>;
+            canMove = canWin(n, m, arr, newVisited, curr - <span class="hljs-number">1</span>);
+        }
+        
+        <span class="hljs-keyword">return</span> canMove;
+    }
+    
+    <span class="hljs-comment">// Method to check if the move is valid</span>
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">isValidMove</span><span class="hljs-params">(<span class="hljs-type">int</span> move, <span class="hljs-type">int</span> n, <span class="hljs-type">int</span>[] arr, <span class="hljs-type">boolean</span>[] visited)</span> {
+        <span class="hljs-keyword">return</span> move &gt;= <span class="hljs-number">0</span> &amp;&amp; move &lt; n &amp;&amp; arr[move] == <span class="hljs-number">0</span> &amp;&amp; !visited[move];
+    }
+}</code></pre></div>
+<p><strong>Sample Input</strong></p>
+<pre style="background:linear-gradient(to right, #F3F7EC, white);color:#3F4E4F;padding:5px" class="jop-noMdConv">
+STDIN           Function
+-----           --------
+4               q = 4 (number of queries)
+5 3             game[] size n = 5, leap = 3 (first query)
+0 0 0 0 0       game = [0, 0, 0, 0, 0]
+6 5             game[] size n = 6, leap = 5 (second query)
+0 0 0 1 1 1     . . .
+6 3
+0 0 1 1 1 0
+3 1
+0 1 0
+</pre>
+<p><strong>Sample Output</strong></p>
+<pre style="background:linear-gradient(to right, #FFE6E6, white);color:#3F4E4F;padding:5px" class="jop-noMdConv">
+YES
+YES
+NO
+NO
+</pre>
+<h2 id="elucidation">Elucidation</h2>
+<p>This Java program is designed to solve a problem related to a game where the player needs to determine if they can win by making specific moves within an array. Here’s a detailed explanation of the code:</p>
+<ol>
+<li>
+<p>The <code>Java1DArray</code> class is defined, serving as the main class for the program.</p>
+</li>
+<li>
+<p>The <code>main</code> method is the entry point of the program. It performs the following tasks:</p>
+<ul>
+<li>Creates a new <code>Scanner</code> object named <code>scanner</code> to read input from the console.</li>
+<li>Reads an integer value <code>t</code> from the input, representing the number of test cases.</li>
+<li>Iterates through each test case:
+<ul>
+<li>Reads two integer values <code>n</code> and <code>m</code> from the input, where <code>n</code> represents the size of the array and <code>m</code> is a parameter for solving the problem.</li>
+<li>Calls the <code>readArray</code> method to read an array of integers with size <code>n</code>.</li>
+<li>Calls the <code>solve</code> method to determine if the game can be won with the given parameters.</li>
+</ul>
+</li>
+<li>Closes the <code>Scanner</code> object to release system resources.</li>
+</ul>
+</li>
+<li>
+<p>The <code>readArray</code> method is a helper method that reads an array of integers from the input using the provided <code>Scanner</code> object. It takes two parameters:</p>
+<ul>
+<li><code>scanner</code>: The <code>Scanner</code> object for reading input.</li>
+<li><code>n</code>: The size of the array to be read.<br />
+Inside the method:</li>
+<li>It initializes an integer array <code>arr</code> with size <code>n</code>.</li>
+<li>Reads <code>n</code> integer values from the input and stores them in the <code>arr</code> array.</li>
+<li>Returns the populated array.</li>
+</ul>
+</li>
+<li>
+<p>The <code>solve</code> method is responsible for determining whether the game can be won based on the given parameters. It takes three parameters:</p>
+<ul>
+<li><code>n</code>: The size of the array.</li>
+<li><code>m</code>: The parameter for solving the problem.</li>
+<li><code>arr</code>: The array of integers.<br />
+Inside the method:</li>
+<li>Calls the <code>canWin</code> method to recursively check if the game can be won with the current state of the array and player position.</li>
+<li>Prints “YES” if the game can be won, and “NO” otherwise.</li>
+</ul>
+</li>
+<li>
+<p>The <code>canWin</code> method is a recursive function that checks if the game can be won by making valid moves within the array. It takes five parameters:</p>
+<ul>
+<li><code>n</code>: The size of the array.</li>
+<li><code>m</code>: The parameter for solving the problem.</li>
+<li><code>arr</code>: The array of integers.</li>
+<li><code>visited</code>: An array to track visited positions.</li>
+<li><code>curr</code>: The current position in the array.<br />
+Inside the method:</li>
+<li>Checks if the current position allows for a winning move. If so, it returns <code>true</code>.</li>
+<li>Creates a copy of the <code>visited</code> array to prevent modifying the original.</li>
+<li>Recursively explores possible moves in the array based on the game rules.</li>
+<li>Returns <code>true</code> if a winning move is found, <code>false</code> otherwise.</li>
+</ul>
+</li>
+<li>
+<p>The <code>isValidMove</code> method checks if a move to a specific position in the array is valid. It takes four parameters:</p>
+<ul>
+<li><code>move</code>: The target position to move to.</li>
+<li><code>n</code>: The size of the array.</li>
+<li><code>arr</code>: The array of integers.</li>
+<li><code>visited</code>: An array to track visited positions.<br />
+It returns <code>true</code> if the move is within bounds, the position is empty, and has not been visited before; otherwise, it returns <code>false</code>.</li>
+</ul>
+</li>
+</ol>
+<p>Overall, this code implements a game-solving algorithm using recursion and array manipulation to determine if the player can win the game based on the given parameters.</p>
+<hr />
+<h2 id="integerparseint-method"><code>Integer.parseInt</code> method</h2>
+<p>In Java, the <code>Integer.parseInt</code> method is used to convert a <code>String</code> to an <code>int</code> value. Here is a detailed explanation along with a code example:</p>
+<h3 id="explanation">Explanation:</h3>
+<ul>
+<li>The <code>Integer.parseInt</code> method is a static method of the <code>Integer</code> class in Java.</li>
+<li>It takes a <code>String</code> as input and parses it to an <code>int</code> value.</li>
+<li>If the <code>String</code> represents a valid integer value, the method converts it to an <code>int</code>.</li>
+<li>If the <code>String</code> does not represent a valid integer (contains non-numeric characters or is empty), it throws a <code>NumberFormatException</code>.</li>
+<li>The method ignores leading and trailing whitespaces in the <code>String</code> while parsing.</li>
+<li>It can handle both positive and negative integer values.</li>
+</ul>
+<h3 id="code-example">Code Example:</h3>
+<div><pre class="hljs"><code><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ParseIntExample</span> {
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> {
+        <span class="hljs-comment">// Valid integer strings</span>
+        <span class="hljs-type">String</span> <span class="hljs-variable">numStr1</span> <span class="hljs-operator">=</span> <span class="hljs-string">"123"</span>;
+        <span class="hljs-type">String</span> <span class="hljs-variable">numStr2</span> <span class="hljs-operator">=</span> <span class="hljs-string">"-456"</span>;
+        
+        <span class="hljs-comment">// Parsing valid integer strings</span>
+        <span class="hljs-type">int</span> <span class="hljs-variable">num1</span> <span class="hljs-operator">=</span> Integer.parseInt(numStr1);
+        <span class="hljs-type">int</span> <span class="hljs-variable">num2</span> <span class="hljs-operator">=</span> Integer.parseInt(numStr2);
+        
+        System.out.println(<span class="hljs-string">"Parsed integers:"</span>);
+        System.out.println(<span class="hljs-string">"num1: "</span> + num1); <span class="hljs-comment">// Output: 123</span>
+        System.out.println(<span class="hljs-string">"num2: "</span> + num2); <span class="hljs-comment">// Output: -456</span>
+        
+        <span class="hljs-comment">// Invalid integer string</span>
+        <span class="hljs-type">String</span> <span class="hljs-variable">invalidStr</span> <span class="hljs-operator">=</span> <span class="hljs-string">"abc"</span>;
+        
+        <span class="hljs-keyword">try</span> {
+            <span class="hljs-comment">// Parsing invalid integer string</span>
+            <span class="hljs-type">int</span> <span class="hljs-variable">invalidNum</span> <span class="hljs-operator">=</span> Integer.parseInt(invalidStr); <span class="hljs-comment">// This will throw a NumberFormatException</span>
+        } <span class="hljs-keyword">catch</span> (NumberFormatException e) {
+            System.out.println(<span class="hljs-string">"Error: "</span> + e.getMessage()); <span class="hljs-comment">// Output: Error: For input string: "abc"</span>
+        }
+    }
+}</code></pre></div>
+<p>In this code example:</p>
+<ul>
+<li>We have valid integer strings <code>numStr1</code> and <code>numStr2</code> representing integers <code>123</code> and <code>-456</code> respectively.</li>
+<li>We use <code>Integer.parseInt</code> to parse these valid integer strings and store the parsed <code>int</code> values in <code>num1</code> and <code>num2</code>.</li>
+<li>We demonstrate how <code>Integer.parseInt</code> can handle valid integer strings and convert them to <code>int</code> values.</li>
+<li>We also have an invalid integer string <code>invalidStr</code> containing non-numeric characters.</li>
+<li>We try to parse this invalid string using <code>Integer.parseInt</code>, which will throw a <code>NumberFormatException</code>.</li>
+<li>We use a try-catch block to catch the exception and print the error message.</li>
+</ul>
+<hr />
+<h2 id="arrayscopyof-method"><code>Arrays.copyOf</code> method</h2>
+<p>In Java, the <code>Arrays.copyOf</code> method is used to create a copy of an array with a specified length. Here is a detailed explanation along with a code example:</p>
+<h3 id="explanation-2">Explanation:</h3>
+<ul>
+<li>The <code>Arrays.copyOf</code> method is a static method in the <code>java.util.Arrays</code> class.</li>
+<li>It creates a new array and copies elements from the original array to the new array.</li>
+<li>The method takes two parameters: the original array to be copied and the length of the new array.</li>
+<li>If the specified length is greater than the length of the original array, the additional elements are filled with default values (0 for numeric types, null for reference types).</li>
+<li>If the specified length is less than the length of the original array, only the elements up to the specified length are copied.</li>
+<li>This method provides a convenient way to resize an array or create a copy of an array with a different length.</li>
+</ul>
+<h3 id="code-example-2">Code Example:</h3>
+<div><pre class="hljs"><code><span class="hljs-keyword">import</span> java.util.Arrays;
+
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">CopyOfExample</span> {
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> {
+        <span class="hljs-type">int</span>[] originalArray = {<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>};
+        
+        <span class="hljs-comment">// Creating a copy of the original array with a larger length</span>
+        <span class="hljs-type">int</span>[] copiedArray1 = Arrays.copyOf(originalArray, <span class="hljs-number">7</span>);
+        
+        System.out.println(<span class="hljs-string">"Copied Array 1:"</span>);
+        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> num : copiedArray1) {
+            System.out.print(num + <span class="hljs-string">" "</span>); <span class="hljs-comment">// Output: 1 2 3 4 5 0 0 </span>
+        }
+        System.out.println();
+        
+        <span class="hljs-comment">// Creating a copy of the original array with a smaller length</span>
+        <span class="hljs-type">int</span>[] copiedArray2 = Arrays.copyOf(originalArray, <span class="hljs-number">3</span>);
+        
+        System.out.println(<span class="hljs-string">"Copied Array 2:"</span>);
+        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> num : copiedArray2) {
+            System.out.print(num + <span class="hljs-string">" "</span>); <span class="hljs-comment">// Output: 1 2 3</span>
+        }
+        System.out.println();
+        
+        <span class="hljs-comment">// Creating a copy of the original array with the same length</span>
+        <span class="hljs-type">int</span>[] copiedArray3 = Arrays.copyOf(originalArray, originalArray.length);
+        
+        System.out.println(<span class="hljs-string">"Copied Array 3:"</span>);
+        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> num : copiedArray3) {
+            System.out.print(num + <span class="hljs-string">" "</span>); <span class="hljs-comment">// Output: 1 2 3 4 5</span>
+        }
+        System.out.println();
+    }
+}</code></pre></div>
+<p>In this code example:</p>
+<ul>
+<li>We have an original array <code>originalArray</code> containing integers <code>{1, 2, 3, 4, 5}</code>.</li>
+<li>We use <code>Arrays.copyOf</code> to create copies of the original array with different lengths.</li>
+<li><code>copiedArray1</code> is created with a larger length (7), so additional elements are filled with default values (0 in this case).</li>
+<li><code>copiedArray2</code> is created with a smaller length (3), so only the first 3 elements of the original array are copied.</li>
+<li><code>copiedArray3</code> is created with the same length as the original array, resulting in an exact copy of the original array.</li>
+<li>We demonstrate how <code>Arrays.copyOf</code> can be used to resize an array or create copies with different lengths.</li>
+</ul>
+]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Arraylist in Java]]></title>
+            <guid>7fe81d8c62c049dfbe4a2cda3ef70f4d</guid>
+            <pubDate>Sun, 30 Jun 2024 17:45:32 GMT</pubDate>
+            <content:encoded><![CDATA[<p>Arraylist code example :</p>
+<div><pre class="hljs"><code><span class="hljs-keyword">import</span> java.io.*;
+<span class="hljs-keyword">import</span> java.util.*;
+
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">JavaArraylist</span> {
+
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> {
+        <span class="hljs-type">Scanner</span> <span class="hljs-variable">scan</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Scanner</span>(System.in);
+
+        <span class="hljs-type">int</span> <span class="hljs-variable">total</span> <span class="hljs-operator">=</span> scan.nextInt();
+        ArrayList&lt;ArrayList&lt;Integer&gt;&gt; mainlist = readInputList(scan, total);
+
+        <span class="hljs-type">int</span> <span class="hljs-variable">totalPrint</span> <span class="hljs-operator">=</span> scan.nextInt();
+        printValues(mainlist, scan, totalPrint);
+
+        scan.close();
+    }
+
+    <span class="hljs-comment">// Method to read input list</span>
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> ArrayList&lt;ArrayList&lt;Integer&gt;&gt; <span class="hljs-title function_">readInputList</span><span class="hljs-params">(Scanner scan, <span class="hljs-type">int</span> total)</span> {
+        ArrayList&lt;ArrayList&lt;Integer&gt;&gt; mainlist = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;&gt;();
+
+        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; total; i++) {
+            <span class="hljs-type">int</span> <span class="hljs-variable">size</span> <span class="hljs-operator">=</span> scan.nextInt();
+            ArrayList&lt;Integer&gt; list = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;&gt;();
+
+            <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">j</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; j &lt; size; j++) {
+                <span class="hljs-type">int</span> <span class="hljs-variable">item</span> <span class="hljs-operator">=</span> scan.nextInt();
+                list.add(item);
+            }
+
+            mainlist.add(list);
+        }
+
+        <span class="hljs-keyword">return</span> mainlist;
+    }
+
+    <span class="hljs-comment">// Method to print values from mainlist</span>
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">printValues</span><span class="hljs-params">(ArrayList&lt;ArrayList&lt;Integer&gt;&gt; mainlist, Scanner scan, <span class="hljs-type">int</span> totalPrint)</span> {
+        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">k</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; k &lt; totalPrint; k++) {
+            <span class="hljs-type">int</span> <span class="hljs-variable">row</span> <span class="hljs-operator">=</span> scan.nextInt();
+            <span class="hljs-type">int</span> <span class="hljs-variable">col</span> <span class="hljs-operator">=</span> scan.nextInt();
+
+            <span class="hljs-keyword">try</span> {
+                System.out.println(mainlist.get(row - <span class="hljs-number">1</span>).get(col - <span class="hljs-number">1</span>));
+            } <span class="hljs-keyword">catch</span> (Exception e) {
+                System.out.println(<span class="hljs-string">"ERROR!"</span>);
+            }
+        }
+    }
+}</code></pre></div>
+<p><strong>Sample Input</strong></p>
+<pre style="background:linear-gradient(to right, #F3F7EC, white);color:#3F4E4F;padding:5px" class="jop-noMdConv">
+5
+5 41 77 74 22 44
+1 12
+4 37 34 36 52
+0
+3 20 22 33
+5
+1 3
+3 4
+3 1
+4 3
+5 5
+</pre>
+<p><strong>Sample Output</strong></p>
+<pre style="background:linear-gradient(to right, #FFE6E6, white);color:#3F4E4F;padding:5px" class="jop-noMdConv">
+74
+52
+37
+ERROR!
+ERROR!
+</pre>
+<h2 id="elucidation">Elucidation</h2>
+<p>This code is a Java program that reads input values from the console, stores them in a 2D ArrayList, and then prints specific values from that list based on user input. Here’s a detailed explanation of the code:</p>
+<ol>
+<li>
+<p>The <code>JavaArraylist</code> class is defined as the main class for the program.</p>
+</li>
+<li>
+<p>The <code>main</code> method is the entry point of the program. It performs the following tasks:</p>
+<ul>
+<li>Creates a new <code>Scanner</code> object named <code>scan</code> to read input from the console.</li>
+<li>Reads an integer value from the input, which represents the total number of lists to be created.</li>
+<li>Calls the <code>readInputList</code> method to read the input lists and store them in the <code>mainlist</code> ArrayList.</li>
+<li>Reads another integer value from the input, which represents the total number of values to be printed.</li>
+<li>Calls the <code>printValues</code> method to print specific values from the <code>mainlist</code> based on user input.</li>
+<li>Closes the <code>Scanner</code> object to release system resources.</li>
+</ul>
+</li>
+<li>
+<p>The <code>readInputList</code> method is a helper method that reads input lists from the console and returns a 2D ArrayList containing these lists. It takes two parameters:</p>
+<ul>
+<li><code>scan</code>: A <code>Scanner</code> object used to read input values.</li>
+<li><code>total</code>: An integer representing the total number of lists to be read.<br />
+Inside the method:</li>
+<li>It initializes an empty <code>mainlist</code> ArrayList to store the input lists.</li>
+<li>Iterates <code>total</code> times to read each list:
+<ul>
+<li>Reads an integer value <code>size</code> from the input, representing the size of the current list.</li>
+<li>Creates a new ArrayList named <code>list</code> to store the elements of the current list.</li>
+<li>Iterates <code>size</code> times to read each element of the list and adds it to the <code>list</code>.</li>
+<li>Adds the <code>list</code> to the <code>mainlist</code>.</li>
+</ul>
+</li>
+<li>Finally, it returns the populated <code>mainlist</code>.</li>
+</ul>
+</li>
+<li>
+<p>The <code>printValues</code> method is another helper method that prints specific values from the <code>mainlist</code> based on user input. It takes three parameters:</p>
+<ul>
+<li><code>mainlist</code>: The 2D ArrayList containing input lists.</li>
+<li><code>scan</code>: A <code>Scanner</code> object used to read input values.</li>
+<li><code>totalPrint</code>: An integer representing the total number of values to be printed.<br />
+Inside the method:</li>
+<li>Iterates <code>totalPrint</code> times to print the specified values:
+<ul>
+<li>Reads two integer values <code>row</code> and <code>col</code> from the input, representing the row and column indices of the value to be printed.</li>
+<li>Uses a try-catch block to handle potential <code>IndexOutOfBoundsException</code> when accessing the <code>mainlist</code>.</li>
+<li>Prints the value at index <code>(row - 1, col - 1)</code> from the <code>mainlist</code>. If an exception occurs, it prints “ERROR!” instead.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<p>Overall, this code efficiently reads input lists, stores them in a 2D ArrayList, and prints specific values from the list while handling exceptions gracefully.</p>
+<hr />
+<h2 id="the-arraylist-class">The ArrayList Class</h2>
+<h4 id="overview">Overview:</h4>
+<ul>
+<li><code>ArrayList</code> in Java is a dynamic array that can grow or shrink in size as needed.</li>
+<li>It is a part of the <code>java.util</code> package and implements the <code>List</code> interface.</li>
+<li><code>ArrayList</code> provides resizable arrays that can store elements of any data type.</li>
+</ul>
+<h4 id="key-features">Key Features:</h4>
+<ol>
+<li><strong>Dynamic Sizing</strong>: Automatically adjusts its capacity based on the number of elements stored.</li>
+<li><strong>Random Access</strong>: Allows fast access to elements using index-based operations.</li>
+<li><strong>Insertion and Deletion</strong>: Supports adding, removing, and updating elements efficiently.</li>
+<li><strong>Iterable</strong>: Implements the <code>Iterable</code> interface, allowing iteration over elements using enhanced for loop or iterators.</li>
+<li><strong>Generics</strong>: Supports generics, ensuring type safety by specifying the type of elements it can hold.</li>
+</ol>
+<h4 id="code-example">Code Example:</h4>
+<p>Here is an example demonstrating the usage of <code>ArrayList</code> to store and manipulate a list of integers in Java:</p>
+<div><pre class="hljs"><code><span class="hljs-keyword">import</span> java.util.ArrayList;
+
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ArrayListExample</span> {
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> {
+        <span class="hljs-comment">// Create an ArrayList of integers</span>
+        ArrayList&lt;Integer&gt; numbers = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;&gt;();
+
+        <span class="hljs-comment">// Add elements to the ArrayList</span>
+        numbers.add(<span class="hljs-number">10</span>);
+        numbers.add(<span class="hljs-number">20</span>);
+        numbers.add(<span class="hljs-number">30</span>);
+
+        <span class="hljs-comment">// Access and modify elements in the ArrayList</span>
+        System.out.println(<span class="hljs-string">"Element at index 1: "</span> + numbers.get(<span class="hljs-number">1</span>));
+        numbers.set(<span class="hljs-number">1</span>, <span class="hljs-number">25</span>);
+
+        <span class="hljs-comment">// Iterate over the elements in the ArrayList</span>
+        System.out.println(<span class="hljs-string">"Elements in the ArrayList:"</span>);
+        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> num : numbers) {
+            System.out.println(num);
+        }
+
+        <span class="hljs-comment">// Get the size of the ArrayList</span>
+        System.out.println(<span class="hljs-string">"Size of the ArrayList: "</span> + numbers.size());
+
+        <span class="hljs-comment">// Check if the ArrayList contains a specific element</span>
+        System.out.println(<span class="hljs-string">"Contains 30: "</span> + numbers.contains(<span class="hljs-number">30</span>));
+
+        <span class="hljs-comment">// Remove an element from the ArrayList</span>
+        numbers.remove(<span class="hljs-number">0</span>);
+        System.out.println(<span class="hljs-string">"Elements in the ArrayList after removal:"</span>);
+        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> num : numbers) {
+            System.out.println(num);
+        }
+    }
+}</code></pre></div>
+<h4 id="explanation">Explanation:</h4>
+<ul>
+<li>The code creates an <code>ArrayList</code> named <code>numbers</code> to store integers.</li>
+<li>It adds elements (10, 20, 30) to the <code>ArrayList</code> using the <code>add</code> method.</li>
+<li>Demonstrates accessing and modifying elements using <code>get</code> and <code>set</code> methods.</li>
+<li>Iterates over the elements using an enhanced for loop.</li>
+<li>Shows how to get the size of the <code>ArrayList</code>, check for element presence, and remove elements.</li>
+</ul>
+<h4 id="benefits">Benefits:</h4>
+<ul>
+<li>Flexible and dynamic storage for collections of elements.</li>
+<li>Supports various operations like adding, accessing, updating, and removing elements.</li>
+<li>Provides methods for searching, sorting, and iterating over elements efficiently.</li>
+<li>Ensures type safety through generics, preventing type mismatches.</li>
+</ul>
+<h4 id="use-cases">Use Cases:</h4>
+<ul>
+<li>Storing and managing collections of objects in memory.</li>
+<li>Implementing data structures like lists, stacks, and queues.</li>
+<li>Handling data retrieved from databases or external sources.</li>
+<li>Facilitating data manipulation and processing in Java applications.</li>
+</ul>
+<p>In summary, <code>ArrayList</code> is a versatile and widely used class in Java for managing dynamic collections of elements efficiently. It simplifies the storage and manipulation of data structures, making it a fundamental component in Java programming.</p>
+]]></content:encoded>
+        </item>
         <item>
             <title><![CDATA[Negative Subarrays in Java]]></title>
             <guid>2d74a841381d4753825405bc91bdaa58</guid>
@@ -1648,287 +2419,6 @@ prime
 </ol>
 <p>In summary, this code defines a custom comparator to compare <code>BigDecimal</code> values in descending order and then uses this custom comparator to sort an array of real number Strings in descending order based on the <code>BigDecimal</code> values represented by the Strings.</p>
 ]]></content:encoded>
-        </item>
-        <item>
-            <title><![CDATA[Extractor for Tag Content]]></title>
-            <guid>0a6c9803eeec40399e4999cc0ecfdadf</guid>
-            <pubDate>Sat, 29 Jun 2024 17:13:45 GMT</pubDate>
-            <content:encoded><![CDATA[<p>This Java code is a program that extracts and prints the content enclosed within valid tags in a tag-based language like XML or HTML.</p>
-<div><pre class="hljs"><code><span class="hljs-keyword">import</span> java.util.Scanner;
-<span class="hljs-keyword">import</span> java.util.regex.Matcher;
-<span class="hljs-keyword">import</span> java.util.regex.Pattern;
-
-<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">TagContentExtractor</span> {
-
-    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> {
-        <span class="hljs-keyword">try</span> {
-            <span class="hljs-comment">// Read input from the console</span>
-            <span class="hljs-type">Scanner</span> <span class="hljs-variable">in</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Scanner</span>(System.in);
-            <span class="hljs-type">int</span> <span class="hljs-variable">testCases</span> <span class="hljs-operator">=</span> Integer.parseInt(in.nextLine());
-
-            <span class="hljs-comment">// Process each test case</span>
-            <span class="hljs-keyword">while</span> (testCases &gt; <span class="hljs-number">0</span>) {
-                processTestCase(in);
-                testCases--;
-            }
-        } <span class="hljs-keyword">catch</span> (Exception e) {
-            <span class="hljs-comment">// Handle any exceptions that occur during input reading or processing</span>
-            System.out.println(<span class="hljs-string">"An error occurred: "</span> + e.getMessage());
-        }
-    }
-
-    <span class="hljs-comment">// Method to process each test case</span>
-    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">processTestCase</span><span class="hljs-params">(Scanner in)</span> {
-        <span class="hljs-keyword">try</span> {
-            <span class="hljs-comment">// Read the line of text from the input</span>
-            <span class="hljs-type">String</span> <span class="hljs-variable">line</span> <span class="hljs-operator">=</span> in.nextLine();
-            <span class="hljs-type">boolean</span> <span class="hljs-variable">matchFound</span> <span class="hljs-operator">=</span> <span class="hljs-literal">false</span>;
-            <span class="hljs-comment">// Define the pattern to match valid tags and their content</span>
-            <span class="hljs-type">Pattern</span> <span class="hljs-variable">pattern</span> <span class="hljs-operator">=</span> Pattern.compile(<span class="hljs-string">"&lt;(.+?)&gt;([^&lt;]+)&lt;/\\1&gt;"</span>);
-            <span class="hljs-type">Matcher</span> <span class="hljs-variable">matcher</span> <span class="hljs-operator">=</span> pattern.matcher(line);
-
-            <span class="hljs-comment">// Find and print valid content within the line</span>
-            findAndPrintValidContent(matcher, matchFound);
-        } <span class="hljs-keyword">catch</span> (Exception e) {
-            <span class="hljs-comment">// Handle any exceptions that occur during test case processing</span>
-            System.out.println(<span class="hljs-string">"Error processing test case: "</span> + e.getMessage());
-        }
-    }
-
-    <span class="hljs-comment">// Method to find and print valid content within the line</span>
-    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">findAndPrintValidContent</span><span class="hljs-params">(Matcher matcher, <span class="hljs-type">boolean</span> matchFound)</span> {
-        <span class="hljs-keyword">try</span> {
-            <span class="hljs-comment">// Iterate over matches and print valid content</span>
-            <span class="hljs-keyword">while</span> (matcher.find()) {
-                System.out.println(matcher.group(<span class="hljs-number">2</span>));
-                matchFound = <span class="hljs-literal">true</span>;
-            }
-
-            <span class="hljs-comment">// If no valid content found, print "None"</span>
-            <span class="hljs-keyword">if</span> (!matchFound) {
-                System.out.println(<span class="hljs-string">"None"</span>);
-            }
-        } <span class="hljs-keyword">catch</span> (Exception e) {
-            <span class="hljs-comment">// Handle any exceptions that occur during finding and printing valid content</span>
-            System.out.println(<span class="hljs-string">"Error finding and printing valid content: "</span> + e.getMessage());
-        }
-    }
-}</code></pre></div>
-<p>Here’s an explanation of the code:</p>
-<ol>
-<li>
-<p>The program starts by importing necessary classes from the Java standard library:</p>
-<ul>
-<li><code>java.util.Scanner</code>: Used to read input from the standard input stream.</li>
-<li><code>java.util.regex.Matcher</code>: Used for matching text against a regular expression.</li>
-<li><code>java.util.regex.Pattern</code>: Used to define a regular expression pattern.</li>
-</ul>
-</li>
-<li>
-<p>The code defines a class named <code>TagContentExtractor</code> with a <code>main</code> method, which serves as the entry point of the program.</p>
-</li>
-<li>
-<p>Inside the <code>main</code> method:</p>
-<ul>
-<li>It reads the number of test cases from the input.</li>
-<li>It then processes each test case by calling the <code>processTestCase</code> method.</li>
-</ul>
-</li>
-<li>
-<p>The <code>processTestCase</code> method:</p>
-<ul>
-<li>Reads a line of text from the input.</li>
-<li>Initializes a boolean variable <code>matchFound</code> to keep track of whether any valid tag content is found in the line.</li>
-<li>Defines a regular expression pattern to match valid tags and their content.</li>
-<li>Creates a <code>Matcher</code> object by applying the pattern to the input line.</li>
-<li>Calls the <code>findAndPrintValidContent</code> method to find and print valid content within the line.</li>
-</ul>
-</li>
-<li>
-<p>The <code>findAndPrintValidContent</code> method:</p>
-<ul>
-<li>Iterates over the matches found by the <code>Matcher</code>.</li>
-<li>Prints the content captured by the second group in the regular expression.</li>
-<li>Sets <code>matchFound</code> to <code>true</code> if valid content is found.</li>
-<li>If no valid content is found, it prints “None”.</li>
-</ul>
-</li>
-<li>
-<p>Each method includes a try-catch block to handle any exceptions that may occur during input reading, processing, or finding and printing valid content. If an exception occurs, an error message along with the exception message is printed to the console.</p>
-</li>
-</ol>
-<p>Overall, this code efficiently extracts and prints the content enclosed within valid tags in the input text based on the specified criteria while handling exceptions that may arise during the process.</p>
-<hr />
-<p>The regular expression <code>&lt;(.+?)&gt;([^&lt;]+)&lt;/\\1&gt;</code> is used to match and capture content enclosed within valid tags in a tag-based language like XML or HTML. Here’s an explanation of each part of the regex:</p>
-<ol>
-<li>
-<p><code>&lt;(.+?)&gt;</code>:</p>
-<ul>
-<li><code>&lt;</code>: Matches the opening angle bracket <code>&lt;</code>.</li>
-<li><code>(.+?)</code>: Capturing group that matches one or more characters (any character except newline) lazily. The <code>?</code> makes the <code>+</code> quantifier lazy, meaning it will match as few characters as possible.</li>
-<li><code>&gt;</code>: Matches the closing angle bracket <code>&gt;</code>.</li>
-</ul>
-</li>
-<li>
-<p><code>([^&lt;]+)</code>:</p>
-<ul>
-<li><code>(</code>: Starts a capturing group.</li>
-<li><code>[^&lt;]+</code>: Matches one or more characters (any character except <code>&lt;</code>).</li>
-<li><code>)</code>: Ends the capturing group.</li>
-</ul>
-</li>
-<li>
-<p><code>&lt;/\\1&gt;</code>:</p>
-<ul>
-<li><code>&lt;/</code>: Matches the closing tag indicator <code>&lt;/</code>.</li>
-<li><code>\\1</code>: Backreference to the content captured by the first capturing group <code>(.+?)</code>. This ensures that the closing tag matches the same name as the opening tag.</li>
-</ul>
-</li>
-</ol>
-<p>In summary, this regular expression matches the following pattern:</p>
-<ul>
-<li>An opening tag <code>&lt;tag&gt;</code> with any content inside.</li>
-<li>Followed by content that does not contain an opening angle bracket <code>&lt;</code>.</li>
-<li>Ending with a closing tag <code>&lt;/tag&gt;</code> that matches the same name as the opening tag.</li>
-</ul>
-<p>By using this regex pattern, the code can effectively extract and print the content enclosed within valid tags that meet the specified criteria in a tag-based language.</p>
-]]></content:encoded>
-        </item>
-        <item>
-            <title><![CDATA[Java Regular Expressions]]></title>
-            <guid>457493a8d34e41f0803fc57d423c0128</guid>
-            <pubDate>Sat, 29 Jun 2024 09:43:01 GMT</pubDate>
-            <content:encoded><![CDATA[<h2 id="understanding-regular-expressions">Understanding Regular Expressions</h2>
-<p>A regular expression, often referred to as a regex, is a sequence of characters that defines a search pattern. It serves as a powerful tool for specifying search criteria when looking for data within a text.</p>
-<p>The search pattern defined by a regular expression can range from a single character to a more complex sequence of characters.</p>
-<p>Regular expressions are versatile and can be utilized for various tasks such as <strong>text searching</strong> and <strong>text replacing</strong>.</p>
-<p>Although Java lacks a built-in Regular Expression class, we can incorporate the <code>java.util.regex</code> package to handle regular expressions effectively. Within this package, you will find essential classes including:</p>
-<ul>
-<li><code>Pattern</code> Class: Defines the pattern to search for</li>
-<li><code>Matcher</code> Class: Utilized to find occurrences of the pattern</li>
-<li><code>PatternSyntaxException</code> Class: Signals an error if there is a syntax issue in the regular expression pattern</li>
-</ul>
-<hr />
-<h2 id="modifiers">Modifiers</h2>
-<p>The <code>compile()</code> method in Java allows the use of flags to alter the search behavior. Here are some commonly used flags:</p>
-<ul>
-<li><code>Pattern.CASE_INSENSITIVE</code>: Ignores letter case sensitivity during the search process.</li>
-<li><code>Pattern.LITERAL</code>: Treats special characters in the pattern as literal characters without any special meaning during the search operation.</li>
-<li><code>Pattern.UNICODE_CASE</code>: Combined with the <code>CASE_INSENSITIVE</code> flag to disregard letter case sensitivity for characters beyond the English alphabet.</li>
-</ul>
-<hr />
-<h2 id="patterns-in-regular-expressions">Patterns in Regular Expressions</h2>
-<p>Within the <code>Pattern.compile()</code> method, the initial parameter is the pattern itself, defining the search criteria.</p>
-<p>Brackets serve as a mechanism to identify a specific range of characters:</p>
-<table>
-<thead>
-<tr>
-<th>Expression</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>[abc]</td>
-<td>Select a single character from those listed within the brackets.</td>
-</tr>
-<tr>
-<td>[^abc]</td>
-<td>Discover a single character that does not fall within the specified range of characters within the brackets.</td>
-</tr>
-<tr>
-<td>[0-9]</td>
-<td>Locate a single character within the range of 0 to 9.</td>
-</tr>
-</tbody>
-</table>
-<h2 id="metacharacters">Metacharacters</h2>
-<p>Metacharacters are characters with a special meaning:</p>
-<table>
-<thead>
-<tr>
-<th>Metacharacter</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>|</td>
-<td>Identifies a match for any of the patterns separated by | for instance: cat|dog|fish</td>
-</tr>
-<tr>
-<td>.</td>
-<td>Locates a single instance of any character</td>
-</tr>
-<tr>
-<td>^</td>
-<td>Establishes a match at the beginning of a string, for example: ^Hello</td>
-</tr>
-<tr>
-<td>$</td>
-<td>Finds a match at the end of the string as in: World$</td>
-</tr>
-<tr>
-<td>\d</td>
-<td>Discovers a digit</td>
-</tr>
-<tr>
-<td>\s</td>
-<td>Locates a whitespace character</td>
-</tr>
-<tr>
-<td>\b</td>
-<td>Identifies a match at the word’s onset like this: <code>\bWORD</code>, or at the word’s conclusion like this: <code>WORD\b</code></td>
-</tr>
-<tr>
-<td>\uxxxx</td>
-<td>Discovers the Unicode character specified by the hexadecimal number xxxx</td>
-</tr>
-</tbody>
-</table>
-<h2 id="quantifiers">Quantifiers</h2>
-<p>Quantifiers define quantities:</p>
-<table>
-<thead>
-<tr>
-<th>Quantifier</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>n+</td>
-<td>Matches any string that includes at least one <em>n</em></td>
-</tr>
-<tr>
-<td>n*</td>
-<td>Matches any string that includes zero or more instances of <em>n</em></td>
-</tr>
-<tr>
-<td>n?</td>
-<td>Matches any string that includes zero or one instance of <em>n</em></td>
-</tr>
-<tr>
-<td>n{x}</td>
-<td>Matches any string that includes a sequence of <em>X</em> <em>n</em>’s</td>
-</tr>
-<tr>
-<td>n{x,y}</td>
-<td>Matches any string that includes a sequence of X to Y <em>n</em>’s</td>
-</tr>
-<tr>
-<td>n{x,}</td>
-<td>Matches any string that includes a sequence of at least X <em>n</em>’s</td>
-</tr>
-</tbody>
-</table>
-]]></content:encoded>
-        </item>
-        <item>
-            <title><![CDATA[Hello world]]></title>
-            <guid>614a0e9209cc49028249eff7457f7bda</guid>
-            <pubDate>Fri, 29 Dec 2023 03:53:20 GMT</pubDate>
-            <content:encoded><![CDATA[Hello world!]]></content:encoded>
         </item>
     </channel>
 </rss>
