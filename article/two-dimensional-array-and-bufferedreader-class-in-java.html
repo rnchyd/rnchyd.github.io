@@ -61,8 +61,8 @@
                 ></span
               >
               <span
-                >Updated At：<time datetime="1719751707929"
-                  >2024-06-30 19:48</time
+                >Updated At：<time datetime="1719752406297"
+                  >2024-06-30 20:00</time
                 ></span
               >
             </div>
@@ -408,6 +408,71 @@
 <li>Facilitating data manipulation and processing in Java applications.</li>
 </ul>
 <p>In summary, <code>ArrayList</code> is a versatile and widely used class in Java for managing dynamic collections of elements efficiently. It simplifies the storage and manipulation of data structures, making it a fundamental component in Java programming.</p>
+<h2 id="the-inputstreamreader-class">The InputStreamReader Class</h2>
+<h3 id="explanation-of-inputstreamreader-class-in-java">Explanation of InputStreamReader Class in Java:</h3>
+<h4 id="overview-3">Overview:</h4>
+<ul>
+<li><code>InputStreamReader</code> in Java is a bridge from byte streams to character streams, converting bytes to characters using a specified character encoding.</li>
+<li>It reads bytes from an <code>InputStream</code> and decodes them into characters based on the specified character encoding.</li>
+</ul>
+<h4 id="key-features-3">Key Features:</h4>
+<ol>
+<li><strong>Character Encoding</strong>: Converts bytes to characters using a specific character encoding (e.g., UTF-8, UTF-16).</li>
+<li><strong>Bridge</strong>: Acts as a bridge between byte-oriented streams and character-oriented streams.</li>
+<li><strong>Efficient Reading</strong>: Efficiently reads bytes from an input stream and decodes them into characters.</li>
+<li><strong>Flexibility</strong>: Allows specifying the character encoding to handle different input streams.</li>
+</ol>
+<h4 id="code-example-3">Code Example:</h4>
+<p>Here is an example demonstrating the usage of <code>InputStreamReader</code> to read input from the console in Java:</p>
+<div><pre class="hljs"><code><span class="hljs-keyword">import</span> java.io.BufferedReader;
+<span class="hljs-keyword">import</span> java.io.IOException;
+<span class="hljs-keyword">import</span> java.io.InputStreamReader;
+
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">InputStreamReaderExample</span> {
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> {
+        <span class="hljs-keyword">try</span> {
+            <span class="hljs-comment">// Create an InputStreamReader object to read input from System.in</span>
+            <span class="hljs-type">InputStreamReader</span> <span class="hljs-variable">inputStreamReader</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">InputStreamReader</span>(System.in);
+            <span class="hljs-type">BufferedReader</span> <span class="hljs-variable">bufferedReader</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">BufferedReader</span>(inputStreamReader);
+
+            <span class="hljs-comment">// Read input from the user</span>
+            System.out.print(<span class="hljs-string">"Enter your name: "</span>);
+            <span class="hljs-type">String</span> <span class="hljs-variable">name</span> <span class="hljs-operator">=</span> bufferedReader.readLine();
+
+            <span class="hljs-comment">// Display the input</span>
+            System.out.println(<span class="hljs-string">"Hello, "</span> + name + <span class="hljs-string">"!"</span>);
+
+            <span class="hljs-comment">// Close the BufferedReader and InputStreamReader</span>
+            bufferedReader.close();
+            inputStreamReader.close();
+        } <span class="hljs-keyword">catch</span> (IOException e) {
+            System.out.println(<span class="hljs-string">"An error occurred: "</span> + e.getMessage());
+        }
+    }
+}</code></pre></div>
+<h4 id="explanation-3">Explanation:</h4>
+<ul>
+<li>The code creates an <code>InputStreamReader</code> object to read input from <code>System.in</code>.</li>
+<li>It wraps the <code>InputStreamReader</code> in a <code>BufferedReader</code> for efficient reading of text.</li>
+<li>Reads the user’s name using <code>readLine()</code> method from the <code>BufferedReader</code>.</li>
+<li>Displays the entered name back to the user.</li>
+<li>Closes the <code>BufferedReader</code> and <code>InputStreamReader</code> in a <code>try-catch</code> block to handle any <code>IOException</code>.</li>
+</ul>
+<h4 id="benefits-3">Benefits:</h4>
+<ul>
+<li>Converts bytes to characters based on a specified character encoding.</li>
+<li>Enables reading characters from byte-oriented streams like <code>System.in</code>.</li>
+<li>Provides efficient character decoding from input streams.</li>
+<li>Facilitates handling text input in various encodings.</li>
+</ul>
+<h4 id="use-cases-3">Use Cases:</h4>
+<ul>
+<li>Reading text input from the console or network streams.</li>
+<li>Processing character data from files or external sources.</li>
+<li>Handling different character encodings in input streams.</li>
+<li>Building interactive command-line applications.</li>
+</ul>
+<p>In summary, <code>InputStreamReader</code> in Java is a crucial class for converting byte streams to character streams, enabling efficient reading and processing of character data from input sources in various encodings.</p>
 </div>
       </article>
     </div>
