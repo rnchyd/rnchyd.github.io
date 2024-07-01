@@ -4,14 +4,327 @@
         <title></title>
         <link>undefined</link>
         <description>undefined</description>
-        <lastBuildDate>Sun, 30 Jun 2024 23:04:21 GMT</lastBuildDate>
+        <lastBuildDate>Mon, 01 Jul 2024 01:00:56 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>Joplin Pages Publisher</generator>
         <item>
-            <title><![CDATA[LinkedList in Java]]></title>
+            <title><![CDATA[Map in Java]]></title>
+            <guid>f5a124b3e56a42a085c1a6deac5468f0</guid>
+            <pubDate>Mon, 01 Jul 2024 00:45:46 GMT</pubDate>
+            <content:encoded><![CDATA[<p>Java Map code example :</p>
+<div><pre class="hljs"><code><span class="hljs-keyword">import</span> java.util.*;
+<span class="hljs-keyword">import</span> java.util.Map;
+<span class="hljs-keyword">import</span> java.util.HashMap;
+
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Main</span> {
+
+    <span class="hljs-comment">// Main method to start the program</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> {
+        <span class="hljs-keyword">try</span> {
+            <span class="hljs-comment">// Initialize scanner to read input</span>
+            <span class="hljs-type">Scanner</span> <span class="hljs-variable">scanner</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Scanner</span>(System.in);
+            <span class="hljs-comment">// Read the number of entries in the phone book</span>
+            <span class="hljs-type">int</span> <span class="hljs-variable">n</span> <span class="hljs-operator">=</span> readIntegerInput(scanner);
+            <span class="hljs-comment">// Create a phone book with user inputs</span>
+            Map&lt;String, String&gt; map = createPhoneBook(scanner, n);
+            <span class="hljs-comment">// Search for entries in the phone book based on queries</span>
+            searchPhoneBookEntries(scanner, map);
+        } <span class="hljs-keyword">catch</span> (Exception e) {
+            System.out.println(<span class="hljs-string">"An error occurred: "</span> + e.getMessage());
+        }
+    }
+
+    <span class="hljs-comment">// Method to read an integer input from the scanner</span>
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-type">int</span> <span class="hljs-title function_">readIntegerInput</span><span class="hljs-params">(Scanner scanner)</span> {
+        <span class="hljs-type">int</span> <span class="hljs-variable">n</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;
+        <span class="hljs-keyword">try</span> {
+            n = Integer.parseInt(scanner.nextLine());
+        } <span class="hljs-keyword">catch</span> (NumberFormatException e) {
+            System.out.println(<span class="hljs-string">"Invalid input. Please enter a valid integer."</span>);
+        }
+        <span class="hljs-keyword">return</span> n;
+    }
+
+    <span class="hljs-comment">// Method to create a phone book using user inputs</span>
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> Map&lt;String, String&gt; <span class="hljs-title function_">createPhoneBook</span><span class="hljs-params">(Scanner scanner, <span class="hljs-type">int</span> n)</span> {
+        Map&lt;String, String&gt; map = <span class="hljs-keyword">new</span> <span class="hljs-title class_">HashMap</span>&lt;&gt;();
+        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; n; i++) {
+            <span class="hljs-comment">// Read name and phone number for each entry</span>
+            <span class="hljs-type">String</span> <span class="hljs-variable">name</span> <span class="hljs-operator">=</span> scanner.nextLine();
+            <span class="hljs-type">String</span> <span class="hljs-variable">phone</span> <span class="hljs-operator">=</span> scanner.nextLine();
+            <span class="hljs-comment">// Add entry to the phone book</span>
+            map.put(name, phone);
+        }
+        <span class="hljs-keyword">return</span> map;
+    }
+
+    <span class="hljs-comment">// Method to search for phone book entries based on user queries</span>
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">searchPhoneBookEntries</span><span class="hljs-params">(Scanner scanner, Map&lt;String, String&gt; map)</span> {
+        <span class="hljs-keyword">while</span> (scanner.hasNextLine()) {
+            <span class="hljs-comment">// Read query from user</span>
+            <span class="hljs-type">String</span> <span class="hljs-variable">query</span> <span class="hljs-operator">=</span> scanner.nextLine();
+            <span class="hljs-comment">// Check if query exists in the phone book</span>
+            <span class="hljs-keyword">if</span> (map.containsKey(query)) {
+                <span class="hljs-comment">// Print the phone number if query found</span>
+                System.out.println(query + <span class="hljs-string">"="</span> + map.get(query));
+            } <span class="hljs-keyword">else</span> {
+                <span class="hljs-comment">// Print "Not found" if query not found</span>
+                System.out.println(<span class="hljs-string">"Not found"</span>);
+            }
+        }
+    }
+}</code></pre></div>
+<p><strong>Sample Input</strong></p>
+<pre style="background:linear-gradient(to right, #F3F7EC, white);color:#3F4E4F;padding:5px" class="jop-noMdConv">
+3
+uncle sam
+99912222
+tom
+11122222
+harry
+12299933
+uncle sam
+uncle tom
+harry
+</pre>
+<p><strong>Sample Output</strong></p>
+<pre style="background:linear-gradient(to right, #FFE6E6, white);color:#3F4E4F;padding:5px" class="jop-noMdConv">
+uncle sam=99912222
+Not found
+harry=12299933
+</pre>
+<h2 id="elucidation">Elucidation</h2>
+<p>Here is a detailed explanation of the provided Java code above :</p>
+<ol>
+<li>
+<p><strong>Imports and Class Declaration</strong>:</p>
+<ul>
+<li>The code begins with importing necessary Java libraries, including <code>java.util.*</code> for utility classes like Scanner and HashMap.</li>
+<li>It defines a public class named <code>Main</code>, which serves as the main entry point for the program.</li>
+</ul>
+</li>
+<li>
+<p><strong>Main Method</strong>:</p>
+<ul>
+<li>The <code>main</code> method is the starting point of the program’s execution.</li>
+<li>It is wrapped in a try-catch block to handle any exceptions that may occur during runtime.</li>
+<li>Inside the <code>main</code> method, the following steps are performed:
+<ul>
+<li>A Scanner object is created to read input from the console.</li>
+<li>The number of entries in the phone book (<code>n</code>) is obtained by calling the <code>readIntegerInput</code> method.</li>
+<li>A HashMap named <code>map</code> is created to store the name-phone number entries in the phone book.</li>
+<li>The phone book entries are populated by calling the <code>createPhoneBook</code> method.</li>
+<li>The phone book entries are searched based on user queries by calling the <code>searchPhoneBookEntries</code> method.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Read Integer Input Method</strong>:</p>
+<ul>
+<li>The <code>readIntegerInput</code> method reads an integer input from the Scanner object passed as a parameter.</li>
+<li>It attempts to parse the input as an integer using <code>Integer.parseInt</code>.</li>
+<li>If the input is not a valid integer, a NumberFormatException is caught and an error message is displayed.</li>
+</ul>
+</li>
+<li>
+<p><strong>Create Phone Book Method</strong>:</p>
+<ul>
+<li>The <code>createPhoneBook</code> method populates the phone book entries in a HashMap.</li>
+<li>It takes the Scanner object and the number of entries (<code>n</code>) as parameters.</li>
+<li>For each entry, it reads the name and phone number from the input and adds them to the HashMap.</li>
+</ul>
+</li>
+<li>
+<p><strong>Search Phone Book Entries Method</strong>:</p>
+<ul>
+<li>The <code>searchPhoneBookEntries</code> method handles the searching of phone book entries based on user queries.</li>
+<li>It takes the Scanner object and the HashMap containing phone book entries as parameters.</li>
+<li>It continuously reads user queries and checks if the query exists in the phone book.</li>
+<li>If the query is found, it prints the corresponding phone number; otherwise, it prints “Not found”.</li>
+</ul>
+</li>
+<li>
+<p><strong>Exception Handling</strong>:</p>
+<ul>
+<li>The try-catch block in the main method catches any exceptions that may occur during the program’s execution.</li>
+<li>If an exception is caught, an error message is displayed, including the exception message.</li>
+</ul>
+</li>
+</ol>
+<p>Overall, this code structure improves readability, maintainability, and error handling by breaking down the functionality into smaller, more manageable methods with appropriate comments to explain each section’s purpose.</p>
+<hr />
+<h2 id="hashmap-class"><code>HashMap</code> Class</h2>
+<h3 id="hashmap-class-in-java">HashMap Class in Java:</h3>
+<ol>
+<li>
+<p><strong>Definition</strong>:</p>
+<ul>
+<li><code>HashMap</code> is a class in Java that implements the <code>Map</code> interface to store key-value pairs.</li>
+<li>It allows null keys and values, and it does not maintain the order of elements.</li>
+</ul>
+</li>
+<li>
+<p><strong>Key Features</strong>:</p>
+<ul>
+<li><strong>Fast Lookup</strong>: HashMap provides constant-time performance for basic operations like get and put.</li>
+<li><strong>Key-Value Pairs</strong>: Each entry in a HashMap is a key-value pair.</li>
+<li><strong>Resizable</strong>: HashMap automatically resizes itself when the number of elements exceeds a certain threshold.</li>
+<li><strong>Thread-Safe</strong>: HashMap is not synchronized by default. If thread safety is required, you can use <code>Collections.synchronizedMap()</code>.</li>
+</ul>
+</li>
+<li>
+<p><strong>Common Methods</strong>:</p>
+<ul>
+<li><code>put(key, value)</code>: Inserts a key-value pair into the HashMap.</li>
+<li><code>get(key)</code>: Retrieves the value associated with the specified key.</li>
+<li><code>containsKey(key)</code>: Checks if the HashMap contains a specific key.</li>
+<li><code>keySet()</code>: Returns a Set containing all the keys in the HashMap.</li>
+<li><code>values()</code>: Returns a Collection containing all the values in the HashMap.</li>
+<li><code>remove(key)</code>: Removes the key-value pair associated with the specified key.</li>
+</ul>
+</li>
+<li>
+<p><strong>Code Example</strong>:</p>
+<div><pre class="hljs"><code><span class="hljs-keyword">import</span> java.util.HashMap;
+
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">HashMapExample</span> {
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> {
+        <span class="hljs-comment">// Create a new HashMap</span>
+        HashMap&lt;String, Integer&gt; scores = <span class="hljs-keyword">new</span> <span class="hljs-title class_">HashMap</span>&lt;&gt;();
+
+        <span class="hljs-comment">// Add key-value pairs to the HashMap</span>
+        scores.put(<span class="hljs-string">"Alice"</span>, <span class="hljs-number">95</span>);
+        scores.put(<span class="hljs-string">"Bob"</span>, <span class="hljs-number">85</span>);
+        scores.put(<span class="hljs-string">"Charlie"</span>, <span class="hljs-number">90</span>);
+
+        <span class="hljs-comment">// Retrieve and print the value for a specific key</span>
+        System.out.println(<span class="hljs-string">"Bob's score: "</span> + scores.get(<span class="hljs-string">"Bob"</span>));
+
+        <span class="hljs-comment">// Check if a key exists in the HashMap</span>
+        <span class="hljs-keyword">if</span> (scores.containsKey(<span class="hljs-string">"Alice"</span>)) {
+            System.out.println(<span class="hljs-string">"Alice's score is present."</span>);
+        }
+
+        <span class="hljs-comment">// Remove a key-value pair from the HashMap</span>
+        scores.remove(<span class="hljs-string">"Charlie"</span>);
+
+        <span class="hljs-comment">// Iterate over the keys and values in the HashMap</span>
+        <span class="hljs-keyword">for</span> (String name : scores.keySet()) {
+            System.out.println(name + <span class="hljs-string">"'s score: "</span> + scores.get(name));
+        }
+    }
+}</code></pre></div>
+</li>
+<li>
+<p><strong>Output</strong>:</p>
+<div><pre class="hljs"><code>Bob<span class="hljs-string">'s score: 85
+Alice'</span>s score <span class="hljs-keyword">is</span> present.
+Alic<span class="hljs-string">e's score: 95
+Bob'</span>s score: <span class="hljs-number">85</span></code></pre></div>
+</li>
+<li>
+<p><strong>Explanation</strong>:</p>
+<ul>
+<li>In the code example, we create a HashMap named <code>scores</code> that stores String keys and Integer values.</li>
+<li>We add key-value pairs representing names and scores to the HashMap using the <code>put</code> method.</li>
+<li>We retrieve and print Bob’s score using the <code>get</code> method.</li>
+<li>We check if Alice’s score is present in the HashMap using <code>containsKey</code>.</li>
+<li>We remove Charlie’s score from the HashMap using <code>remove</code>.</li>
+<li>Finally, we iterate over the keys in the HashMap using <code>keySet</code> and print each name along with their score.</li>
+</ul>
+</li>
+</ol>
+<p>This example demonstrates the basic usage of the HashMap class in Java for storing and manipulating key-value pairs. The output shows the retrieved values and messages based on the operations performed on the HashMap.</p>
+<hr />
+<h2 id="map-interface"><code>Map</code> Interface</h2>
+<h3 id="map-interface-in-java">Map Interface in Java:</h3>
+<ol>
+<li>
+<p><strong>Definition</strong>:</p>
+<ul>
+<li>The <code>Map</code> interface in Java represents a collection of key-value pairs.</li>
+<li>It does not allow duplicate keys and each key can map to at most one value.</li>
+<li><code>Map</code> is implemented by classes like <code>HashMap</code>, <code>TreeMap</code>, and <code>LinkedHashMap</code>.</li>
+</ul>
+</li>
+<li>
+<p><strong>Key Features</strong>:</p>
+<ul>
+<li><strong>Key-Value Pairs</strong>: Entries in a Map are stored as key-value pairs.</li>
+<li><strong>Methods</strong>: Provides methods for adding, removing, and retrieving elements based on keys.</li>
+<li><strong>Iterability</strong>: Allows iteration over keys, values, or entries.</li>
+<li><strong>No Duplicate Keys</strong>: Ensures that each key is unique within the Map.</li>
+</ul>
+</li>
+<li>
+<p><strong>Common Methods</strong>:</p>
+<ul>
+<li><code>put(key, value)</code>: Inserts a key-value pair into the Map.</li>
+<li><code>get(key)</code>: Retrieves the value associated with the specified key.</li>
+<li><code>containsKey(key)</code>: Checks if the Map contains a specific key.</li>
+<li><code>keySet()</code>: Returns a Set containing all the keys in the Map.</li>
+<li><code>values()</code>: Returns a Collection containing all the values in the Map.</li>
+<li><code>entrySet()</code>: Returns a Set containing all key-value mappings in the Map.</li>
+</ul>
+</li>
+<li>
+<p><strong>Code Example</strong>:</p>
+<div><pre class="hljs"><code><span class="hljs-keyword">import</span> java.util.HashMap;
+<span class="hljs-keyword">import</span> java.util.Map;
+
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">MapInterfaceExample</span> {
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> {
+        <span class="hljs-comment">// Create a new HashMap implementing the Map interface</span>
+        Map&lt;String, Integer&gt; map = <span class="hljs-keyword">new</span> <span class="hljs-title class_">HashMap</span>&lt;&gt;();
+
+        <span class="hljs-comment">// Add key-value pairs to the Map</span>
+        map.put(<span class="hljs-string">"A"</span>, <span class="hljs-number">1</span>);
+        map.put(<span class="hljs-string">"B"</span>, <span class="hljs-number">2</span>);
+        map.put(<span class="hljs-string">"C"</span>, <span class="hljs-number">3</span>);
+
+        <span class="hljs-comment">// Retrieve and print the value for a specific key</span>
+        System.out.println(<span class="hljs-string">"Value for key 'B': "</span> + map.get(<span class="hljs-string">"B"</span>));
+
+        <span class="hljs-comment">// Check if a key exists in the Map</span>
+        <span class="hljs-keyword">if</span> (map.containsKey(<span class="hljs-string">"A"</span>)) {
+            System.out.println(<span class="hljs-string">"Key 'A' is present."</span>);
+        }
+
+        <span class="hljs-comment">// Iterate over the entries in the Map</span>
+        <span class="hljs-keyword">for</span> (Map.Entry&lt;String, Integer&gt; entry : map.entrySet()) {
+            System.out.println(<span class="hljs-string">"Key: "</span> + entry.getKey() + <span class="hljs-string">", Value: "</span> + entry.getValue());
+        }
+    }
+}</code></pre></div>
+</li>
+<li>
+<p><strong>Output</strong>:</p>
+<div><pre class="hljs"><code><span class="hljs-built_in">Value</span> <span class="hljs-variable">for</span> <span class="hljs-variable">key</span> <span class="hljs-operator">'</span><span class="hljs-variable">B</span><span class="hljs-operator">':</span> <span class="hljs-number">2</span>
+<span class="hljs-built_in">Key</span> <span class="hljs-operator">'</span><span class="hljs-variable">A</span><span class="hljs-operator">'</span> <span class="hljs-variable">is</span> <span class="hljs-variable">present</span><span class="hljs-operator">.</span>
+<span class="hljs-built_in">Key</span><span class="hljs-operator">:</span> <span class="hljs-variable">A</span><span class="hljs-operator">,</span> <span class="hljs-built_in">Value</span><span class="hljs-operator">:</span> <span class="hljs-number">1</span>
+<span class="hljs-built_in">Key</span><span class="hljs-operator">:</span> <span class="hljs-variable">B</span><span class="hljs-operator">,</span> <span class="hljs-built_in">Value</span><span class="hljs-operator">:</span> <span class="hljs-number">2</span>
+<span class="hljs-built_in">Key</span><span class="hljs-operator">:</span> <span class="hljs-built_in">C</span><span class="hljs-operator">,</span> <span class="hljs-built_in">Value</span><span class="hljs-operator">:</span> <span class="hljs-number">3</span></code></pre></div>
+</li>
+<li>
+<p><strong>Explanation</strong>:</p>
+<ul>
+<li>In the code example, we create a HashMap that implements the Map interface with String keys and Integer values.</li>
+<li>We add key-value pairs to the Map using the <code>put</code> method.</li>
+<li>We retrieve and print the value associated with the key “B” using the <code>get</code> method.</li>
+<li>We check if the key “A” is present in the Map using <code>containsKey</code>.</li>
+<li>We iterate over the entries in the Map using <code>entrySet</code> and print each key-value pair.</li>
+</ul>
+</li>
+</ol>
+<p>This example demonstrates the usage of the Map interface in Java for storing and manipulating key-value pairs. The output shows the retrieved values and messages based on the operations performed on the Map.</p>
+]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[List in Java]]></title>
             <guid>e29c7a07b06b4968801636957f358211</guid>
             <pubDate>Sun, 30 Jun 2024 22:36:31 GMT</pubDate>
-            <content:encoded><![CDATA[<p>LinkedList code example :</p>
+            <content:encoded><![CDATA[<p>Java List code example :</p>
 <div><pre class="hljs"><code>import java.io.*;
 import java.util.*;
 
@@ -2190,234 +2503,6 @@ prime
 </li>
 </ol>
 <p>In summary, the <code>BigInteger</code> class in Java is a powerful tool for working with arbitrarily large integers, providing a wide range of operations and functionalities to handle complex numerical computations with precision and efficiency.</p>
-]]></content:encoded>
-        </item>
-        <item>
-            <title><![CDATA[Sorting BigDecimal in Java]]></title>
-            <guid>daddbb9df373487994e8163a577230ae</guid>
-            <pubDate>Sat, 29 Jun 2024 19:02:30 GMT</pubDate>
-            <content:encoded><![CDATA[<p>This Java code is a program that reads a set of real number strings, sorts them in descending order using BigDecimal, and then prints the sorted numbers.</p>
-<div><pre class="hljs"><code><span class="hljs-keyword">import</span> java.math.BigDecimal;
-<span class="hljs-keyword">import</span> java.util.*;
-
-<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">BigDecimalSort</span> {
-
-    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> {
-        <span class="hljs-keyword">try</span> {
-            <span class="hljs-comment">// Read input and initialize variables</span>
-            <span class="hljs-type">Scanner</span> <span class="hljs-variable">scanner</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Scanner</span>(System.in);
-            <span class="hljs-type">int</span> <span class="hljs-variable">n</span> <span class="hljs-operator">=</span> scanner.nextInt();
-            String[] s = <span class="hljs-keyword">new</span> <span class="hljs-title class_">String</span>[n + <span class="hljs-number">2</span>];
-
-            <span class="hljs-comment">// Call method to read input</span>
-            readInput(scanner, n, s);
-            <span class="hljs-comment">// Call method to sort real numbers in descending order</span>
-            sortRealNumbers(s, n);
-            <span class="hljs-comment">// Call method to print the sorted output</span>
-            printOutput(s, n);
-
-            scanner.close();
-        } <span class="hljs-keyword">catch</span> (Exception e) {
-            <span class="hljs-comment">// Handle any exceptions that occur in the main method</span>
-            System.out.println(<span class="hljs-string">"An error occurred: "</span> + e.getMessage());
-        }
-    }
-
-    <span class="hljs-comment">// Method to read input from the scanner</span>
-    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">readInput</span><span class="hljs-params">(Scanner scanner, <span class="hljs-type">int</span> n, String[] s)</span> {
-        <span class="hljs-keyword">try</span> {
-            <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; n; i++) {
-                s[i] = scanner.next();
-            }
-        } <span class="hljs-keyword">catch</span> (Exception e) {
-            <span class="hljs-comment">// Handle any exceptions that occur while reading input</span>
-            System.out.println(<span class="hljs-string">"Error reading input: "</span> + e.getMessage());
-        }
-    }
-
-    <span class="hljs-comment">// Method to sort real numbers in descending order using BigDecimal</span>
-    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">sortRealNumbers</span><span class="hljs-params">(String[] s, <span class="hljs-type">int</span> n)</span> {
-        <span class="hljs-keyword">try</span> {
-            <span class="hljs-comment">// Define a custom comparator to compare BigDecimal values in descending order</span>
-            Comparator&lt;String&gt; customComparator = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Comparator</span>&lt;String&gt;() {
-                <span class="hljs-meta">@Override</span>
-                <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">compare</span><span class="hljs-params">(String s1, String s2)</span> {
-                    <span class="hljs-type">BigDecimal</span> <span class="hljs-variable">a</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">BigDecimal</span>(s1);
-                    <span class="hljs-type">BigDecimal</span> <span class="hljs-variable">b</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">BigDecimal</span>(s2);
-                    <span class="hljs-keyword">return</span> b.compareTo(a); <span class="hljs-comment">// Sort in descending order</span>
-                }
-            };
-
-            <span class="hljs-comment">// Sort the array of real numbers using the custom comparator</span>
-            Arrays.sort(s, <span class="hljs-number">0</span>, n, customComparator);
-        } <span class="hljs-keyword">catch</span> (Exception e) {
-            <span class="hljs-comment">// Handle any exceptions that occur while sorting real numbers</span>
-            System.out.println(<span class="hljs-string">"Error sorting real numbers: "</span> + e.getMessage());
-        }
-    }
-
-    <span class="hljs-comment">// Method to print the output array</span>
-    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">printOutput</span><span class="hljs-params">(String[] s, <span class="hljs-type">int</span> n)</span> {
-        <span class="hljs-keyword">try</span> {
-            <span class="hljs-comment">// Print the sorted array of real numbers</span>
-            <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; n; i++) {
-                System.out.println(s[i]);
-            }
-        } <span class="hljs-keyword">catch</span> (Exception e) {
-            <span class="hljs-comment">// Handle any exceptions that occur while printing the output</span>
-            System.out.println(<span class="hljs-string">"Error printing output: "</span> + e.getMessage());
-        }
-    }
-}</code></pre></div>
-<p><strong>Sample Input</strong></p>
-<pre style="background:linear-gradient(to right, #F3F7EC, white);color:#3F4E4F;padding:5px" class="jop-noMdConv">
-9
--100
-50
-0
-56.6
-90
-0.12
-.12
-02.34
-000.000
-</pre>
-<p><strong>Sample Output</strong></p>
-<pre style="background:linear-gradient(to right, #FFE6E6, white);color:#3F4E4F;padding:5px" class="jop-noMdConv">
-90
-56.6
-50
-02.34
-0.12
-.12
-0
-000.000
--100
-</pre>
-<h2 id="elucidation">Elucidation</h2>
-<p>Here’s an explanation of each section of the code:</p>
-<ol>
-<li>
-<p><strong>Import Statements</strong>:</p>
-<ul>
-<li>The code imports the necessary classes <code>BigDecimal</code>, <code>Scanner</code>, and <code>Comparator</code> from the Java standard library.</li>
-</ul>
-</li>
-<li>
-<p><strong><code>BigDecimalSort</code> Class</strong>:</p>
-<ul>
-<li>It defines a class named <code>BigDecimalSort</code> that contains the main method and additional methods for reading input, sorting real numbers, and printing output.</li>
-</ul>
-</li>
-<li>
-<p><strong><code>main</code> Method</strong>:</p>
-<ul>
-<li>The <code>main</code> method is the entry point of the program.</li>
-<li>It reads the input, initializes variables, and handles exceptions that may occur during execution.</li>
-<li>Calls the <code>readInput</code>, <code>sortRealNumbers</code>, and <code>printOutput</code> methods to read, sort, and print the real number strings, respectively.</li>
-</ul>
-</li>
-<li>
-<p><strong><code>readInput</code> Method</strong>:</p>
-<ul>
-<li>Reads the real number strings from the scanner input and stores them in an array.</li>
-<li>Catches and handles any exceptions that may occur during input reading.</li>
-</ul>
-</li>
-<li>
-<p><strong><code>sortRealNumbers</code> Method</strong>:</p>
-<ul>
-<li>Defines a custom comparator to compare the <code>BigDecimal</code> values of the real number strings in descending order.</li>
-<li>Sorts the array of real number strings using the custom comparator and <code>BigDecimal</code>.</li>
-<li>Catches and handles any exceptions that may occur during sorting.</li>
-</ul>
-</li>
-<li>
-<p><strong><code>printOutput</code> Method</strong>:</p>
-<ul>
-<li>Prints the sorted array of real number strings to the console.</li>
-<li>Catches and handles any exceptions that may occur during output printing.</li>
-</ul>
-</li>
-<li>
-<p><strong>Error Handling</strong>:</p>
-<ul>
-<li>The code includes try-catch blocks to handle exceptions that may occur during input reading, sorting, and output printing.</li>
-<li>If an exception occurs, an error message is displayed indicating the specific section where the error occurred.</li>
-</ul>
-</li>
-<li>
-<p><strong>Overall Functionality</strong>:</p>
-<ul>
-<li>The code effectively reads a set of real number strings, sorts them in descending order using <code>BigDecimal</code> for precision, and prints the sorted numbers while handling any exceptions that may arise during the process.</li>
-</ul>
-</li>
-</ol>
-<p>Overall, this code effectively reads, sorts, and prints real number strings in descending order using BigDecimal, while handling exceptions that may arise during input reading, sorting, and output printing. The use of BigDecimal ensures accurate sorting of real numbers with precision.</p>
-<hr />
-<p>The line of Java code ‘String[] s = new String[n + 2];’ creates an array of Strings named ‘s’ with a length of ‘n + 2’. Here’s what this line of code does:</p>
-<ol>
-<li>
-<p><strong>String Array Declaration</strong>:</p>
-<ul>
-<li><code>String[] s</code>: Declares a variable ‘s’ as an array of Strings. This means ‘s’ can hold multiple String values.</li>
-</ul>
-</li>
-<li>
-<p><strong>Array Initialization</strong>:</p>
-<ul>
-<li><code>new String[n + 2]</code>: Initializes the array with a specific length. In this case, the length of the array is ‘n + 2’.</li>
-<li>The ‘n’ variable determines the number of elements in the array, and adding 2 to ‘n’ increases the length by 2.</li>
-</ul>
-</li>
-<li>
-<p><strong>Memory Allocation</strong>:</p>
-<ul>
-<li>This line allocates memory for an array of Strings with a total length of ‘n + 2’.</li>
-<li>The array ‘s’ can store ‘n + 2’ elements of type String.</li>
-</ul>
-</li>
-<li>
-<p><strong>Usage</strong>:</p>
-<ul>
-<li>This array can be used to store ‘n’ real number strings read from input, as well as additional elements if needed.</li>
-</ul>
-</li>
-</ol>
-<p>In summary, this line of code initializes an array ‘s’ of Strings with a length of ‘n + 2’, setting up the array to store a specific number of String values in Java.</p>
-<hr />
-<p>The custom comparator Java code performs the following operations:</p>
-<ol>
-<li>
-<p><strong>Custom Comparator Definition</strong>:</p>
-<ul>
-<li>A custom comparator is defined to compare <code>BigDecimal</code> values in descending order.</li>
-<li>The <code>Comparator&lt;String&gt;</code> interface is implemented with an anonymous inner class to provide custom comparison logic.</li>
-</ul>
-</li>
-<li>
-<p><strong>Compare Method Implementation</strong>:</p>
-<ul>
-<li>The <code>compare</code> method of the <code>Comparator</code> interface is overridden to compare two String objects representing real numbers.</li>
-<li>Inside the <code>compare</code> method:
-<ul>
-<li>Two <code>BigDecimal</code> objects ‘a’ and ‘b’ are created by parsing the input Strings ‘s1’ and ‘s2’ as <code>BigDecimal</code> values.</li>
-<li>The <code>compareTo</code> method is used to compare ‘b’ with ‘a’. This method returns a negative value if ‘b’ is less than ‘a’, zero if they are equal, or a positive value if ‘b’ is greater than ‘a’.</li>
-<li>By returning the result of <code>b.compareTo(a)</code>, the comparison is done in descending order.</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>
-<p><strong>Sorting the Array</strong>:</p>
-<ul>
-<li>The <code>Arrays.sort</code> method is used to sort the array ‘s’ of real number Strings.</li>
-<li>The <code>sort</code> method takes the array ‘s’, a starting index (0), the number of elements to be sorted (‘n’), and a custom comparator (‘customComparator’) as arguments.</li>
-<li>The custom comparator is used to sort the array ‘s’ based on the custom comparison logic defined in the <code>compare</code> method.</li>
-</ul>
-</li>
-</ol>
-<p>In summary, this code defines a custom comparator to compare <code>BigDecimal</code> values in descending order and then uses this custom comparator to sort an array of real number Strings in descending order based on the <code>BigDecimal</code> values represented by the Strings.</p>
 ]]></content:encoded>
         </item>
     </channel>
