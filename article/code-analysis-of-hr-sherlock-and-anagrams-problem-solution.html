@@ -61,8 +61,8 @@
                 ></span
               >
               <span
-                >Updated At：<time datetime="1719905526534"
-                  >2024-07-02 14:32</time
+                >Updated At：<time datetime="1719907291040"
+                  >2024-07-02 15:01</time
                 ></span
               >
             </div>
@@ -508,6 +508,74 @@ Bob'</span>s score: <span class="hljs-number">85</span></code></pre></div>
 </li>
 </ol>
 <p>In summary, the <code>String.substring()</code> method in Java is a useful tool for extracting specific parts of a string, allowing for efficient manipulation and processing of string data.</p>
+<hr />
+<h2 id="stringtochararray-method"><code>String.toCharArray()</code> Method</h2>
+<p>The <code>String.toCharArray()</code> method in Java is used to convert a <code>String</code> object into a character array (<code>char[]</code>). Here is an explanation of the <code>String.toCharArray()</code> method:</p>
+<ol>
+<li>
+<p><strong>Method Signature:</strong></p>
+<ul>
+<li>The <code>toCharArray()</code> method is defined in the <code>String</code> class in Java.</li>
+<li>It has the following signature:<div><pre class="hljs"><code><span class="hljs-keyword">public</span> <span class="hljs-type">char</span>[] toCharArray()</code></pre></div>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Return Type:</strong></p>
+<ul>
+<li>The <code>toCharArray()</code> method returns a newly allocated character array containing the characters of the <code>String</code> object.</li>
+</ul>
+</li>
+<li>
+<p><strong>Usage:</strong></p>
+<ul>
+<li>When you call <code>toCharArray()</code> on a <code>String</code> object, it creates and returns a new character array that contains the characters of the original string.</li>
+</ul>
+</li>
+<li>
+<p><strong>Example:</strong></p>
+<div><pre class="hljs"><code><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ToCharArrayExample</span> {
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> {
+        <span class="hljs-type">String</span> <span class="hljs-variable">str</span> <span class="hljs-operator">=</span> <span class="hljs-string">"Hello, World!"</span>;
+        
+        <span class="hljs-comment">// Convert the string to a character array</span>
+        <span class="hljs-type">char</span>[] charArray = str.toCharArray();
+        
+        <span class="hljs-comment">// Print the elements of the character array</span>
+        <span class="hljs-keyword">for</span> (<span class="hljs-type">char</span> c : charArray) {
+            System.out.print(c + <span class="hljs-string">" "</span>);
+        }
+    }
+}</code></pre></div>
+</li>
+<li>
+<p><strong>Explanation of Example:</strong></p>
+<ul>
+<li>In the code example, a <code>String</code> object <code>str</code> is created with the value “Hello, World!”.</li>
+<li>The <code>toCharArray()</code> method is called on the <code>str</code> object to convert it into a character array.</li>
+<li>The characters in the resulting character array are then printed using an enhanced for loop.</li>
+</ul>
+</li>
+<li>
+<p><strong>Output:</strong></p>
+<div><pre class="hljs"><code><span class="hljs-built_in">H</span> e l l o ,   W o <span class="hljs-built_in">r</span> l d !</code></pre></div>
+</li>
+<li>
+<p><strong>Use Cases:</strong></p>
+<ul>
+<li>The <code>toCharArray()</code> method is useful when you need to work with individual characters in a string as an array.</li>
+<li>It allows for easy iteration, manipulation, or processing of characters in the string.</li>
+</ul>
+</li>
+<li>
+<p><strong>Key Points:</strong></p>
+<ul>
+<li>The <code>toCharArray()</code> method provides a convenient way to convert a <code>String</code> into a character array for character-level operations.</li>
+<li>The resulting character array is a new copy of the characters in the original string.</li>
+</ul>
+</li>
+</ol>
+<p>In summary, the <code>toCharArray()</code> method in Java is a useful method for converting a <code>String</code> object into a character array, enabling easy access and manipulation of individual characters in the string.</p>
 </div>
       </article>
     </div>

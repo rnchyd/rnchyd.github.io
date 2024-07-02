@@ -4,9 +4,456 @@
         <title></title>
         <link>undefined</link>
         <description>undefined</description>
-        <lastBuildDate>Tue, 02 Jul 2024 07:48:09 GMT</lastBuildDate>
+        <lastBuildDate>Tue, 02 Jul 2024 18:28:26 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>Joplin Pages Publisher</generator>
+        <item>
+            <title><![CDATA[Code Analysis of HR Flipping the Matrix problem solution]]></title>
+            <guid>09cd172828104c16aacc5fb5351bd8a5</guid>
+            <pubDate>Tue, 02 Jul 2024 17:42:07 GMT</pubDate>
+            <content:encoded><![CDATA[<p>Given the solution code :</p>
+<div><pre class="hljs"><code><span class="hljs-keyword">import</span> java.io.*;
+<span class="hljs-keyword">import</span> java.math.*;
+<span class="hljs-keyword">import</span> java.security.*;
+<span class="hljs-keyword">import</span> java.text.*;
+<span class="hljs-keyword">import</span> java.util.*;
+<span class="hljs-keyword">import</span> java.util.concurrent.*;
+<span class="hljs-keyword">import</span> java.util.function.*;
+<span class="hljs-keyword">import</span> java.util.regex.*;
+<span class="hljs-keyword">import</span> java.util.stream.*;
+<span class="hljs-keyword">import</span> <span class="hljs-keyword">static</span> java.util.stream.Collectors.joining;
+<span class="hljs-keyword">import</span> <span class="hljs-keyword">static</span> java.util.stream.Collectors.toList;
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">Result</span> {
+
+    <span class="hljs-comment">/*
+     * Complete the 'flippingMatrix' function below.
+     *
+     * The function is expected to return an INTEGER.
+     * The function accepts 2D_INTEGER_ARRAY matrix as parameter.
+     */</span>
+
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-type">int</span> <span class="hljs-title function_">flippingMatrix</span><span class="hljs-params">(List&lt;List&lt;Integer&gt;&gt; matrix)</span> {
+        <span class="hljs-type">int</span> <span class="hljs-variable">result</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;
+        <span class="hljs-type">int</span> <span class="hljs-variable">halfMatrixSize</span> <span class="hljs-operator">=</span> matrix.size() / <span class="hljs-number">2</span>;
+        <span class="hljs-type">int</span> <span class="hljs-variable">maxMatrixIndex</span> <span class="hljs-operator">=</span> matrix.size() - <span class="hljs-number">1</span>;
+
+        <span class="hljs-keyword">try</span> {
+            <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">row</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; row &lt; halfMatrixSize; row++) {
+                <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">col</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; col &lt; halfMatrixSize; col++) {
+                    <span class="hljs-type">int</span> <span class="hljs-variable">element</span> <span class="hljs-operator">=</span> getElement(matrix, row, col);
+                    <span class="hljs-type">int</span> <span class="hljs-variable">rightMirror</span> <span class="hljs-operator">=</span> getElement(matrix, row, maxMatrixIndex - col);
+                    <span class="hljs-type">int</span> <span class="hljs-variable">downMirror</span> <span class="hljs-operator">=</span> getElement(matrix, maxMatrixIndex - row, col);
+                    <span class="hljs-type">int</span> <span class="hljs-variable">rightDownMirror</span> <span class="hljs-operator">=</span> getElement(matrix, maxMatrixIndex - row, maxMatrixIndex - col);
+
+                    <span class="hljs-type">int</span> <span class="hljs-variable">max</span> <span class="hljs-operator">=</span> Math.max(element, Math.max(rightMirror, Math.max(downMirror, rightDownMirror)));
+                    result += max;
+                }
+            }
+        } <span class="hljs-keyword">catch</span> (Exception e) {
+            System.out.println(<span class="hljs-string">"An error occurred during matrix processing: "</span> + e.getMessage());
+        }
+
+        <span class="hljs-keyword">return</span> result;
+    }
+
+    <span class="hljs-comment">// Method to get the element at a specific row and column in the matrix</span>
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-type">int</span> <span class="hljs-title function_">getElement</span><span class="hljs-params">(List&lt;List&lt;Integer&gt;&gt; matrix, <span class="hljs-type">int</span> row, <span class="hljs-type">int</span> col)</span> {
+        <span class="hljs-keyword">try</span> {
+            <span class="hljs-keyword">return</span> matrix.get(row).get(col);
+        } <span class="hljs-keyword">catch</span> (IndexOutOfBoundsException e) {
+            System.out.println(<span class="hljs-string">"Index out of bounds: "</span> + e.getMessage());
+            <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>; <span class="hljs-comment">// Return 0 if index is out of bounds</span>
+        }
+    }
+
+}
+
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> {
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> IOException {
+        <span class="hljs-type">BufferedReader</span> <span class="hljs-variable">bufferedReader</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">BufferedReader</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">InputStreamReader</span>(System.in));
+        <span class="hljs-type">BufferedWriter</span> <span class="hljs-variable">bufferedWriter</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">BufferedWriter</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">FileWriter</span>(System.getenv(<span class="hljs-string">"OUTPUT_PATH"</span>)));
+
+        <span class="hljs-type">int</span> <span class="hljs-variable">q</span> <span class="hljs-operator">=</span> Integer.parseInt(bufferedReader.readLine().trim());
+
+        IntStream.range(<span class="hljs-number">0</span>, q).forEach(qItr -&gt; {
+            <span class="hljs-keyword">try</span> {
+                <span class="hljs-type">int</span> <span class="hljs-variable">n</span> <span class="hljs-operator">=</span> Integer.parseInt(bufferedReader.readLine().trim());
+
+                List&lt;List&lt;Integer&gt;&gt; matrix = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;&gt;();
+
+                IntStream.range(<span class="hljs-number">0</span>, <span class="hljs-number">2</span> * n).forEach(i -&gt; {
+                    <span class="hljs-keyword">try</span> {
+                        matrix.add(
+                            Stream.of(bufferedReader.readLine().replaceAll(<span class="hljs-string">"\\s+$"</span>, <span class="hljs-string">""</span>).split(<span class="hljs-string">" "</span>))
+                                .map(Integer::parseInt)
+                                .collect(toList())
+                        );
+                    } <span class="hljs-keyword">catch</span> (IOException ex) {
+                        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">RuntimeException</span>(ex);
+                    }
+                });
+
+                <span class="hljs-type">int</span> <span class="hljs-variable">result</span> <span class="hljs-operator">=</span> Result.flippingMatrix(matrix);
+
+                bufferedWriter.write(String.valueOf(result));
+                bufferedWriter.newLine();
+            } <span class="hljs-keyword">catch</span> (IOException ex) {
+                <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">RuntimeException</span>(ex);
+            }
+        });
+
+        bufferedReader.close();
+        bufferedWriter.close();
+    }
+}</code></pre></div>
+<p><strong>Sample Input</strong></p>
+<pre style="background:linear-gradient(to right, #F3F7EC, white);color:#3F4E4F;padding:5px" class="jop-noMdConv">
+1               
+2               
+112 42 83 119   
+56 125 56 49             
+15 78 101 43
+62 98 114 108
+</pre>
+<p><strong>Sample Output</strong></p>
+<pre style="background:linear-gradient(to right, #FFE6E6, white);color:#3F4E4F;padding:5px" class="jop-noMdConv">
+414
+</pre>
+<h2 id="elucidation">Elucidation</h2>
+<p>The provided code consists of two classes: <code>Result</code> and <code>Solution</code>. Here is a detailed explanation of the code:</p>
+<ol>
+<li>
+<p><strong><code>Result</code> Class:</strong></p>
+<ul>
+<li>The <code>Result</code> class contains the <code>flippingMatrix</code> method, which calculates the maximum sum possible for the upper-left quadrant of a matrix after flipping rows and columns.</li>
+<li>The method takes a 2D list of integers (<code>List&lt;List&lt;Integer&gt;&gt;</code>) as a parameter and iterates over the matrix to calculate the maximum sum.</li>
+</ul>
+</li>
+<li>
+<p><strong><code>Solution</code> Class:</strong></p>
+<ul>
+<li>The <code>Solution</code> class contains the <code>main</code> method, which is the entry point of the program.</li>
+<li>It reads input from the user, processes each query, and calculates the maximum sum using the <code>flippingMatrix</code> method from the <code>Result</code> class.</li>
+<li>The input format includes the number of queries (<code>q</code>) followed by the size of the matrix (<code>n</code>) and the elements of the matrix.</li>
+</ul>
+</li>
+<li>
+<p><strong>Input Processing:</strong></p>
+<ul>
+<li>The <code>main</code> method reads the number of queries (<code>q</code>) and processes each query individually.</li>
+<li>For each query, it reads the size of the matrix (<code>n</code>) and populates the matrix with elements provided by the user.</li>
+</ul>
+</li>
+<li>
+<p><strong>Matrix Processing:</strong></p>
+<ul>
+<li>The matrix elements are read and stored in a 2D list of integers.</li>
+<li>The <code>flippingMatrix</code> method is called for each query to calculate the maximum sum for the upper-left quadrant of the matrix.</li>
+</ul>
+</li>
+<li>
+<p><strong>Error Handling:</strong></p>
+<ul>
+<li>The code includes try-catch blocks to handle exceptions that may occur during matrix processing or input reading.</li>
+<li>If an exception occurs, an error message is printed to the console.</li>
+</ul>
+</li>
+<li>
+<p><strong>Output:</strong></p>
+<ul>
+<li>The calculated maximum sum for each query is written to the output file.</li>
+</ul>
+</li>
+<li>
+<p><strong>Overall Functionality:</strong></p>
+<ul>
+<li>The code efficiently processes multiple queries to calculate the maximum sum for the upper-left quadrant of matrices after flipping rows and columns.</li>
+<li>Error handling ensures that exceptions are caught and appropriate messages are displayed.</li>
+</ul>
+</li>
+</ol>
+<p>In summary, the code provides a structured solution for processing matrices and calculating the maximum sum for the upper-left quadrant. It demonstrates input processing, matrix manipulation, error handling, and output generation.</p>
+<h2 id="flippingmatrix-method"><code>flippingMatrix</code> Method</h2>
+<p>Here is a detailed analysis of the provided Java method:</p>
+<ol>
+<li>
+<p><strong><code>flippingMatrix</code> Method:</strong></p>
+<ul>
+<li>The <code>flippingMatrix</code> method calculates the maximum sum possible for the upper-left quadrant of a given matrix after flipping rows and columns.</li>
+<li>It iterates over the top-left quadrant of the matrix and calculates the maximum value for each element and adds it to the result.</li>
+<li>If an exception occurs during matrix processing (such as an index out of bounds), an error message is displayed.</li>
+</ul>
+</li>
+<li>
+<p><strong>Variables:</strong></p>
+<ul>
+<li><code>result</code>: Stores the sum of the maximum values in the upper-left quadrant.</li>
+<li><code>halfMatrixSize</code>: Represents half the size of the matrix (used to iterate over the top-left quadrant).</li>
+<li><code>maxMatrixIndex</code>: Represents the maximum index of the matrix.</li>
+</ul>
+</li>
+<li>
+<p><strong>Nested Loops:</strong></p>
+<ul>
+<li>Two nested loops iterate over the top-left quadrant of the matrix (up to <code>halfMatrixSize</code>).</li>
+<li>For each element in the quadrant, it calculates the maximum value among the element, its right mirror, down mirror, and right-down mirror.</li>
+</ul>
+</li>
+<li>
+<p><strong><code>getElement</code> Method:</strong></p>
+<ul>
+<li>The <code>getElement</code> method retrieves the element at a specific row and column in the matrix.</li>
+<li>It handles potential <code>IndexOutOfBoundsException</code> by catching the exception and returning 0 if the index is out of bounds.</li>
+</ul>
+</li>
+<li>
+<p><strong>Error Handling:</strong></p>
+<ul>
+<li>The code uses a try-catch block to catch exceptions that may occur during matrix processing.</li>
+<li>If an exception occurs, an error message is printed to the console.</li>
+</ul>
+</li>
+<li>
+<p><strong>Return Value:</strong></p>
+<ul>
+<li>The method returns the calculated <code>result</code>, which represents the maximum sum in the upper-left quadrant after flipping rows and columns.</li>
+</ul>
+</li>
+<li>
+<p><strong>Overall Functionality:</strong></p>
+<ul>
+<li>The code efficiently processes the matrix to calculate the maximum sum for the upper-left quadrant.</li>
+<li>It includes error handling to handle index out of bounds situations and ensures that the output is accurate.</li>
+</ul>
+</li>
+</ol>
+<p>In summary, the provided Java code effectively calculates the maximum sum for the upper-left quadrant of a matrix after flipping rows and columns, with error handling to address potential exceptions.</p>
+<h2 id="flippingmatrix-method-alternative"><code>flippingMatrix</code> Method Alternative</h2>
+<div><pre class="hljs"><code><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-type">int</span> <span class="hljs-title function_">flippingMatrix</span><span class="hljs-params">(List&lt;List&lt;Integer&gt;&gt; matrix)</span> {
+    <span class="hljs-type">int</span> <span class="hljs-variable">result</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;
+    <span class="hljs-type">int</span> <span class="hljs-variable">halfMatrixSize</span> <span class="hljs-operator">=</span> matrix.size() / <span class="hljs-number">2</span>;
+    <span class="hljs-type">int</span> <span class="hljs-variable">maxMatrixIndex</span> <span class="hljs-operator">=</span> matrix.size() - <span class="hljs-number">1</span>;
+
+    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">row</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; row &lt; halfMatrixSize; row++) {
+        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">col</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; col &lt; halfMatrixSize; col++) {
+            <span class="hljs-type">int</span> <span class="hljs-variable">element</span> <span class="hljs-operator">=</span> matrix.get(row).get(col);
+            <span class="hljs-type">int</span> <span class="hljs-variable">rightMirror</span> <span class="hljs-operator">=</span> matrix.get(row).get(maxMatrixIndex - col);
+            <span class="hljs-type">int</span> <span class="hljs-variable">downMirror</span> <span class="hljs-operator">=</span> matrix.get(maxMatrixIndex - row).get(col);
+            <span class="hljs-type">int</span> <span class="hljs-variable">rightDownMirror</span> <span class="hljs-operator">=</span> matrix.get(maxMatrixIndex - row).get(maxMatrixIndex - col);
+
+            <span class="hljs-type">int</span> <span class="hljs-variable">max</span> <span class="hljs-operator">=</span> Math.max(Math.max(element, rightMirror), Math.max(downMirror, rightDownMirror));
+            result += max;
+        }
+    }
+    <span class="hljs-keyword">return</span> result;
+}</code></pre></div>
+<p>Detailed explanation of the provided Java code above :</p>
+<ol>
+<li>
+<p><strong>Method Overview:</strong></p>
+<ul>
+<li>The <code>flippingMatrix</code> method calculates the maximum sum possible for the upper-left quadrant of a given matrix after flipping rows and columns.</li>
+<li>It iterates over the top-left quadrant of the matrix and calculates the maximum value for each element, summing up the maximum values.</li>
+</ul>
+</li>
+<li>
+<p><strong>Variables:</strong></p>
+<ul>
+<li><code>result</code>: Initialized to 0, stores the sum of the maximum values in the upper-left quadrant.</li>
+<li><code>halfMatrixSize</code>: Represents half the size of the matrix, used to iterate over the top-left quadrant.</li>
+<li><code>maxMatrixIndex</code>: Represents the maximum index of the matrix.</li>
+</ul>
+</li>
+<li>
+<p><strong>Nested Loops:</strong></p>
+<ul>
+<li>Two nested loops iterate over the top-left quadrant of the matrix (up to <code>halfMatrixSize</code>).</li>
+<li>For each element in the quadrant, it calculates the maximum value among the element, its mirror on the right, down mirror, and right-down mirror.</li>
+</ul>
+</li>
+<li>
+<p><strong>Matrix Element Retrieval:</strong></p>
+<ul>
+<li><code>element</code>: Retrieves the element at the current row and column.</li>
+<li><code>rightMirror</code>: Retrieves the mirror element on the right side of the current column.</li>
+<li><code>downMirror</code>: Retrieves the mirror element below the current row.</li>
+<li><code>rightDownMirror</code>: Retrieves the mirror element diagonally opposite to the current element.</li>
+</ul>
+</li>
+<li>
+<p><strong>Maximum Value Calculation:</strong></p>
+<ul>
+<li>For each element in the quadrant, it calculates the maximum value among the element, right mirror, down mirror, and right-down mirror.</li>
+<li>The maximum value is added to the <code>result</code> for each iteration of the nested loops.</li>
+</ul>
+</li>
+<li>
+<p><strong>Return Value:</strong></p>
+<ul>
+<li>The method returns the calculated <code>result</code>, representing the maximum sum in the upper-left quadrant after flipping rows and columns.</li>
+</ul>
+</li>
+<li>
+<p><strong>Overall Functionality:</strong></p>
+<ul>
+<li>The code efficiently processes the matrix to calculate the maximum sum for the upper-left quadrant.</li>
+<li>It iterates over the quadrant, considers mirrored elements, calculates the maximum value, and sums up the maximum values to determine the final result.</li>
+</ul>
+</li>
+</ol>
+<p>In summary, the provided Java code effectively calculates the maximum sum for the upper-left quadrant of a matrix after flipping rows and columns. It demonstrates efficient matrix processing and maximum value calculation within the specified quadrant.</p>
+<hr />
+<h2 id="list-interface"><code>List</code> Interface</h2>
+<ol>
+<li>
+<p><strong>List Interface in Java:</strong></p>
+<ul>
+<li>The <code>List</code> interface in Java is a part of the <code>java.util</code> package and extends the <code>Collection</code> interface.</li>
+<li>It represents an ordered collection of elements where each element has an index.</li>
+<li>Lists allow duplicate elements and maintain the insertion order of elements.</li>
+</ul>
+</li>
+<li>
+<p><strong>Key Features of List:</strong></p>
+<ul>
+<li>Elements in a list can be accessed using their index.</li>
+<li>Lists provide methods to add, remove, retrieve, and manipulate elements.</li>
+<li>Common implementations of the <code>List</code> interface in Java include <code>ArrayList</code>, <code>LinkedList</code>, and <code>Vector</code>.</li>
+</ul>
+</li>
+<li>
+<p><strong>Code Example:</strong></p>
+</li>
+</ol>
+<div><pre class="hljs"><code><span class="hljs-keyword">import</span> java.util.ArrayList;
+<span class="hljs-keyword">import</span> java.util.List;
+
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ListExample</span> {
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> {
+        <span class="hljs-comment">// Creating a List of Strings</span>
+        List&lt;String&gt; fruits = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;&gt;();
+
+        <span class="hljs-comment">// Adding elements to the list</span>
+        fruits.add(<span class="hljs-string">"Apple"</span>);
+        fruits.add(<span class="hljs-string">"Banana"</span>);
+        fruits.add(<span class="hljs-string">"Orange"</span>);
+        fruits.add(<span class="hljs-string">"Mango"</span>);
+
+        <span class="hljs-comment">// Accessing elements in the list</span>
+        System.out.println(<span class="hljs-string">"Fruits List: "</span> + fruits);
+
+        <span class="hljs-comment">// Getting the size of the list</span>
+        System.out.println(<span class="hljs-string">"Size of the List: "</span> + fruits.size());
+
+        <span class="hljs-comment">// Removing an element</span>
+        fruits.remove(<span class="hljs-string">"Orange"</span>);
+
+        <span class="hljs-comment">// Checking if an element exists</span>
+        System.out.println(<span class="hljs-string">"Contains 'Banana': "</span> + fruits.contains(<span class="hljs-string">"Banana"</span>));
+
+        <span class="hljs-comment">// Iterating over the list</span>
+        System.out.println(<span class="hljs-string">"Iterating over the List:"</span>);
+        <span class="hljs-keyword">for</span> (String fruit : fruits) {
+            System.out.println(fruit);
+        }
+    }
+}</code></pre></div>
+<ol start="4">
+<li>
+<p><strong>Output Explanation:</strong></p>
+<ul>
+<li>The code example creates a list of fruits, adds elements, removes an element, and demonstrates various operations on the list.</li>
+<li>The output displays the fruits list, size of the list, checks if an element exists, and iterates over the list to print each element.</li>
+</ul>
+</li>
+<li>
+<p><strong>Output:</strong></p>
+</li>
+</ol>
+<div><pre class="hljs"><code><span class="hljs-attr">Fruits List:</span> [<span class="hljs-string">Apple</span>, <span class="hljs-string">Banana</span>, <span class="hljs-string">Orange</span>, <span class="hljs-string">Mango</span>]
+<span class="hljs-attr">Size of the List:</span> <span class="hljs-number">4</span>
+<span class="hljs-string">Contains</span> <span class="hljs-attr">'Banana':</span> <span class="hljs-literal">true</span>
+<span class="hljs-attr">Iterating over the List:</span>
+<span class="hljs-string">Apple</span>
+<span class="hljs-string">Banana</span>
+<span class="hljs-string">Mango</span></code></pre></div>
+<ol start="6">
+<li><strong>Summary:</strong>
+<ul>
+<li>The <code>List</code> interface in Java provides an ordered collection of elements with index-based access.</li>
+<li>It supports operations like adding, removing, retrieving elements, and more.</li>
+<li>Lists are versatile data structures commonly used in Java programming for managing collections of objects.</li>
+</ul>
+</li>
+</ol>
+<p>In summary, the <code>List</code> interface in Java offers a flexible and powerful way to work with ordered collections of elements. It provides a wide range of methods for managing and manipulating lists efficiently.</p>
+<hr />
+<h2 id="listlistinteger-matrix-parameter"><code>List&lt;List&lt;Integer&gt;&gt; matrix</code> Parameter</h2>
+<p>The line of Java code <code>List&lt;List&lt;Integer&gt;&gt; matrix</code> declares a 2D list of integers in Java.</p>
+<ol>
+<li>
+<p><strong>Explanation:</strong></p>
+<ul>
+<li><code>List&lt;List&lt;Integer&gt;&gt;</code>: This declares a 2D list where each element in the outer list (<code>List&lt;List&lt;Integer&gt;&gt;</code>) is itself a list of integers (<code>List&lt;Integer&gt;</code>).</li>
+<li>This structure represents a matrix where each row is represented as an inner list of integers, and the entire matrix is a list of rows.</li>
+</ul>
+</li>
+<li>
+<p><strong>Code Example:</strong></p>
+</li>
+</ol>
+<div><pre class="hljs"><code><span class="hljs-keyword">import</span> java.util.ArrayList;
+<span class="hljs-keyword">import</span> java.util.List;
+
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">MatrixExample</span> {
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> {
+        <span class="hljs-comment">// Creating a 2D list (matrix) of integers</span>
+        List&lt;List&lt;Integer&gt;&gt; matrix = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;&gt;();
+
+        <span class="hljs-comment">// Adding rows to the matrix</span>
+        matrix.add(<span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;&gt;(List.of(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>)));
+        matrix.add(<span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;&gt;(List.of(<span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>)));
+        matrix.add(<span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;&gt;(List.of(<span class="hljs-number">7</span>, <span class="hljs-number">8</span>, <span class="hljs-number">9</span>)));
+
+        <span class="hljs-comment">// Accessing elements in the matrix</span>
+        System.out.println(<span class="hljs-string">"Matrix: "</span>);
+        <span class="hljs-keyword">for</span> (List&lt;Integer&gt; row : matrix) {
+            <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> num : row) {
+                System.out.print(num + <span class="hljs-string">" "</span>);
+            }
+            System.out.println();
+        }
+    }
+}</code></pre></div>
+<ol start="3">
+<li>
+<p><strong>Output Explanation:</strong></p>
+<ul>
+<li>The code example creates a 2D list (matrix) of integers, adds rows to the matrix, and then iterates over the matrix to print each element.</li>
+<li>The output displays the matrix with rows and elements separated by spaces.</li>
+</ul>
+</li>
+<li>
+<p><strong>Output:</strong></p>
+</li>
+</ol>
+<div><pre class="hljs"><code><span class="hljs-attribute">Matrix</span>:
+<span class="hljs-attribute">1</span> <span class="hljs-number">2</span> <span class="hljs-number">3</span> 
+<span class="hljs-attribute">4</span> <span class="hljs-number">5</span> <span class="hljs-number">6</span> 
+<span class="hljs-attribute">7</span> <span class="hljs-number">8</span> <span class="hljs-number">9</span> </code></pre></div>
+<ol start="5">
+<li><strong>Summary:</strong>
+<ul>
+<li>The line <code>List&lt;List&lt;Integer&gt;&gt; matrix</code> declares a 2D list of integers in Java, representing a matrix structure.</li>
+<li>Each inner list represents a row of the matrix, and the outer list holds all the rows of the matrix.</li>
+<li>This structure is commonly used to represent tabular data, matrices, or grids in Java programming.</li>
+</ul>
+</li>
+</ol>
+<p>In summary, the Java code <code>List&lt;List&lt;Integer&gt;&gt; matrix</code> declares a 2D list of integers, providing a flexible way to work with matrix-like data structures. The code example demonstrates creating and accessing elements in a 2D list, showcasing the matrix structure.</p>
+]]></content:encoded>
+        </item>
         <item>
             <title><![CDATA[Code Analysis of HR Sherlock and Anagrams problem solution]]></title>
             <guid>2107657484a54bd689b379c39e69961c</guid>
@@ -450,6 +897,74 @@ Bob'</span>s score: <span class="hljs-number">85</span></code></pre></div>
 </li>
 </ol>
 <p>In summary, the <code>String.substring()</code> method in Java is a useful tool for extracting specific parts of a string, allowing for efficient manipulation and processing of string data.</p>
+<hr />
+<h2 id="stringtochararray-method"><code>String.toCharArray()</code> Method</h2>
+<p>The <code>String.toCharArray()</code> method in Java is used to convert a <code>String</code> object into a character array (<code>char[]</code>). Here is an explanation of the <code>String.toCharArray()</code> method:</p>
+<ol>
+<li>
+<p><strong>Method Signature:</strong></p>
+<ul>
+<li>The <code>toCharArray()</code> method is defined in the <code>String</code> class in Java.</li>
+<li>It has the following signature:<div><pre class="hljs"><code><span class="hljs-keyword">public</span> <span class="hljs-type">char</span>[] toCharArray()</code></pre></div>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Return Type:</strong></p>
+<ul>
+<li>The <code>toCharArray()</code> method returns a newly allocated character array containing the characters of the <code>String</code> object.</li>
+</ul>
+</li>
+<li>
+<p><strong>Usage:</strong></p>
+<ul>
+<li>When you call <code>toCharArray()</code> on a <code>String</code> object, it creates and returns a new character array that contains the characters of the original string.</li>
+</ul>
+</li>
+<li>
+<p><strong>Example:</strong></p>
+<div><pre class="hljs"><code><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ToCharArrayExample</span> {
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> {
+        <span class="hljs-type">String</span> <span class="hljs-variable">str</span> <span class="hljs-operator">=</span> <span class="hljs-string">"Hello, World!"</span>;
+        
+        <span class="hljs-comment">// Convert the string to a character array</span>
+        <span class="hljs-type">char</span>[] charArray = str.toCharArray();
+        
+        <span class="hljs-comment">// Print the elements of the character array</span>
+        <span class="hljs-keyword">for</span> (<span class="hljs-type">char</span> c : charArray) {
+            System.out.print(c + <span class="hljs-string">" "</span>);
+        }
+    }
+}</code></pre></div>
+</li>
+<li>
+<p><strong>Explanation of Example:</strong></p>
+<ul>
+<li>In the code example, a <code>String</code> object <code>str</code> is created with the value “Hello, World!”.</li>
+<li>The <code>toCharArray()</code> method is called on the <code>str</code> object to convert it into a character array.</li>
+<li>The characters in the resulting character array are then printed using an enhanced for loop.</li>
+</ul>
+</li>
+<li>
+<p><strong>Output:</strong></p>
+<div><pre class="hljs"><code><span class="hljs-built_in">H</span> e l l o ,   W o <span class="hljs-built_in">r</span> l d !</code></pre></div>
+</li>
+<li>
+<p><strong>Use Cases:</strong></p>
+<ul>
+<li>The <code>toCharArray()</code> method is useful when you need to work with individual characters in a string as an array.</li>
+<li>It allows for easy iteration, manipulation, or processing of characters in the string.</li>
+</ul>
+</li>
+<li>
+<p><strong>Key Points:</strong></p>
+<ul>
+<li>The <code>toCharArray()</code> method provides a convenient way to convert a <code>String</code> into a character array for character-level operations.</li>
+<li>The resulting character array is a new copy of the characters in the original string.</li>
+</ul>
+</li>
+</ol>
+<p>In summary, the <code>toCharArray()</code> method in Java is a useful method for converting a <code>String</code> object into a character array, enabling easy access and manipulation of individual characters in the string.</p>
 ]]></content:encoded>
         </item>
         <item>
@@ -2504,285 +3019,6 @@ Delete
 <li>The <code>List</code> interface in Java provides a flexible and feature-rich way to work with ordered collections of elements.</li>
 <li>It allows for efficient access to elements by index and supports various operations for adding, removing, and manipulating elements.</li>
 <li>Understanding and utilizing the capabilities of the <code>List</code> interface can help in implementing data structures and algorithms effectively in Java applications.</li>
-</ul>
-]]></content:encoded>
-        </item>
-        <item>
-            <title><![CDATA[One-Dimensional Arrays Part-2]]></title>
-            <guid>af8d7dbd15f44bce880aa0061c67192b</guid>
-            <pubDate>Sun, 30 Jun 2024 18:07:12 GMT</pubDate>
-            <content:encoded><![CDATA[<p>One-dimensional array code example :</p>
-<div><pre class="hljs"><code><span class="hljs-keyword">import</span> java.io.*;
-<span class="hljs-keyword">import</span> java.util.*;
-
-<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Java1DArray</span> {
-    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> {
-        <span class="hljs-type">Scanner</span> <span class="hljs-variable">scanner</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Scanner</span>(System.in);
-        <span class="hljs-type">int</span> <span class="hljs-variable">t</span> <span class="hljs-operator">=</span> Integer.parseInt(scanner.nextLine());
-        
-        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; t; i++) {
-            <span class="hljs-type">int</span> <span class="hljs-variable">n</span> <span class="hljs-operator">=</span> scanner.nextInt();
-            <span class="hljs-type">int</span> <span class="hljs-variable">m</span> <span class="hljs-operator">=</span> scanner.nextInt();
-            <span class="hljs-type">int</span>[] arr = readArray(scanner, n);
-            solve(n, m, arr);
-        }
-        
-        scanner.close();
-    }
-    
-    <span class="hljs-comment">// Method to read an array of integers</span>
-    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-type">int</span>[] readArray(Scanner scanner, <span class="hljs-type">int</span> n) {
-        <span class="hljs-type">int</span>[] arr = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[n];
-        
-        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">j</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; j &lt; n; j++) {
-            arr[j] = scanner.nextInt();
-        }
-        
-        <span class="hljs-keyword">return</span> arr;
-    }
-    
-    <span class="hljs-comment">// Method to solve the problem</span>
-    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">solve</span><span class="hljs-params">(<span class="hljs-type">int</span> n, <span class="hljs-type">int</span> m, <span class="hljs-type">int</span>[] arr)</span> {
-        <span class="hljs-keyword">if</span> (canWin(n, m, arr, <span class="hljs-keyword">new</span> <span class="hljs-title class_">boolean</span>[n], <span class="hljs-number">0</span>)) {
-            System.out.println(<span class="hljs-string">"YES"</span>);
-        } <span class="hljs-keyword">else</span> {
-            System.out.println(<span class="hljs-string">"NO"</span>);
-        }
-    }
-    
-    <span class="hljs-comment">// Recursive method to check if the game can be won</span>
-    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">canWin</span><span class="hljs-params">(<span class="hljs-type">int</span> n, <span class="hljs-type">int</span> m, <span class="hljs-type">int</span>[] arr, <span class="hljs-type">boolean</span>[] visited, <span class="hljs-type">int</span> curr)</span> {
-        <span class="hljs-keyword">if</span> (curr + m &gt;= n || curr + <span class="hljs-number">1</span> == n) {
-            <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
-        }
-        
-        <span class="hljs-type">boolean</span>[] newVisited = Arrays.copyOf(visited, n);
-        
-        <span class="hljs-type">boolean</span> <span class="hljs-variable">canMove</span> <span class="hljs-operator">=</span> <span class="hljs-literal">false</span>;
-        <span class="hljs-keyword">if</span> (isValidMove(curr + <span class="hljs-number">1</span>, n, arr, visited)) {
-            newVisited[curr + <span class="hljs-number">1</span>] = <span class="hljs-literal">true</span>;
-            canMove = canWin(n, m, arr, newVisited, curr + <span class="hljs-number">1</span>);
-        }
-        
-        <span class="hljs-keyword">if</span> (canMove) {
-            <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
-        }
-        
-        <span class="hljs-keyword">if</span> (m &gt; <span class="hljs-number">1</span> &amp;&amp; isValidMove(curr + m, n, arr, visited)) {
-            newVisited[curr + m] = <span class="hljs-literal">true</span>;
-            canMove = canWin(n, m, arr, newVisited, curr + m);
-        }
-        
-        <span class="hljs-keyword">if</span> (canMove) {
-            <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
-        }
-        
-        <span class="hljs-keyword">if</span> (curr &gt; <span class="hljs-number">0</span> &amp;&amp; isValidMove(curr - <span class="hljs-number">1</span>, n, arr, visited)) {
-            newVisited[curr - <span class="hljs-number">1</span>] = <span class="hljs-literal">true</span>;
-            canMove = canWin(n, m, arr, newVisited, curr - <span class="hljs-number">1</span>);
-        }
-        
-        <span class="hljs-keyword">return</span> canMove;
-    }
-    
-    <span class="hljs-comment">// Method to check if the move is valid</span>
-    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">isValidMove</span><span class="hljs-params">(<span class="hljs-type">int</span> move, <span class="hljs-type">int</span> n, <span class="hljs-type">int</span>[] arr, <span class="hljs-type">boolean</span>[] visited)</span> {
-        <span class="hljs-keyword">return</span> move &gt;= <span class="hljs-number">0</span> &amp;&amp; move &lt; n &amp;&amp; arr[move] == <span class="hljs-number">0</span> &amp;&amp; !visited[move];
-    }
-}</code></pre></div>
-<p><strong>Sample Input</strong></p>
-<pre style="background:linear-gradient(to right, #F3F7EC, white);color:#3F4E4F;padding:5px" class="jop-noMdConv">
-STDIN           Function
------           --------
-4               q = 4 (number of queries)
-5 3             game[] size n = 5, leap = 3 (first query)
-0 0 0 0 0       game = [0, 0, 0, 0, 0]
-6 5             game[] size n = 6, leap = 5 (second query)
-0 0 0 1 1 1     . . .
-6 3
-0 0 1 1 1 0
-3 1
-0 1 0
-</pre>
-<p><strong>Sample Output</strong></p>
-<pre style="background:linear-gradient(to right, #FFE6E6, white);color:#3F4E4F;padding:5px" class="jop-noMdConv">
-YES
-YES
-NO
-NO
-</pre>
-<h2 id="elucidation">Elucidation</h2>
-<p>This Java program is designed to solve a problem related to a game where the player needs to determine if they can win by making specific moves within an array. Here’s a detailed explanation of the code:</p>
-<ol>
-<li>
-<p>The <code>Java1DArray</code> class is defined, serving as the main class for the program.</p>
-</li>
-<li>
-<p>The <code>main</code> method is the entry point of the program. It performs the following tasks:</p>
-<ul>
-<li>Creates a new <code>Scanner</code> object named <code>scanner</code> to read input from the console.</li>
-<li>Reads an integer value <code>t</code> from the input, representing the number of test cases.</li>
-<li>Iterates through each test case:
-<ul>
-<li>Reads two integer values <code>n</code> and <code>m</code> from the input, where <code>n</code> represents the size of the array and <code>m</code> is a parameter for solving the problem.</li>
-<li>Calls the <code>readArray</code> method to read an array of integers with size <code>n</code>.</li>
-<li>Calls the <code>solve</code> method to determine if the game can be won with the given parameters.</li>
-</ul>
-</li>
-<li>Closes the <code>Scanner</code> object to release system resources.</li>
-</ul>
-</li>
-<li>
-<p>The <code>readArray</code> method is a helper method that reads an array of integers from the input using the provided <code>Scanner</code> object. It takes two parameters:</p>
-<ul>
-<li><code>scanner</code>: The <code>Scanner</code> object for reading input.</li>
-<li><code>n</code>: The size of the array to be read.<br />
-Inside the method:</li>
-<li>It initializes an integer array <code>arr</code> with size <code>n</code>.</li>
-<li>Reads <code>n</code> integer values from the input and stores them in the <code>arr</code> array.</li>
-<li>Returns the populated array.</li>
-</ul>
-</li>
-<li>
-<p>The <code>solve</code> method is responsible for determining whether the game can be won based on the given parameters. It takes three parameters:</p>
-<ul>
-<li><code>n</code>: The size of the array.</li>
-<li><code>m</code>: The parameter for solving the problem.</li>
-<li><code>arr</code>: The array of integers.<br />
-Inside the method:</li>
-<li>Calls the <code>canWin</code> method to recursively check if the game can be won with the current state of the array and player position.</li>
-<li>Prints “YES” if the game can be won, and “NO” otherwise.</li>
-</ul>
-</li>
-<li>
-<p>The <code>canWin</code> method is a recursive function that checks if the game can be won by making valid moves within the array. It takes five parameters:</p>
-<ul>
-<li><code>n</code>: The size of the array.</li>
-<li><code>m</code>: The parameter for solving the problem.</li>
-<li><code>arr</code>: The array of integers.</li>
-<li><code>visited</code>: An array to track visited positions.</li>
-<li><code>curr</code>: The current position in the array.<br />
-Inside the method:</li>
-<li>Checks if the current position allows for a winning move. If so, it returns <code>true</code>.</li>
-<li>Creates a copy of the <code>visited</code> array to prevent modifying the original.</li>
-<li>Recursively explores possible moves in the array based on the game rules.</li>
-<li>Returns <code>true</code> if a winning move is found, <code>false</code> otherwise.</li>
-</ul>
-</li>
-<li>
-<p>The <code>isValidMove</code> method checks if a move to a specific position in the array is valid. It takes four parameters:</p>
-<ul>
-<li><code>move</code>: The target position to move to.</li>
-<li><code>n</code>: The size of the array.</li>
-<li><code>arr</code>: The array of integers.</li>
-<li><code>visited</code>: An array to track visited positions.<br />
-It returns <code>true</code> if the move is within bounds, the position is empty, and has not been visited before; otherwise, it returns <code>false</code>.</li>
-</ul>
-</li>
-</ol>
-<p>Overall, this code implements a game-solving algorithm using recursion and array manipulation to determine if the player can win the game based on the given parameters.</p>
-<hr />
-<h2 id="integerparseint-method"><code>Integer.parseInt</code> method</h2>
-<p>In Java, the <code>Integer.parseInt</code> method is used to convert a <code>String</code> to an <code>int</code> value. Here is a detailed explanation along with a code example:</p>
-<h3 id="explanation">Explanation:</h3>
-<ul>
-<li>The <code>Integer.parseInt</code> method is a static method of the <code>Integer</code> class in Java.</li>
-<li>It takes a <code>String</code> as input and parses it to an <code>int</code> value.</li>
-<li>If the <code>String</code> represents a valid integer value, the method converts it to an <code>int</code>.</li>
-<li>If the <code>String</code> does not represent a valid integer (contains non-numeric characters or is empty), it throws a <code>NumberFormatException</code>.</li>
-<li>The method ignores leading and trailing whitespaces in the <code>String</code> while parsing.</li>
-<li>It can handle both positive and negative integer values.</li>
-</ul>
-<h3 id="code-example">Code Example:</h3>
-<div><pre class="hljs"><code><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ParseIntExample</span> {
-    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> {
-        <span class="hljs-comment">// Valid integer strings</span>
-        <span class="hljs-type">String</span> <span class="hljs-variable">numStr1</span> <span class="hljs-operator">=</span> <span class="hljs-string">"123"</span>;
-        <span class="hljs-type">String</span> <span class="hljs-variable">numStr2</span> <span class="hljs-operator">=</span> <span class="hljs-string">"-456"</span>;
-        
-        <span class="hljs-comment">// Parsing valid integer strings</span>
-        <span class="hljs-type">int</span> <span class="hljs-variable">num1</span> <span class="hljs-operator">=</span> Integer.parseInt(numStr1);
-        <span class="hljs-type">int</span> <span class="hljs-variable">num2</span> <span class="hljs-operator">=</span> Integer.parseInt(numStr2);
-        
-        System.out.println(<span class="hljs-string">"Parsed integers:"</span>);
-        System.out.println(<span class="hljs-string">"num1: "</span> + num1); <span class="hljs-comment">// Output: 123</span>
-        System.out.println(<span class="hljs-string">"num2: "</span> + num2); <span class="hljs-comment">// Output: -456</span>
-        
-        <span class="hljs-comment">// Invalid integer string</span>
-        <span class="hljs-type">String</span> <span class="hljs-variable">invalidStr</span> <span class="hljs-operator">=</span> <span class="hljs-string">"abc"</span>;
-        
-        <span class="hljs-keyword">try</span> {
-            <span class="hljs-comment">// Parsing invalid integer string</span>
-            <span class="hljs-type">int</span> <span class="hljs-variable">invalidNum</span> <span class="hljs-operator">=</span> Integer.parseInt(invalidStr); <span class="hljs-comment">// This will throw a NumberFormatException</span>
-        } <span class="hljs-keyword">catch</span> (NumberFormatException e) {
-            System.out.println(<span class="hljs-string">"Error: "</span> + e.getMessage()); <span class="hljs-comment">// Output: Error: For input string: "abc"</span>
-        }
-    }
-}</code></pre></div>
-<p>In this code example:</p>
-<ul>
-<li>We have valid integer strings <code>numStr1</code> and <code>numStr2</code> representing integers <code>123</code> and <code>-456</code> respectively.</li>
-<li>We use <code>Integer.parseInt</code> to parse these valid integer strings and store the parsed <code>int</code> values in <code>num1</code> and <code>num2</code>.</li>
-<li>We demonstrate how <code>Integer.parseInt</code> can handle valid integer strings and convert them to <code>int</code> values.</li>
-<li>We also have an invalid integer string <code>invalidStr</code> containing non-numeric characters.</li>
-<li>We try to parse this invalid string using <code>Integer.parseInt</code>, which will throw a <code>NumberFormatException</code>.</li>
-<li>We use a try-catch block to catch the exception and print the error message.</li>
-</ul>
-<hr />
-<h2 id="arrayscopyof-method"><code>Arrays.copyOf</code> method</h2>
-<p>In Java, the <code>Arrays.copyOf</code> method is used to create a copy of an array with a specified length. Here is a detailed explanation along with a code example:</p>
-<h3 id="explanation-2">Explanation:</h3>
-<ul>
-<li>The <code>Arrays.copyOf</code> method is a static method in the <code>java.util.Arrays</code> class.</li>
-<li>It creates a new array and copies elements from the original array to the new array.</li>
-<li>The method takes two parameters: the original array to be copied and the length of the new array.</li>
-<li>If the specified length is greater than the length of the original array, the additional elements are filled with default values (0 for numeric types, null for reference types).</li>
-<li>If the specified length is less than the length of the original array, only the elements up to the specified length are copied.</li>
-<li>This method provides a convenient way to resize an array or create a copy of an array with a different length.</li>
-</ul>
-<h3 id="code-example-2">Code Example:</h3>
-<div><pre class="hljs"><code><span class="hljs-keyword">import</span> java.util.Arrays;
-
-<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">CopyOfExample</span> {
-    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> {
-        <span class="hljs-type">int</span>[] originalArray = {<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>};
-        
-        <span class="hljs-comment">// Creating a copy of the original array with a larger length</span>
-        <span class="hljs-type">int</span>[] copiedArray1 = Arrays.copyOf(originalArray, <span class="hljs-number">7</span>);
-        
-        System.out.println(<span class="hljs-string">"Copied Array 1:"</span>);
-        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> num : copiedArray1) {
-            System.out.print(num + <span class="hljs-string">" "</span>); <span class="hljs-comment">// Output: 1 2 3 4 5 0 0 </span>
-        }
-        System.out.println();
-        
-        <span class="hljs-comment">// Creating a copy of the original array with a smaller length</span>
-        <span class="hljs-type">int</span>[] copiedArray2 = Arrays.copyOf(originalArray, <span class="hljs-number">3</span>);
-        
-        System.out.println(<span class="hljs-string">"Copied Array 2:"</span>);
-        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> num : copiedArray2) {
-            System.out.print(num + <span class="hljs-string">" "</span>); <span class="hljs-comment">// Output: 1 2 3</span>
-        }
-        System.out.println();
-        
-        <span class="hljs-comment">// Creating a copy of the original array with the same length</span>
-        <span class="hljs-type">int</span>[] copiedArray3 = Arrays.copyOf(originalArray, originalArray.length);
-        
-        System.out.println(<span class="hljs-string">"Copied Array 3:"</span>);
-        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> num : copiedArray3) {
-            System.out.print(num + <span class="hljs-string">" "</span>); <span class="hljs-comment">// Output: 1 2 3 4 5</span>
-        }
-        System.out.println();
-    }
-}</code></pre></div>
-<p>In this code example:</p>
-<ul>
-<li>We have an original array <code>originalArray</code> containing integers <code>{1, 2, 3, 4, 5}</code>.</li>
-<li>We use <code>Arrays.copyOf</code> to create copies of the original array with different lengths.</li>
-<li><code>copiedArray1</code> is created with a larger length (7), so additional elements are filled with default values (0 in this case).</li>
-<li><code>copiedArray2</code> is created with a smaller length (3), so only the first 3 elements of the original array are copied.</li>
-<li><code>copiedArray3</code> is created with the same length as the original array, resulting in an exact copy of the original array.</li>
-<li>We demonstrate how <code>Arrays.copyOf</code> can be used to resize an array or create copies with different lengths.</li>
 </ul>
 ]]></content:encoded>
         </item>
