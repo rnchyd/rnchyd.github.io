@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="Free HTML5 Template by FREEHTML5.CO" />
+	<meta name="keywords" content="free html5, free template, free bootstrap, html5, css3, mobile first, responsive" />
+	<meta name="author" content="FREEHTML5.CO" />
+
+  	<!-- Facebook and Twitter integration -->
+	<meta property="og:title" content=""/>
+	<meta property="og:image" content=""/>
+	<meta property="og:url" content=""/>
+	<meta property="og:site_name" content=""/>
+	<meta property="og:description" content=""/>
+	<meta name="twitter:title" content="" />
+	<meta name="twitter:image" content="" />
+	<meta name="twitter:url" content="" />
+	<meta name="twitter:card" content="" />
+
+	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+	<!-- <link rel="shortcut icon" href="favicon.ico"> -->
+
+	<link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,300,700|Roboto:300,400' rel='stylesheet' type='text/css'>
+	
+	<!-- Animate.css -->
+	<link rel="stylesheet" href="/_assets/css/animate.css">
+	<!-- Icomoon Icon Fonts-->
+	<link rel="stylesheet" href="/_assets/css/icomoon.css">
+	<!-- Bootstrap  -->
+	<link rel="stylesheet" href="/_assets/css/bootstrap.css">
+
+	<link rel="stylesheet" href="/_assets/css/style.css">
+
+
+	<!-- Modernizr JS -->
+	<script src="/_assets/js/modernizr-2.6.2.min.js"></script>
+	<!-- FOR IE9 below -->
+	<!--[if lt IE 9]>
+	<script src="/_assets/js/respond.min.js"></script>
+	<![endif]-->
+    <link rel="stylesheet" href="/_assets/main.css" />
+
+    <title>Sorting BigDecimal in Java - Home</title>
+  <link rel="stylesheet" href="/_markdown_plugin_assets/highlight.js/atom-one-light.css" /></head>
+  <body>
+    <div class="main">
+      <nav class="navigation">
+        <!-- <a href="/">Home</a> -->
+        <a class="fh5co-logo" href="/archives"><img src="/_assets/images/brand-nav.png" alt="Home"></a>
+      </nav>
+      <article>
+        <header>
+          <h1 class="article-title">Sorting BigDecimal in Java</h1>
+          <div class="article-info">
+            <div>
+              <span
+                >Created At：<time datetime="1719687750028"
+                  >2024-06-30 02:02</time
+                ></span
+              >
+              <span
+                >Updated At：<time datetime="1719691480969"
+                  >2024-06-30 03:04</time
+                ></span
+              >
+            </div>
+            
+          </div>
+        </header>
+        <div class="article-content markdown-body"><p>This Java code is a program that reads a set of real number strings, sorts them in descending order using BigDecimal, and then prints the sorted numbers.</p>
+<div><pre class="hljs"><code><span class="hljs-keyword">import</span> java.math.BigDecimal;
+<span class="hljs-keyword">import</span> java.util.*;
+
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">BigDecimalSort</span> {
+
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> {
+        <span class="hljs-keyword">try</span> {
+            <span class="hljs-comment">// Read input and initialize variables</span>
+            <span class="hljs-type">Scanner</span> <span class="hljs-variable">scanner</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Scanner</span>(System.in);
+            <span class="hljs-type">int</span> <span class="hljs-variable">n</span> <span class="hljs-operator">=</span> scanner.nextInt();
+            String[] s = <span class="hljs-keyword">new</span> <span class="hljs-title class_">String</span>[n + <span class="hljs-number">2</span>];
+
+            <span class="hljs-comment">// Call method to read input</span>
+            readInput(scanner, n, s);
+            <span class="hljs-comment">// Call method to sort real numbers in descending order</span>
+            sortRealNumbers(s, n);
+            <span class="hljs-comment">// Call method to print the sorted output</span>
+            printOutput(s, n);
+
+            scanner.close();
+        } <span class="hljs-keyword">catch</span> (Exception e) {
+            <span class="hljs-comment">// Handle any exceptions that occur in the main method</span>
+            System.out.println(<span class="hljs-string">"An error occurred: "</span> + e.getMessage());
+        }
+    }
+
+    <span class="hljs-comment">// Method to read input from the scanner</span>
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">readInput</span><span class="hljs-params">(Scanner scanner, <span class="hljs-type">int</span> n, String[] s)</span> {
+        <span class="hljs-keyword">try</span> {
+            <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; n; i++) {
+                s[i] = scanner.next();
+            }
+        } <span class="hljs-keyword">catch</span> (Exception e) {
+            <span class="hljs-comment">// Handle any exceptions that occur while reading input</span>
+            System.out.println(<span class="hljs-string">"Error reading input: "</span> + e.getMessage());
+        }
+    }
+
+    <span class="hljs-comment">// Method to sort real numbers in descending order using BigDecimal</span>
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">sortRealNumbers</span><span class="hljs-params">(String[] s, <span class="hljs-type">int</span> n)</span> {
+        <span class="hljs-keyword">try</span> {
+            <span class="hljs-comment">// Define a custom comparator to compare BigDecimal values in descending order</span>
+            Comparator&lt;String&gt; customComparator = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Comparator</span>&lt;String&gt;() {
+                <span class="hljs-meta">@Override</span>
+                <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">compare</span><span class="hljs-params">(String s1, String s2)</span> {
+                    <span class="hljs-type">BigDecimal</span> <span class="hljs-variable">a</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">BigDecimal</span>(s1);
+                    <span class="hljs-type">BigDecimal</span> <span class="hljs-variable">b</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">BigDecimal</span>(s2);
+                    <span class="hljs-keyword">return</span> b.compareTo(a); <span class="hljs-comment">// Sort in descending order</span>
+                }
+            };
+
+            <span class="hljs-comment">// Sort the array of real numbers using the custom comparator</span>
+            Arrays.sort(s, <span class="hljs-number">0</span>, n, customComparator);
+        } <span class="hljs-keyword">catch</span> (Exception e) {
+            <span class="hljs-comment">// Handle any exceptions that occur while sorting real numbers</span>
+            System.out.println(<span class="hljs-string">"Error sorting real numbers: "</span> + e.getMessage());
+        }
+    }
+
+    <span class="hljs-comment">// Method to print the output array</span>
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">printOutput</span><span class="hljs-params">(String[] s, <span class="hljs-type">int</span> n)</span> {
+        <span class="hljs-keyword">try</span> {
+            <span class="hljs-comment">// Print the sorted array of real numbers</span>
+            <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; n; i++) {
+                System.out.println(s[i]);
+            }
+        } <span class="hljs-keyword">catch</span> (Exception e) {
+            <span class="hljs-comment">// Handle any exceptions that occur while printing the output</span>
+            System.out.println(<span class="hljs-string">"Error printing output: "</span> + e.getMessage());
+        }
+    }
+}</code></pre></div>
+<p><strong>Sample Input</strong></p>
+<pre style="background:linear-gradient(to right, #F3F7EC, white);color:#3F4E4F;padding:5px" class="jop-noMdConv">
+9
+-100
+50
+0
+56.6
+90
+0.12
+.12
+02.34
+000.000
+</pre>
+<p><strong>Sample Output</strong></p>
+<pre style="background:linear-gradient(to right, #FFE6E6, white);color:#3F4E4F;padding:5px" class="jop-noMdConv">
+90
+56.6
+50
+02.34
+0.12
+.12
+0
+000.000
+-100
+</pre>
+<h2 id="elucidation">Elucidation</h2>
+<p>Here’s an explanation of each section of the code:</p>
+<ol>
+<li>
+<p><strong>Import Statements</strong>:</p>
+<ul>
+<li>The code imports the necessary classes <code>BigDecimal</code>, <code>Scanner</code>, and <code>Comparator</code> from the Java standard library.</li>
+</ul>
+</li>
+<li>
+<p><strong><code>BigDecimalSort</code> Class</strong>:</p>
+<ul>
+<li>It defines a class named <code>BigDecimalSort</code> that contains the main method and additional methods for reading input, sorting real numbers, and printing output.</li>
+</ul>
+</li>
+<li>
+<p><strong><code>main</code> Method</strong>:</p>
+<ul>
+<li>The <code>main</code> method is the entry point of the program.</li>
+<li>It reads the input, initializes variables, and handles exceptions that may occur during execution.</li>
+<li>Calls the <code>readInput</code>, <code>sortRealNumbers</code>, and <code>printOutput</code> methods to read, sort, and print the real number strings, respectively.</li>
+</ul>
+</li>
+<li>
+<p><strong><code>readInput</code> Method</strong>:</p>
+<ul>
+<li>Reads the real number strings from the scanner input and stores them in an array.</li>
+<li>Catches and handles any exceptions that may occur during input reading.</li>
+</ul>
+</li>
+<li>
+<p><strong><code>sortRealNumbers</code> Method</strong>:</p>
+<ul>
+<li>Defines a custom comparator to compare the <code>BigDecimal</code> values of the real number strings in descending order.</li>
+<li>Sorts the array of real number strings using the custom comparator and <code>BigDecimal</code>.</li>
+<li>Catches and handles any exceptions that may occur during sorting.</li>
+</ul>
+</li>
+<li>
+<p><strong><code>printOutput</code> Method</strong>:</p>
+<ul>
+<li>Prints the sorted array of real number strings to the console.</li>
+<li>Catches and handles any exceptions that may occur during output printing.</li>
+</ul>
+</li>
+<li>
+<p><strong>Error Handling</strong>:</p>
+<ul>
+<li>The code includes try-catch blocks to handle exceptions that may occur during input reading, sorting, and output printing.</li>
+<li>If an exception occurs, an error message is displayed indicating the specific section where the error occurred.</li>
+</ul>
+</li>
+<li>
+<p><strong>Overall Functionality</strong>:</p>
+<ul>
+<li>The code effectively reads a set of real number strings, sorts them in descending order using <code>BigDecimal</code> for precision, and prints the sorted numbers while handling any exceptions that may arise during the process.</li>
+</ul>
+</li>
+</ol>
+<p>Overall, this code effectively reads, sorts, and prints real number strings in descending order using BigDecimal, while handling exceptions that may arise during input reading, sorting, and output printing. The use of BigDecimal ensures accurate sorting of real numbers with precision.</p>
+<hr />
+<p>The line of Java code ‘String[] s = new String[n + 2];’ creates an array of Strings named ‘s’ with a length of ‘n + 2’. Here’s what this line of code does:</p>
+<ol>
+<li>
+<p><strong>String Array Declaration</strong>:</p>
+<ul>
+<li><code>String[] s</code>: Declares a variable ‘s’ as an array of Strings. This means ‘s’ can hold multiple String values.</li>
+</ul>
+</li>
+<li>
+<p><strong>Array Initialization</strong>:</p>
+<ul>
+<li><code>new String[n + 2]</code>: Initializes the array with a specific length. In this case, the length of the array is ‘n + 2’.</li>
+<li>The ‘n’ variable determines the number of elements in the array, and adding 2 to ‘n’ increases the length by 2.</li>
+</ul>
+</li>
+<li>
+<p><strong>Memory Allocation</strong>:</p>
+<ul>
+<li>This line allocates memory for an array of Strings with a total length of ‘n + 2’.</li>
+<li>The array ‘s’ can store ‘n + 2’ elements of type String.</li>
+</ul>
+</li>
+<li>
+<p><strong>Usage</strong>:</p>
+<ul>
+<li>This array can be used to store ‘n’ real number strings read from input, as well as additional elements if needed.</li>
+</ul>
+</li>
+</ol>
+<p>In summary, this line of code initializes an array ‘s’ of Strings with a length of ‘n + 2’, setting up the array to store a specific number of String values in Java.</p>
+<hr />
+<p>The custom comparator Java code performs the following operations:</p>
+<ol>
+<li>
+<p><strong>Custom Comparator Definition</strong>:</p>
+<ul>
+<li>A custom comparator is defined to compare <code>BigDecimal</code> values in descending order.</li>
+<li>The <code>Comparator&lt;String&gt;</code> interface is implemented with an anonymous inner class to provide custom comparison logic.</li>
+</ul>
+</li>
+<li>
+<p><strong>Compare Method Implementation</strong>:</p>
+<ul>
+<li>The <code>compare</code> method of the <code>Comparator</code> interface is overridden to compare two String objects representing real numbers.</li>
+<li>Inside the <code>compare</code> method:
+<ul>
+<li>Two <code>BigDecimal</code> objects ‘a’ and ‘b’ are created by parsing the input Strings ‘s1’ and ‘s2’ as <code>BigDecimal</code> values.</li>
+<li>The <code>compareTo</code> method is used to compare ‘b’ with ‘a’. This method returns a negative value if ‘b’ is less than ‘a’, zero if they are equal, or a positive value if ‘b’ is greater than ‘a’.</li>
+<li>By returning the result of <code>b.compareTo(a)</code>, the comparison is done in descending order.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Sorting the Array</strong>:</p>
+<ul>
+<li>The <code>Arrays.sort</code> method is used to sort the array ‘s’ of real number Strings.</li>
+<li>The <code>sort</code> method takes the array ‘s’, a starting index (0), the number of elements to be sorted (‘n’), and a custom comparator (‘customComparator’) as arguments.</li>
+<li>The custom comparator is used to sort the array ‘s’ based on the custom comparison logic defined in the <code>compare</code> method.</li>
+</ul>
+</li>
+</ol>
+<p>In summary, this code defines a custom comparator to compare <code>BigDecimal</code> values in descending order and then uses this custom comparator to sort an array of real number Strings in descending order based on the <code>BigDecimal</code> values represented by the Strings.</p>
+</div>
+      </article>
+    </div>
+  </body>
+</html>

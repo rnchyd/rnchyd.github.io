@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="Free HTML5 Template by FREEHTML5.CO" />
+	<meta name="keywords" content="free html5, free template, free bootstrap, html5, css3, mobile first, responsive" />
+	<meta name="author" content="FREEHTML5.CO" />
+
+  	<!-- Facebook and Twitter integration -->
+	<meta property="og:title" content=""/>
+	<meta property="og:image" content=""/>
+	<meta property="og:url" content=""/>
+	<meta property="og:site_name" content=""/>
+	<meta property="og:description" content=""/>
+	<meta name="twitter:title" content="" />
+	<meta name="twitter:image" content="" />
+	<meta name="twitter:url" content="" />
+	<meta name="twitter:card" content="" />
+
+	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+	<!-- <link rel="shortcut icon" href="favicon.ico"> -->
+
+	<link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,300,700|Roboto:300,400' rel='stylesheet' type='text/css'>
+	
+	<!-- Animate.css -->
+	<link rel="stylesheet" href="/_assets/css/animate.css">
+	<!-- Icomoon Icon Fonts-->
+	<link rel="stylesheet" href="/_assets/css/icomoon.css">
+	<!-- Bootstrap  -->
+	<link rel="stylesheet" href="/_assets/css/bootstrap.css">
+
+	<link rel="stylesheet" href="/_assets/css/style.css">
+
+
+	<!-- Modernizr JS -->
+	<script src="/_assets/js/modernizr-2.6.2.min.js"></script>
+	<!-- FOR IE9 below -->
+	<!--[if lt IE 9]>
+	<script src="/_assets/js/respond.min.js"></script>
+	<![endif]-->
+    <link rel="stylesheet" href="/_assets/main.css" />
+
+    <title>Arraylist in Java - Home</title>
+  <link rel="stylesheet" href="/_markdown_plugin_assets/highlight.js/atom-one-light.css" /></head>
+  <body>
+    <div class="main">
+      <nav class="navigation">
+        <!-- <a href="/">Home</a> -->
+        <a class="fh5co-logo" href="/archives"><img src="/_assets/images/brand-nav.png" alt="Home"></a>
+      </nav>
+      <article>
+        <header>
+          <h1 class="article-title">Arraylist in Java</h1>
+          <div class="article-info">
+            <div>
+              <span
+                >Created At：<time datetime="1719769532971"
+                  >2024-07-01 00:45</time
+                ></span
+              >
+              <span
+                >Updated At：<time datetime="1719769885731"
+                  >2024-07-01 00:51</time
+                ></span
+              >
+            </div>
+            
+          </div>
+        </header>
+        <div class="article-content markdown-body"><p>Arraylist code example :</p>
+<div><pre class="hljs"><code><span class="hljs-keyword">import</span> java.io.*;
+<span class="hljs-keyword">import</span> java.util.*;
+
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">JavaArraylist</span> {
+
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> {
+        <span class="hljs-type">Scanner</span> <span class="hljs-variable">scan</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Scanner</span>(System.in);
+
+        <span class="hljs-type">int</span> <span class="hljs-variable">total</span> <span class="hljs-operator">=</span> scan.nextInt();
+        ArrayList&lt;ArrayList&lt;Integer&gt;&gt; mainlist = readInputList(scan, total);
+
+        <span class="hljs-type">int</span> <span class="hljs-variable">totalPrint</span> <span class="hljs-operator">=</span> scan.nextInt();
+        printValues(mainlist, scan, totalPrint);
+
+        scan.close();
+    }
+
+    <span class="hljs-comment">// Method to read input list</span>
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> ArrayList&lt;ArrayList&lt;Integer&gt;&gt; <span class="hljs-title function_">readInputList</span><span class="hljs-params">(Scanner scan, <span class="hljs-type">int</span> total)</span> {
+        ArrayList&lt;ArrayList&lt;Integer&gt;&gt; mainlist = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;&gt;();
+
+        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; total; i++) {
+            <span class="hljs-type">int</span> <span class="hljs-variable">size</span> <span class="hljs-operator">=</span> scan.nextInt();
+            ArrayList&lt;Integer&gt; list = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;&gt;();
+
+            <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">j</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; j &lt; size; j++) {
+                <span class="hljs-type">int</span> <span class="hljs-variable">item</span> <span class="hljs-operator">=</span> scan.nextInt();
+                list.add(item);
+            }
+
+            mainlist.add(list);
+        }
+
+        <span class="hljs-keyword">return</span> mainlist;
+    }
+
+    <span class="hljs-comment">// Method to print values from mainlist</span>
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">printValues</span><span class="hljs-params">(ArrayList&lt;ArrayList&lt;Integer&gt;&gt; mainlist, Scanner scan, <span class="hljs-type">int</span> totalPrint)</span> {
+        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">k</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; k &lt; totalPrint; k++) {
+            <span class="hljs-type">int</span> <span class="hljs-variable">row</span> <span class="hljs-operator">=</span> scan.nextInt();
+            <span class="hljs-type">int</span> <span class="hljs-variable">col</span> <span class="hljs-operator">=</span> scan.nextInt();
+
+            <span class="hljs-keyword">try</span> {
+                System.out.println(mainlist.get(row - <span class="hljs-number">1</span>).get(col - <span class="hljs-number">1</span>));
+            } <span class="hljs-keyword">catch</span> (Exception e) {
+                System.out.println(<span class="hljs-string">"ERROR!"</span>);
+            }
+        }
+    }
+}</code></pre></div>
+<p><strong>Sample Input</strong></p>
+<pre style="background:linear-gradient(to right, #F3F7EC, white);color:#3F4E4F;padding:5px" class="jop-noMdConv">
+5
+5 41 77 74 22 44
+1 12
+4 37 34 36 52
+0
+3 20 22 33
+5
+1 3
+3 4
+3 1
+4 3
+5 5
+</pre>
+<p><strong>Sample Output</strong></p>
+<pre style="background:linear-gradient(to right, #FFE6E6, white);color:#3F4E4F;padding:5px" class="jop-noMdConv">
+74
+52
+37
+ERROR!
+ERROR!
+</pre>
+<h2 id="elucidation">Elucidation</h2>
+<p>This code is a Java program that reads input values from the console, stores them in a 2D ArrayList, and then prints specific values from that list based on user input. Here’s a detailed explanation of the code:</p>
+<ol>
+<li>
+<p>The <code>JavaArraylist</code> class is defined as the main class for the program.</p>
+</li>
+<li>
+<p>The <code>main</code> method is the entry point of the program. It performs the following tasks:</p>
+<ul>
+<li>Creates a new <code>Scanner</code> object named <code>scan</code> to read input from the console.</li>
+<li>Reads an integer value from the input, which represents the total number of lists to be created.</li>
+<li>Calls the <code>readInputList</code> method to read the input lists and store them in the <code>mainlist</code> ArrayList.</li>
+<li>Reads another integer value from the input, which represents the total number of values to be printed.</li>
+<li>Calls the <code>printValues</code> method to print specific values from the <code>mainlist</code> based on user input.</li>
+<li>Closes the <code>Scanner</code> object to release system resources.</li>
+</ul>
+</li>
+<li>
+<p>The <code>readInputList</code> method is a helper method that reads input lists from the console and returns a 2D ArrayList containing these lists. It takes two parameters:</p>
+<ul>
+<li><code>scan</code>: A <code>Scanner</code> object used to read input values.</li>
+<li><code>total</code>: An integer representing the total number of lists to be read.<br />
+Inside the method:</li>
+<li>It initializes an empty <code>mainlist</code> ArrayList to store the input lists.</li>
+<li>Iterates <code>total</code> times to read each list:
+<ul>
+<li>Reads an integer value <code>size</code> from the input, representing the size of the current list.</li>
+<li>Creates a new ArrayList named <code>list</code> to store the elements of the current list.</li>
+<li>Iterates <code>size</code> times to read each element of the list and adds it to the <code>list</code>.</li>
+<li>Adds the <code>list</code> to the <code>mainlist</code>.</li>
+</ul>
+</li>
+<li>Finally, it returns the populated <code>mainlist</code>.</li>
+</ul>
+</li>
+<li>
+<p>The <code>printValues</code> method is another helper method that prints specific values from the <code>mainlist</code> based on user input. It takes three parameters:</p>
+<ul>
+<li><code>mainlist</code>: The 2D ArrayList containing input lists.</li>
+<li><code>scan</code>: A <code>Scanner</code> object used to read input values.</li>
+<li><code>totalPrint</code>: An integer representing the total number of values to be printed.<br />
+Inside the method:</li>
+<li>Iterates <code>totalPrint</code> times to print the specified values:
+<ul>
+<li>Reads two integer values <code>row</code> and <code>col</code> from the input, representing the row and column indices of the value to be printed.</li>
+<li>Uses a try-catch block to handle potential <code>IndexOutOfBoundsException</code> when accessing the <code>mainlist</code>.</li>
+<li>Prints the value at index <code>(row - 1, col - 1)</code> from the <code>mainlist</code>. If an exception occurs, it prints “ERROR!” instead.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<p>Overall, this code efficiently reads input lists, stores them in a 2D ArrayList, and prints specific values from the list while handling exceptions gracefully.</p>
+<hr />
+<h2 id="the-arraylist-class">The ArrayList Class</h2>
+<h4 id="overview">Overview:</h4>
+<ul>
+<li><code>ArrayList</code> in Java is a dynamic array that can grow or shrink in size as needed.</li>
+<li>It is a part of the <code>java.util</code> package and implements the <code>List</code> interface.</li>
+<li><code>ArrayList</code> provides resizable arrays that can store elements of any data type.</li>
+</ul>
+<h4 id="key-features">Key Features:</h4>
+<ol>
+<li><strong>Dynamic Sizing</strong>: Automatically adjusts its capacity based on the number of elements stored.</li>
+<li><strong>Random Access</strong>: Allows fast access to elements using index-based operations.</li>
+<li><strong>Insertion and Deletion</strong>: Supports adding, removing, and updating elements efficiently.</li>
+<li><strong>Iterable</strong>: Implements the <code>Iterable</code> interface, allowing iteration over elements using enhanced for loop or iterators.</li>
+<li><strong>Generics</strong>: Supports generics, ensuring type safety by specifying the type of elements it can hold.</li>
+</ol>
+<h4 id="code-example">Code Example:</h4>
+<p>Here is an example demonstrating the usage of <code>ArrayList</code> to store and manipulate a list of integers in Java:</p>
+<div><pre class="hljs"><code><span class="hljs-keyword">import</span> java.util.ArrayList;
+
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ArrayListExample</span> {
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> {
+        <span class="hljs-comment">// Create an ArrayList of integers</span>
+        ArrayList&lt;Integer&gt; numbers = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;&gt;();
+
+        <span class="hljs-comment">// Add elements to the ArrayList</span>
+        numbers.add(<span class="hljs-number">10</span>);
+        numbers.add(<span class="hljs-number">20</span>);
+        numbers.add(<span class="hljs-number">30</span>);
+
+        <span class="hljs-comment">// Access and modify elements in the ArrayList</span>
+        System.out.println(<span class="hljs-string">"Element at index 1: "</span> + numbers.get(<span class="hljs-number">1</span>));
+        numbers.set(<span class="hljs-number">1</span>, <span class="hljs-number">25</span>);
+
+        <span class="hljs-comment">// Iterate over the elements in the ArrayList</span>
+        System.out.println(<span class="hljs-string">"Elements in the ArrayList:"</span>);
+        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> num : numbers) {
+            System.out.println(num);
+        }
+
+        <span class="hljs-comment">// Get the size of the ArrayList</span>
+        System.out.println(<span class="hljs-string">"Size of the ArrayList: "</span> + numbers.size());
+
+        <span class="hljs-comment">// Check if the ArrayList contains a specific element</span>
+        System.out.println(<span class="hljs-string">"Contains 30: "</span> + numbers.contains(<span class="hljs-number">30</span>));
+
+        <span class="hljs-comment">// Remove an element from the ArrayList</span>
+        numbers.remove(<span class="hljs-number">0</span>);
+        System.out.println(<span class="hljs-string">"Elements in the ArrayList after removal:"</span>);
+        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> num : numbers) {
+            System.out.println(num);
+        }
+    }
+}</code></pre></div>
+<h4 id="explanation">Explanation:</h4>
+<ul>
+<li>The code creates an <code>ArrayList</code> named <code>numbers</code> to store integers.</li>
+<li>It adds elements (10, 20, 30) to the <code>ArrayList</code> using the <code>add</code> method.</li>
+<li>Demonstrates accessing and modifying elements using <code>get</code> and <code>set</code> methods.</li>
+<li>Iterates over the elements using an enhanced for loop.</li>
+<li>Shows how to get the size of the <code>ArrayList</code>, check for element presence, and remove elements.</li>
+</ul>
+<h4 id="benefits">Benefits:</h4>
+<ul>
+<li>Flexible and dynamic storage for collections of elements.</li>
+<li>Supports various operations like adding, accessing, updating, and removing elements.</li>
+<li>Provides methods for searching, sorting, and iterating over elements efficiently.</li>
+<li>Ensures type safety through generics, preventing type mismatches.</li>
+</ul>
+<h4 id="use-cases">Use Cases:</h4>
+<ul>
+<li>Storing and managing collections of objects in memory.</li>
+<li>Implementing data structures like lists, stacks, and queues.</li>
+<li>Handling data retrieved from databases or external sources.</li>
+<li>Facilitating data manipulation and processing in Java applications.</li>
+</ul>
+<p>In summary, <code>ArrayList</code> is a versatile and widely used class in Java for managing dynamic collections of elements efficiently. It simplifies the storage and manipulation of data structures, making it a fundamental component in Java programming.</p>
+</div>
+      </article>
+    </div>
+  </body>
+</html>
