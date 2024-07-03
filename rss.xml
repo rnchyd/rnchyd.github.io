@@ -4,9 +4,130 @@
         <title></title>
         <link>undefined</link>
         <description>undefined</description>
-        <lastBuildDate>Wed, 03 Jul 2024 10:41:30 GMT</lastBuildDate>
+        <lastBuildDate>Wed, 03 Jul 2024 19:13:42 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>Joplin Pages Publisher</generator>
+        <item>
+            <title><![CDATA[Code Analysis of HR Minesweeper Game problem solution]]></title>
+            <guid>49d8495738504ab5b186660f525eb53a</guid>
+            <pubDate>Wed, 03 Jul 2024 19:06:30 GMT</pubDate>
+            <content:encoded><![CDATA[<p>Given the solution code :</p>
+<div><pre class="hljs"><code><span class="hljs-keyword">import</span> java.util.Scanner;
+
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Minesweeper</span> {
+    
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> {
+        <span class="hljs-type">char</span>[][] map = <span class="hljs-keyword">new</span> <span class="hljs-title class_">char</span>[<span class="hljs-number">10</span>][<span class="hljs-number">10</span>];
+        
+        <span class="hljs-keyword">try</span> {
+            <span class="hljs-comment">// Create a Scanner object for user input</span>
+            <span class="hljs-type">Scanner</span> <span class="hljs-variable">input</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Scanner</span>(System.in);
+            <span class="hljs-comment">// Read the number of bombs from user input</span>
+            <span class="hljs-type">int</span> <span class="hljs-variable">numBombs</span> <span class="hljs-operator">=</span> input.nextInt();
+            
+            <span class="hljs-comment">// Populate the map with bombs based on user input</span>
+            populateBombs(map, input, numBombs);
+            <span class="hljs-comment">// Update the map with bomb counts</span>
+            updateMapWithCounts(map);
+            <span class="hljs-comment">// Print the updated map</span>
+            printMap(map);
+        } <span class="hljs-keyword">catch</span> (Exception e) {
+            <span class="hljs-comment">// Handle any exceptions that occur during execution</span>
+            System.out.println(<span class="hljs-string">"An error occurred: "</span> + e.getMessage());
+        }
+    }
+    
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">populateBombs</span><span class="hljs-params">(<span class="hljs-type">char</span>[][] map, Scanner input, <span class="hljs-type">int</span> numBombs)</span> {
+        <span class="hljs-comment">// Loop through the number of bombs provided by the user</span>
+        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; numBombs; i++) {
+            <span class="hljs-comment">// Read the bomb coordinates from user input and mark them on the map</span>
+            String[] bombCoord = input.next().split(<span class="hljs-string">","</span>);
+            <span class="hljs-type">int</span> <span class="hljs-variable">row</span> <span class="hljs-operator">=</span> Integer.parseInt(bombCoord[<span class="hljs-number">0</span>]) - <span class="hljs-number">1</span>;
+            <span class="hljs-type">int</span> <span class="hljs-variable">col</span> <span class="hljs-operator">=</span> Integer.parseInt(bombCoord[<span class="hljs-number">1</span>]) - <span class="hljs-number">1</span>;
+            map[row][col] = <span class="hljs-string">'x'</span>;
+        }
+    }
+    
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">updateMapWithCounts</span><span class="hljs-params">(<span class="hljs-type">char</span>[][] map)</span> {
+        <span class="hljs-comment">// Iterate through each cell in the map</span>
+        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">10</span>; i++) {
+            <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">j</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; j &lt; <span class="hljs-number">10</span>; j++) {
+                <span class="hljs-comment">// Check if the cell is not a bomb</span>
+                <span class="hljs-keyword">if</span> (map[i][j] != <span class="hljs-string">'x'</span>) {
+                    <span class="hljs-comment">// Calculate the number of bombs around the cell</span>
+                    <span class="hljs-type">int</span> <span class="hljs-variable">count</span> <span class="hljs-operator">=</span> countBombs(map, i, j);
+                    <span class="hljs-comment">// Update the cell with the bomb count or '.' if no bombs nearby</span>
+                    map[i][j] = count == <span class="hljs-number">0</span> ? <span class="hljs-string">'.'</span> : (<span class="hljs-type">char</span>)(<span class="hljs-string">'0'</span> + count);
+                }
+            }
+        }
+    }
+    
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">printMap</span><span class="hljs-params">(<span class="hljs-type">char</span>[][] map)</span> {
+        <span class="hljs-comment">// Print the map to the console</span>
+        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">10</span>; i++) {
+            <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">j</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; j &lt; <span class="hljs-number">10</span>; j++) {
+                System.out.print(map[i][j]);
+            }
+            System.out.println();
+        }
+    }
+    
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-type">int</span> <span class="hljs-title function_">countBombs</span><span class="hljs-params">(<span class="hljs-type">char</span>[][] map, <span class="hljs-type">int</span> row, <span class="hljs-type">int</span> col)</span> {
+        <span class="hljs-type">int</span> <span class="hljs-variable">count</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;
+        <span class="hljs-comment">// Iterate through neighboring cells to count bombs</span>
+        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> Math.max(<span class="hljs-number">0</span>, row - <span class="hljs-number">1</span>); i &lt;= Math.min(<span class="hljs-number">9</span>, row + <span class="hljs-number">1</span>); i++) {
+            <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">j</span> <span class="hljs-operator">=</span> Math.max(<span class="hljs-number">0</span>, col - <span class="hljs-number">1</span>); j &lt;= Math.min(<span class="hljs-number">9</span>, col + <span class="hljs-number">1</span>); j++) {
+                <span class="hljs-comment">// Check if the cell contains a bomb</span>
+                <span class="hljs-keyword">if</span> (map[i][j] == <span class="hljs-string">'x'</span>) {
+                    count++;
+                }
+            }
+        }
+        <span class="hljs-keyword">return</span> count;
+    }
+}</code></pre></div>
+<h2 id="elucidation">Elucidation</h2>
+<p><strong>Explanation:</strong><br />
+This Java program simulates a simple Minesweeper game where the user can input the number of bombs and their coordinates, and the program will populate the map with bombs and update the map with bomb counts around each cell.</p>
+<ol>
+<li>
+<p><strong>Main Method:</strong></p>
+<ul>
+<li>The <code>main</code> method initializes a 10x10 char array to represent the game map.</li>
+<li>It reads the number of bombs from the user, populates the bombs on the map, updates the map with bomb counts, and then prints the map.</li>
+</ul>
+</li>
+<li>
+<p><strong>Populate Bombs Method:</strong></p>
+<ul>
+<li>The <code>populateBombs</code> method takes the map, user input scanner, and the number of bombs as parameters.</li>
+<li>It reads the bomb coordinates from the user input and marks those positions with ‘x’ on the map.</li>
+</ul>
+</li>
+<li>
+<p><strong>Update Map with Counts Method:</strong></p>
+<ul>
+<li>The <code>updateMapWithCounts</code> method iterates over each cell in the map.</li>
+<li>For each empty cell (not a bomb), it calculates the number of bombs surrounding that cell and updates the cell with the bomb count or ‘.’ if no bombs are nearby.</li>
+</ul>
+</li>
+<li>
+<p><strong>Print Map Method:</strong></p>
+<ul>
+<li>The <code>printMap</code> method simply prints the current state of the map to the console.</li>
+</ul>
+</li>
+<li>
+<p><strong>Count Bombs Method:</strong></p>
+<ul>
+<li>The <code>countBombs</code> method calculates the number of bombs surrounding a particular cell by checking the neighboring cells within the bounds of the map.</li>
+</ul>
+</li>
+</ol>
+<p>This program efficiently handles user input for bomb placement, updates the map with bomb counts, and displays the final map state for the user to play the Minesweeper game.</p>
+]]></content:encoded>
+        </item>
         <item>
             <title><![CDATA[Code Analysis of HR Fraudulent Activity Notifications problem solution]]></title>
             <guid>06707c10ef61459ca94ace8a5d9c9e21</guid>
@@ -2473,327 +2594,6 @@ Maria
 </li>
 </ol>
 <p>In summary, the <code>PriorityQueue</code> class in Java provides an efficient way to manage elements based on their priority. It is commonly used in scenarios where elements need to be processed in a specific order. The example demonstrates how to use a PriorityQueue to maintain elements in sorted order based on their priority.</p>
-]]></content:encoded>
-        </item>
-        <item>
-            <title><![CDATA[Dequeue in Java]]></title>
-            <guid>454a52b43d434ebd85f08123b49f7691</guid>
-            <pubDate>Mon, 01 Jul 2024 03:17:21 GMT</pubDate>
-            <content:encoded><![CDATA[<p>Java Dequeue code example :</p>
-<div><pre class="hljs"><code><span class="hljs-keyword">import</span> java.util.*;
-
-<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Test</span> {
-    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> {
-        <span class="hljs-keyword">try</span> {
-            <span class="hljs-comment">// Initialize scanner, deque, map, and get input values</span>
-            <span class="hljs-type">Scanner</span> <span class="hljs-variable">in</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Scanner</span>(System.in);
-            <span class="hljs-keyword">final</span> Deque&lt;Integer&gt; deque = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayDeque</span>&lt;Integer&gt;();
-            <span class="hljs-keyword">final</span> Map&lt;Integer, Integer&gt; map = <span class="hljs-keyword">new</span> <span class="hljs-title class_">HashMap</span>&lt;Integer, Integer&gt;();
-            <span class="hljs-keyword">final</span> <span class="hljs-type">int</span> <span class="hljs-variable">n</span> <span class="hljs-operator">=</span> in.nextInt();
-            <span class="hljs-keyword">final</span> <span class="hljs-type">int</span> <span class="hljs-variable">m</span> <span class="hljs-operator">=</span> in.nextInt();
-
-            <span class="hljs-comment">// Process input and calculate the result</span>
-            <span class="hljs-type">int</span> <span class="hljs-variable">res</span> <span class="hljs-operator">=</span> processInput(in, deque, map, n, m);
-            System.out.println(res);
-        } <span class="hljs-keyword">catch</span> (Exception e) {
-            System.out.println(<span class="hljs-string">"An error occurred: "</span> + e.getMessage());
-        }
-    }
-
-    <span class="hljs-comment">// Process input and calculate the result</span>
-    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-type">int</span> <span class="hljs-title function_">processInput</span><span class="hljs-params">(Scanner in, Deque&lt;Integer&gt; deque, Map&lt;Integer, Integer&gt; map, <span class="hljs-type">int</span> n, <span class="hljs-type">int</span> m)</span> {
-        <span class="hljs-type">int</span> <span class="hljs-variable">res</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;
-        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; n; i++) {
-            <span class="hljs-type">int</span> <span class="hljs-variable">num</span> <span class="hljs-operator">=</span> in.nextInt();
-            updateDequeAndMap(deque, map, num, m);
-
-            <span class="hljs-comment">// Update the result based on the current map size</span>
-            <span class="hljs-type">int</span> <span class="hljs-variable">cnt</span> <span class="hljs-operator">=</span> map.size();
-            <span class="hljs-keyword">if</span> (cnt &gt; res) { res = cnt; }
-        }
-        <span class="hljs-keyword">return</span> res;
-    }
-
-    <span class="hljs-comment">// Update deque and map based on the input number</span>
-    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">updateDequeAndMap</span><span class="hljs-params">(Deque&lt;Integer&gt; deque, Map&lt;Integer, Integer&gt; map, <span class="hljs-type">int</span> num, <span class="hljs-type">int</span> m)</span> {
-        deque.addLast(num);
-        <span class="hljs-keyword">if</span> (map.containsKey(num)) {
-            map.put(num, map.get(num) + <span class="hljs-number">1</span>);
-        } <span class="hljs-keyword">else</span> {
-            map.put(num, <span class="hljs-number">1</span>);
-        }
-
-        <span class="hljs-comment">// Check if deque size exceeds the limit and update map accordingly</span>
-        <span class="hljs-keyword">if</span> (deque.size() == m + <span class="hljs-number">1</span>) {
-            <span class="hljs-type">int</span> <span class="hljs-variable">key</span> <span class="hljs-operator">=</span> deque.removeFirst();
-            <span class="hljs-type">int</span> <span class="hljs-variable">v</span> <span class="hljs-operator">=</span> map.get(key);
-            <span class="hljs-keyword">if</span> (v == <span class="hljs-number">1</span>) {
-                map.remove(key);
-            } <span class="hljs-keyword">else</span> {
-                map.put(key, v - <span class="hljs-number">1</span>);
-            }
-        }
-    }
-}</code></pre></div>
-<p><strong>Sample Input</strong></p>
-<pre style="background:linear-gradient(to right, #F3F7EC, white);color:#3F4E4F;padding:5px" class="jop-noMdConv">
-6 3
-5 3 5 2 3 2
-</pre>
-<p><strong>Sample Output</strong></p>
-<pre style="background:linear-gradient(to right, #FFE6E6, white);color:#3F4E4F;padding:5px" class="jop-noMdConv">
-3
-</pre>
-<h2 id="elucidation">Elucidation</h2>
-<p>The provided code is a Java program that reads input values, processes them using a deque (double-ended queue) and a map (hash map), and calculates a result based on the input. Here is a detailed explanation of the code:</p>
-<ol>
-<li>
-<p><strong>Main Method (<code>public static void main(String[] args)</code>)</strong></p>
-<ul>
-<li>The main method is the entry point of the program.</li>
-<li>It initializes a scanner to read input, creates a deque to store integers, creates a map to store integer frequencies, and reads two integers <code>n</code> and <code>m</code> from the input.</li>
-<li>It then calls the <code>processInput</code> method to handle the input processing and result calculation.</li>
-<li>Any exceptions that occur during program execution are caught and handled by printing an error message.</li>
-</ul>
-</li>
-<li>
-<p><strong>Process Input Method (<code>private static int processInput(Scanner in, Deque&lt;Integer&gt; deque, Map&lt;Integer, Integer&gt; map, int n, int m)</code>)</strong></p>
-<ul>
-<li>This method processes the input values and calculates the final result.</li>
-<li>It iterates <code>n</code> times, reading an integer from the input each time.</li>
-<li>For each integer, it calls the <code>updateDequeAndMap</code> method to update the deque and map based on the input number.</li>
-<li>It calculates the current size of the map and updates the result if the size is greater than the current result.</li>
-<li>Finally, it returns the calculated result.</li>
-</ul>
-</li>
-<li>
-<p><strong>Update Deque and Map Method (<code>private static void updateDequeAndMap(Deque&lt;Integer&gt; deque, Map&lt;Integer, Integer&gt; map, int num, int m)</code>)</strong></p>
-<ul>
-<li>This method updates the deque and map based on the input number.</li>
-<li>It adds the input number to the end of the deque and increments its frequency in the map.</li>
-<li>If the deque size exceeds <code>m + 1</code>, it removes the first element from the deque, updates its frequency in the map accordingly, and removes it from the map if the frequency becomes 0.</li>
-</ul>
-</li>
-</ol>
-<p>Overall, the code efficiently processes input integers, maintains a deque of a specified size, and calculates the maximum number of unique integers that can be contained in the deque at any given time. The code structure is modular, making it easier to understand and maintain.</p>
-<hr />
-<h2 id="arraydeque-class"><code>ArrayDeque</code> Class</h2>
-<p>The <code>ArrayDeque</code> class in Java is a resizable-array implementation of the <code>Deque</code> interface. It provides a double-ended queue data structure that allows elements to be added or removed from both ends efficiently. Here is a detailed explanation along with a code example and its output:</p>
-<ol>
-<li><strong>Code Example:</strong></li>
-</ol>
-<div><pre class="hljs"><code><span class="hljs-keyword">import</span> java.util.ArrayDeque;
-
-<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ArrayDequeExample</span> {
-    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> {
-        <span class="hljs-comment">// Create an ArrayDeque</span>
-        ArrayDeque&lt;Integer&gt; arrayDeque = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayDeque</span>&lt;&gt;();
-
-        <span class="hljs-comment">// Add elements to the end of the deque</span>
-        arrayDeque.addLast(<span class="hljs-number">10</span>);
-        arrayDeque.addLast(<span class="hljs-number">20</span>);
-        arrayDeque.addLast(<span class="hljs-number">30</span>);
-
-        <span class="hljs-comment">// Add elements to the front of the deque</span>
-        arrayDeque.addFirst(<span class="hljs-number">5</span>);
-        arrayDeque.addFirst(<span class="hljs-number">2</span>);
-
-        <span class="hljs-comment">// Remove elements from the front and end of the deque</span>
-        <span class="hljs-type">int</span> <span class="hljs-variable">firstElement</span> <span class="hljs-operator">=</span> arrayDeque.removeFirst();
-        <span class="hljs-type">int</span> <span class="hljs-variable">lastElement</span> <span class="hljs-operator">=</span> arrayDeque.removeLast();
-
-        <span class="hljs-comment">// Display the elements in the deque</span>
-        System.out.println(<span class="hljs-string">"Elements in ArrayDeque: "</span> + arrayDeque);
-
-        <span class="hljs-comment">// Get the first and last elements of the deque</span>
-        System.out.println(<span class="hljs-string">"First Element: "</span> + firstElement);
-        System.out.println(<span class="hljs-string">"Last Element: "</span> + lastElement);
-    }
-}</code></pre></div>
-<ol start="2">
-<li>
-<p><strong>Output Explanation:</strong></p>
-<ul>
-<li>The code creates an <code>ArrayDeque</code> and adds elements <code>10</code>, <code>20</code>, and <code>30</code> to the end of the deque.</li>
-<li>It then adds elements <code>5</code> and <code>2</code> to the front of the deque.</li>
-<li>The <code>removeFirst()</code> method removes the first element <code>2</code>, and the <code>removeLast()</code> method removes the last element <code>30</code>.</li>
-<li>The elements in the deque are displayed using <code>System.out.println("Elements in ArrayDeque: " + arrayDeque);</code>, showing <code>[5, 10, 20]</code>.</li>
-<li>The first element <code>2</code> and the last element <code>30</code> are displayed using <code>System.out.println("First Element: " + firstElement);</code> and <code>System.out.println("Last Element: " + lastElement);</code> respectively.</li>
-</ul>
-</li>
-<li>
-<p><strong>Output:</strong></p>
-</li>
-</ol>
-<div><pre class="hljs"><code><span class="hljs-variable">Elements</span> <span class="hljs-variable">in</span> <span class="hljs-variable">ArrayDeque</span><span class="hljs-operator">:</span> <span class="hljs-punctuation">[</span><span class="hljs-number">5</span><span class="hljs-operator">,</span> <span class="hljs-number">10</span><span class="hljs-operator">,</span> <span class="hljs-number">20</span><span class="hljs-punctuation">]</span>
-<span class="hljs-built_in">First</span> <span class="hljs-built_in">Element</span><span class="hljs-operator">:</span> <span class="hljs-number">2</span>
-<span class="hljs-built_in">Last</span> <span class="hljs-built_in">Element</span><span class="hljs-operator">:</span> <span class="hljs-number">30</span></code></pre></div>
-<p>In summary, the <code>ArrayDeque</code> class in Java provides a flexible and efficient way to work with double-ended queues. It allows elements to be added or removed from both ends, making it suitable for various data structure operations. The example demonstrates how to use <code>ArrayDeque</code> to add, remove, and access elements, showcasing its functionality and versatility.</p>
-<hr />
-<h2 id="hashmap-class"><code>HashMap</code> Class</h2>
-<h3 id="hashmap-class-in-java">HashMap Class in Java:</h3>
-<ol>
-<li>
-<p><strong>Definition</strong>:</p>
-<ul>
-<li><code>HashMap</code> is a class in Java that implements the <code>Map</code> interface to store key-value pairs.</li>
-<li>It allows null keys and values, and it does not maintain the order of elements.</li>
-</ul>
-</li>
-<li>
-<p><strong>Key Features</strong>:</p>
-<ul>
-<li><strong>Fast Lookup</strong>: HashMap provides constant-time performance for basic operations like get and put.</li>
-<li><strong>Key-Value Pairs</strong>: Each entry in a HashMap is a key-value pair.</li>
-<li><strong>Resizable</strong>: HashMap automatically resizes itself when the number of elements exceeds a certain threshold.</li>
-<li><strong>Thread-Safe</strong>: HashMap is not synchronized by default. If thread safety is required, you can use <code>Collections.synchronizedMap()</code>.</li>
-</ul>
-</li>
-<li>
-<p><strong>Common Methods</strong>:</p>
-<ul>
-<li><code>put(key, value)</code>: Inserts a key-value pair into the HashMap.</li>
-<li><code>get(key)</code>: Retrieves the value associated with the specified key.</li>
-<li><code>containsKey(key)</code>: Checks if the HashMap contains a specific key.</li>
-<li><code>keySet()</code>: Returns a Set containing all the keys in the HashMap.</li>
-<li><code>values()</code>: Returns a Collection containing all the values in the HashMap.</li>
-<li><code>remove(key)</code>: Removes the key-value pair associated with the specified key.</li>
-</ul>
-</li>
-<li>
-<p><strong>Code Example</strong>:</p>
-<div><pre class="hljs"><code><span class="hljs-keyword">import</span> java.util.HashMap;
-
-<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">HashMapExample</span> {
-    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> {
-        <span class="hljs-comment">// Create a new HashMap</span>
-        HashMap&lt;String, Integer&gt; scores = <span class="hljs-keyword">new</span> <span class="hljs-title class_">HashMap</span>&lt;&gt;();
-
-        <span class="hljs-comment">// Add key-value pairs to the HashMap</span>
-        scores.put(<span class="hljs-string">"Alice"</span>, <span class="hljs-number">95</span>);
-        scores.put(<span class="hljs-string">"Bob"</span>, <span class="hljs-number">85</span>);
-        scores.put(<span class="hljs-string">"Charlie"</span>, <span class="hljs-number">90</span>);
-
-        <span class="hljs-comment">// Retrieve and print the value for a specific key</span>
-        System.out.println(<span class="hljs-string">"Bob's score: "</span> + scores.get(<span class="hljs-string">"Bob"</span>));
-
-        <span class="hljs-comment">// Check if a key exists in the HashMap</span>
-        <span class="hljs-keyword">if</span> (scores.containsKey(<span class="hljs-string">"Alice"</span>)) {
-            System.out.println(<span class="hljs-string">"Alice's score is present."</span>);
-        }
-
-        <span class="hljs-comment">// Remove a key-value pair from the HashMap</span>
-        scores.remove(<span class="hljs-string">"Charlie"</span>);
-
-        <span class="hljs-comment">// Iterate over the keys and values in the HashMap</span>
-        <span class="hljs-keyword">for</span> (String name : scores.keySet()) {
-            System.out.println(name + <span class="hljs-string">"'s score: "</span> + scores.get(name));
-        }
-    }
-}</code></pre></div>
-</li>
-<li>
-<p><strong>Output</strong>:</p>
-<div><pre class="hljs"><code>Bob<span class="hljs-string">'s score: 85
-Alice'</span>s score <span class="hljs-keyword">is</span> present.
-Alic<span class="hljs-string">e's score: 95
-Bob'</span>s score: <span class="hljs-number">85</span></code></pre></div>
-</li>
-<li>
-<p><strong>Explanation</strong>:</p>
-<ul>
-<li>In the code example, we create a HashMap named <code>scores</code> that stores String keys and Integer values.</li>
-<li>We add key-value pairs representing names and scores to the HashMap using the <code>put</code> method.</li>
-<li>We retrieve and print Bob’s score using the <code>get</code> method.</li>
-<li>We check if Alice’s score is present in the HashMap using <code>containsKey</code>.</li>
-<li>We remove Charlie’s score from the HashMap using <code>remove</code>.</li>
-<li>Finally, we iterate over the keys in the HashMap using <code>keySet</code> and print each name along with their score.</li>
-</ul>
-</li>
-</ol>
-<p>This example demonstrates the basic usage of the HashMap class in Java for storing and manipulating key-value pairs. The output shows the retrieved values and messages based on the operations performed on the HashMap.</p>
-<hr />
-<h2 id="map-interface"><code>Map</code> Interface</h2>
-<h3 id="map-interface-in-java">Map Interface in Java:</h3>
-<ol>
-<li>
-<p><strong>Definition</strong>:</p>
-<ul>
-<li>The <code>Map</code> interface in Java represents a collection of key-value pairs.</li>
-<li>It does not allow duplicate keys and each key can map to at most one value.</li>
-<li><code>Map</code> is implemented by classes like <code>HashMap</code>, <code>TreeMap</code>, and <code>LinkedHashMap</code>.</li>
-</ul>
-</li>
-<li>
-<p><strong>Key Features</strong>:</p>
-<ul>
-<li><strong>Key-Value Pairs</strong>: Entries in a Map are stored as key-value pairs.</li>
-<li><strong>Methods</strong>: Provides methods for adding, removing, and retrieving elements based on keys.</li>
-<li><strong>Iterability</strong>: Allows iteration over keys, values, or entries.</li>
-<li><strong>No Duplicate Keys</strong>: Ensures that each key is unique within the Map.</li>
-</ul>
-</li>
-<li>
-<p><strong>Common Methods</strong>:</p>
-<ul>
-<li><code>put(key, value)</code>: Inserts a key-value pair into the Map.</li>
-<li><code>get(key)</code>: Retrieves the value associated with the specified key.</li>
-<li><code>containsKey(key)</code>: Checks if the Map contains a specific key.</li>
-<li><code>keySet()</code>: Returns a Set containing all the keys in the Map.</li>
-<li><code>values()</code>: Returns a Collection containing all the values in the Map.</li>
-<li><code>entrySet()</code>: Returns a Set containing all key-value mappings in the Map.</li>
-</ul>
-</li>
-<li>
-<p><strong>Code Example</strong>:</p>
-<div><pre class="hljs"><code><span class="hljs-keyword">import</span> java.util.HashMap;
-<span class="hljs-keyword">import</span> java.util.Map;
-
-<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">MapInterfaceExample</span> {
-    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> {
-        <span class="hljs-comment">// Create a new HashMap implementing the Map interface</span>
-        Map&lt;String, Integer&gt; map = <span class="hljs-keyword">new</span> <span class="hljs-title class_">HashMap</span>&lt;&gt;();
-
-        <span class="hljs-comment">// Add key-value pairs to the Map</span>
-        map.put(<span class="hljs-string">"A"</span>, <span class="hljs-number">1</span>);
-        map.put(<span class="hljs-string">"B"</span>, <span class="hljs-number">2</span>);
-        map.put(<span class="hljs-string">"C"</span>, <span class="hljs-number">3</span>);
-
-        <span class="hljs-comment">// Retrieve and print the value for a specific key</span>
-        System.out.println(<span class="hljs-string">"Value for key 'B': "</span> + map.get(<span class="hljs-string">"B"</span>));
-
-        <span class="hljs-comment">// Check if a key exists in the Map</span>
-        <span class="hljs-keyword">if</span> (map.containsKey(<span class="hljs-string">"A"</span>)) {
-            System.out.println(<span class="hljs-string">"Key 'A' is present."</span>);
-        }
-
-        <span class="hljs-comment">// Iterate over the entries in the Map</span>
-        <span class="hljs-keyword">for</span> (Map.Entry&lt;String, Integer&gt; entry : map.entrySet()) {
-            System.out.println(<span class="hljs-string">"Key: "</span> + entry.getKey() + <span class="hljs-string">", Value: "</span> + entry.getValue());
-        }
-    }
-}</code></pre></div>
-</li>
-<li>
-<p><strong>Output</strong>:</p>
-<div><pre class="hljs"><code><span class="hljs-built_in">Value</span> <span class="hljs-variable">for</span> <span class="hljs-variable">key</span> <span class="hljs-operator">'</span><span class="hljs-variable">B</span><span class="hljs-operator">':</span> <span class="hljs-number">2</span>
-<span class="hljs-built_in">Key</span> <span class="hljs-operator">'</span><span class="hljs-variable">A</span><span class="hljs-operator">'</span> <span class="hljs-variable">is</span> <span class="hljs-variable">present</span><span class="hljs-operator">.</span>
-<span class="hljs-built_in">Key</span><span class="hljs-operator">:</span> <span class="hljs-variable">A</span><span class="hljs-operator">,</span> <span class="hljs-built_in">Value</span><span class="hljs-operator">:</span> <span class="hljs-number">1</span>
-<span class="hljs-built_in">Key</span><span class="hljs-operator">:</span> <span class="hljs-variable">B</span><span class="hljs-operator">,</span> <span class="hljs-built_in">Value</span><span class="hljs-operator">:</span> <span class="hljs-number">2</span>
-<span class="hljs-built_in">Key</span><span class="hljs-operator">:</span> <span class="hljs-built_in">C</span><span class="hljs-operator">,</span> <span class="hljs-built_in">Value</span><span class="hljs-operator">:</span> <span class="hljs-number">3</span></code></pre></div>
-</li>
-<li>
-<p><strong>Explanation</strong>:</p>
-<ul>
-<li>In the code example, we create a HashMap that implements the Map interface with String keys and Integer values.</li>
-<li>We add key-value pairs to the Map using the <code>put</code> method.</li>
-<li>We retrieve and print the value associated with the key “B” using the <code>get</code> method.</li>
-<li>We check if the key “A” is present in the Map using <code>containsKey</code>.</li>
-<li>We iterate over the entries in the Map using <code>entrySet</code> and print each key-value pair.</li>
-</ul>
-</li>
-</ol>
-<p>This example demonstrates the usage of the Map interface in Java for storing and manipulating key-value pairs. The output shows the retrieved values and messages based on the operations performed on the Map.</p>
 ]]></content:encoded>
         </item>
     </channel>
