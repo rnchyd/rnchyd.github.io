@@ -4,9 +4,193 @@
         <title></title>
         <link>undefined</link>
         <description>undefined</description>
-        <lastBuildDate>Wed, 03 Jul 2024 10:22:27 GMT</lastBuildDate>
+        <lastBuildDate>Wed, 03 Jul 2024 10:41:30 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>Joplin Pages Publisher</generator>
+        <item>
+            <title><![CDATA[Code Analysis of HR Fraudulent Activity Notifications problem solution]]></title>
+            <guid>06707c10ef61459ca94ace8a5d9c9e21</guid>
+            <pubDate>Wed, 03 Jul 2024 10:36:25 GMT</pubDate>
+            <content:encoded><![CDATA[<p>Given the solution code :</p>
+<div><pre class="hljs"><code><span class="hljs-keyword">import</span> java.io.*;
+<span class="hljs-keyword">import</span> java.math.*;
+<span class="hljs-keyword">import</span> java.security.*;
+<span class="hljs-keyword">import</span> java.text.*;
+<span class="hljs-keyword">import</span> java.util.*;
+<span class="hljs-keyword">import</span> java.util.concurrent.*;
+<span class="hljs-keyword">import</span> java.util.regex.*;
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">Result</span> {
+
+    <span class="hljs-comment">/*
+     * Complete the 'activityNotifications' function below.
+     *
+     * The function is expected to return an INTEGER.
+     * The function accepts following parameters:
+     *  1. INTEGER_ARRAY expenditure
+     *  2. INTEGER d
+     */</span>
+
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-type">int</span> <span class="hljs-title function_">activityNotifications</span><span class="hljs-params">(List&lt;Integer&gt; expenditure, <span class="hljs-type">int</span> d)</span> {
+        <span class="hljs-keyword">try</span> {
+            <span class="hljs-comment">// Initialize variables</span>
+            <span class="hljs-type">int</span> <span class="hljs-variable">count</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;
+            <span class="hljs-type">int</span>[] freq = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[<span class="hljs-number">201</span>];
+            
+            <span class="hljs-comment">// Initialize frequency array for initial expenditures</span>
+            initializeFrequency(expenditure, d, freq);
+            
+            <span class="hljs-comment">// Calculate notifications based on median comparison</span>
+            count = calculateNotifications(expenditure, d, freq);
+            
+            <span class="hljs-keyword">return</span> count;
+        } <span class="hljs-keyword">catch</span> (Exception e) {
+            <span class="hljs-comment">// Handle any exceptions that occur during the process</span>
+            System.out.println(<span class="hljs-string">"An error occurred: "</span> + e.getMessage());
+            <span class="hljs-keyword">return</span> -<span class="hljs-number">1</span>;
+        }
+    }
+
+    <span class="hljs-comment">// Method to initialize frequency array for initial expenditures</span>
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">initializeFrequency</span><span class="hljs-params">(List&lt;Integer&gt; expenditure, <span class="hljs-type">int</span> d, <span class="hljs-type">int</span>[] freq)</span> {
+        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; d; i++) {
+            freq[expenditure.get(i)]++;
+        }
+    }
+
+    <span class="hljs-comment">// Method to calculate notifications based on median comparison</span>
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-type">int</span> <span class="hljs-title function_">calculateNotifications</span><span class="hljs-params">(List&lt;Integer&gt; expenditure, <span class="hljs-type">int</span> d, <span class="hljs-type">int</span>[] freq)</span> {
+        <span class="hljs-type">int</span> <span class="hljs-variable">count</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;
+        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> d; i &lt; expenditure.size(); i++) {
+            <span class="hljs-comment">// Calculate median based on frequency array</span>
+            <span class="hljs-type">double</span> <span class="hljs-variable">median</span> <span class="hljs-operator">=</span> calculateMedian(freq, d);
+            
+            <span class="hljs-comment">// Compare expenditure with double the median for notification</span>
+            <span class="hljs-keyword">if</span> (expenditure.get(i) &gt;= <span class="hljs-number">2</span> * median) {
+                count++;
+            }
+
+            <span class="hljs-comment">// Update frequency array for sliding window</span>
+            freq[expenditure.get(i - d)]--;
+            freq[expenditure.get(i)]++;
+        }
+        <span class="hljs-keyword">return</span> count;
+    }
+
+    <span class="hljs-comment">// Method to calculate median based on frequency array</span>
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-type">double</span> <span class="hljs-title function_">calculateMedian</span><span class="hljs-params">(<span class="hljs-type">int</span>[] freq, <span class="hljs-type">int</span> d)</span> {
+        <span class="hljs-type">double</span> <span class="hljs-variable">median</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;
+        <span class="hljs-keyword">if</span> (d % <span class="hljs-number">2</span> == <span class="hljs-number">1</span>) {
+            <span class="hljs-comment">// Calculate median for odd window size</span>
+            <span class="hljs-type">int</span> <span class="hljs-variable">sum</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;
+            <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">j</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; j &lt; <span class="hljs-number">201</span>; j++) {
+                sum += freq[j];
+                <span class="hljs-keyword">if</span> (sum &gt;= d / <span class="hljs-number">2</span> + <span class="hljs-number">1</span>) {
+                    median = j;
+                    <span class="hljs-keyword">break</span>;
+                }
+            }
+        } <span class="hljs-keyword">else</span> {
+            <span class="hljs-comment">// Calculate median for even window size</span>
+            <span class="hljs-type">int</span> <span class="hljs-variable">sum</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;
+            <span class="hljs-type">int</span> <span class="hljs-variable">n</span> <span class="hljs-operator">=</span> -<span class="hljs-number">1</span>, m = -<span class="hljs-number">1</span>;
+            <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">j</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; j &lt; <span class="hljs-number">201</span>; j++) {
+                sum += freq[j];
+                <span class="hljs-keyword">if</span> (n &lt; <span class="hljs-number">0</span> &amp;&amp; sum &gt;= d / <span class="hljs-number">2</span>) {
+                    n = j;
+                }
+                <span class="hljs-keyword">if</span> (sum &gt;= d / <span class="hljs-number">2</span> + <span class="hljs-number">1</span>) {
+                    m = j;
+                    median = (m + n) / <span class="hljs-number">2.0</span>;
+                    <span class="hljs-keyword">break</span>;
+                }
+            }
+        }
+        <span class="hljs-keyword">return</span> median;
+    }
+}
+
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> {
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> IOException {
+        <span class="hljs-type">BufferedReader</span> <span class="hljs-variable">bufferedReader</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">BufferedReader</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">InputStreamReader</span>(System.in));
+        <span class="hljs-type">BufferedWriter</span> <span class="hljs-variable">bufferedWriter</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">BufferedWriter</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">FileWriter</span>(System.getenv(<span class="hljs-string">"OUTPUT_PATH"</span>)));
+
+        String[] firstMultipleInput = bufferedReader.readLine().replaceAll(<span class="hljs-string">"\\s+$"</span>, <span class="hljs-string">""</span>).split(<span class="hljs-string">" "</span>);
+
+        <span class="hljs-type">int</span> <span class="hljs-variable">n</span> <span class="hljs-operator">=</span> Integer.parseInt(firstMultipleInput[<span class="hljs-number">0</span>]);
+
+        <span class="hljs-type">int</span> <span class="hljs-variable">d</span> <span class="hljs-operator">=</span> Integer.parseInt(firstMultipleInput[<span class="hljs-number">1</span>]);
+
+        String[] expenditureTemp = bufferedReader.readLine().replaceAll(<span class="hljs-string">"\\s+$"</span>, <span class="hljs-string">""</span>).split(<span class="hljs-string">" "</span>);
+
+        List&lt;Integer&gt; expenditure = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;&gt;();
+
+        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; n; i++) {
+            <span class="hljs-type">int</span> <span class="hljs-variable">expenditureItem</span> <span class="hljs-operator">=</span> Integer.parseInt(expenditureTemp[i]);
+            expenditure.add(expenditureItem);
+        }
+
+        <span class="hljs-type">int</span> <span class="hljs-variable">result</span> <span class="hljs-operator">=</span> Result.activityNotifications(expenditure, d);
+
+        bufferedWriter.write(String.valueOf(result));
+        bufferedWriter.newLine();
+
+        bufferedReader.close();
+        bufferedWriter.close();
+    }
+}</code></pre></div>
+<p><strong>Sample Input</strong></p>
+<pre style="background:linear-gradient(to right, #F3F7EC, white);color:#3F4E4F;padding:5px" class="jop-noMdConv">
+9 5                 
+2 3 4 2 3 6 8 4 5
+</pre>
+<p><strong>Sample Output</strong></p>
+<pre style="background:linear-gradient(to right, #FFE6E6, white);color:#3F4E4F;padding:5px" class="jop-noMdConv">
+2
+</pre>
+<h2 id="elucidation">Elucidation</h2>
+<p>The code provided is a Java implementation of a function called <code>activityNotifications</code> in the <code>Result</code> class. This function calculates the number of notifications that should be sent based on a set of expenditures and a given window size <code>d</code>. Here is a detailed explanation of the code:</p>
+<ol>
+<li>
+<p><strong><code>activityNotifications</code> Method</strong>:</p>
+<ul>
+<li>This method is the main function that calculates the number of notifications to be sent.</li>
+<li>It takes two parameters: <code>expenditure</code>, a list of expenditures, and <code>d</code>, the window size.</li>
+<li>The method initializes variables, including <code>count</code> to store the notification count and <code>freq</code> to keep track of the frequency of expenditures.</li>
+<li>It then calls two helper methods: <code>initializeFrequency</code> to set up the initial frequency array and <code>calculateNotifications</code> to determine the number of notifications.</li>
+<li>Any exceptions that occur during the process are caught and handled with an error message.</li>
+</ul>
+</li>
+<li>
+<p><strong><code>initializeFrequency</code> Method</strong>:</p>
+<ul>
+<li>This method initializes the frequency array <code>freq</code> based on the initial <code>d</code> expenditures.</li>
+<li>It loops through the first <code>d</code> expenditures and increments the corresponding frequency in the array.</li>
+</ul>
+</li>
+<li>
+<p><strong><code>calculateNotifications</code> Method</strong>:</p>
+<ul>
+<li>This method calculates the number of notifications based on median comparison.</li>
+<li>It iterates through the expenditures starting from index <code>d</code>.</li>
+<li>For each iteration, it calculates the median using the <code>calculateMedian</code> method and compares the current expenditure with double the median.</li>
+<li>If the expenditure is greater than or equal to twice the median, it increments the <code>count</code> variable.</li>
+<li>It updates the frequency array for the sliding window by removing the oldest expenditure and adding the new one.</li>
+</ul>
+</li>
+<li>
+<p><strong><code>calculateMedian</code> Method</strong>:</p>
+<ul>
+<li>This method calculates the median based on the frequency array <code>freq</code> and the window size <code>d</code>.</li>
+<li>It handles both odd and even window sizes to determine the median value.</li>
+<li>For an odd window size, it finds the middle value where the cumulative sum reaches <code>d/2 + 1</code>.</li>
+<li>For an even window size, it finds the two middle values and calculates the average as the median.</li>
+</ul>
+</li>
+</ol>
+<p>Overall, the code structure is well-organized with separate methods for initialization, median calculation, and notification calculation. It efficiently handles the processing of expenditures and sliding windows to determine the number of notifications to be sent. The try-catch blocks ensure proper error handling during the execution of the function.</p>
+]]></content:encoded>
+        </item>
         <item>
             <title><![CDATA[Code Analysis of HR Queen's Attack II problem solution]]></title>
             <guid>b6316c68c275415a84854eda84032638</guid>
@@ -2610,249 +2794,6 @@ Bob'</span>s score: <span class="hljs-number">85</span></code></pre></div>
 </li>
 </ol>
 <p>This example demonstrates the usage of the Map interface in Java for storing and manipulating key-value pairs. The output shows the retrieved values and messages based on the operations performed on the Map.</p>
-]]></content:encoded>
-        </item>
-        <item>
-            <title><![CDATA[Comparator in Java]]></title>
-            <guid>688effb55ac84835a9c2ee0c825883ef</guid>
-            <pubDate>Mon, 01 Jul 2024 02:17:45 GMT</pubDate>
-            <content:encoded><![CDATA[<p>Java Comparator code example :</p>
-<div><pre class="hljs"><code><span class="hljs-keyword">import</span> java.util.*;
-
-<span class="hljs-keyword">class</span> <span class="hljs-title class_">Checker</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">Comparator</span>&lt;Player&gt; {
-    <span class="hljs-comment">// Compare method to compare Player objects based on score and name</span>
-    <span class="hljs-meta">@Override</span>
-    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">compare</span><span class="hljs-params">(Player a, Player b)</span> {
-        <span class="hljs-keyword">if</span> (a.score == b.score) {
-            <span class="hljs-keyword">return</span> a.name.compareTo(b.name); <span class="hljs-comment">// Compare alphabetically if scores are equal</span>
-        } <span class="hljs-keyword">else</span> {
-            <span class="hljs-keyword">return</span> b.score - a.score; <span class="hljs-comment">// Compare scores in decreasing order</span>
-        }
-    }
-}
-
-<span class="hljs-keyword">class</span> <span class="hljs-title class_">Player</span> {
-    String name;
-    <span class="hljs-type">int</span> score;
-    
-    Player(String name, <span class="hljs-type">int</span> score) {
-        <span class="hljs-built_in">this</span>.name = name;
-        <span class="hljs-built_in">this</span>.score = score;
-    }
-}
-
-<span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> {
-
-    <span class="hljs-comment">// Main method to execute the program</span>
-    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> {
-        <span class="hljs-keyword">try</span> {
-            <span class="hljs-type">Scanner</span> <span class="hljs-variable">scan</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Scanner</span>(System.in);
-            <span class="hljs-type">int</span> <span class="hljs-variable">n</span> <span class="hljs-operator">=</span> readIntegerInput(scan); <span class="hljs-comment">// Read the number of players</span>
-
-            Player[] players = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Player</span>[n];
-            <span class="hljs-type">Checker</span> <span class="hljs-variable">checker</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Checker</span>();
-
-            <span class="hljs-comment">// Read player names and scores</span>
-            readPlayerDetails(scan, n, players);
-
-            scan.close();
-
-            <span class="hljs-comment">// Sort the players array based on the custom comparator</span>
-            Arrays.sort(players, checker);
-
-            <span class="hljs-comment">// Display the sorted player details</span>
-            displayPlayerDetails(players);
-        } <span class="hljs-keyword">catch</span> (Exception e) {
-            System.out.println(<span class="hljs-string">"An error occurred: "</span> + e.getMessage());
-        }
-    }
-
-    <span class="hljs-comment">// Method to read an integer input from the scanner</span>
-    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-type">int</span> <span class="hljs-title function_">readIntegerInput</span><span class="hljs-params">(Scanner scan)</span> {
-        <span class="hljs-type">int</span> <span class="hljs-variable">n</span> <span class="hljs-operator">=</span> scan.nextInt();
-        <span class="hljs-keyword">return</span> n;
-    }
-
-    <span class="hljs-comment">// Method to read player details (name and score) from the scanner</span>
-    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">readPlayerDetails</span><span class="hljs-params">(Scanner scan, <span class="hljs-type">int</span> n, Player[] players)</span> {
-        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; n; i++) {
-            players[i] = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Player</span>(scan.next(), scan.nextInt());
-        }
-    }
-
-    <span class="hljs-comment">// Method to display player details after sorting</span>
-    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">displayPlayerDetails</span><span class="hljs-params">(Player[] players)</span> {
-        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; players.length; i++) {
-            System.out.printf(<span class="hljs-string">"%s %s\n"</span>, players[i].name, players[i].score);
-        }
-    }
-}</code></pre></div>
-<p><strong>Sample Input</strong></p>
-<pre style="background:linear-gradient(to right, #F3F7EC, white);color:#3F4E4F;padding:5px" class="jop-noMdConv">
-5
-amy 100
-david 100
-heraldo 50
-aakansha 75
-aleksa 150
-</pre>
-<p><strong>Sample Output</strong></p>
-<pre style="background:linear-gradient(to right, #FFE6E6, white);color:#3F4E4F;padding:5px" class="jop-noMdConv">
-aleksa 150
-amy 100
-david 100
-aakansha 75
-heraldo 50
-</pre>
-<h2 id="elucidation">Elucidation</h2>
-<p>Here is a detailed explanation of the provided Java code above :</p>
-<h3 id="code-explanation">Code Explanation:</h3>
-<ol>
-<li>
-<p><strong>Checker Class</strong>:</p>
-<ul>
-<li>The <code>Checker</code> class implements the <code>Comparator&lt;Player&gt;</code> interface to define custom comparison logic for <code>Player</code> objects.</li>
-<li>The <code>compare</code> method compares two <code>Player</code> objects based on their scores and names.</li>
-<li>If the scores are equal, it compares the names alphabetically; otherwise, it compares the scores in decreasing order.</li>
-</ul>
-</li>
-<li>
-<p><strong>Player Class</strong>:</p>
-<ul>
-<li>The <code>Player</code> class represents a player with attributes <code>name</code> and <code>score</code>.</li>
-<li>It has a constructor to initialize a player with a name and a score.</li>
-</ul>
-</li>
-<li>
-<p><strong>Solution Class</strong>:</p>
-<ul>
-<li>The <code>Solution</code> class contains the main method to execute the program.</li>
-<li>It reads the input using a <code>Scanner</code>, creates an array of <code>Player</code> objects, and instantiates a <code>Checker</code> object for custom sorting.</li>
-<li>It then reads player details (name and score) from the input and stores them in the <code>players</code> array.</li>
-<li>After reading the input, it closes the <code>Scanner</code> and sorts the <code>players</code> array using the custom comparator.</li>
-<li>Finally, it displays the sorted player details by printing their names and scores.</li>
-</ul>
-</li>
-<li>
-<p><strong>Error Handling</strong>:</p>
-<ul>
-<li>The code is wrapped in a try-catch block to handle any exceptions that may occur during runtime.</li>
-<li>If an exception occurs, an error message is displayed indicating the type of error.</li>
-</ul>
-</li>
-<li>
-<p><strong>Overall Functionality</strong>:</p>
-<ul>
-<li>The code demonstrates the use of custom comparators and sorting in Java to sort an array of <code>Player</code> objects based on their scores and names.</li>
-<li>It showcases how to implement custom comparison logic using the <code>Comparator</code> interface and apply it to sort objects.</li>
-</ul>
-</li>
-<li>
-<p><strong>Output</strong>:</p>
-<ul>
-<li>The output of the program displays the player details sorted based on scores in decreasing order and names alphabetically for equal scores.</li>
-</ul>
-</li>
-</ol>
-<p>This code efficiently sorts player objects based on scores and names using a custom comparator. It demonstrates the flexibility of custom sorting logic in Java and the use of comparators for object comparison.</p>
-<hr />
-<h2 id="what-is-format-string-s-sn-do">What is format string “%s %s\n” do</h2>
-<p>The format string “%s %s\n” is used in Java to format a string output with placeholders for two string values followed by a new line character. Here’s what each part of the format string represents:</p>
-<ul>
-<li><strong>%s</strong>: This is a placeholder for a string value. When the formatted string is printed, this placeholder will be replaced by the actual string value.</li>
-<li><strong>" "</strong>: This represents a space character between the two string values. It ensures that there is a space separating the two strings in the output.</li>
-<li><strong>\n</strong>: This represents a new line character. It indicates that a new line should be started after printing the two string values with a space in between.</li>
-</ul>
-<p>In summary, when you use the format string “%s %s\n” with <code>System.out.printf()</code>, it will print two string values with a space between them and then move to a new line for the next output.</p>
-<hr />
-<h2 id="the-comparator-interface">The <code>Comparator</code> Interface</h2>
-<h3 id="comparator-interface-in-java">Comparator Interface in Java:</h3>
-<ol>
-<li>
-<p><strong>Definition</strong>:</p>
-<ul>
-<li>The <code>Comparator</code> interface in Java is used to define custom comparison logic for objects of a class that do not implement the <code>Comparable</code> interface.</li>
-<li>It allows objects to be sorted based on custom criteria specified by the programmer.</li>
-<li>The <code>compare</code> method in the <code>Comparator</code> interface is used to compare two objects and determine their order.</li>
-</ul>
-</li>
-<li>
-<p><strong>Key Concepts</strong>:</p>
-<ul>
-<li><strong>Custom Sorting</strong>: Allows objects to be sorted based on criteria other than their natural order.</li>
-<li><strong>Flexibility</strong>: Provides flexibility in defining sorting logic for objects.</li>
-<li><strong>Reusability</strong>: Comparator instances can be reused for sorting different collections of objects.</li>
-<li><strong>Type Safety</strong>: Ensures type safety during sorting operations.</li>
-</ul>
-</li>
-<li>
-<p><strong>Code Example</strong>:</p>
-<div><pre class="hljs"><code><span class="hljs-keyword">import</span> java.util.*;
-
-<span class="hljs-keyword">class</span> <span class="hljs-title class_">Player</span> {
-    String name;
-    <span class="hljs-type">int</span> score;
-
-    Player(String name, <span class="hljs-type">int</span> score) {
-        <span class="hljs-built_in">this</span>.name = name;
-        <span class="hljs-built_in">this</span>.score = score;
-    }
-}
-
-<span class="hljs-keyword">class</span> <span class="hljs-title class_">ScoreComparator</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">Comparator</span>&lt;Player&gt; {
-    <span class="hljs-meta">@Override</span>
-    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">compare</span><span class="hljs-params">(Player a, Player b)</span> {
-        <span class="hljs-keyword">return</span> b.score - a.score; <span class="hljs-comment">// Sort players based on score in decreasing order</span>
-    }
-}
-
-<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ComparatorExample</span> {
-    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> {
-        List&lt;Player&gt; players = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;&gt;();
-        players.add(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Player</span>(<span class="hljs-string">"Alice"</span>, <span class="hljs-number">100</span>));
-        players.add(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Player</span>(<span class="hljs-string">"Bob"</span>, <span class="hljs-number">85</span>));
-        players.add(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Player</span>(<span class="hljs-string">"Charlie"</span>, <span class="hljs-number">95</span>));
-
-        Collections.sort(players, <span class="hljs-keyword">new</span> <span class="hljs-title class_">ScoreComparator</span>());
-
-        <span class="hljs-keyword">for</span> (Player player : players) {
-            System.out.println(player.name + <span class="hljs-string">" - "</span> + player.score);
-        }
-    }
-}</code></pre></div>
-</li>
-<li>
-<p><strong>Output</strong>:</p>
-<div><pre class="hljs"><code><span class="hljs-attribute">Alice</span> - <span class="hljs-number">100</span>
-<span class="hljs-attribute">Charlie</span> - <span class="hljs-number">95</span>
-<span class="hljs-attribute">Bob</span> - <span class="hljs-number">85</span></code></pre></div>
-</li>
-<li>
-<p><strong>Explanation</strong>:</p>
-<ul>
-<li>In the code example, the <code>Player</code> class represents a player with a name and a score.</li>
-<li>The <code>ScoreComparator</code> class implements the <code>Comparator</code> interface to define sorting based on player scores in decreasing order.</li>
-<li>In the <code>main</code> method, a list of <code>Player</code> objects is created and sorted using the <code>ScoreComparator</code>.</li>
-<li>The sorted player details are then printed, showing the players in decreasing order of scores.</li>
-</ul>
-</li>
-<li>
-<p><strong>Benefits of Comparator</strong>:</p>
-<ul>
-<li><strong>Custom Sorting Logic</strong>: Allows sorting based on custom criteria.</li>
-<li><strong>Separation of Concerns</strong>: Keeps sorting logic separate from the class being sorted.</li>
-<li><strong>Flexibility</strong>: Enables sorting objects in different ways without modifying their class implementation.</li>
-</ul>
-</li>
-<li>
-<p><strong>Use Cases</strong>:</p>
-<ul>
-<li>Comparator is commonly used in sorting collections like lists, sets, and arrays of custom objects.</li>
-<li>It is used when the natural ordering of objects is not suitable for the sorting requirement.</li>
-</ul>
-</li>
-</ol>
-<p>The <code>Comparator</code> interface in Java provides a powerful mechanism for defining custom sorting logic for objects. It enhances the flexibility and reusability of sorting operations in Java collections.</p>
 ]]></content:encoded>
         </item>
     </channel>
