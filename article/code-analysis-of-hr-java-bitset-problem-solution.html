@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="Free HTML5 Template by FREEHTML5.CO" />
+	<meta name="keywords" content="free html5, free template, free bootstrap, html5, css3, mobile first, responsive" />
+	<meta name="author" content="FREEHTML5.CO" />
+
+  	<!-- Facebook and Twitter integration -->
+	<meta property="og:title" content=""/>
+	<meta property="og:image" content=""/>
+	<meta property="og:url" content=""/>
+	<meta property="og:site_name" content=""/>
+	<meta property="og:description" content=""/>
+	<meta name="twitter:title" content="" />
+	<meta name="twitter:image" content="" />
+	<meta name="twitter:url" content="" />
+	<meta name="twitter:card" content="" />
+
+	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+	<!-- <link rel="shortcut icon" href="favicon.ico"> -->
+
+	<link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,300,700|Roboto:300,400' rel='stylesheet' type='text/css'>
+	
+	<!-- Animate.css -->
+	<link rel="stylesheet" href="/_assets/css/animate.css">
+	<!-- Icomoon Icon Fonts-->
+	<link rel="stylesheet" href="/_assets/css/icomoon.css">
+	<!-- Bootstrap  -->
+	<link rel="stylesheet" href="/_assets/css/bootstrap.css">
+
+	<link rel="stylesheet" href="/_assets/css/style.css">
+
+
+	<!-- Modernizr JS -->
+	<script src="/_assets/js/modernizr-2.6.2.min.js"></script>
+	<!-- FOR IE9 below -->
+	<!--[if lt IE 9]>
+	<script src="/_assets/js/respond.min.js"></script>
+	<![endif]-->
+    <link rel="stylesheet" href="/_assets/main.css" />
+
+    <title>Code Analysis of HR Java Bitset problem solution - Home</title>
+  <link rel="stylesheet" href="/_markdown_plugin_assets/highlight.js/atom-one-light.css" /></head>
+  <body>
+    <div class="main">
+      <nav class="navigation">
+        <!-- <a href="/">Home</a> -->
+        <a class="fh5co-logo" href="/archives"><img src="/_assets/images/brand-nav.png" alt="Home"></a>
+      </nav>
+      <article>
+        <header>
+          <h1 class="article-title">Code Analysis of HR Java Bitset problem solution</h1>
+          <div class="article-info">
+            <div>
+              <span
+                >Created At：<time datetime="1721292044496"
+                  >2024-07-18 15:40</time
+                ></span
+              >
+              <span
+                >Updated At：<time datetime="1721292266146"
+                  >2024-07-18 15:44</time
+                ></span
+              >
+            </div>
+            
+          </div>
+        </header>
+        <div class="article-content markdown-body"><p>Given the solution code :</p>
+<div><pre class="hljs"><code><span class="hljs-keyword">import</span> java.io.*;
+<span class="hljs-keyword">import</span> java.util.*;
+
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> {
+
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> {
+        <span class="hljs-keyword">try</span> {
+            <span class="hljs-type">Scanner</span> <span class="hljs-variable">sc</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Scanner</span>(System.in);
+            <span class="hljs-type">int</span> <span class="hljs-variable">length</span> <span class="hljs-operator">=</span> sc.nextInt();
+            <span class="hljs-type">BitSet</span> <span class="hljs-variable">b1</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">BitSet</span>(length);
+            <span class="hljs-type">BitSet</span> <span class="hljs-variable">b2</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">BitSet</span>(length);
+        
+            BitSet[] b = {b1, b2};
+        
+            <span class="hljs-type">int</span> <span class="hljs-variable">operations</span> <span class="hljs-operator">=</span> sc.nextInt();
+        
+            performOperations(sc, b, operations);
+        
+            sc.close();
+        } <span class="hljs-keyword">catch</span> (Exception e) {
+            System.out.println(<span class="hljs-string">"An error occurred: "</span> + e.getMessage());
+        }
+    }
+    
+    <span class="hljs-comment">// Method to perform the specified operations on BitSets</span>
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">performOperations</span><span class="hljs-params">(Scanner sc, BitSet[] b, <span class="hljs-type">int</span> operations)</span> {
+        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; operations; i++) {
+            <span class="hljs-keyword">try</span> {
+                sc.nextLine();
+                <span class="hljs-type">String</span> <span class="hljs-variable">operation</span> <span class="hljs-operator">=</span> sc.next();
+                <span class="hljs-type">int</span> <span class="hljs-variable">x</span> <span class="hljs-operator">=</span> sc.nextInt() - <span class="hljs-number">1</span>;
+                <span class="hljs-type">int</span> <span class="hljs-variable">y</span> <span class="hljs-operator">=</span> sc.nextInt() - <span class="hljs-number">1</span>; 
+                
+                applyOperation(b, operation, x, y);
+                
+                System.out.println(b[<span class="hljs-number">0</span>].cardinality() + <span class="hljs-string">" "</span> + b[<span class="hljs-number">1</span>].cardinality());
+            } <span class="hljs-keyword">catch</span> (Exception e) {
+                System.out.println(<span class="hljs-string">"An error occurred during operation: "</span> + e.getMessage());
+            }
+        }
+    }
+    
+    <span class="hljs-comment">// Method to apply the specified operation on the BitSets</span>
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">applyOperation</span><span class="hljs-params">(BitSet[] b, String operation, <span class="hljs-type">int</span> x, <span class="hljs-type">int</span> y)</span> {
+        <span class="hljs-keyword">switch</span> (operation) {
+            <span class="hljs-keyword">case</span> <span class="hljs-string">"AND"</span>:
+                b[x].and(b[y]);
+                <span class="hljs-keyword">break</span>;
+            <span class="hljs-keyword">case</span> <span class="hljs-string">"OR"</span>:
+                b[x].or(b[y]);
+                <span class="hljs-keyword">break</span>;
+            <span class="hljs-keyword">case</span> <span class="hljs-string">"XOR"</span>:
+                b[x].xor(b[y]);
+                <span class="hljs-keyword">break</span>;
+            <span class="hljs-keyword">case</span> <span class="hljs-string">"FLIP"</span>:
+                b[x].flip(y + <span class="hljs-number">1</span>);
+                <span class="hljs-keyword">break</span>;
+            <span class="hljs-keyword">case</span> <span class="hljs-string">"SET"</span>:
+                b[x].set(y + <span class="hljs-number">1</span>);
+                <span class="hljs-keyword">break</span>;
+            <span class="hljs-keyword">default</span>:
+                System.out.println(<span class="hljs-string">"Invalid operation: "</span> + operation);
+        }
+    }
+}</code></pre></div>
+<p><strong>Sample Input</strong></p>
+<pre style="background:linear-gradient(to right, #F3F7EC, white);color:#3F4E4F;padding:5px" class="jop-noMdConv">
+5 4
+AND 1 2
+SET 1 4
+FLIP 2 2
+OR 2 1
+</pre>
+<p><strong>Sample Output</strong></p>
+<pre style="background:linear-gradient(to right, #FFE6E6, white);color:#3F4E4F;padding:5px" class="jop-noMdConv">
+0 0
+1 0
+1 1
+1 2
+</pre>
+<h2 id="elucidation">Elucidation</h2>
+<ol>
+<li>
+<p><strong>Main Method</strong> (<code>public static void main(String[] args)</code>):</p>
+<ul>
+<li>The <code>main</code> method is the entry point of the program.</li>
+<li>It includes a try-catch block to handle any exceptions that may occur during program execution.</li>
+<li>Within the try block, it initializes a <code>Scanner</code> object to read input from the user.</li>
+<li>It reads the length of the BitSets and the number of operations to be performed.</li>
+<li>It then calls the <code>performOperations</code> method to handle the logic of performing operations on the BitSets.</li>
+<li>Finally, it closes the <code>Scanner</code> object after all operations are completed.</li>
+</ul>
+</li>
+<li>
+<p><strong>performOperations Method</strong> (<code>private static void performOperations(Scanner sc, BitSet[] b, int operations)</code>):</p>
+<ul>
+<li>This method takes a <code>Scanner</code> object, an array of BitSets, and the number of operations as parameters.</li>
+<li>It iterates through the specified number of operations and applies each operation on the BitSets.</li>
+<li>For each operation, it calls the <code>applyOperation</code> method to perform the specific operation on the BitSets.</li>
+<li>It also catches any exceptions that may occur during the operation and prints an error message.</li>
+</ul>
+</li>
+<li>
+<p><strong>applyOperation Method</strong> (<code>private static void applyOperation(BitSet[] b, String operation, int x, int y)</code>):</p>
+<ul>
+<li>This method takes an array of BitSets, the operation to be performed, and the indices <code>x</code> and <code>y</code> as parameters.</li>
+<li>It uses a switch-case statement to determine the type of operation to be applied on the BitSets.</li>
+<li>Depending on the operation type, it calls the corresponding method on the BitSets (<code>and</code>, <code>or</code>, <code>xor</code>, <code>flip</code>, or <code>set</code>).</li>
+</ul>
+</li>
+<li>
+<p><strong>Error Handling</strong>:</p>
+<ul>
+<li>Both the <code>main</code> method and the <code>performOperations</code> method have try-catch blocks to handle exceptions gracefully.</li>
+<li>If an exception occurs during input reading or operation execution, an error message is displayed to notify the user.</li>
+</ul>
+</li>
+</ol>
+</div>
+      </article>
+    </div>
+  </body>
+</html>
