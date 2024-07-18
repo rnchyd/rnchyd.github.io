@@ -4,9 +4,144 @@
         <title></title>
         <link>undefined</link>
         <description>undefined</description>
-        <lastBuildDate>Thu, 11 Jul 2024 05:06:12 GMT</lastBuildDate>
+        <lastBuildDate>Thu, 18 Jul 2024 07:00:55 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>Joplin Pages Publisher</generator>
+        <item>
+            <title><![CDATA[Code Analysis of HR Java Sort problem solution]]></title>
+            <guid>fcc24ac32d4d4bb0a04dc54be37aede8</guid>
+            <pubDate>Thu, 18 Jul 2024 06:53:54 GMT</pubDate>
+            <content:encoded><![CDATA[<h2 id="problem">Problem</h2>
+<p>You are given a list of student information: ID, FirstName, and CGPA. Your task is to rearrange them according to their CGPA in decreasing order. If two student have the same CGPA, then arrange them according to their first name in alphabetical order. If those two students also have the same first name, then order them according to their ID. No two students have the same ID.</p>
+<p><strong>Input Format</strong></p>
+<p>The first line of input contains an integer <code>N</code>, representing the total number of students. The next <code>N</code> lines contains a list of student information in the following structure:</p>
+<div><pre class="hljs"><code>ID <span class="hljs-keyword">Name</span> CGPA</code></pre></div>
+<p><strong>Constraints</strong></p>
+<p><code>2 &lt; N &lt; 1000</code></p>
+<p><code>0 ≤ ID &lt; 100000</code></p>
+<p><code>5 ≤ |Name ≤ 30</code></p>
+<p><code>0 &lt;CGPA &lt; 4.00</code></p>
+<p>The name contains only lowercase English letters. The <code>ID</code> contains only integer numbers without leading zeros. The CGPA will contain, at most, 2 digits after the decimal point.</p>
+<p><strong>Output Format</strong></p>
+<p>After rearranging the students according to the above rules, print the first name of each student on a separate line.</p>
+<p><strong>Sample Input</strong></p>
+<pre style="background:linear-gradient(to right, #F3F7EC, white);color:#3F4E4F;padding:5px" class="jop-noMdConv">
+5
+33 Rumpa 3.68
+85 Ashis 3.85
+56 Samiha 3.75
+19 Samara 3.75
+22 Fahim 3.76
+</pre>
+<p><strong>Sample Output</strong></p>
+<pre style="background:linear-gradient(to right, #FFE6E6, white);color:#3F4E4F;padding:5px" class="jop-noMdConv">
+Ashis
+Fahim
+Samara
+Samiha
+Rumpa
+</pre>
+<h2 id="solution">Solution</h2>
+<p>The Java code for the problem above</p>
+<div><pre class="hljs"><code><span class="hljs-keyword">import</span> java.util.*;
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">Student</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">Comparable</span>&lt;Student&gt; {
+    <span class="hljs-keyword">private</span> <span class="hljs-type">int</span> id;
+    <span class="hljs-keyword">private</span> String fname;
+    <span class="hljs-keyword">private</span> <span class="hljs-type">double</span> cgpa;
+    
+    <span class="hljs-keyword">public</span> <span class="hljs-title function_">Student</span><span class="hljs-params">(<span class="hljs-type">int</span> id, String fname, <span class="hljs-type">double</span> cgpa)</span> {
+        <span class="hljs-built_in">super</span>();
+        <span class="hljs-built_in">this</span>.id = id;
+        <span class="hljs-built_in">this</span>.fname = fname;
+        <span class="hljs-built_in">this</span>.cgpa = cgpa;
+    }
+    
+    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">getId</span><span class="hljs-params">()</span> {
+        <span class="hljs-keyword">return</span> id;
+    }
+    
+    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">getFname</span><span class="hljs-params">()</span> {
+        <span class="hljs-keyword">return</span> fname;
+    }
+    
+    <span class="hljs-keyword">public</span> <span class="hljs-type">double</span> <span class="hljs-title function_">getCgpa</span><span class="hljs-params">()</span> {
+        <span class="hljs-keyword">return</span> cgpa;
+    }
+    
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">compareTo</span><span class="hljs-params">(Student s)</span> {
+        <span class="hljs-comment">// Compare students based on CGPA, first name, and ID</span>
+        <span class="hljs-keyword">if</span> (<span class="hljs-built_in">this</span>.cgpa != s.cgpa) {
+            <span class="hljs-keyword">return</span> Double.compare(s.cgpa, <span class="hljs-built_in">this</span>.cgpa); <span class="hljs-comment">// Sort by CGPA in descending order</span>
+        } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (!<span class="hljs-built_in">this</span>.fname.equals(s.fname)) {
+            <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>.fname.compareTo(s.fname); <span class="hljs-comment">// Sort by first name in alphabetical order</span>
+        } <span class="hljs-keyword">else</span> {
+            <span class="hljs-keyword">return</span> Integer.compare(<span class="hljs-built_in">this</span>.id, s.id); <span class="hljs-comment">// Sort by ID if first names are the same</span>
+        }
+    }
+}
+
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> {
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> {
+        <span class="hljs-type">Scanner</span> <span class="hljs-variable">in</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Scanner</span>(System.in);
+        <span class="hljs-type">int</span> <span class="hljs-variable">testCases</span> <span class="hljs-operator">=</span> Integer.parseInt(in.nextLine());
+        
+        List&lt;Student&gt; studentList = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;&gt;();
+        <span class="hljs-keyword">while</span> (testCases &gt; <span class="hljs-number">0</span>) {
+            <span class="hljs-type">int</span> <span class="hljs-variable">id</span> <span class="hljs-operator">=</span> in.nextInt();
+            <span class="hljs-type">String</span> <span class="hljs-variable">fname</span> <span class="hljs-operator">=</span> in.next();
+            <span class="hljs-type">double</span> <span class="hljs-variable">cgpa</span> <span class="hljs-operator">=</span> in.nextDouble();
+            
+            <span class="hljs-type">Student</span> <span class="hljs-variable">st</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Student</span>(id, fname, cgpa);
+            studentList.add(st);
+            
+            testCases--;
+        }
+        
+        Collections.sort(studentList); <span class="hljs-comment">// Sort the studentList based on the compareTo method in Student class</span>
+        
+        <span class="hljs-keyword">for</span> (Student st : studentList) {
+            System.out.println(st.getFname()); <span class="hljs-comment">// Print the first name of each student</span>
+        }
+    }
+}</code></pre></div>
+<h2 id="elucidation">Elucidation</h2>
+<ol>
+<li>
+<p><strong>Student Class</strong>:</p>
+<ul>
+<li>The <code>Student</code> class represents a student with attributes <code>id</code>, <code>fname</code> (first name), and <code>cgpa</code> (CGPA).</li>
+<li>The class has a constructor to initialize the student object with the provided values.</li>
+<li>It also includes getter methods to retrieve the <code>id</code>, <code>fname</code>, and <code>cgpa</code> of a student.</li>
+<li>The class implements the <code>Comparable</code> interface to define a natural ordering for instances of the class.</li>
+</ul>
+</li>
+<li>
+<p><strong>Solution Class</strong>:</p>
+<ul>
+<li>The <code>Solution</code> class contains the <code>main</code> method where the program execution starts.</li>
+<li>It reads input from the user using a <code>Scanner</code> object.</li>
+<li>It initializes an empty <code>ArrayList</code> named <code>studentList</code> to store instances of the <code>Student</code> class.</li>
+<li>It reads the number of test cases from the input and loops through each test case to read student information (id, first name, and CGPA) from the input.</li>
+<li>For each test case, a new <code>Student</code> object is created with the provided information and added to the <code>studentList</code>.</li>
+<li>After reading all test cases, the <code>Collections.sort()</code> method is used to sort the <code>studentList</code> based on the natural ordering defined in the <code>compareTo</code> method of the <code>Student</code> class.</li>
+<li>Finally, it iterates over the sorted <code>studentList</code> and prints the first name of each student.</li>
+</ul>
+</li>
+<li>
+<p><strong>Sorting Logic</strong>:</p>
+<ul>
+<li>The <code>compareTo</code> method in the <code>Student</code> class compares two <code>Student</code> objects based on their CGPA, first name, and ID in that order.</li>
+<li>If two students have different CGPA, they are sorted in descending order of CGPA.</li>
+<li>If two students have the same CGPA, they are sorted in alphabetical order of their first names.</li>
+<li>If two students have the same first name, they are sorted based on their IDs.</li>
+</ul>
+</li>
+</ol>
+<p>Overall, this code reads student information, creates <code>Student</code> objects, sorts them according to the specified rules, and then prints the first name of each student in the sorted order. The <code>Comparable</code> interface is used to define the custom sorting logic based on CGPA, first name, and ID.</p>
+]]></content:encoded>
+        </item>
         <item>
             <title><![CDATA[Unlocking Efficiency: Exploring the Benefits of Python Virtual Environments in Development]]></title>
             <guid>c9166eabae694de1b9e5f063b92b2636</guid>
@@ -1879,519 +2014,6 @@ hcdk
 </li>
 </ol>
 <p>In summary, the Java code <code>List&lt;List&lt;Integer&gt;&gt; matrix</code> declares a 2D list of integers, providing a flexible way to work with matrix-like data structures. The code example demonstrates creating and accessing elements in a 2D list, showcasing the matrix structure.</p>
-]]></content:encoded>
-        </item>
-        <item>
-            <title><![CDATA[Code Analysis of HR Sherlock and Anagrams problem solution]]></title>
-            <guid>2107657484a54bd689b379c39e69961c</guid>
-            <pubDate>Tue, 02 Jul 2024 06:55:39 GMT</pubDate>
-            <content:encoded><![CDATA[<p>Given the solution code :</p>
-<div><pre class="hljs"><code><span class="hljs-keyword">import</span> java.io.*;
-<span class="hljs-keyword">import</span> java.math.*;
-<span class="hljs-keyword">import</span> java.security.*;
-<span class="hljs-keyword">import</span> java.text.*;
-<span class="hljs-keyword">import</span> java.util.*;
-<span class="hljs-keyword">import</span> java.util.concurrent.*;
-<span class="hljs-keyword">import</span> java.util.regex.*;
-
-<span class="hljs-keyword">class</span> <span class="hljs-title class_">Result</span> {
-
-    <span class="hljs-comment">/*
-     * Complete the 'sherlockAndAnagrams' function below.
-     *
-     * The function is expected to return an INTEGER.
-     * The function accepts STRING s as parameter.
-     */</span>
-    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-type">int</span> <span class="hljs-title function_">sherlockAndAnagrams</span><span class="hljs-params">(String s)</span> {
-        <span class="hljs-type">int</span> <span class="hljs-variable">count</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;
-        Map&lt;String, Integer&gt; map = <span class="hljs-keyword">new</span> <span class="hljs-title class_">HashMap</span>&lt;&gt;();
-
-        <span class="hljs-comment">// Generate all possible substrings and count the occurrences of each substring</span>
-        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; s.length(); i++) {
-            <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">j</span> <span class="hljs-operator">=</span> i + <span class="hljs-number">1</span>; j &lt;= s.length(); j++) {
-                <span class="hljs-type">String</span> <span class="hljs-variable">currentSub</span> <span class="hljs-operator">=</span> s.substring(i, j);
-                <span class="hljs-type">String</span> <span class="hljs-variable">sortedSub</span> <span class="hljs-operator">=</span> sortString(currentSub);
-
-                <span class="hljs-keyword">if</span> (map.containsKey(sortedSub)) {
-                    count += map.get(sortedSub);
-                    map.put(sortedSub, map.get(sortedSub) + <span class="hljs-number">1</span>);
-                } <span class="hljs-keyword">else</span> {
-                    map.put(sortedSub, <span class="hljs-number">1</span>);
-                }
-            }
-        }
-
-        <span class="hljs-keyword">return</span> count;
-    }
-
-    <span class="hljs-comment">// Helper method to sort a string</span>
-    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> String <span class="hljs-title function_">sortString</span><span class="hljs-params">(String str)</span> {
-        <span class="hljs-type">char</span>[] charArray = str.toCharArray();
-        Arrays.sort(charArray);
-        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">String</span>(charArray);
-    }
-
-}
-
-<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> {
-    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> IOException {
-        <span class="hljs-type">BufferedReader</span> <span class="hljs-variable">bufferedReader</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">BufferedReader</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">InputStreamReader</span>(System.in));
-        <span class="hljs-type">BufferedWriter</span> <span class="hljs-variable">bufferedWriter</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">BufferedWriter</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">FileWriter</span>(System.getenv(<span class="hljs-string">"OUTPUT_PATH"</span>)));
-
-        <span class="hljs-type">int</span> <span class="hljs-variable">q</span> <span class="hljs-operator">=</span> Integer.parseInt(bufferedReader.readLine().trim());
-
-        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">qItr</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; qItr &lt; q; qItr++) {
-            <span class="hljs-type">String</span> <span class="hljs-variable">s</span> <span class="hljs-operator">=</span> bufferedReader.readLine();
-
-            <span class="hljs-type">int</span> <span class="hljs-variable">result</span> <span class="hljs-operator">=</span> Result.sherlockAndAnagrams(s);
-
-            bufferedWriter.write(String.valueOf(result));
-            bufferedWriter.newLine();
-        }
-
-        bufferedReader.close();
-        bufferedWriter.close();
-    }
-}</code></pre></div>
-<p><strong>Sample Input</strong></p>
-<pre style="background:linear-gradient(to right, #F3F7EC, white);color:#3F4E4F;padding:5px" class="jop-noMdConv">
-2
-abba
-abcd
-</pre>
-<p><strong>Sample Output</strong></p>
-<pre style="background:linear-gradient(to right, #FFE6E6, white);color:#3F4E4F;padding:5px" class="jop-noMdConv">
-4
-0
-</pre>
-<h2 id="elucidation">Elucidation</h2>
-<p>Explanation of the provided Java code above:</p>
-<ol>
-<li>
-<p><strong><code>Result</code> Class:</strong></p>
-<ul>
-<li>Contains the <code>sherlockAndAnagrams</code> method that calculates the number of anagrammatic pairs of substrings in the given string <code>s</code>.</li>
-<li>It uses a <code>HashMap</code> to store the sorted substrings and their occurrences for counting anagram pairs.</li>
-<li>The method generates all possible substrings of <code>s</code>, sorts each substring, and counts the occurrences of anagrams.</li>
-</ul>
-</li>
-<li>
-<p><strong><code>sortString</code> Method:</strong></p>
-<ul>
-<li>Private helper method in the <code>Result</code> class to sort the characters of a string.</li>
-<li>Used to sort each substring before storing it in the map for accurate comparison of anagrams.</li>
-</ul>
-</li>
-<li>
-<p><strong><code>Solution</code> Class:</strong></p>
-<ul>
-<li>Contains the <code>main</code> method that reads input from the user, calls the <code>sherlockAndAnagrams</code> method, and writes the results to an output file.</li>
-<li>Reads the number of queries <code>q</code>, followed by <code>q</code> strings <code>s</code> to analyze for anagram pairs.</li>
-<li>For each query, it calculates the number of anagram pairs using the <code>sherlockAndAnagrams</code> method and writes the result to the output file.</li>
-</ul>
-</li>
-<li>
-<p><strong>Execution Flow:</strong></p>
-<ul>
-<li>The <code>main</code> method reads the input queries and strings from the user.</li>
-<li>For each input string, it calls the <code>sherlockAndAnagrams</code> method to calculate the number of anagram pairs.</li>
-<li>The result for each query is written to the output file.</li>
-</ul>
-</li>
-<li>
-<p><strong>Input and Output Handling:</strong></p>
-<ul>
-<li>Input: Reads the number of queries <code>q</code> and <code>q</code> strings from the user.</li>
-<li>Output: Writes the number of anagram pairs for each query to an output file.</li>
-</ul>
-</li>
-<li>
-<p><strong>Overall Functionality:</strong></p>
-<ul>
-<li>The code efficiently calculates the number of anagrammatic pairs of substrings in the given strings by sorting substrings and using a HashMap for counting occurrences.</li>
-<li>It handles input and output operations to process multiple queries and strings to determine anagram pairs.</li>
-</ul>
-</li>
-</ol>
-<p>The provided code demonstrates a well-structured solution for finding anagram pairs in strings and efficiently handles input/output operations.</p>
-<hr />
-<h2 id="hashmap-class"><code>HashMap</code> Class</h2>
-<h3 id="hashmap-class-in-java">HashMap Class in Java:</h3>
-<ol>
-<li>
-<p><strong>Definition</strong>:</p>
-<ul>
-<li><code>HashMap</code> is a class in Java that implements the <code>Map</code> interface to store key-value pairs.</li>
-<li>It allows null keys and values, and it does not maintain the order of elements.</li>
-</ul>
-</li>
-<li>
-<p><strong>Key Features</strong>:</p>
-<ul>
-<li><strong>Fast Lookup</strong>: HashMap provides constant-time performance for basic operations like get and put.</li>
-<li><strong>Key-Value Pairs</strong>: Each entry in a HashMap is a key-value pair.</li>
-<li><strong>Resizable</strong>: HashMap automatically resizes itself when the number of elements exceeds a certain threshold.</li>
-<li><strong>Thread-Safe</strong>: HashMap is not synchronized by default. If thread safety is required, you can use <code>Collections.synchronizedMap()</code>.</li>
-</ul>
-</li>
-<li>
-<p><strong>Common Methods</strong>:</p>
-<ul>
-<li><code>put(key, value)</code>: Inserts a key-value pair into the HashMap.</li>
-<li><code>get(key)</code>: Retrieves the value associated with the specified key.</li>
-<li><code>containsKey(key)</code>: Checks if the HashMap contains a specific key.</li>
-<li><code>keySet()</code>: Returns a Set containing all the keys in the HashMap.</li>
-<li><code>values()</code>: Returns a Collection containing all the values in the HashMap.</li>
-<li><code>remove(key)</code>: Removes the key-value pair associated with the specified key.</li>
-</ul>
-</li>
-<li>
-<p><strong>Code Example</strong>:</p>
-<div><pre class="hljs"><code><span class="hljs-keyword">import</span> java.util.HashMap;
-
-<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">HashMapExample</span> {
-    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> {
-        <span class="hljs-comment">// Create a new HashMap</span>
-        HashMap&lt;String, Integer&gt; scores = <span class="hljs-keyword">new</span> <span class="hljs-title class_">HashMap</span>&lt;&gt;();
-
-        <span class="hljs-comment">// Add key-value pairs to the HashMap</span>
-        scores.put(<span class="hljs-string">"Alice"</span>, <span class="hljs-number">95</span>);
-        scores.put(<span class="hljs-string">"Bob"</span>, <span class="hljs-number">85</span>);
-        scores.put(<span class="hljs-string">"Charlie"</span>, <span class="hljs-number">90</span>);
-
-        <span class="hljs-comment">// Retrieve and print the value for a specific key</span>
-        System.out.println(<span class="hljs-string">"Bob's score: "</span> + scores.get(<span class="hljs-string">"Bob"</span>));
-
-        <span class="hljs-comment">// Check if a key exists in the HashMap</span>
-        <span class="hljs-keyword">if</span> (scores.containsKey(<span class="hljs-string">"Alice"</span>)) {
-            System.out.println(<span class="hljs-string">"Alice's score is present."</span>);
-        }
-
-        <span class="hljs-comment">// Remove a key-value pair from the HashMap</span>
-        scores.remove(<span class="hljs-string">"Charlie"</span>);
-
-        <span class="hljs-comment">// Iterate over the keys and values in the HashMap</span>
-        <span class="hljs-keyword">for</span> (String name : scores.keySet()) {
-            System.out.println(name + <span class="hljs-string">"'s score: "</span> + scores.get(name));
-        }
-    }
-}</code></pre></div>
-</li>
-<li>
-<p><strong>Output</strong>:</p>
-<div><pre class="hljs"><code>Bob<span class="hljs-string">'s score: 85
-Alice'</span>s score <span class="hljs-keyword">is</span> present.
-Alic<span class="hljs-string">e's score: 95
-Bob'</span>s score: <span class="hljs-number">85</span></code></pre></div>
-</li>
-<li>
-<p><strong>Explanation</strong>:</p>
-<ul>
-<li>In the code example, we create a HashMap named <code>scores</code> that stores String keys and Integer values.</li>
-<li>We add key-value pairs representing names and scores to the HashMap using the <code>put</code> method.</li>
-<li>We retrieve and print Bob’s score using the <code>get</code> method.</li>
-<li>We check if Alice’s score is present in the HashMap using <code>containsKey</code>.</li>
-<li>We remove Charlie’s score from the HashMap using <code>remove</code>.</li>
-<li>Finally, we iterate over the keys in the HashMap using <code>keySet</code> and print each name along with their score.</li>
-</ul>
-</li>
-</ol>
-<p>This example demonstrates the basic usage of the HashMap class in Java for storing and manipulating key-value pairs. The output shows the retrieved values and messages based on the operations performed on the HashMap.</p>
-<hr />
-<h2 id="string-class"><code>String</code> Class</h2>
-<p>The <code>String</code> class in Java is a fundamental class that represents a sequence of characters. It is widely used for storing and manipulating textual data. Here is a detailed explanation, along with a code example and its output, showcasing the features of the <code>String</code> class in Java:</p>
-<ol>
-<li>
-<p><strong>Explanation:</strong></p>
-<ul>
-<li>The <code>String</code> class in Java is immutable, meaning that once a <code>String</code> object is created, its value cannot be changed.</li>
-<li>Strings in Java are zero-indexed, where the first character is at index 0, the second character is at index 1, and so on.</li>
-<li>The <code>String</code> class provides a wide range of methods for various string operations, such as concatenation, comparison, extraction, and manipulation.</li>
-</ul>
-</li>
-<li>
-<p><strong>Code Example:</strong></p>
-</li>
-</ol>
-<div><pre class="hljs"><code><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">StringExample</span> {
-    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> {
-        <span class="hljs-comment">// Creating String objects</span>
-        <span class="hljs-type">String</span> <span class="hljs-variable">str1</span> <span class="hljs-operator">=</span> <span class="hljs-string">"Hello, "</span>;
-        <span class="hljs-type">String</span> <span class="hljs-variable">str2</span> <span class="hljs-operator">=</span> <span class="hljs-string">"World!"</span>;
-        
-        <span class="hljs-comment">// Concatenating strings</span>
-        <span class="hljs-type">String</span> <span class="hljs-variable">result</span> <span class="hljs-operator">=</span> str1 + str2;
-        
-        <span class="hljs-comment">// Getting the length of a string</span>
-        <span class="hljs-type">int</span> <span class="hljs-variable">length</span> <span class="hljs-operator">=</span> result.length();
-        
-        <span class="hljs-comment">// Extracting a substring</span>
-        <span class="hljs-type">String</span> <span class="hljs-variable">sub</span> <span class="hljs-operator">=</span> result.substring(<span class="hljs-number">7</span>);
-        
-        <span class="hljs-comment">// Checking if a string contains a specific character sequence</span>
-        <span class="hljs-type">boolean</span> <span class="hljs-variable">contains</span> <span class="hljs-operator">=</span> result.contains(<span class="hljs-string">"World"</span>);
-        
-        <span class="hljs-comment">// Converting a string to uppercase</span>
-        <span class="hljs-type">String</span> <span class="hljs-variable">upperCase</span> <span class="hljs-operator">=</span> result.toUpperCase();
-        
-        <span class="hljs-comment">// Displaying the results</span>
-        System.out.println(<span class="hljs-string">"Concatenated String: "</span> + result);
-        System.out.println(<span class="hljs-string">"Length of String: "</span> + length);
-        System.out.println(<span class="hljs-string">"Substring: "</span> + sub);
-        System.out.println(<span class="hljs-string">"Contains 'World': "</span> + contains);
-        System.out.println(<span class="hljs-string">"Uppercase String: "</span> + upperCase);
-    }
-}</code></pre></div>
-<ol start="3">
-<li>
-<p><strong>Output Explanation:</strong></p>
-<ul>
-<li>The code example demonstrates various operations using the <code>String</code> class:
-<ul>
-<li>Concatenation of two strings.</li>
-<li>Retrieving the length of the concatenated string.</li>
-<li>Extracting a substring starting from index 7.</li>
-<li>Checking if the string contains a specific sequence.</li>
-<li>Converting the string to uppercase.</li>
-</ul>
-</li>
-<li>Each operation showcases a different method provided by the <code>String</code> class.</li>
-</ul>
-</li>
-<li>
-<p><strong>Output:</strong></p>
-</li>
-</ol>
-<div><pre class="hljs"><code><span class="hljs-attr">Concatenated String:</span> <span class="hljs-string">Hello,</span> <span class="hljs-string">World!</span>
-<span class="hljs-attr">Length of String:</span> <span class="hljs-number">13</span>
-<span class="hljs-attr">Substring:</span> <span class="hljs-string">World!</span>
-<span class="hljs-string">Contains</span> <span class="hljs-attr">'World':</span> <span class="hljs-literal">true</span>
-<span class="hljs-attr">Uppercase String:</span> <span class="hljs-string">HELLO,</span> <span class="hljs-string">WORLD!</span></code></pre></div>
-<ol start="5">
-<li><strong>Summary:</strong>
-<ul>
-<li>The <code>String</code> class in Java provides a wide range of methods for string manipulation and processing.</li>
-<li>It is immutable, efficient, and widely used for storing and working with textual data.</li>
-<li>By utilizing various methods of the <code>String</code> class, developers can perform common string operations effectively.</li>
-</ul>
-</li>
-</ol>
-<p>In summary, the <code>String</code> class in Java is a versatile and essential class for working with text data. It offers a rich set of methods for string manipulation, making it a powerful tool for handling textual information in Java programs.</p>
-<hr />
-<h2 id="method-of-java-string-class">Method of Java <code>String</code> Class</h2>
-<p>The <code>String</code> class in Java provides many methods for various string operations. As of Java 16, the <code>String</code> class has a total of 78 public methods. These methods cover a wide range of functionalities, including string manipulation, comparison, searching, extraction, modification, and more.</p>
-<p>Here are some common categories of methods found in the <code>String</code> class:</p>
-<ol>
-<li>
-<p><strong>Basic Operations:</strong></p>
-<ul>
-<li><code>length()</code>: Returns the length of the string.</li>
-<li><code>charAt(int index)</code>: Returns the character at the specified index.</li>
-<li><code>substring(int beginIndex)</code>: Returns a substring starting from the specified index.</li>
-<li><code>substring(int beginIndex, int endIndex)</code>: Returns a substring within the specified range.</li>
-</ul>
-</li>
-<li>
-<p><strong>Comparison and Searching:</strong></p>
-<ul>
-<li><code>equals(Object obj)</code>: Compares the string with the specified object for equality.</li>
-<li><code>equalsIgnoreCase(String anotherString)</code>: Compares the string with another string, ignoring case.</li>
-<li><code>indexOf(String str)</code>: Returns the index of the first occurrence of a substring.</li>
-<li><code>contains(CharSequence s)</code>: Checks if the string contains a specified sequence.</li>
-</ul>
-</li>
-<li>
-<p><strong>Modification and Concatenation:</strong></p>
-<ul>
-<li><code>concat(String str)</code>: Concatenates the specified string to the end of the current string.</li>
-<li><code>replace(char oldChar, char newChar)</code>: Replaces all occurrences of a character with another character.</li>
-<li><code>toUpperCase()</code>: Converts the string to uppercase.</li>
-<li><code>toLowerCase()</code>: Converts the string to lowercase.</li>
-<li><code>trim()</code>: Removes leading and trailing whitespace.</li>
-</ul>
-</li>
-<li>
-<p><strong>Conversion and Splitting:</strong></p>
-<ul>
-<li><code>valueOf(int i)</code>: Converts an integer to a string.</li>
-<li><code>toCharArray()</code>: Converts the string to a character array.</li>
-<li><code>split(String regex)</code>: Splits the string into an array of substrings based on a regular expression.</li>
-</ul>
-</li>
-</ol>
-<p>These are just a few examples of the methods available in the <code>String</code> class. The comprehensive list of methods provides a wide range of functionalities for working with strings in Java.</p>
-<hr />
-<h2 id="stringlength-method"><code>String.length()</code> Method</h2>
-<ol>
-<li>
-<p><strong>Explanation:</strong></p>
-<ul>
-<li>The <code>length()</code> method in Java is a built-in method of the <code>String</code> class that returns the length of the string, i.e., the number of characters in the string.</li>
-<li>The length of a string includes all characters, including spaces, special characters, and digits.</li>
-<li>The index of the last character in a string is always one less than the length of the string due to zero-based indexing.</li>
-</ul>
-</li>
-<li>
-<p><strong>Code Example:</strong></p>
-</li>
-</ol>
-<div><pre class="hljs"><code><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">StringLengthExample</span> {
-    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> {
-        <span class="hljs-type">String</span> <span class="hljs-variable">str1</span> <span class="hljs-operator">=</span> <span class="hljs-string">"Hello, World!"</span>;
-        <span class="hljs-type">String</span> <span class="hljs-variable">str2</span> <span class="hljs-operator">=</span> <span class="hljs-string">"Java is fun"</span>;
-        
-        <span class="hljs-type">int</span> <span class="hljs-variable">length1</span> <span class="hljs-operator">=</span> str1.length();
-        <span class="hljs-type">int</span> <span class="hljs-variable">length2</span> <span class="hljs-operator">=</span> str2.length();
-        
-        System.out.println(<span class="hljs-string">"Length of \""</span> + str1 + <span class="hljs-string">"\": "</span> + length1);
-        System.out.println(<span class="hljs-string">"Length of \""</span> + str2 + <span class="hljs-string">"\": "</span> + length2);
-    }
-}</code></pre></div>
-<ol start="3">
-<li>
-<p><strong>Output Explanation:</strong></p>
-<ul>
-<li>In the code example, two strings <code>str1</code> and <code>str2</code> are defined with different lengths.</li>
-<li>The <code>length()</code> method is called on each string to get the length, and the results are printed.</li>
-<li>The output will display the lengths of the two strings, which are the number of characters in each string.</li>
-</ul>
-</li>
-<li>
-<p><strong>Output:</strong></p>
-</li>
-</ol>
-<div><pre class="hljs"><code><span class="hljs-attribute">Length</span> of <span class="hljs-string">"Hello, World!"</span>: <span class="hljs-number">13</span>
-<span class="hljs-attribute">Length</span> of <span class="hljs-string">"Java is fun"</span>: <span class="hljs-number">11</span></code></pre></div>
-<ol start="5">
-<li><strong>Summary:</strong>
-<ul>
-<li>The <code>length()</code> method in Java returns the number of characters in a string.</li>
-<li>It is a useful method for determining the size of a string and performing operations based on the length of the string.</li>
-<li>The output of the <code>length()</code> method is an integer representing the length of the string.</li>
-</ul>
-</li>
-</ol>
-<p>In summary, the <code>String.length()</code> method in Java provides a simple and effective way to determine the length of a string. It is commonly used in various string manipulation tasks to handle and process strings of different lengths.</p>
-<hr />
-<h2 id="stringsubstring-method"><code>String.substring()</code> Method</h2>
-<ol>
-<li>
-<p><strong>Explanation:</strong></p>
-<ul>
-<li>The <code>substring()</code> method in Java is a built-in method of the <code>String</code> class used to extract a substring from a given string.</li>
-<li>It takes one or two parameters: the starting index (inclusive) and the optional ending index (exclusive) of the substring.</li>
-<li>If only one parameter is provided, the substring starting from the specified index to the end of the string is returned.</li>
-</ul>
-</li>
-<li>
-<p><strong>Code Example:</strong></p>
-</li>
-</ol>
-<div><pre class="hljs"><code><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">SubstringExample</span> {
-    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> {
-        <span class="hljs-type">String</span> <span class="hljs-variable">str</span> <span class="hljs-operator">=</span> <span class="hljs-string">"Hello, World!"</span>;
-        
-        <span class="hljs-type">String</span> <span class="hljs-variable">sub1</span> <span class="hljs-operator">=</span> str.substring(<span class="hljs-number">7</span>); <span class="hljs-comment">// Starting from index 7 to the end</span>
-        <span class="hljs-type">String</span> <span class="hljs-variable">sub2</span> <span class="hljs-operator">=</span> str.substring(<span class="hljs-number">0</span>, <span class="hljs-number">5</span>); <span class="hljs-comment">// From index 0 to 5 (exclusive)</span>
-        
-        System.out.println(<span class="hljs-string">"Substring 1: "</span> + sub1);
-        System.out.println(<span class="hljs-string">"Substring 2: "</span> + sub2);
-    }
-}</code></pre></div>
-<ol start="3">
-<li>
-<p><strong>Output Explanation:</strong></p>
-<ul>
-<li>In the code example, a string <code>str</code> is defined as “Hello, World!”.</li>
-<li>The <code>substring()</code> method is called with different parameters to extract substrings.</li>
-<li><code>sub1</code> extracts the substring starting from index 7 to the end of the string.</li>
-<li><code>sub2</code> extracts the substring from index 0 to 5 (excluding the character at index 5).</li>
-</ul>
-</li>
-<li>
-<p><strong>Output:</strong></p>
-</li>
-</ol>
-<div><pre class="hljs"><code><span class="hljs-attribute">Substring</span> <span class="hljs-number">1</span>: World!
-<span class="hljs-attribute">Substring</span> <span class="hljs-number">2</span>: Hello</code></pre></div>
-<ol start="5">
-<li><strong>Summary:</strong>
-<ul>
-<li>The <code>substring()</code> method in Java is used to extract a portion of a string based on the specified indices.</li>
-<li>It provides flexibility to extract substrings starting from a specific index or within a range of indices.</li>
-<li>The output of the <code>substring()</code> method is a new string containing the extracted substring.</li>
-</ul>
-</li>
-</ol>
-<p>In summary, the <code>String.substring()</code> method in Java is a useful tool for extracting specific parts of a string, allowing for efficient manipulation and processing of string data.</p>
-<hr />
-<h2 id="stringtochararray-method"><code>String.toCharArray()</code> Method</h2>
-<p>The <code>String.toCharArray()</code> method in Java is used to convert a <code>String</code> object into a character array (<code>char[]</code>). Here is an explanation of the <code>String.toCharArray()</code> method:</p>
-<ol>
-<li>
-<p><strong>Method Signature:</strong></p>
-<ul>
-<li>The <code>toCharArray()</code> method is defined in the <code>String</code> class in Java.</li>
-<li>It has the following signature:<div><pre class="hljs"><code><span class="hljs-keyword">public</span> <span class="hljs-type">char</span>[] toCharArray()</code></pre></div>
-</li>
-</ul>
-</li>
-<li>
-<p><strong>Return Type:</strong></p>
-<ul>
-<li>The <code>toCharArray()</code> method returns a newly allocated character array containing the characters of the <code>String</code> object.</li>
-</ul>
-</li>
-<li>
-<p><strong>Usage:</strong></p>
-<ul>
-<li>When you call <code>toCharArray()</code> on a <code>String</code> object, it creates and returns a new character array that contains the characters of the original string.</li>
-</ul>
-</li>
-<li>
-<p><strong>Example:</strong></p>
-<div><pre class="hljs"><code><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ToCharArrayExample</span> {
-    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> {
-        <span class="hljs-type">String</span> <span class="hljs-variable">str</span> <span class="hljs-operator">=</span> <span class="hljs-string">"Hello, World!"</span>;
-        
-        <span class="hljs-comment">// Convert the string to a character array</span>
-        <span class="hljs-type">char</span>[] charArray = str.toCharArray();
-        
-        <span class="hljs-comment">// Print the elements of the character array</span>
-        <span class="hljs-keyword">for</span> (<span class="hljs-type">char</span> c : charArray) {
-            System.out.print(c + <span class="hljs-string">" "</span>);
-        }
-    }
-}</code></pre></div>
-</li>
-<li>
-<p><strong>Explanation of Example:</strong></p>
-<ul>
-<li>In the code example, a <code>String</code> object <code>str</code> is created with the value “Hello, World!”.</li>
-<li>The <code>toCharArray()</code> method is called on the <code>str</code> object to convert it into a character array.</li>
-<li>The characters in the resulting character array are then printed using an enhanced for loop.</li>
-</ul>
-</li>
-<li>
-<p><strong>Output:</strong></p>
-<div><pre class="hljs"><code><span class="hljs-built_in">H</span> e l l o ,   W o <span class="hljs-built_in">r</span> l d !</code></pre></div>
-</li>
-<li>
-<p><strong>Use Cases:</strong></p>
-<ul>
-<li>The <code>toCharArray()</code> method is useful when you need to work with individual characters in a string as an array.</li>
-<li>It allows for easy iteration, manipulation, or processing of characters in the string.</li>
-</ul>
-</li>
-<li>
-<p><strong>Key Points:</strong></p>
-<ul>
-<li>The <code>toCharArray()</code> method provides a convenient way to convert a <code>String</code> into a character array for character-level operations.</li>
-<li>The resulting character array is a new copy of the characters in the original string.</li>
-</ul>
-</li>
-</ol>
-<p>In summary, the <code>toCharArray()</code> method in Java is a useful method for converting a <code>String</code> object into a character array, enabling easy access and manipulation of individual characters in the string.</p>
 ]]></content:encoded>
         </item>
     </channel>
