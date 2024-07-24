@@ -4,9 +4,91 @@
         <title></title>
         <link>undefined</link>
         <description>undefined</description>
-        <lastBuildDate>Mon, 22 Jul 2024 17:07:17 GMT</lastBuildDate>
+        <lastBuildDate>Wed, 24 Jul 2024 06:52:52 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>Joplin Pages Publisher</generator>
+        <item>
+            <title><![CDATA[Sorting an Unsorted Array using Arrays.sort]]></title>
+            <guid>47463f9f7e5842439a075d96ac1a75d0</guid>
+            <pubDate>Wed, 24 Jul 2024 06:51:49 GMT</pubDate>
+            <content:encoded><![CDATA[<p>To sort an unsorted array in Java, you can use the <code>Arrays.sort()</code> method from the <code>java.util.Arrays</code> class. This method sorts the array in ascending order.</p>
+<p>Here’s an example:</p>
+<h3 id="sorting-an-unsorted-array">Sorting an Unsorted Array</h3>
+<div><pre class="hljs"><code><span class="hljs-keyword">import</span> java.util.Arrays;
+
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Main</span> {
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> {
+        <span class="hljs-comment">// Example unsorted array</span>
+        <span class="hljs-type">int</span>[] unsortedArray = {<span class="hljs-number">5</span>, <span class="hljs-number">3</span>, <span class="hljs-number">8</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">7</span>, <span class="hljs-number">4</span>, <span class="hljs-number">6</span>};
+
+        <span class="hljs-comment">// Print the original unsorted array</span>
+        System.out.println(<span class="hljs-string">"Unsorted array: "</span> + Arrays.toString(unsortedArray));
+
+        <span class="hljs-comment">// Sort the array using Arrays.sort()</span>
+        Arrays.sort(unsortedArray);
+
+        <span class="hljs-comment">// Print the sorted array</span>
+        System.out.println(<span class="hljs-string">"Sorted array: "</span> + Arrays.toString(unsortedArray));
+    }
+}</code></pre></div>
+<p>Output:</p>
+<div><pre class="hljs"><code>Unsorted array: <span class="hljs-string">[5, 3, 8, 1, 2, 7, 4, 6]</span>
+Sorted array: <span class="hljs-string">[1, 2, 3, 4, 5, 6, 7, 8]</span></code></pre></div>
+<h3 id="explanation">Explanation</h3>
+<ol>
+<li><strong>Input Array</strong>: The example array <code>unsortedArray</code> contains some unsorted values.</li>
+<li><strong>Printing Unsorted Array</strong>: The original unsorted array is printed using <code>Arrays.toString()</code>.</li>
+<li><strong>Sorting the Array</strong>: The <code>Arrays.sort()</code> method is called to sort the array in ascending order.</li>
+<li><strong>Printing Sorted Array</strong>: The sorted array is printed using <code>Arrays.toString()</code>.</li>
+</ol>
+<p>The <code>Arrays.sort()</code> method is efficient and easy to use for sorting arrays in Java. It uses a Dual-Pivot Quicksort algorithm for primitive types, which is very efficient for most cases.</p>
+]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Using a HashSet to Remove Duplicates]]></title>
+            <guid>39176649530b4f55aec899706421dcb0</guid>
+            <pubDate>Wed, 24 Jul 2024 06:51:04 GMT</pubDate>
+            <content:encoded><![CDATA[<p>To remove redundant (duplicate) data from an array in Java, you can use a <code>HashSet</code> to filter out duplicates since <code>HashSet</code> does not allow duplicate elements. After filtering, you can convert the <code>HashSet</code> back to an array if needed.</p>
+<p>Here’s an example:</p>
+<h3 id="using-a-hashset-to-remove-duplicates">Using a <code>HashSet</code> to Remove Duplicates</h3>
+<div><pre class="hljs"><code><span class="hljs-keyword">import</span> java.util.Arrays;
+<span class="hljs-keyword">import</span> java.util.HashSet;
+<span class="hljs-keyword">import</span> java.util.Set;
+
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Main</span> {
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> {
+        <span class="hljs-comment">// Example array with redundant data</span>
+        <span class="hljs-type">int</span>[] arrayWithDuplicates = {<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">3</span>, <span class="hljs-number">2</span>, <span class="hljs-number">1</span>, <span class="hljs-number">6</span>, <span class="hljs-number">7</span>, <span class="hljs-number">8</span>, <span class="hljs-number">8</span>, <span class="hljs-number">9</span>};
+
+        <span class="hljs-comment">// Remove duplicates using a HashSet</span>
+        Set&lt;Integer&gt; set = <span class="hljs-keyword">new</span> <span class="hljs-title class_">HashSet</span>&lt;&gt;();
+        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> value : arrayWithDuplicates) {
+            set.add(value);
+        }
+
+        <span class="hljs-comment">// Convert the set back to an array</span>
+        <span class="hljs-type">int</span>[] arrayWithoutDuplicates = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[set.size()];
+        <span class="hljs-type">int</span> <span class="hljs-variable">index</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;
+        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> value : set) {
+            arrayWithoutDuplicates[index++] = value;
+        }
+
+        <span class="hljs-comment">// Print the result</span>
+        System.out.println(<span class="hljs-string">"Array without duplicates: "</span> + Arrays.toString(arrayWithoutDuplicates));
+    }
+}</code></pre></div>
+<p>Output:</p>
+<div><pre class="hljs"><code><span class="hljs-keyword">Array</span> <span class="hljs-keyword">without</span> duplicates: [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>, <span class="hljs-number">7</span>, <span class="hljs-number">8</span>, <span class="hljs-number">9</span>]</code></pre></div>
+<h3 id="explanation">Explanation</h3>
+<ol>
+<li><strong>Input Array</strong>: The example array <code>arrayWithDuplicates</code> contains some duplicate values.</li>
+<li><strong>Using <code>HashSet</code></strong>: A <code>HashSet</code> is used to store the elements of the array. Since <code>HashSet</code> does not allow duplicate elements, it automatically removes duplicates.</li>
+<li><strong>Converting Back to Array</strong>: The unique elements from the <code>HashSet</code> are then converted back to an array.</li>
+<li><strong>Printing the Result</strong>: The resulting array without duplicates is printed.</li>
+</ol>
+<p>This method ensures that all redundant data is removed, and it maintains the unique elements in the array.</p>
+]]></content:encoded>
+        </item>
         <item>
             <title><![CDATA[Optimal Techniques for Searching and Inserting Arrays and Collections in Java]]></title>
             <guid>d3784106d49e4be89d0d7ed5c2a0f64c</guid>
@@ -1338,520 +1420,6 @@ This Java program simulates a simple Minesweeper game where the user can input t
 </li>
 </ol>
 <p>Overall, the code structure separates the logic for calculating candies into the <code>Result</code> class and handles input/output operations in the <code>Solution</code> class. The <code>candies</code> method efficiently calculates the total number of candies based on the streaks of increasing and decreasing ratings in the input array. The <code>main</code> method reads input, processes it, and writes the result to the output.</p>
-]]></content:encoded>
-        </item>
-        <item>
-            <title><![CDATA[Code Analysis of HR Goodland Electricity problem solution]]></title>
-            <guid>326bba3fc113446e829114782bb534bc</guid>
-            <pubDate>Wed, 03 Jul 2024 07:15:22 GMT</pubDate>
-            <content:encoded><![CDATA[<p>Given the solution code :</p>
-<div><pre class="hljs"><code><span class="hljs-keyword">import</span> java.io.*;
-<span class="hljs-keyword">import</span> java.math.*;
-<span class="hljs-keyword">import</span> java.security.*;
-<span class="hljs-keyword">import</span> java.text.*;
-<span class="hljs-keyword">import</span> java.util.*;
-<span class="hljs-keyword">import</span> java.util.concurrent.*;
-<span class="hljs-keyword">import</span> java.util.regex.*;
-
-<span class="hljs-keyword">class</span> <span class="hljs-title class_">Result</span> {
-
-    <span class="hljs-comment">/*
-     * Complete the 'pylons' function below.
-     *
-     * The function is expected to return an INTEGER.
-     * The function accepts following parameters:
-     *  1. INTEGER k
-     *  2. INTEGER_ARRAY arr
-     */</span>
-    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-type">int</span> <span class="hljs-title function_">pylons</span><span class="hljs-params">(<span class="hljs-type">int</span> k, List&lt;Integer&gt; arr)</span> {
-        <span class="hljs-comment">// Initialize count of pylons</span>
-        <span class="hljs-type">int</span> <span class="hljs-variable">count</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;
-        <span class="hljs-comment">// Initialize the previous pylon location</span>
-        <span class="hljs-type">int</span> <span class="hljs-variable">prevLoc</span> <span class="hljs-operator">=</span> -k;        
-
-        <span class="hljs-keyword">try</span> {
-            <span class="hljs-comment">// Iterate through the array</span>
-            <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>; i&lt;arr.size(); i++){
-                <span class="hljs-comment">// Calculate the maximum coverage range</span>
-                <span class="hljs-type">int</span> <span class="hljs-variable">maxCoverage</span> <span class="hljs-operator">=</span> prevLoc+k;
-
-                <span class="hljs-comment">// Skip if within the coverage range</span>
-                <span class="hljs-keyword">if</span>(i &lt; maxCoverage)
-                    <span class="hljs-keyword">continue</span>;
-
-                <span class="hljs-comment">// Search for pylons within the coverage range</span>
-                <span class="hljs-type">int</span> <span class="hljs-variable">max</span> <span class="hljs-operator">=</span> Math.min(arr.size()-<span class="hljs-number">1</span>, i+k-<span class="hljs-number">1</span>);
-                <span class="hljs-type">int</span> <span class="hljs-variable">min</span> <span class="hljs-operator">=</span> Math.max(<span class="hljs-number">0</span>, i-(k-<span class="hljs-number">1</span>));
-                <span class="hljs-type">int</span> <span class="hljs-variable">pylonIndex</span> <span class="hljs-operator">=</span> findPylonInRange(arr, max, min);
-
-                <span class="hljs-comment">// If a pylon is found, update count and previous location</span>
-                <span class="hljs-keyword">if</span> (pylonIndex != -<span class="hljs-number">1</span>) {
-                    count++;
-                    prevLoc = pylonIndex;
-                } <span class="hljs-keyword">else</span> {
-                    <span class="hljs-comment">// If no pylon is found, return -1</span>
-                    <span class="hljs-keyword">return</span> -<span class="hljs-number">1</span>;
-                }
-            }
-        } <span class="hljs-keyword">catch</span> (Exception e) {
-            <span class="hljs-comment">// Handle any exceptions that occur during the process</span>
-            System.out.println(<span class="hljs-string">"An error occurred: "</span> + e.getMessage());
-            <span class="hljs-keyword">return</span> -<span class="hljs-number">1</span>;
-        }
-
-        <span class="hljs-keyword">return</span> count;
-    }
-
-    <span class="hljs-comment">// Method to find a pylon within the specified range</span>
-    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-type">int</span> <span class="hljs-title function_">findPylonInRange</span><span class="hljs-params">(List&lt;Integer&gt; arr, <span class="hljs-type">int</span> max, <span class="hljs-type">int</span> min)</span> {
-        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> j=max; j&gt;=min; j--){
-            <span class="hljs-keyword">if</span>(arr.get(j) == <span class="hljs-number">1</span>){
-                <span class="hljs-keyword">return</span> j;
-            }
-        }
-        <span class="hljs-comment">// Return -1 if no pylon is found within the range</span>
-        <span class="hljs-keyword">return</span> -<span class="hljs-number">1</span>;
-    }
-
-}
-
-<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> {
-    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> IOException {
-        <span class="hljs-type">BufferedReader</span> <span class="hljs-variable">bufferedReader</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">BufferedReader</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">InputStreamReader</span>(System.in));
-        <span class="hljs-type">BufferedWriter</span> <span class="hljs-variable">bufferedWriter</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">BufferedWriter</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">FileWriter</span>(System.getenv(<span class="hljs-string">"OUTPUT_PATH"</span>)));
-
-        String[] firstMultipleInput = bufferedReader.readLine().replaceAll(<span class="hljs-string">"\\s+$"</span>, <span class="hljs-string">""</span>).split(<span class="hljs-string">" "</span>);
-
-        <span class="hljs-type">int</span> <span class="hljs-variable">n</span> <span class="hljs-operator">=</span> Integer.parseInt(firstMultipleInput[<span class="hljs-number">0</span>]);
-
-        <span class="hljs-type">int</span> <span class="hljs-variable">k</span> <span class="hljs-operator">=</span> Integer.parseInt(firstMultipleInput[<span class="hljs-number">1</span>]);
-
-        String[] arrTemp = bufferedReader.readLine().replaceAll(<span class="hljs-string">"\\s+$"</span>, <span class="hljs-string">""</span>).split(<span class="hljs-string">" "</span>);
-
-        List&lt;Integer&gt; arr = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;&gt;();
-
-        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; n; i++) {
-            <span class="hljs-type">int</span> <span class="hljs-variable">arrItem</span> <span class="hljs-operator">=</span> Integer.parseInt(arrTemp[i]);
-            arr.add(arrItem);
-        }
-
-        <span class="hljs-type">int</span> <span class="hljs-variable">result</span> <span class="hljs-operator">=</span> Result.pylons(k, arr);
-
-        bufferedWriter.write(String.valueOf(result));
-        bufferedWriter.newLine();
-
-        bufferedReader.close();
-        bufferedWriter.close();
-    }
-}</code></pre></div>
-<p><strong>Sample Input</strong></p>
-<pre style="background:linear-gradient(to right, #F3F7EC, white);color:#3F4E4F;padding:5px" class="jop-noMdConv">
-6 2           
-0 1 1 1 1 0
-</pre>
-<p><strong>Sample Output</strong></p>
-<pre style="background:linear-gradient(to right, #FFE6E6, white);color:#3F4E4F;padding:5px" class="jop-noMdConv">
-2
-</pre>
-<h2 id="elucidation">Elucidation</h2>
-<ol>
-<li>
-<p><strong>pylons Method</strong>:</p>
-<ul>
-<li>The <code>pylons</code> method takes two parameters: <code>k</code> (an integer representing the coverage range) and <code>arr</code> (a list of integers representing the presence of pylons).</li>
-<li>It initializes the count of pylons (<code>count</code>) to 0 and the previous pylon location (<code>prevLoc</code>) to a value before the start of the array.</li>
-<li>The method uses a try-catch block to handle any exceptions that may occur during the process.</li>
-<li>It iterates through the array to find pylons within the coverage range.</li>
-<li>If a pylon is found within the range, the count is incremented, and the previous location is updated.</li>
-<li>If no pylon is found within the range, the method returns -1.</li>
-</ul>
-</li>
-<li>
-<p><strong>findPylonInRange Method</strong>:</p>
-<ul>
-<li>The <code>findPylonInRange</code> method takes three parameters: <code>arr</code> (the list of integers representing pylons), <code>max</code> (the maximum index to search), and <code>min</code> (the minimum index to search).</li>
-<li>It iterates through the array from the maximum index to the minimum index to find a pylon.</li>
-<li>If a pylon is found, it returns the index of the pylon. Otherwise, it returns -1.</li>
-</ul>
-</li>
-</ol>
-<p>Overall, the <code>pylons</code> method efficiently searches for pylons within the specified coverage range by breaking down the process into smaller methods and handling exceptions gracefully. The <code>findPylonInRange</code> method simplifies the search for pylons within a specific range, improving the readability and maintainability of the code.</p>
-]]></content:encoded>
-        </item>
-        <item>
-            <title><![CDATA[Code Analysis of HR Crossword Puzzle problem solution]]></title>
-            <guid>e062ed7284394371b1e0a630286cdcd4</guid>
-            <pubDate>Wed, 03 Jul 2024 05:35:27 GMT</pubDate>
-            <content:encoded><![CDATA[<p>Given the solution code :</p>
-<div><pre class="hljs"><code><span class="hljs-keyword">import</span> java.io.*;
-<span class="hljs-keyword">import</span> java.math.*;
-<span class="hljs-keyword">import</span> java.security.*;
-<span class="hljs-keyword">import</span> java.text.*;
-<span class="hljs-keyword">import</span> java.util.*;
-<span class="hljs-keyword">import</span> java.util.concurrent.*;
-<span class="hljs-keyword">import</span> java.util.regex.*;
-
-<span class="hljs-keyword">class</span> <span class="hljs-title class_">Result</span> {
-
-    <span class="hljs-keyword">static</span> List&lt;String&gt; result;
-    <span class="hljs-comment">/*
-     * Complete the 'crosswordPuzzle' function below.
-     *
-     * The function is expected to return a STRING_ARRAY.
-     * The function accepts following parameters:
-     *  1. STRING_ARRAY crossword
-     *  2. STRING words
-     */</span>    
-    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> List&lt;String&gt; <span class="hljs-title function_">crosswordPuzzle</span><span class="hljs-params">(List&lt;String&gt; crossword, String words)</span> {
-        <span class="hljs-comment">// Function to solve the crossword puzzle</span>
-        result = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;&gt;(); <span class="hljs-comment">// Initialize the result to store the solved puzzle</span>
-        <span class="hljs-type">char</span>[][] croswrd = <span class="hljs-keyword">new</span> <span class="hljs-title class_">char</span>[<span class="hljs-number">10</span>][<span class="hljs-number">10</span>]; <span class="hljs-comment">// Create a 10x10 crossword grid</span>
-        <span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;
-        <span class="hljs-comment">// Populate the crossword grid with characters from the input</span>
-        <span class="hljs-keyword">for</span> (String s : crossword) {
-            <span class="hljs-type">int</span> <span class="hljs-variable">j</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;
-            <span class="hljs-keyword">for</span> (<span class="hljs-type">char</span> ch : s.toCharArray()) {
-                croswrd[i][j] = ch;
-                j++;
-            }
-            i++;
-        }
-        <span class="hljs-keyword">try</span> {
-            helper(croswrd, words.split(<span class="hljs-string">";"</span>), <span class="hljs-number">0</span>); <span class="hljs-comment">// Call the helper function to solve the puzzle</span>
-        } <span class="hljs-keyword">catch</span> (Exception e) {
-            <span class="hljs-comment">// Handle any exceptions that occur during the solving process</span>
-            System.out.println(<span class="hljs-string">"An error occurred: "</span> + e.getMessage());
-        }
-        <span class="hljs-keyword">return</span> result; <span class="hljs-comment">// Return the solved crossword puzzle</span>
-    }
-
-    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">helper</span><span class="hljs-params">(<span class="hljs-type">char</span>[][] c, String[] words, <span class="hljs-type">int</span> vidx)</span> {
-        <span class="hljs-comment">// Recursive helper function to solve the crossword puzzle</span>
-        <span class="hljs-keyword">if</span> (vidx == words.length) {
-            <span class="hljs-comment">// If all words are placed, convert the crossword grid to a list of strings</span>
-            List&lt;String&gt; temp = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;&gt;();
-            <span class="hljs-keyword">for</span> (<span class="hljs-type">char</span>[] str : c) {
-                <span class="hljs-type">String</span> <span class="hljs-variable">s</span> <span class="hljs-operator">=</span> <span class="hljs-string">""</span>;
-                <span class="hljs-keyword">for</span> (<span class="hljs-type">char</span> ch : str) {
-                    s += ch;
-                }
-                temp.add(s);
-            }
-            result = temp; <span class="hljs-comment">// Update the result with the solved puzzle</span>
-            <span class="hljs-keyword">return</span>;
-        }
-
-        <span class="hljs-type">String</span> <span class="hljs-variable">word</span> <span class="hljs-operator">=</span> words[vidx]; <span class="hljs-comment">// Get the current word to be placed</span>
-        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt;= <span class="hljs-number">9</span>; i++) {
-            <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">j</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; j &lt;= <span class="hljs-number">9</span>; j++) {
-                <span class="hljs-keyword">try</span> {
-                    <span class="hljs-comment">// Try placing the word horizontally if possible</span>
-                    <span class="hljs-keyword">if</span> (canPutHorizontally(c, word, i, j)) {
-                        <span class="hljs-type">boolean</span>[][] vis = putHorizontally(c, word, i, j); <span class="hljs-comment">// Track the placement</span>
-                        helper(c, words, vidx + <span class="hljs-number">1</span>); <span class="hljs-comment">// Recursively call helper for the next word</span>
-                        replaceHorizontal(c, word, vis, i, j); <span class="hljs-comment">// Backtrack and replace if needed</span>
-                    }
-
-                    <span class="hljs-comment">// Try placing the word vertically if possible</span>
-                    <span class="hljs-keyword">if</span> (canPutVertically(c, word, i, j)) {
-                        <span class="hljs-type">boolean</span>[][] vis = putVertically(c, word, i, j); <span class="hljs-comment">// Track the placement</span>
-                        helper(c, words, vidx + <span class="hljs-number">1</span>); <span class="hljs-comment">// Recursively call helper for the next word</span>
-                        replaceVertical(c, word, vis, i, j); <span class="hljs-comment">// Backtrack and replace if needed</span>
-                    }
-                } <span class="hljs-keyword">catch</span> (Exception e) {
-                    System.out.println(<span class="hljs-string">"An error occurred: "</span> + e.getMessage());
-                }
-            }
-        }
-    }
-    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">replaceHorizontal</span><span class="hljs-params">(<span class="hljs-type">char</span>[][] c, String word, <span class="hljs-type">boolean</span>[][] vis, <span class="hljs-type">int</span> i, <span class="hljs-type">int</span> j)</span> {
-        <span class="hljs-keyword">try</span> {
-            <span class="hljs-comment">// Replace the characters in the horizontal direction for the word</span>
-            <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">k</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; k &lt; word.length(); k++) {
-                <span class="hljs-keyword">if</span> (vis[i][j + k]) {
-                    <span class="hljs-comment">// Replace the character with a dash and update the visibility array</span>
-                    c[i][j + k] = <span class="hljs-string">'-'</span>;
-                    vis[i][j + k] = <span class="hljs-literal">false</span>;
-                }
-            }
-        } <span class="hljs-keyword">catch</span> (Exception e) {
-            <span class="hljs-comment">// Handle any exceptions that occur during horizontal replacement</span>
-            System.out.println(<span class="hljs-string">"An error occurred in replaceHorizontal: "</span> + e.getMessage());
-        }
-    }
-
-    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">replaceVertical</span><span class="hljs-params">(<span class="hljs-type">char</span>[][] c, String word, <span class="hljs-type">boolean</span>[][] vis, <span class="hljs-type">int</span> i, <span class="hljs-type">int</span> j)</span> {
-        <span class="hljs-keyword">try</span> {
-            <span class="hljs-comment">// Replace the characters in the vertical direction for the word</span>
-            <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">k</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; k &lt; word.length(); k++) {
-                <span class="hljs-keyword">if</span> (vis[i + k][j]) {
-                    <span class="hljs-comment">// Replace the character with a dash and update the visibility array</span>
-                    c[i + k][j] = <span class="hljs-string">'-'</span>;
-                    vis[i + k][j] = <span class="hljs-literal">false</span>;
-                }
-            }
-        } <span class="hljs-keyword">catch</span> (Exception e) {
-            <span class="hljs-comment">// Handle any exceptions that occur during vertical replacement</span>
-            System.out.println(<span class="hljs-string">"An error occurred in replaceVertical: "</span> + e.getMessage());
-        }
-    }
-    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-type">boolean</span>[][] putHorizontally(<span class="hljs-type">char</span>[][] c, String word, <span class="hljs-type">int</span> i, <span class="hljs-type">int</span> j) {
-        <span class="hljs-keyword">try</span> {
-            <span class="hljs-comment">// Create a boolean array to track the placement of characters for the word horizontally</span>
-            <span class="hljs-type">boolean</span>[][] res = <span class="hljs-keyword">new</span> <span class="hljs-title class_">boolean</span>[<span class="hljs-number">10</span>][<span class="hljs-number">10</span>];
-            <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">k</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; k &lt; word.length(); k++) {
-                <span class="hljs-comment">// Check if it's within the bounds and the current position is empty</span>
-                <span class="hljs-keyword">if</span> (j + k &lt; <span class="hljs-number">10</span> &amp;&amp; c[i][j + k] == <span class="hljs-string">'-'</span>) {
-                    <span class="hljs-comment">// Place the character from the word at the corresponding position</span>
-                    c[i][j + k] = word.charAt(k);
-                    res[i][j + k] = <span class="hljs-literal">true</span>; <span class="hljs-comment">// Update the tracking array</span>
-                }
-            }
-            <span class="hljs-keyword">return</span> res; <span class="hljs-comment">// Return the tracking array</span>
-        } <span class="hljs-keyword">catch</span> (Exception e) {
-            <span class="hljs-comment">// Handle any exceptions that occur during the horizontal placement</span>
-            System.out.println(<span class="hljs-string">"An error occurred in putHorizontally: "</span> + e.getMessage());
-            <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">boolean</span>[<span class="hljs-number">10</span>][<span class="hljs-number">10</span>]; <span class="hljs-comment">// Return an empty tracking array</span>
-        }
-    }
-
-    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-type">boolean</span>[][] putVertically(<span class="hljs-type">char</span>[][] c, String word, <span class="hljs-type">int</span> i, <span class="hljs-type">int</span> j) {
-        <span class="hljs-keyword">try</span> {
-            <span class="hljs-comment">// Create a boolean array to track the placement of characters for the word vertically</span>
-            <span class="hljs-type">boolean</span>[][] res = <span class="hljs-keyword">new</span> <span class="hljs-title class_">boolean</span>[<span class="hljs-number">10</span>][<span class="hljs-number">10</span>];
-            <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">k</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; k &lt; word.length(); k++) {
-                <span class="hljs-comment">// Check if it's within the bounds and the current position is empty</span>
-                <span class="hljs-keyword">if</span> (i + k &lt; <span class="hljs-number">10</span> &amp;&amp; c[i + k][j] == <span class="hljs-string">'-'</span>) {
-                    <span class="hljs-comment">// Place the character from the word at the corresponding position</span>
-                    c[i + k][j] = word.charAt(k);
-                    res[i + k][j] = <span class="hljs-literal">true</span>; <span class="hljs-comment">// Update the tracking array</span>
-                }
-            }
-            <span class="hljs-keyword">return</span> res; <span class="hljs-comment">// Return the tracking array</span>
-        } <span class="hljs-keyword">catch</span> (Exception e) {
-            <span class="hljs-comment">// Handle any exceptions that occur during the vertical placement</span>
-            System.out.println(<span class="hljs-string">"An error occurred in putVertically: "</span> + e.getMessage());
-            <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">boolean</span>[<span class="hljs-number">10</span>][<span class="hljs-number">10</span>]; <span class="hljs-comment">// Return an empty tracking array</span>
-        }
-    }
-    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">canPutHorizontally</span><span class="hljs-params">(<span class="hljs-type">char</span>[][] c, String word, <span class="hljs-type">int</span> i, <span class="hljs-type">int</span> j)</span> {
-        <span class="hljs-keyword">try</span> {
-            <span class="hljs-comment">// Check if the word can be placed horizontally at position i, j on the crossword</span>
-            <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">k</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; k &lt; word.length(); k++) {
-                <span class="hljs-keyword">if</span> (j + k &lt; <span class="hljs-number">10</span> &amp;&amp; (c[i][j + k] == <span class="hljs-string">'-'</span> || c[i][j + k] == word.charAt(k))) {
-                    <span class="hljs-comment">// Continue checking the next character in the word</span>
-                } <span class="hljs-keyword">else</span> {
-                    <span class="hljs-comment">// Return false if the word cannot be placed horizontally at the current position</span>
-                    <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
-                }
-            }
-            <span class="hljs-comment">// Return true if the word can be placed horizontally at the given position</span>
-            <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
-        } <span class="hljs-keyword">catch</span> (Exception e) {
-            <span class="hljs-comment">// Handle any exceptions that occur during the check</span>
-            System.out.println(<span class="hljs-string">"An error occurred in canPutHorizontally: "</span> + e.getMessage());
-            <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
-        }
-    }
-
-    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">canPutVertically</span><span class="hljs-params">(<span class="hljs-type">char</span>[][] c, String word, <span class="hljs-type">int</span> i, <span class="hljs-type">int</span> j)</span> {
-        <span class="hljs-keyword">try</span> {
-            <span class="hljs-comment">// Check if the word can be placed vertically at position i, j on the crossword</span>
-            <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">k</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; k &lt; word.length(); k++) {
-                <span class="hljs-keyword">if</span> (i + k &lt; <span class="hljs-number">10</span> &amp;&amp; (c[i + k][j] == <span class="hljs-string">'-'</span> || c[i + k][j] == word.charAt(k))) {
-                    <span class="hljs-comment">// Continue checking the next character in the word</span>
-                } <span class="hljs-keyword">else</span> {
-                    <span class="hljs-comment">// Return false if the word cannot be placed vertically at the current position</span>
-                    <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
-                }
-            }
-            <span class="hljs-comment">// Return true if the word can be placed vertically at the given position</span>
-            <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
-        } <span class="hljs-keyword">catch</span> (Exception e) {
-            <span class="hljs-comment">// Handle any exceptions that occur during the check</span>
-            System.out.println(<span class="hljs-string">"An error occurred in canPutVertically: "</span> + e.getMessage());
-            <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
-        }
-    }
-
-    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">print</span><span class="hljs-params">(<span class="hljs-type">char</span>[][] c)</span> {
-        <span class="hljs-keyword">try</span> {
-            <span class="hljs-comment">// Print the crossword grid</span>
-            <span class="hljs-keyword">for</span> (<span class="hljs-type">char</span>[] cc : c) {
-                <span class="hljs-keyword">for</span> (<span class="hljs-type">char</span> ccc : cc) {
-                    System.out.print(ccc);
-                }
-                System.out.println();
-            }
-        } <span class="hljs-keyword">catch</span> (Exception e) {
-            <span class="hljs-comment">// Handle any exceptions that occur during printing</span>
-            System.out.println(<span class="hljs-string">"An error occurred in printing: "</span> + e.getMessage());
-        }
-    }
-}
-
-<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> {
-    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> IOException {
-        <span class="hljs-type">BufferedReader</span> <span class="hljs-variable">bufferedReader</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">BufferedReader</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">InputStreamReader</span>(System.in));
-        <span class="hljs-type">BufferedWriter</span> <span class="hljs-variable">bufferedWriter</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">BufferedWriter</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">FileWriter</span>(System.getenv(<span class="hljs-string">"OUTPUT_PATH"</span>)));
-
-        List&lt;String&gt; crossword = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;&gt;();
-
-        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">10</span>; i++) {
-            <span class="hljs-type">String</span> <span class="hljs-variable">crosswordItem</span> <span class="hljs-operator">=</span> bufferedReader.readLine();
-            crossword.add(crosswordItem);
-        }
-
-        <span class="hljs-type">String</span> <span class="hljs-variable">words</span> <span class="hljs-operator">=</span> bufferedReader.readLine();
-
-        List&lt;String&gt; result = Result.crosswordPuzzle(crossword, words);
-
-        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; result.size(); i++) {
-            bufferedWriter.write(result.get(i));
-
-            <span class="hljs-keyword">if</span> (i != result.size() - <span class="hljs-number">1</span>) {
-                bufferedWriter.write(<span class="hljs-string">"\n"</span>);
-            }
-        }
-
-        bufferedWriter.newLine();
-
-        bufferedReader.close();
-        bufferedWriter.close();
-    }
-}</code></pre></div>
-<p><strong>Sample Input</strong></p>
-<pre style="background:linear-gradient(to right, #F3F7EC, white);color:#3F4E4F;padding:5px" class="jop-noMdConv">
-+-++++++++
-+-++++++++
-+-++++++++
-+-----++++
-+-+++-++++
-+-+++-++++
-+++++-++++
-++------++
-+++++-++++
-+++++-++++
-LONDON;DELHI;ICELAND;ANKARA
-</pre>
-<p><strong>Sample Output</strong></p>
-<pre style="background:linear-gradient(to right, #FFE6E6, white);color:#3F4E4F;padding:5px" class="jop-noMdConv">
-+L++++++++
-+O++++++++
-+N++++++++
-+DELHI++++
-+O+++C++++
-+N+++E++++
-+++++L++++
-++ANKARA++
-+++++N++++
-+++++D++++
-</pre>
-<h2 id="elucidation">Elucidation</h2>
-<p>The provided code is a solution to a crossword puzzle problem. Here is a detailed explanation of each section:</p>
-<ol>
-<li>
-<p><code>Result</code> Class:</p>
-<ul>
-<li>This class contains static methods to solve the crossword puzzle.</li>
-<li>It initializes a static List <code>result</code> to store the solved puzzle.</li>
-<li>The <code>crosswordPuzzle</code> method takes a list of strings representing the crossword grid and a string of words to place in the grid.</li>
-<li>It converts the input crossword grid into a 2D char array.</li>
-<li>Then, it calls the <code>helper</code> method to solve the puzzle by trying to place words horizontally and vertically.</li>
-<li>If an error occurs during the solving process, it catches the exception and prints an error message.</li>
-<li>The class also includes helper methods like <code>replaceHorizontal</code>, <code>replaceVertical</code>, <code>putHorizontally</code>, <code>putVertically</code>, <code>canPutHorizontally</code>, <code>canPutVertically</code>, and <code>print</code> to assist in solving the puzzle.</li>
-</ul>
-</li>
-<li>
-<p><code>Solution</code> Class:</p>
-<ul>
-<li>The <code>main</code> method reads input from the user to populate the crossword grid and words.</li>
-<li>It then calls the <code>crosswordPuzzle</code> method from the <code>Result</code> class to solve the puzzle.</li>
-<li>Finally, it writes the solved puzzle to the output file.</li>
-</ul>
-</li>
-</ol>
-<p>Overall, the code structure follows a modular approach to solving the crossword puzzle problem, with separate methods for different tasks such as checking placement validity, tracking character placement, and handling exceptions.</p>
-<h2 id="the-result-class">The <code>Result</code> Class</h2>
-<p>The provided code is a comprehensive solution to a crossword puzzle problem. Here is a detailed explanation of each section:</p>
-<ol>
-<li>
-<p><code>Result</code> Class:</p>
-<ul>
-<li>This class contains static methods to solve the crossword puzzle.</li>
-<li>It initializes a static List <code>result</code> to store the solved puzzle.</li>
-<li>The <code>crosswordPuzzle</code> method takes a list of strings representing the crossword grid and a string of words to place in the grid.</li>
-<li>It converts the input crossword grid into a 2D char array.</li>
-<li>Then, it calls the <code>helper</code> method to solve the puzzle by trying to place words horizontally and vertically.</li>
-<li>If an error occurs during the solving process, it catches the exception and prints an error message.</li>
-<li>The class also includes helper methods like <code>replaceHorizontal</code>, <code>replaceVertical</code>, <code>putHorizontally</code>, <code>putVertically</code>, <code>canPutHorizontally</code>, <code>canPutVertically</code>, and <code>print</code> to assist in solving the puzzle.</li>
-</ul>
-</li>
-<li>
-<p><code>helper</code> Method:</p>
-<ul>
-<li>This recursive method is the core of solving the crossword puzzle.</li>
-<li>It iterates through each word to be placed and tries to place it horizontally and vertically in the grid.</li>
-<li>If a word can be placed, it recursively calls itself for the next word.</li>
-<li>It backtracks by replacing characters if needed to explore all possible placements.</li>
-</ul>
-</li>
-<li>
-<p><code>replaceHorizontal</code> and <code>replaceVertical</code> Methods:</p>
-<ul>
-<li>These methods are used to backtrack and replace characters in the horizontal and vertical directions, respectively.</li>
-<li>They are called when a word cannot be placed successfully.</li>
-</ul>
-</li>
-<li>
-<p><code>putHorizontally</code> and <code>putVertically</code> Methods:</p>
-<ul>
-<li>These methods are used to track the placement of characters for words horizontally and vertically.</li>
-<li>They return a boolean array to indicate the successful placement of characters.</li>
-</ul>
-</li>
-<li>
-<p><code>canPutHorizontally</code> and <code>canPutVertically</code> Methods:</p>
-<ul>
-<li>These methods check if a word can be placed horizontally or vertically at a specific position in the grid.</li>
-<li>They validate the placement based on the characters already present in the grid.</li>
-</ul>
-</li>
-<li>
-<p><code>print</code> Method:</p>
-<ul>
-<li>This method is used to print the crossword grid to the console.</li>
-<li>It helps visualize the current state of the grid during the solving process.</li>
-</ul>
-</li>
-</ol>
-<p>Overall, the code structure follows a systematic approach to solving the crossword puzzle problem, with separate methods for different tasks such as checking placement validity, tracking character placement, and handling exceptions.</p>
-<h2 id="the-solution-class">The <code>Solution</code> Class</h2>
-<p>The provided code is the main class that reads input data, solves the crossword puzzle, and writes the solution to an output file. Here is a detailed explanation of each section:</p>
-<ol>
-<li>
-<p><code>Solution</code> Class:</p>
-<ul>
-<li>This class contains the main method that serves as the entry point of the program.</li>
-<li>It reads input from the user, processes the data, solves the crossword puzzle, and writes the solution to an output file.</li>
-</ul>
-</li>
-<li>
-<p><code>main</code> Method:</p>
-<ul>
-<li>The <code>main</code> method takes an array of strings as input arguments and throws an IOException.</li>
-<li>It initializes a <code>BufferedReader</code> to read input from the console and a <code>BufferedWriter</code> to write output to a file specified in the <code>OUTPUT_PATH</code> environment variable.</li>
-<li>It creates an empty list <code>crossword</code> to store the rows of the crossword grid.</li>
-<li>It reads 10 lines of input representing the rows of the crossword grid and adds them to the <code>crossword</code> list.</li>
-<li>It reads a single line of input containing the words to be placed in the crossword grid.</li>
-<li>It calls the <code>crosswordPuzzle</code> method from the <code>Result</code> class to solve the crossword puzzle using the input grid and words.</li>
-<li>It iterates through the solved puzzle (<code>result</code> list) and writes each row to the output file using the <code>BufferedWriter</code>.</li>
-<li>It writes a newline character after writing each row to separate them in the output file.</li>
-<li>Finally, it closes the <code>BufferedReader</code> and <code>BufferedWriter</code> to release system resources.</li>
-</ul>
-</li>
-</ol>
-<p>Overall, the <code>Solution</code> class orchestrates the process of reading input data, solving the crossword puzzle, and writing the solution to an output file. It acts as the control center of the program, coordinating the flow of data and interactions between different components.</p>
 ]]></content:encoded>
         </item>
     </channel>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="Free HTML5 Template by FREEHTML5.CO" />
+	<meta name="keywords" content="free html5, free template, free bootstrap, html5, css3, mobile first, responsive" />
+	<meta name="author" content="FREEHTML5.CO" />
+
+  	<!-- Facebook and Twitter integration -->
+	<meta property="og:title" content=""/>
+	<meta property="og:image" content=""/>
+	<meta property="og:url" content=""/>
+	<meta property="og:site_name" content=""/>
+	<meta property="og:description" content=""/>
+	<meta name="twitter:title" content="" />
+	<meta name="twitter:image" content="" />
+	<meta name="twitter:url" content="" />
+	<meta name="twitter:card" content="" />
+
+	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+	<!-- <link rel="shortcut icon" href="favicon.ico"> -->
+
+	<link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,300,700|Roboto:300,400' rel='stylesheet' type='text/css'>
+	
+	<!-- Animate.css -->
+	<link rel="stylesheet" href="/_assets/css/animate.css">
+	<!-- Icomoon Icon Fonts-->
+	<link rel="stylesheet" href="/_assets/css/icomoon.css">
+	<!-- Bootstrap  -->
+	<link rel="stylesheet" href="/_assets/css/bootstrap.css">
+
+	<link rel="stylesheet" href="/_assets/css/style.css">
+
+
+	<!-- Modernizr JS -->
+	<script src="/_assets/js/modernizr-2.6.2.min.js"></script>
+	<!-- FOR IE9 below -->
+	<!--[if lt IE 9]>
+	<script src="/_assets/js/respond.min.js"></script>
+	<![endif]-->
+    <link rel="stylesheet" href="/_assets/main.css" />
+
+    <title>Using a HashSet to Remove Duplicates - Home</title>
+  <link rel="stylesheet" href="/_markdown_plugin_assets/highlight.js/atom-one-light.css" /></head>
+  <body>
+    <div class="main">
+      <nav class="navigation">
+        <!-- <a href="/">Home</a> -->
+        <a class="fh5co-logo" href="/archives"><img src="/_assets/images/brand-nav.png" alt="Home"></a>
+      </nav>
+      <article>
+        <header>
+          <h1 class="article-title">Using a HashSet to Remove Duplicates</h1>
+          <div class="article-info">
+            <div>
+              <span
+                >Created At：<time datetime="1721803864045"
+                  >2024-07-24 13:51</time
+                ></span
+              >
+              <span
+                >Updated At：<time datetime="1721803888167"
+                  >2024-07-24 13:51</time
+                ></span
+              >
+            </div>
+            
+          </div>
+        </header>
+        <div class="article-content markdown-body"><p>To remove redundant (duplicate) data from an array in Java, you can use a <code>HashSet</code> to filter out duplicates since <code>HashSet</code> does not allow duplicate elements. After filtering, you can convert the <code>HashSet</code> back to an array if needed.</p>
+<p>Here’s an example:</p>
+<h3 id="using-a-hashset-to-remove-duplicates">Using a <code>HashSet</code> to Remove Duplicates</h3>
+<div><pre class="hljs"><code><span class="hljs-keyword">import</span> java.util.Arrays;
+<span class="hljs-keyword">import</span> java.util.HashSet;
+<span class="hljs-keyword">import</span> java.util.Set;
+
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Main</span> {
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> {
+        <span class="hljs-comment">// Example array with redundant data</span>
+        <span class="hljs-type">int</span>[] arrayWithDuplicates = {<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">3</span>, <span class="hljs-number">2</span>, <span class="hljs-number">1</span>, <span class="hljs-number">6</span>, <span class="hljs-number">7</span>, <span class="hljs-number">8</span>, <span class="hljs-number">8</span>, <span class="hljs-number">9</span>};
+
+        <span class="hljs-comment">// Remove duplicates using a HashSet</span>
+        Set&lt;Integer&gt; set = <span class="hljs-keyword">new</span> <span class="hljs-title class_">HashSet</span>&lt;&gt;();
+        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> value : arrayWithDuplicates) {
+            set.add(value);
+        }
+
+        <span class="hljs-comment">// Convert the set back to an array</span>
+        <span class="hljs-type">int</span>[] arrayWithoutDuplicates = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[set.size()];
+        <span class="hljs-type">int</span> <span class="hljs-variable">index</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;
+        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> value : set) {
+            arrayWithoutDuplicates[index++] = value;
+        }
+
+        <span class="hljs-comment">// Print the result</span>
+        System.out.println(<span class="hljs-string">"Array without duplicates: "</span> + Arrays.toString(arrayWithoutDuplicates));
+    }
+}</code></pre></div>
+<p>Output:</p>
+<div><pre class="hljs"><code><span class="hljs-keyword">Array</span> <span class="hljs-keyword">without</span> duplicates: [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>, <span class="hljs-number">7</span>, <span class="hljs-number">8</span>, <span class="hljs-number">9</span>]</code></pre></div>
+<h3 id="explanation">Explanation</h3>
+<ol>
+<li><strong>Input Array</strong>: The example array <code>arrayWithDuplicates</code> contains some duplicate values.</li>
+<li><strong>Using <code>HashSet</code></strong>: A <code>HashSet</code> is used to store the elements of the array. Since <code>HashSet</code> does not allow duplicate elements, it automatically removes duplicates.</li>
+<li><strong>Converting Back to Array</strong>: The unique elements from the <code>HashSet</code> are then converted back to an array.</li>
+<li><strong>Printing the Result</strong>: The resulting array without duplicates is printed.</li>
+</ol>
+<p>This method ensures that all redundant data is removed, and it maintains the unique elements in the array.</p>
+</div>
+      </article>
+    </div>
+  </body>
+</html>
