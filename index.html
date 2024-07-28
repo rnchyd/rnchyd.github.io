@@ -1,12 +1,29 @@
-<!DOCTYPE html>
-<html id="homepage">
-  <head>
-    <meta charset="utf-8">
+<!doctype html>
+<!--
+  Material Design Lite
+  Copyright 2015 Google Inc. All rights reserved.
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+      https://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License
+-->
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="description" content="Free HTML5 Template by FREEHTML5.CO" />
-	<meta name="keywords" content="free html5, free template, free bootstrap, html5, css3, mobile first, responsive" />
-	<meta name="author" content="FREEHTML5.CO" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+	<meta name="description" content="" />
+	<meta name="keywords" content="" />
+	<meta name="author" content="" />
 
   	<!-- Facebook and Twitter integration -->
 	<meta property="og:title" content=""/>
@@ -22,103 +39,65 @@
 	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 	<!-- <link rel="shortcut icon" href="favicon.ico"> -->
 
-	<link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,300,700|Roboto:300,400' rel='stylesheet' type='text/css'>
-	
-	<!-- Animate.css -->
-	<link rel="stylesheet" href="/_assets/css/animate.css">
-	<!-- Icomoon Icon Fonts-->
-	<link rel="stylesheet" href="/_assets/css/icomoon.css">
-	<!-- Bootstrap  -->
-	<link rel="stylesheet" href="/_assets/css/bootstrap.css">
-
-	<link rel="stylesheet" href="/_assets/css/style.css">
-
-
 	<!-- Modernizr JS -->
 	<script src="/_assets/js/modernizr-2.6.2.min.js"></script>
 	<!-- FOR IE9 below -->
 	<!--[if lt IE 9]>
 	<script src="/_assets/js/respond.min.js"></script>
 	<![endif]-->
-    <link rel="stylesheet" href="/_assets/main.css" />
 
-    <title>Home</title>
-  </head>
+	<!-- ashnazg -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.grey-pink.min.css" />
+    <link rel="stylesheet" href="/_assets/styles.css" />
 
-  <div class="box-wrap">
-		<header role="banner" id="fh5co-header">
-			<div class="container">
-				<nav class="navbar navbar-default">
-					<div class="row">
-						<div class="col-md-3">
-							<div class="fh5co-navbar-brand">
-								<a class="fh5co-logo" href="#"><img src="/_assets/images/brand-nav.png" alt="Closest Logo"></a>
-							</div>
-						</div>
-						<div class="col-md-6">
-							<ul class="nav text-center">
-								
-								<li><a href="/archives">Archives</a></li>
-								
-								<li><a href="/about">About</a></li>
-								 
-								<li><a href="/rss.xml">RSS</a></li>
-								
-							</ul>
-						</div>
-						<div class="col-md-3">
-							<ul class="social">
-								<li><a href="https://twitter.com/rnchyd"><i class="icon-twitter"></i></a></li>
-								<!-- <li><a href="#"><i class="icon-linkedin"></i></a></li> -->
-								<li><a href="https://www.instagram.com/lafocc_kioku"><i class="icon-instagram"></i></a></li>
-							</ul>
-						</div>
-					</div>
-				</nav>
-		  </div>
-		</header>
-		<!-- END: header -->
-		<section id="intro">
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-6 col-lg-offset-3 col-md-8 col-md-offset-2 text-center">
-						<div class="intro animate-box">
-							<h1>&#34;Wer mit Ungeheuern kämpft, mag zusehn, dass er nicht dabei zum Ungeheuer wird. Und wenn du lange in einen Abgrund blickst, blickt der Abgrund auch in dich hinein.&#34; </h1>
-              				<h2>Nietzsche (Beyond Good and Evil: Prelude to a Philosophy of the Future (1886), Chapter IV.</h2>
-						</div>
-					</div>
-				</div>
-			<div>
-		</section>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
-		<footer id="footer" role="contentinfo">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-12 text-center ">
-						<div class="footer-widget border">
-							<p class="pull-left"><small>&copy; Closest Free HTML5. All Rights Reserved.</small></p>
-							<p class="pull-right"><small> Designed by  <a href="http://freehtml5.co/" ta>freehtml5.co</a>  Images: <a href="https://unsplash.com/">Unsplash</a></small></p>
-							
-						</div>
+		<title>
+			home
+		</title>
+		<link href='https://fonts.googleapis.com/css?family=Alex Brush' rel='stylesheet'>
+</head>
+
+<body>
+	<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+		<header class="mdl-layout__header mdl-layout__header--waterfall portfolio-header">
+    <div class="mdl-layout__header-row portfolio-logo-row">
+        <span class="mdl-layout__title">
+            <div class="portfolio-logo"></div>
+            <!-- <span class="mdl-layout__title">Simple portfolio website</span> -->
+        </span>
+    </div>
+    <div class="mdl-layout__header-row portfolio-navigation-row mdl-layout--large-screen-only">
+        <nav class="mdl-navigation mdl-typography--body-1-force-preferred-font">
+            <a class="mdl-navigation__link" href="/">Home</a>
+            <a class="mdl-navigation__link" href="archives">Archives</a>
+            <a class="mdl-navigation__link" href="about">About</a>
+            <a class="mdl-navigation__link" href="rss.xml">RSS</a>
+        </nav>
+    </div>
+</header>
+<div class="mdl-layout__drawer mdl-layout--small-screen-only">
+    <nav class="mdl-navigation mdl-typography--body-1-force-preferred-font">
+        <a class="mdl-navigation__link" href="/">Home</a>
+        <a class="mdl-navigation__link" href="archives">Archives</a>
+        <a class="mdl-navigation__link" href="about">About</a>
+        <a class="mdl-navigation__link" href="rss.xml">RSS</a>
+    </nav>
+</div>
+		<main class="mdl-layout__content">
+			<<div class="mdl-grid portfolio-max-width">
+				<section>
+					<div>
+						<h1 style="font-family: 'Brush Script MT', cursive;">My Pages</h1>
+						<h2 style="font-family: 'Alex Brush';">Generated by Pages Publisher</h2>
 					</div>
-				</div>
+				</section>
 			</div>
-		</footer>
+			
+		</main>
 	</div>
-	<!-- END: box-wrap -->
-	
-	<!-- jQuery -->
-	<script src="/_assets/js/jquery.min.js"></script>
-	<!-- jQuery Easing -->
-	<script src="/_assets/js/jquery.easing.1.3.js"></script>
-	<!-- Bootstrap -->
-	<script src="/_assets/js/bootstrap.min.js"></script>
-	<!-- Waypoints -->
-	<script src="/_assets/js/jquery.waypoints.min.js"></script>
+		<script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+</body>
 
-	<!-- Main JS (Do not remove) -->
-	<script src="/_assets/js/main.js"></script>
-
-	</body>
 </html>
-

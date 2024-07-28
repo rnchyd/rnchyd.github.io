@@ -1,12 +1,28 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
+<!doctype html>
+<!--
+  Material Design Lite
+  Copyright 2015 Google Inc. All rights reserved.
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+      https://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License
+-->
+<html lang="en">
+	<head>
+    	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="description" content="Free HTML5 Template by FREEHTML5.CO" />
-	<meta name="keywords" content="free html5, free template, free bootstrap, html5, css3, mobile first, responsive" />
-	<meta name="author" content="FREEHTML5.CO" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+	<meta name="description" content="" />
+	<meta name="keywords" content="" />
+	<meta name="author" content="" />
 
   	<!-- Facebook and Twitter integration -->
 	<meta property="og:title" content=""/>
@@ -22,35 +38,57 @@
 	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 	<!-- <link rel="shortcut icon" href="favicon.ico"> -->
 
-	<link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,300,700|Roboto:300,400' rel='stylesheet' type='text/css'>
-	
-	<!-- Animate.css -->
-	<link rel="stylesheet" href="/_assets/css/animate.css">
-	<!-- Icomoon Icon Fonts-->
-	<link rel="stylesheet" href="/_assets/css/icomoon.css">
-	<!-- Bootstrap  -->
-	<link rel="stylesheet" href="/_assets/css/bootstrap.css">
-
-	<link rel="stylesheet" href="/_assets/css/style.css">
-
-
 	<!-- Modernizr JS -->
 	<script src="/_assets/js/modernizr-2.6.2.min.js"></script>
 	<!-- FOR IE9 below -->
 	<!--[if lt IE 9]>
 	<script src="/_assets/js/respond.min.js"></script>
 	<![endif]-->
-    <link rel="stylesheet" href="/_assets/main.css" />
 
-    <title>About me - Home</title>
+	<!-- ashnazg -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.grey-pink.min.css" />
+    <link rel="stylesheet" href="/_assets/styles.css" />
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+    <title>home</title>
   </head>
-  <body>
-    <div class="main">
-      <nav class="navigation">
-        <!-- <a href="/">Home</a> -->
-        <a class="fh5co-logo" href="/"><img src="/_assets/images/brand-nav.png" alt="Home"></a>
-      </nav>
-      <div class="about"><blockquote class="twitter-tweet jop-noMdConv"><p lang="ca" dir="ltr" class="jop-noMdConv">Verba volant, scripta manent. <br class="jop-noMdConv" />Calamus gladio fortior.</p>— X (@rnchyd) <a href="https://twitter.com/rnchyd/status/1807317674000830623?ref_src=twsrc%5Etfw" class="jop-noMdConv">June 30, 2024</a></blockquote> </div>
+
+	<body>
+		<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+			<header class="mdl-layout__header mdl-layout__header--waterfall portfolio-header">
+    <div class="mdl-layout__header-row portfolio-logo-row">
+        <span class="mdl-layout__title">
+            <div class="portfolio-logo"></div>
+            <!-- <span class="mdl-layout__title">Simple portfolio website</span> -->
+        </span>
     </div>
-  </body>
+    <div class="mdl-layout__header-row portfolio-navigation-row mdl-layout--large-screen-only">
+        <nav class="mdl-navigation mdl-typography--body-1-force-preferred-font">
+            <a class="mdl-navigation__link" href="/">Home</a>
+            <a class="mdl-navigation__link" href="archives">Archives</a>
+            <a class="mdl-navigation__link" href="about">About</a>
+            <a class="mdl-navigation__link" href="rss.xml">RSS</a>
+        </nav>
+    </div>
+</header>
+<div class="mdl-layout__drawer mdl-layout--small-screen-only">
+    <nav class="mdl-navigation mdl-typography--body-1-force-preferred-font">
+        <a class="mdl-navigation__link" href="/">Home</a>
+        <a class="mdl-navigation__link" href="archives">Archives</a>
+        <a class="mdl-navigation__link" href="about">About</a>
+        <a class="mdl-navigation__link" href="rss.xml">RSS</a>
+    </nav>
+</div>
+			<main class="mdl-layout__content">
+				<<div class="mdl-grid portfolio-max-width">
+          <div>Me on X@ <a title="https://twitter.com/rnchyd" href="https://twitter.com/rnchyd">https://twitter.com/rnchyd</a></div>
+				</div>
+			</main>
+		</div>
+		<script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+	</body>
+
 </html>
+
