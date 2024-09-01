@@ -4,9 +4,28 @@
         <title></title>
         <link>undefined</link>
         <description>undefined</description>
-        <lastBuildDate>Wed, 07 Aug 2024 22:48:13 GMT</lastBuildDate>
+        <lastBuildDate>Sun, 01 Sep 2024 00:20:13 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>Joplin Pages Publisher</generator>
+        <item>
+            <title><![CDATA[Market Structure and Identification of trend]]></title>
+            <guid>b39c2e3d941a4b6c9e6b00609061d2e3</guid>
+            <pubDate>Sat, 31 Aug 2024 20:47:38 GMT</pubDate>
+            <content:encoded><![CDATA[<p>Fundamentally, the market is consistently engaged in buying (up) and selling (down) activities, with no periods of complete stillness except during market closures or spread hours.Typically, the market is engaged in one of two activities:</p>
+<ul>
+<li>The market can be <strong>Trending</strong> – Uptrend and Downtrend.</li>
+<li>The market can be <strong>Consolidating</strong> – Ranging, Choppy, Unclear.</li>
+</ul>
+<h2 id="trending-market-uptrend">Trending Market Uptrend</h2>
+<p>An uptrend is characterized as a market structure that breaks the highs while maintaining the lows. Put simply, it signifies a market that achieves higher highs and higher lows. The previous high (HH) should always be surpassed, while the previous low (HL) should not be breached in an uptrend.</p>
+<p><img src="/_resources/a67a70100a8e4d8fab479b2c0f1c60d7.webp" title="A bullish structure" /></p>
+<h2 id="trending-market-downtrend">Trending Market Downtrend</h2>
+<p>A downtrend is characterized by a market pattern that breaks previous lows and sustains lower highs. A downtrend is described as a market structure that breaks the lows while maintaining the highs. The previous low (LL) should always be breached, while the previous high (LH) should remain intact and not be broken in a downtrend.</p>
+<p><img src="/_resources/8de39d9c400d4e4f8b7f34b9ac1e541f.webp" title="A bearish market structure" /></p>
+<h2 id="consolidating-market">Consolidating Market</h2>
+<p>Consolidation is described as a market structure that fails to break either the highs or lows. Before every significant movement, there is typically a phase of consolidation, followed by a substantial liquidity grab, and then the actual significant move occurs.</p>
+]]></content:encoded>
+        </item>
         <item>
             <title><![CDATA[Standard Deviation Calculation with Code Example in Python]]></title>
             <guid>fb7276fb379f404589fffef8419a1047</guid>
@@ -23,8 +42,10 @@
 <p><strong>Variance</strong> <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><msup><mi>σ</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(\sigma^2)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.064108em;vertical-align:-0.25em"></span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em">σ</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em"><span style="top:-3.063em;margin-right:0.05em"><span class="pstrut" style="height:2.7em"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></span>:<br />
 <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>σ</mi><mn>2</mn></msup><mo>=</mo><mfrac><mn>1</mn><mi>n</mi></mfrac><msubsup><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></msubsup><mo stretchy="false">(</mo><msub><mi>x</mi><mi>i</mi></msub><mo>−</mo><mi>μ</mi><msup><mo stretchy="false">)</mo><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">\sigma^2 = \frac{1}{n} \sum_{i=1}^{n} (x_i - \mu)^2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em">σ</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em"><span style="top:-3.063em;margin-right:0.05em"><span class="pstrut" style="height:2.7em"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em"></span></span><span class="base"><span class="strut" style="height:1.190108em;vertical-align:-0.345em"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.845108em"><span style="top:-2.6550000000000002em"><span class="pstrut" style="height:3em"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">n</span></span></span></span><span style="top:-3.23em"><span class="pstrut" style="height:3em"></span><span class="frac-line" style="border-bottom-width:0.04em"></span></span><span style="top:-3.394em"><span class="pstrut" style="height:3em"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.16666666666666666em"></span><span class="mop"><span class="mop op-symbol small-op" style="position:relative;top:-0.0000050000000000050004em">∑</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.804292em"><span style="top:-2.40029em;margin-left:0em;margin-right:0.05em"><span class="pstrut" style="height:2.7em"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">i</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span style="top:-3.2029em;margin-right:0.05em"><span class="pstrut" style="height:2.7em"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">n</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.29971000000000003em"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em"><span class="pstrut" style="height:2.7em"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em"></span></span><span class="base"><span class="strut" style="height:1.064108em;vertical-align:-0.25em"></span><span class="mord mathnormal">μ</span><span class="mclose"><span class="mclose">)</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em"><span style="top:-3.063em;margin-right:0.05em"><span class="pstrut" style="height:2.7em"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span></span></p>
 </li>
-<li>
-<p><strong>Standard Deviation</strong> <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mi>σ</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(\sigma)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em"></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.03588em">σ</span><span class="mclose">)</span></span></span></span></span>:<br />
+</ol>
+<p><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></msubsup></mrow><annotation encoding="application/x-tex">\sum_{i=1}^{n}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.104002em;vertical-align:-0.29971000000000003em"></span><span class="mop"><span class="mop op-symbol small-op" style="position:relative;top:-0.0000050000000000050004em">∑</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.804292em"><span style="top:-2.40029em;margin-left:0em;margin-right:0.05em"><span class="pstrut" style="height:2.7em"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">i</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span style="top:-3.2029em;margin-right:0.05em"><span class="pstrut" style="height:2.7em"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">n</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.29971000000000003em"><span></span></span></span></span></span></span></span></span></span></span></p>
+<ol start="3">
+<li><strong>Standard Deviation</strong> <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mi>σ</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(\sigma)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em"></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.03588em">σ</span><span class="mclose">)</span></span></span></span></span>:<br />
 <span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>σ</mi><mo>=</mo><msqrt><msup><mi>σ</mi><mn>2</mn></msup></msqrt><mo>=</mo><msqrt><mrow><mfrac><mn>1</mn><mi>n</mi></mfrac><msubsup><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></msubsup><mo stretchy="false">(</mo><msub><mi>x</mi><mi>i</mi></msub><mo>−</mo><mi>μ</mi><msup><mo stretchy="false">)</mo><mn>2</mn></msup></mrow></msqrt></mrow><annotation encoding="application/x-tex">\sigma = \sqrt{\sigma^2} = \sqrt{\frac{1}{n} \sum_{i=1}^{n} (x_i - \mu)^2}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em"></span><span class="mord mathnormal" style="margin-right:0.03588em">σ</span><span class="mspace" style="margin-right:0.2777777777777778em"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em"></span></span><span class="base"><span class="strut" style="height:1.04em;vertical-align:-0.08494599999999997em"></span><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.9550540000000001em"><span class="svg-align" style="top:-3em"><span class="pstrut" style="height:3em"></span><span class="mord" style="padding-left:0.833em"><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em">σ</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.740108em"><span style="top:-2.9890000000000003em;margin-right:0.05em"><span class="pstrut" style="height:2.7em"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span><span style="top:-2.915054em"><span class="pstrut" style="height:3em"></span><span class="hide-tail" style="min-width:0.853em;height:1.08em"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="1.08em" viewbox="0 0 400000 1080" preserveaspectratio="xMinYMin slice"><path d="M95,702
 c-2.7,0,-7.17,-2.7,-13.5,-8c-5.8,-5.3,-9.5,-10,-9.5,-14
 c0,-2,0.3,-3.3,1,-4c1.3,-2.7,23.83,-20.7,67.5,-54
@@ -45,8 +66,7 @@ c-10,12,-21,25,-33,39s-32,39,-32,39c-6,-5.3,-15,-14,-27,-26s25,-30,25,-30
 c26.7,-32.7,52,-63,76,-91s52,-60,52,-60s208,722,208,722
 c56,-175.3,126.3,-397.3,211,-666c84.7,-268.7,153.8,-488.2,207.5,-658.5
 c53.7,-170.3,84.5,-266.8,92.5,-289.5z
-M1001 80h400000v40h-400000z"></path></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.604946em"><span></span></span></span></span></span></span></span></span></span></p>
-</li>
+M1001 80h400000v40h-400000z"></path></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.604946em"><span></span></span></span></span></span></span></span></span></span></li>
 </ol>
 <h3 id="calculating-standard-deviation-in-python">Calculating Standard Deviation in Python</h3>
 <p>You can calculate the standard deviation in Python using the <code>statistics</code> module or using <code>numpy</code> for larger datasets.</p>
@@ -1146,275 +1166,6 @@ This Java program simulates a simple Minesweeper game where the user can input t
 </li>
 </ol>
 <p>Overall, the code structure is well-organized with separate methods for initialization, median calculation, and notification calculation. It efficiently handles the processing of expenditures and sliding windows to determine the number of notifications to be sent. The try-catch blocks ensure proper error handling during the execution of the function.</p>
-]]></content:encoded>
-        </item>
-        <item>
-            <title><![CDATA[Code Analysis of HR Queen's Attack II problem solution]]></title>
-            <guid>b6316c68c275415a84854eda84032638</guid>
-            <pubDate>Wed, 03 Jul 2024 10:17:35 GMT</pubDate>
-            <content:encoded><![CDATA[<p>Given the solution code :</p>
-<div><pre class="hljs"><code><span class="hljs-keyword">import</span> java.io.*;
-<span class="hljs-keyword">import</span> java.math.*;
-<span class="hljs-keyword">import</span> java.security.*;
-<span class="hljs-keyword">import</span> java.text.*;
-<span class="hljs-keyword">import</span> java.util.*;
-<span class="hljs-keyword">import</span> java.util.concurrent.*;
-<span class="hljs-keyword">import</span> java.util.function.*;
-<span class="hljs-keyword">import</span> java.util.regex.*;
-<span class="hljs-keyword">import</span> java.util.stream.*;
-<span class="hljs-keyword">import</span> <span class="hljs-keyword">static</span> java.util.stream.Collectors.joining;
-<span class="hljs-keyword">import</span> <span class="hljs-keyword">static</span> java.util.stream.Collectors.toList;
-
-<span class="hljs-keyword">class</span> <span class="hljs-title class_">Result</span> {
-
-    <span class="hljs-comment">/*
-     * Complete the 'queensAttack' function below.
-     *
-     * The function is expected to return an INTEGER.
-     * The function accepts following parameters:
-     *  1. INTEGER n
-     *  2. INTEGER k
-     *  3. INTEGER r_q
-     *  4. INTEGER c_q
-     *  5. 2D_INTEGER_ARRAY obstacles
-     */</span>
-
-    <span class="hljs-comment">// Variable to store the total number of cells consumed</span>
-    <span class="hljs-keyword">static</span> <span class="hljs-type">int</span> <span class="hljs-variable">cellConsume</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;
-
-    <span class="hljs-comment">// Method to calculate the queen's attack</span>
-    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-type">int</span> <span class="hljs-title function_">queensAttack</span><span class="hljs-params">(<span class="hljs-type">int</span> n, <span class="hljs-type">int</span> k, <span class="hljs-type">int</span> r_q, <span class="hljs-type">int</span> c_q, List&lt;List&lt;Integer&gt;&gt; obstacles)</span> {
-        <span class="hljs-keyword">try</span> {
-            <span class="hljs-comment">// Convert obstacles into a map for efficient lookup</span>
-            HashMap&lt;Integer, List&lt;Integer&gt;&gt; obstaclesMap = convertObstaclesIntoMap(obstacles);
-
-            <span class="hljs-comment">// Check for obstacles in different directions</span>
-            leftIteration(r_q, c_q, obstaclesMap);
-            bottomIteration(r_q, c_q, obstaclesMap);
-            southWestIteration(r_q, c_q, obstaclesMap);
-            northWestIteration(r_q, c_q, n, obstaclesMap);
-            topIteration(r_q, c_q, n, obstaclesMap);
-            northEastIteration(r_q, c_q, n, obstaclesMap);
-            rightIteration(r_q, c_q, n, obstaclesMap);
-            southEastIteration(r_q, c_q, n, obstaclesMap);
-        } <span class="hljs-keyword">catch</span> (Exception e) {
-            <span class="hljs-comment">// Handle any exceptions that occur during the process</span>
-            System.out.println(<span class="hljs-string">"An error occurred: "</span> + e.getMessage());
-            <span class="hljs-keyword">return</span> -<span class="hljs-number">1</span>;
-        }
-        <span class="hljs-keyword">return</span> cellConsume;
-    }
-
-    <span class="hljs-comment">// Method to convert obstacles into a map for efficient lookup</span>
-    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> HashMap&lt;Integer, List&lt;Integer&gt;&gt; <span class="hljs-title function_">convertObstaclesIntoMap</span><span class="hljs-params">(List&lt;List&lt;Integer&gt;&gt; obstacles)</span> {
-        <span class="hljs-comment">// Initialize a HashMap to store obstacles for efficient lookup</span>
-        HashMap&lt;Integer, List&lt;Integer&gt;&gt; obstaclesMap = <span class="hljs-keyword">new</span> <span class="hljs-title class_">HashMap</span>&lt;&gt;();
-
-        <span class="hljs-comment">// Iterate through the list of obstacles to populate the map</span>
-        obstacles.forEach(x -&gt; {
-            obstaclesMap.compute(x.get(<span class="hljs-number">0</span>), (k, existingList) -&gt; {
-                <span class="hljs-comment">// If the key is not present, create a new list with the obstacle column value</span>
-                <span class="hljs-keyword">if</span> (existingList == <span class="hljs-literal">null</span>) {
-                    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;&gt;(Collections.singletonList(x.get(<span class="hljs-number">1</span>)));
-                } <span class="hljs-keyword">else</span> {
-                    <span class="hljs-comment">// If the key exists, add the obstacle column value to the existing list</span>
-                    existingList.add(x.get(<span class="hljs-number">1</span>));
-                    <span class="hljs-keyword">return</span> existingList;
-                }
-            });
-        });
-
-        <span class="hljs-keyword">return</span> obstaclesMap;
-    }
-
-    <span class="hljs-comment">// Method to check for obstacles in the left direction</span>
-    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">leftIteration</span><span class="hljs-params">(<span class="hljs-type">int</span> r_q, <span class="hljs-type">int</span> c_q, HashMap&lt;Integer, List&lt;Integer&gt;&gt; obstacles)</span> {
-        <span class="hljs-comment">// Iterate to the left from the queen's position</span>
-        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">r</span> <span class="hljs-operator">=</span> r_q, c = c_q - <span class="hljs-number">1</span>; c &gt;= <span class="hljs-number">1</span>; c--) {
-            <span class="hljs-comment">// Check if there is an obstacle at the current position</span>
-            <span class="hljs-keyword">if</span> (obstacles.get(r) != <span class="hljs-literal">null</span> &amp;&amp; obstacles.get(r).contains(c)) {
-                <span class="hljs-comment">// If obstacle is present, stop further iteration in this direction</span>
-                <span class="hljs-keyword">return</span>;
-            }
-            <span class="hljs-comment">// Increment the total cells consumed</span>
-            cellConsume++;
-        }
-    }
-
-    <span class="hljs-comment">// Method to check for obstacles in the bottom direction</span>
-    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">bottomIteration</span><span class="hljs-params">(<span class="hljs-type">int</span> r_q, <span class="hljs-type">int</span> c_q, Map&lt;Integer, List&lt;Integer&gt;&gt; obstacles)</span> {
-        <span class="hljs-comment">// Iterate from the queen's position downwards</span>
-        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">r</span> <span class="hljs-operator">=</span> r_q - <span class="hljs-number">1</span>, c = c_q; r &gt;= <span class="hljs-number">1</span>; r--) {
-            <span class="hljs-comment">// Check if there is an obstacle at the current position</span>
-            <span class="hljs-keyword">if</span> (obstacles.get(r) != <span class="hljs-literal">null</span> &amp;&amp; obstacles.get(r).contains(c)) {
-                <span class="hljs-comment">// If obstacle is present, stop further iteration in this direction</span>
-                <span class="hljs-keyword">return</span>;
-            }
-            <span class="hljs-comment">// Increment the total cells consumed</span>
-            cellConsume++;
-        }
-    }
-
-    <span class="hljs-comment">// Method to check for obstacles in the southwest direction</span>
-    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">southWestIteration</span><span class="hljs-params">(<span class="hljs-type">int</span> r_q, <span class="hljs-type">int</span> c_q, HashMap&lt;Integer, List&lt;Integer&gt;&gt; obstacles)</span> {
-        <span class="hljs-comment">// Iterate diagonally towards the southwest direction</span>
-        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">r</span> <span class="hljs-operator">=</span> r_q - <span class="hljs-number">1</span>, c = c_q - <span class="hljs-number">1</span>; r &gt;= <span class="hljs-number">1</span> &amp;&amp; c &gt;= <span class="hljs-number">1</span>; r--, c--) {
-            <span class="hljs-comment">// Check for obstacles at the current diagonal position</span>
-            <span class="hljs-keyword">if</span> (obstacles.get(r) != <span class="hljs-literal">null</span> &amp;&amp; obstacles.get(r).contains(c)) {
-                <span class="hljs-comment">// If obstacle is present, stop further iteration in this direction</span>
-                <span class="hljs-keyword">return</span>;
-            }
-            <span class="hljs-comment">// Increment the total cells consumed</span>
-            cellConsume++;
-        }
-    }
-
-    <span class="hljs-comment">// Method to check for obstacles in the northwest direction</span>
-    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">northWestIteration</span><span class="hljs-params">(<span class="hljs-type">int</span> r_q, <span class="hljs-type">int</span> c_q, <span class="hljs-type">int</span> n, HashMap&lt;Integer, List&lt;Integer&gt;&gt; obstacles)</span> {
-        <span class="hljs-comment">// Iterate diagonally towards the northwest direction</span>
-        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">r</span> <span class="hljs-operator">=</span> r_q + <span class="hljs-number">1</span>, c = c_q - <span class="hljs-number">1</span>; r &lt;= n &amp;&amp; c &gt;= <span class="hljs-number">1</span>; r++, c--) {
-            <span class="hljs-comment">// Check for obstacles at the current diagonal position</span>
-            <span class="hljs-keyword">if</span> (obstacles.get(r) != <span class="hljs-literal">null</span> &amp;&amp; obstacles.get(r).contains(c)) {
-                <span class="hljs-comment">// If obstacle is present, stop further iteration in this direction</span>
-                <span class="hljs-keyword">return</span>;
-            }
-            <span class="hljs-comment">// Increment the total cells consumed</span>
-            cellConsume++;
-        }
-    }
-
-    <span class="hljs-comment">// Method to check for obstacles in the top direction</span>
-    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">topIteration</span><span class="hljs-params">(<span class="hljs-type">int</span> r_q, <span class="hljs-type">int</span> c_q, <span class="hljs-type">int</span> n, HashMap&lt;Integer, List&lt;Integer&gt;&gt; obstacles)</span> {
-        <span class="hljs-comment">// Iterate upwards from the queen's position</span>
-        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">r</span> <span class="hljs-operator">=</span> r_q + <span class="hljs-number">1</span>, c = c_q; r &lt;= n; r++) {
-            <span class="hljs-comment">// Check if there is an obstacle at the current position</span>
-            <span class="hljs-keyword">if</span> (obstacles.get(r) != <span class="hljs-literal">null</span> &amp;&amp; obstacles.get(r).contains(c)) {
-                <span class="hljs-comment">// If obstacle is present, stop further iteration in this direction</span>
-                <span class="hljs-keyword">return</span>;
-            }
-            <span class="hljs-comment">// Increment the total cells consumed</span>
-            cellConsume++;
-        }
-    }
-
-    <span class="hljs-comment">// Method to check for obstacles in the northeast direction</span>
-    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">northEastIteration</span><span class="hljs-params">(<span class="hljs-type">int</span> r_q, <span class="hljs-type">int</span> c_q, <span class="hljs-type">int</span> n, HashMap&lt;Integer, List&lt;Integer&gt;&gt; obstacles)</span> {
-        <span class="hljs-comment">// Iterate diagonally towards the northeast direction</span>
-        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">r</span> <span class="hljs-operator">=</span> r_q + <span class="hljs-number">1</span>, c = c_q + <span class="hljs-number">1</span>; r &lt;= n &amp;&amp; c &lt;= n; r++, c++) {
-            <span class="hljs-comment">// Check for obstacles at the current diagonal position</span>
-            <span class="hljs-keyword">if</span> (obstacles.get(r) != <span class="hljs-literal">null</span> &amp;&amp; obstacles.get(r).contains(c)) {
-                <span class="hljs-comment">// If obstacle is present, stop further iteration in this direction</span>
-                <span class="hljs-keyword">return</span>;
-            }
-            <span class="hljs-comment">// Increment the total cells consumed</span>
-            cellConsume++;
-        }
-    }
-
-    <span class="hljs-comment">// Method to check for obstacles in the right direction</span>
-    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">rightIteration</span><span class="hljs-params">(<span class="hljs-type">int</span> r_q, <span class="hljs-type">int</span> c_q, <span class="hljs-type">int</span> n, HashMap&lt;Integer, List&lt;Integer&gt;&gt; obstacles)</span> {
-        <span class="hljs-comment">// Iterate to the right from the queen's position</span>
-        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">r</span> <span class="hljs-operator">=</span> r_q, c = c_q + <span class="hljs-number">1</span>; c &lt;= n; c++) {
-            <span class="hljs-comment">// Check if there is an obstacle at the current position</span>
-            <span class="hljs-keyword">if</span> (obstacles.get(r) != <span class="hljs-literal">null</span> &amp;&amp; obstacles.get(r).contains(c)) {
-                <span class="hljs-comment">// If obstacle is present, stop further iteration in this direction</span>
-                <span class="hljs-keyword">return</span>;
-            }
-            <span class="hljs-comment">// Increment the total cells consumed</span>
-            cellConsume++;
-        }
-    }
-
-    <span class="hljs-comment">// Method to check for obstacles in the southeast direction</span>
-    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">southEastIteration</span><span class="hljs-params">(<span class="hljs-type">int</span> r_q, <span class="hljs-type">int</span> c_q, <span class="hljs-type">int</span> n, HashMap&lt;Integer, List&lt;Integer&gt;&gt; obstacles)</span> {
-        <span class="hljs-comment">// Iterate diagonally towards the southeast direction</span>
-        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">r</span> <span class="hljs-operator">=</span> r_q - <span class="hljs-number">1</span>, c = c_q + <span class="hljs-number">1</span>; r &gt;= <span class="hljs-number">1</span> &amp;&amp; c &lt;= n; r--, c++) {
-            <span class="hljs-comment">// Check for obstacles at the current diagonal position</span>
-            <span class="hljs-keyword">if</span> (obstacles.get(r) != <span class="hljs-literal">null</span> &amp;&amp; obstacles.get(r).contains(c)) {
-                <span class="hljs-comment">// If obstacle is present, stop further iteration in this direction</span>
-                <span class="hljs-keyword">return</span>;
-            }
-            <span class="hljs-comment">// Increment the total cells consumed</span>
-            cellConsume++;
-        }
-    }
-}
-
-<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> {
-    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> IOException {
-        <span class="hljs-type">BufferedReader</span> <span class="hljs-variable">bufferedReader</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">BufferedReader</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">InputStreamReader</span>(System.in));
-        <span class="hljs-type">BufferedWriter</span> <span class="hljs-variable">bufferedWriter</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">BufferedWriter</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">FileWriter</span>(System.getenv(<span class="hljs-string">"OUTPUT_PATH"</span>)));
-
-        String[] firstMultipleInput = bufferedReader.readLine().replaceAll(<span class="hljs-string">"\\s+$"</span>, <span class="hljs-string">""</span>).split(<span class="hljs-string">" "</span>);
-
-        <span class="hljs-type">int</span> <span class="hljs-variable">n</span> <span class="hljs-operator">=</span> Integer.parseInt(firstMultipleInput[<span class="hljs-number">0</span>]);
-
-        <span class="hljs-type">int</span> <span class="hljs-variable">k</span> <span class="hljs-operator">=</span> Integer.parseInt(firstMultipleInput[<span class="hljs-number">1</span>]);
-
-        String[] secondMultipleInput = bufferedReader.readLine().replaceAll(<span class="hljs-string">"\\s+$"</span>, <span class="hljs-string">""</span>).split(<span class="hljs-string">" "</span>);
-
-        <span class="hljs-type">int</span> <span class="hljs-variable">r_q</span> <span class="hljs-operator">=</span> Integer.parseInt(secondMultipleInput[<span class="hljs-number">0</span>]);
-
-        <span class="hljs-type">int</span> <span class="hljs-variable">c_q</span> <span class="hljs-operator">=</span> Integer.parseInt(secondMultipleInput[<span class="hljs-number">1</span>]);
-
-        List&lt;List&lt;Integer&gt;&gt; obstacles = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;&gt;();
-
-        IntStream.range(<span class="hljs-number">0</span>, k).forEach(i -&gt; {
-            <span class="hljs-keyword">try</span> {
-                obstacles.add(
-                    Stream.of(bufferedReader.readLine().replaceAll(<span class="hljs-string">"\\s+$"</span>, <span class="hljs-string">""</span>).split(<span class="hljs-string">" "</span>))
-                        .map(Integer::parseInt)
-                        .collect(toList())
-                );
-            } <span class="hljs-keyword">catch</span> (IOException ex) {
-                <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">RuntimeException</span>(ex);
-            }
-        });
-
-        <span class="hljs-type">int</span> <span class="hljs-variable">result</span> <span class="hljs-operator">=</span> Result.queensAttack(n, k, r_q, c_q, obstacles);
-
-        bufferedWriter.write(String.valueOf(result));
-        bufferedWriter.newLine();
-
-        bufferedReader.close();
-        bufferedWriter.close();
-    }
-}</code></pre></div>
-<p><strong>Sample Input</strong></p>
-<pre style="background:linear-gradient(to right, #F3F7EC, white);color:#3F4E4F;padding:5px" class="jop-noMdConv">
-4 0
-4 4
-</pre>
-<p><strong>Sample Output</strong></p>
-<pre style="background:linear-gradient(to right, #FFE6E6, white);color:#3F4E4F;padding:5px" class="jop-noMdConv">
-9
-</pre>
-<h2 id="elucidation">Elucidation</h2>
-<p>Here is a detailed explanation of the provided code:</p>
-<ol>
-<li>
-<p><strong>Result Class</strong>:</p>
-<ul>
-<li>The <code>Result</code> class contains methods to calculate the queen’s attack in different directions and handle obstacles efficiently.</li>
-<li>It uses a static variable <code>cellConsume</code> to store the total number of cells consumed during the queen’s attack.</li>
-<li>The <code>queensAttack</code> method is the main method that orchestrates the calculation of the queen’s attack in various directions.</li>
-<li>It converts the obstacles into a map for efficient lookup and then checks for obstacles in different directions using separate methods.</li>
-<li>Each direction checking method increments the <code>cellConsume</code> counter based on the number of cells consumed.</li>
-<li>The <code>queensAttack</code> method returns the total <code>cellConsume</code> count after calculating the queen’s attack.</li>
-</ul>
-</li>
-<li>
-<p><strong>Solution Class</strong>:</p>
-<ul>
-<li>The <code>Solution</code> class contains the <code>main</code> method, which is the entry point of the program.</li>
-<li>It reads input from the standard input (console) to get the board size, queen’s position, and obstacles.</li>
-<li>The obstacles are stored in a list of lists representing their positions on the board.</li>
-<li>The <code>queensAttack</code> method from the <code>Result</code> class is called to calculate the total number of cells consumed during the queen’s attack.</li>
-<li>The result is written to the standard output (console) using a <code>BufferedWriter</code>.</li>
-</ul>
-</li>
-</ol>
-<p>Overall, the code efficiently calculates the queen’s attack by considering obstacles in different directions and provides the total number of cells consumed during the attack. The code structure separates the logic into distinct methods for better readability and maintainability.</p>
 ]]></content:encoded>
         </item>
     </channel>
