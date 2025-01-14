@@ -4,9 +4,26 @@
         <title></title>
         <link>undefined</link>
         <description>undefined</description>
-        <lastBuildDate>Sat, 14 Dec 2024 08:34:03 GMT</lastBuildDate>
+        <lastBuildDate>Tue, 14 Jan 2025 04:58:49 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>Joplin Pages Publisher</generator>
+        <item>
+            <title><![CDATA[Standard volumetric measurement]]></title>
+            <guid>156c7da1e0ed4381a294986df859bbf3</guid>
+            <pubDate>Tue, 14 Jan 2025 04:33:50 GMT</pubDate>
+            <content:encoded><![CDATA[<div><pre class="hljs"><code><span class="hljs-number">1</span> cup <span class="hljs-operator">=</span> <span class="hljs-number">240</span>ml <span class="hljs-operator">=</span> <span class="hljs-number">8</span> fluid Ounces
+½ cup <span class="hljs-operator">=</span> <span class="hljs-number">120</span>ml <span class="hljs-operator">=</span> <span class="hljs-number">4</span> fluid ounces</code></pre></div>
+<p>One stick is the equivalent of 8 tablespoons. One tablespoon of butter is therefore the<br />
+equivalent to ½ ounce/15 grams.</p>
+<p><strong>Liquid Measures</strong></p>
+<div><pre class="hljs"><code><span class="hljs-symbol">1 </span>Teaspoon   = <span class="hljs-number">5</span> Millilitres
+<span class="hljs-symbol">1 </span>Tablespoon = <span class="hljs-number">14</span> millilitres
+<span class="hljs-symbol">2 </span>Tablespoons= <span class="hljs-number">1</span> Fluid Ounce</code></pre></div>
+<p><strong>Solid Measures</strong></p>
+<div><pre class="hljs"><code><span class="hljs-symbol">1 </span>Ounce   = <span class="hljs-number">28</span> Grams 
+<span class="hljs-symbol">16 </span>Ounces = <span class="hljs-number">1</span> Pound</code></pre></div>
+]]></content:encoded>
+        </item>
         <item>
             <title><![CDATA[Mindfulness for Focus - Simple Techniques to Sharpen Concentration]]></title>
             <guid>2df8e30f37ae4171a98e099505bc2789</guid>
@@ -1027,190 +1044,6 @@ This Java program simulates a simple Minesweeper game where the user can input t
 </li>
 </ol>
 <p>This program efficiently handles user input for bomb placement, updates the map with bomb counts, and displays the final map state for the user to play the Minesweeper game.</p>
-]]></content:encoded>
-        </item>
-        <item>
-            <title><![CDATA[Code Analysis of HR Fraudulent Activity Notifications problem solution]]></title>
-            <guid>06707c10ef61459ca94ace8a5d9c9e21</guid>
-            <pubDate>Wed, 03 Jul 2024 10:36:25 GMT</pubDate>
-            <content:encoded><![CDATA[<p>Given the solution code :</p>
-<div><pre class="hljs"><code><span class="hljs-keyword">import</span> java.io.*;
-<span class="hljs-keyword">import</span> java.math.*;
-<span class="hljs-keyword">import</span> java.security.*;
-<span class="hljs-keyword">import</span> java.text.*;
-<span class="hljs-keyword">import</span> java.util.*;
-<span class="hljs-keyword">import</span> java.util.concurrent.*;
-<span class="hljs-keyword">import</span> java.util.regex.*;
-
-<span class="hljs-keyword">class</span> <span class="hljs-title class_">Result</span> {
-
-    <span class="hljs-comment">/*
-     * Complete the 'activityNotifications' function below.
-     *
-     * The function is expected to return an INTEGER.
-     * The function accepts following parameters:
-     *  1. INTEGER_ARRAY expenditure
-     *  2. INTEGER d
-     */</span>
-
-    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-type">int</span> <span class="hljs-title function_">activityNotifications</span><span class="hljs-params">(List&lt;Integer&gt; expenditure, <span class="hljs-type">int</span> d)</span> {
-        <span class="hljs-keyword">try</span> {
-            <span class="hljs-comment">// Initialize variables</span>
-            <span class="hljs-type">int</span> <span class="hljs-variable">count</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;
-            <span class="hljs-type">int</span>[] freq = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[<span class="hljs-number">201</span>];
-            
-            <span class="hljs-comment">// Initialize frequency array for initial expenditures</span>
-            initializeFrequency(expenditure, d, freq);
-            
-            <span class="hljs-comment">// Calculate notifications based on median comparison</span>
-            count = calculateNotifications(expenditure, d, freq);
-            
-            <span class="hljs-keyword">return</span> count;
-        } <span class="hljs-keyword">catch</span> (Exception e) {
-            <span class="hljs-comment">// Handle any exceptions that occur during the process</span>
-            System.out.println(<span class="hljs-string">"An error occurred: "</span> + e.getMessage());
-            <span class="hljs-keyword">return</span> -<span class="hljs-number">1</span>;
-        }
-    }
-
-    <span class="hljs-comment">// Method to initialize frequency array for initial expenditures</span>
-    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">initializeFrequency</span><span class="hljs-params">(List&lt;Integer&gt; expenditure, <span class="hljs-type">int</span> d, <span class="hljs-type">int</span>[] freq)</span> {
-        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; d; i++) {
-            freq[expenditure.get(i)]++;
-        }
-    }
-
-    <span class="hljs-comment">// Method to calculate notifications based on median comparison</span>
-    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-type">int</span> <span class="hljs-title function_">calculateNotifications</span><span class="hljs-params">(List&lt;Integer&gt; expenditure, <span class="hljs-type">int</span> d, <span class="hljs-type">int</span>[] freq)</span> {
-        <span class="hljs-type">int</span> <span class="hljs-variable">count</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;
-        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> d; i &lt; expenditure.size(); i++) {
-            <span class="hljs-comment">// Calculate median based on frequency array</span>
-            <span class="hljs-type">double</span> <span class="hljs-variable">median</span> <span class="hljs-operator">=</span> calculateMedian(freq, d);
-            
-            <span class="hljs-comment">// Compare expenditure with double the median for notification</span>
-            <span class="hljs-keyword">if</span> (expenditure.get(i) &gt;= <span class="hljs-number">2</span> * median) {
-                count++;
-            }
-
-            <span class="hljs-comment">// Update frequency array for sliding window</span>
-            freq[expenditure.get(i - d)]--;
-            freq[expenditure.get(i)]++;
-        }
-        <span class="hljs-keyword">return</span> count;
-    }
-
-    <span class="hljs-comment">// Method to calculate median based on frequency array</span>
-    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-type">double</span> <span class="hljs-title function_">calculateMedian</span><span class="hljs-params">(<span class="hljs-type">int</span>[] freq, <span class="hljs-type">int</span> d)</span> {
-        <span class="hljs-type">double</span> <span class="hljs-variable">median</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;
-        <span class="hljs-keyword">if</span> (d % <span class="hljs-number">2</span> == <span class="hljs-number">1</span>) {
-            <span class="hljs-comment">// Calculate median for odd window size</span>
-            <span class="hljs-type">int</span> <span class="hljs-variable">sum</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;
-            <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">j</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; j &lt; <span class="hljs-number">201</span>; j++) {
-                sum += freq[j];
-                <span class="hljs-keyword">if</span> (sum &gt;= d / <span class="hljs-number">2</span> + <span class="hljs-number">1</span>) {
-                    median = j;
-                    <span class="hljs-keyword">break</span>;
-                }
-            }
-        } <span class="hljs-keyword">else</span> {
-            <span class="hljs-comment">// Calculate median for even window size</span>
-            <span class="hljs-type">int</span> <span class="hljs-variable">sum</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;
-            <span class="hljs-type">int</span> <span class="hljs-variable">n</span> <span class="hljs-operator">=</span> -<span class="hljs-number">1</span>, m = -<span class="hljs-number">1</span>;
-            <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">j</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; j &lt; <span class="hljs-number">201</span>; j++) {
-                sum += freq[j];
-                <span class="hljs-keyword">if</span> (n &lt; <span class="hljs-number">0</span> &amp;&amp; sum &gt;= d / <span class="hljs-number">2</span>) {
-                    n = j;
-                }
-                <span class="hljs-keyword">if</span> (sum &gt;= d / <span class="hljs-number">2</span> + <span class="hljs-number">1</span>) {
-                    m = j;
-                    median = (m + n) / <span class="hljs-number">2.0</span>;
-                    <span class="hljs-keyword">break</span>;
-                }
-            }
-        }
-        <span class="hljs-keyword">return</span> median;
-    }
-}
-
-<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> {
-    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> IOException {
-        <span class="hljs-type">BufferedReader</span> <span class="hljs-variable">bufferedReader</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">BufferedReader</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">InputStreamReader</span>(System.in));
-        <span class="hljs-type">BufferedWriter</span> <span class="hljs-variable">bufferedWriter</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">BufferedWriter</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">FileWriter</span>(System.getenv(<span class="hljs-string">"OUTPUT_PATH"</span>)));
-
-        String[] firstMultipleInput = bufferedReader.readLine().replaceAll(<span class="hljs-string">"\\s+$"</span>, <span class="hljs-string">""</span>).split(<span class="hljs-string">" "</span>);
-
-        <span class="hljs-type">int</span> <span class="hljs-variable">n</span> <span class="hljs-operator">=</span> Integer.parseInt(firstMultipleInput[<span class="hljs-number">0</span>]);
-
-        <span class="hljs-type">int</span> <span class="hljs-variable">d</span> <span class="hljs-operator">=</span> Integer.parseInt(firstMultipleInput[<span class="hljs-number">1</span>]);
-
-        String[] expenditureTemp = bufferedReader.readLine().replaceAll(<span class="hljs-string">"\\s+$"</span>, <span class="hljs-string">""</span>).split(<span class="hljs-string">" "</span>);
-
-        List&lt;Integer&gt; expenditure = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;&gt;();
-
-        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; n; i++) {
-            <span class="hljs-type">int</span> <span class="hljs-variable">expenditureItem</span> <span class="hljs-operator">=</span> Integer.parseInt(expenditureTemp[i]);
-            expenditure.add(expenditureItem);
-        }
-
-        <span class="hljs-type">int</span> <span class="hljs-variable">result</span> <span class="hljs-operator">=</span> Result.activityNotifications(expenditure, d);
-
-        bufferedWriter.write(String.valueOf(result));
-        bufferedWriter.newLine();
-
-        bufferedReader.close();
-        bufferedWriter.close();
-    }
-}</code></pre></div>
-<p><strong>Sample Input</strong></p>
-<pre style="background:linear-gradient(to right, #F3F7EC, white);color:#3F4E4F;padding:5px" class="jop-noMdConv">
-9 5                 
-2 3 4 2 3 6 8 4 5
-</pre>
-<p><strong>Sample Output</strong></p>
-<pre style="background:linear-gradient(to right, #FFE6E6, white);color:#3F4E4F;padding:5px" class="jop-noMdConv">
-2
-</pre>
-<h2 id="elucidation">Elucidation</h2>
-<p>The code provided is a Java implementation of a function called <code>activityNotifications</code> in the <code>Result</code> class. This function calculates the number of notifications that should be sent based on a set of expenditures and a given window size <code>d</code>. Here is a detailed explanation of the code:</p>
-<ol>
-<li>
-<p><strong><code>activityNotifications</code> Method</strong>:</p>
-<ul>
-<li>This method is the main function that calculates the number of notifications to be sent.</li>
-<li>It takes two parameters: <code>expenditure</code>, a list of expenditures, and <code>d</code>, the window size.</li>
-<li>The method initializes variables, including <code>count</code> to store the notification count and <code>freq</code> to keep track of the frequency of expenditures.</li>
-<li>It then calls two helper methods: <code>initializeFrequency</code> to set up the initial frequency array and <code>calculateNotifications</code> to determine the number of notifications.</li>
-<li>Any exceptions that occur during the process are caught and handled with an error message.</li>
-</ul>
-</li>
-<li>
-<p><strong><code>initializeFrequency</code> Method</strong>:</p>
-<ul>
-<li>This method initializes the frequency array <code>freq</code> based on the initial <code>d</code> expenditures.</li>
-<li>It loops through the first <code>d</code> expenditures and increments the corresponding frequency in the array.</li>
-</ul>
-</li>
-<li>
-<p><strong><code>calculateNotifications</code> Method</strong>:</p>
-<ul>
-<li>This method calculates the number of notifications based on median comparison.</li>
-<li>It iterates through the expenditures starting from index <code>d</code>.</li>
-<li>For each iteration, it calculates the median using the <code>calculateMedian</code> method and compares the current expenditure with double the median.</li>
-<li>If the expenditure is greater than or equal to twice the median, it increments the <code>count</code> variable.</li>
-<li>It updates the frequency array for the sliding window by removing the oldest expenditure and adding the new one.</li>
-</ul>
-</li>
-<li>
-<p><strong><code>calculateMedian</code> Method</strong>:</p>
-<ul>
-<li>This method calculates the median based on the frequency array <code>freq</code> and the window size <code>d</code>.</li>
-<li>It handles both odd and even window sizes to determine the median value.</li>
-<li>For an odd window size, it finds the middle value where the cumulative sum reaches <code>d/2 + 1</code>.</li>
-<li>For an even window size, it finds the two middle values and calculates the average as the median.</li>
-</ul>
-</li>
-</ol>
-<p>Overall, the code structure is well-organized with separate methods for initialization, median calculation, and notification calculation. It efficiently handles the processing of expenditures and sliding windows to determine the number of notifications to be sent. The try-catch blocks ensure proper error handling during the execution of the function.</p>
 ]]></content:encoded>
         </item>
     </channel>
