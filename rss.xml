@@ -4,9 +4,32 @@
         <title></title>
         <link>undefined</link>
         <description>undefined</description>
-        <lastBuildDate>Thu, 16 Jan 2025 22:33:37 GMT</lastBuildDate>
+        <lastBuildDate>Fri, 17 Jan 2025 00:13:05 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>Joplin Pages Publisher</generator>
+        <item>
+            <title><![CDATA[Delicious Café au Lait Recipes: Easy to Make at Home]]></title>
+            <guid>8cbbe226124f4d8b8e35effc8bc36f37</guid>
+            <pubDate>Thu, 16 Jan 2025 23:47:27 GMT</pubDate>
+            <content:encoded><![CDATA[<p>Café au Lait is a popular beverage characterized by its mild flavor, achieved by combining steamed milk with coffee. The proportions of coffee and milk can be adjusted to suit individual preferences.</p>
+<p><strong>Ingredients</strong>:</p>
+<ul>
+<li>Optional additions to Café au Lait include ground cinnamon, nutmeg, or sweetened chocolate powder.</li>
+<li>1/3 cup milk</li>
+<li>2/3 cup coffee</li>
+</ul>
+<p><strong>Directions</strong>:</p>
+<ul>
+<li>Pour the coffee into a cup.</li>
+<li>Steam the milk and pour into the coffee, leaving a layer of froth on top.</li>
+<li>Drizzle cinnamon, nutmeg, or chocolate powder on top of the foam, if you wish.</li>
+</ul>
+<p><strong>Yield</strong>: 1 Servings</p>
+<p><strong>Variation</strong>:<br />
+To create a Café Vermont, add 3 tablespoons of maple syrup to the coffee before adding the steamed milk. The remaining steps of the process are identical to those for making a traditional Café au Lait.</p>
+<p>Volume measurement refer to <a title="/article/standard-volumetric-measurement" href="/article/standard-volumetric-measurement">this article</a>.</p>
+]]></content:encoded>
+        </item>
         <item>
             <title><![CDATA[Alexander Elder's Trading Wisdom : Key Takeaways from "The New Trading for a Living" (Part 1)]]></title>
             <guid>e4025b8ccfa44edb8af41a25b5902017</guid>
@@ -966,49 +989,6 @@ Rumpa
 </li>
 </ol>
 <p>Overall, this code reads student information, creates <code>Student</code> objects, sorts them according to the specified rules, and then prints the first name of each student in the sorted order. The <code>Comparable</code> interface is used to define the custom sorting logic based on CGPA, first name, and ID.</p>
-]]></content:encoded>
-        </item>
-        <item>
-            <title><![CDATA[Unlocking Efficiency: Exploring the Benefits of Python Virtual Environments in Development]]></title>
-            <guid>c9166eabae694de1b9e5f063b92b2636</guid>
-            <pubDate>Tue, 09 Jul 2024 05:31:38 GMT</pubDate>
-            <content:encoded><![CDATA[<p><strong>Summary</strong><br />
-Virtual environments in Python development offer several advantages, including isolation of project dependencies, maintaining clean and consistent environments, avoiding conflicts between project requirements, ensuring portability across different systems, and facilitating collaboration with others.</p>
-<p><strong>Key Advantages</strong></p>
-<ol>
-<li><strong>Dependency Isolation</strong>: Virtual environments separate project dependencies, preventing conflicts between different projects.</li>
-<li><strong>Environment Consistency</strong>: Maintains a clean environment for each project, ensuring consistent behavior and reproducibility.</li>
-<li><strong>Conflict Avoidance</strong>: Avoids conflicts when projects require different versions of the same package.</li>
-<li><strong>Portability</strong>: Ensures that projects can be easily moved between different systems while preserving dependencies.</li>
-<li><strong>Collaboration</strong>: Facilitates collaboration by sharing project requirements through versioned environment configuration files like <code>requirements.txt</code>.</li>
-</ol>
-<p>By utilizing virtual environments, Python developers can manage dependencies effectively, minimize compatibility issues, and streamline project development and deployment processes.</p>
-<h2 id="create-a-virtual-environment-in-python">Create a virtual environment in Python</h2>
-<p><code>python -m venv my-venv</code></p>
-<p><strong>Explanation</strong><br />
-The command <code>python -m venv my-venv</code> is used to create a virtual environment in Python. Here’s a breakdown of what each part of the command does:</p>
-<ul>
-<li><code>python</code>: This specifies the Python interpreter to use for creating the virtual environment.</li>
-<li><code>-m venv</code>: This part invokes the <code>venv</code> module, which is a built-in module in Python used for creating virtual environments.</li>
-<li><code>my-venv</code>: This is the name given to the virtual environment being created. You can replace <code>my-venv</code> with any name you prefer.</li>
-</ul>
-<p>By running this command in your terminal or command prompt, a new virtual environment named <code>my-venv</code> will be created in the current directory. This virtual environment will have its own isolated Python installation and packages, allowing you to work on projects with specific dependencies without affecting your global Python environment.</p>
-<p><code>source my-venv/bin/activate</code></p>
-<p>When you run the command <code>source my-venv/bin/activate</code>, it activates a virtual environment named <code>my-venv</code> in your current shell session. Here’s a breakdown of what this command does:</p>
-<ul>
-<li>
-<p><code>source</code>: This command is used to run commands from a file within the current shell session. It reads and executes commands from the specified file and sets any environment variables defined in that file in the current shell.</p>
-</li>
-<li>
-<p><code>my-venv/bin/activate</code>: This specifies the path to the activation script of the virtual environment. When you run this script, it modifies the shell environment to prioritize the Python interpreter and packages located within the virtual environment directory (<code>my-venv</code>) over the global Python installation.</p>
-</li>
-</ul>
-<p>By sourcing the activation script, you’re essentially telling your shell to use the Python interpreter and packages specific to the <code>my-venv</code> virtual environment for any subsequent Python-related commands you execute. This ensures that you work in an isolated environment with project-specific dependencies, enhancing organization and preventing conflicts with other projects or system-wide packages.</p>
-<h2 id="deactivate-the-virtual-environment"><code>deactivate</code> the virtual environment</h2>
-<p><code>deactivate</code></p>
-<p>When you activate a virtual environment in Python, it modifies your shell’s PATH to make sure that when you run Python or pip commands, they refer to the Python interpreter and packages specific to that environment.</p>
-<p>Now, when you deactivate a virtual environment, it resets the PATH environment variable to its original state before the virtual environment was activated. This means that any Python or pip commands run after deactivation will use the system’s default Python interpreter and packages, not those specific to the virtual environment.</p>
-<p>In essence, deactivating a virtual environment allows you to return to using the global Python installation and system-wide packages, ensuring that your commands are executed in the context of the system environment rather than the isolated virtual environment.</p>
 ]]></content:encoded>
         </item>
     </channel>
